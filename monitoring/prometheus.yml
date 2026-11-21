@@ -1,0 +1,15 @@
+# Prometheus scrape configuration for CloudServe (Setup Guide §06).
+# The API (python -m cloudserve.api) serves /metrics on the host at 127.0.0.1:8000; an unattended
+# harness run started with --metrics-port 8001 serves the same series on 8001 while it lasts.
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "support-system"
+    static_configs:
+      - targets: ["host.docker.internal:8000"]
+        labels: {source: "api"}
+  - job_name: "support-system-harness"
+    static_configs:
+      - targets: ["host.docker.internal:8001"]
+        labels: {source: "harness"}

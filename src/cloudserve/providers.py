@@ -175,8 +175,10 @@ class ProviderGuard:
 
     After N consecutive failures (including deadline overruns) the breaker opens and tickets
     escalate immediately without calling the provider, so an outage cannot stall the batch.
-    After `cooldown` seconds one trial call is allowed (half-open): success closes the breaker,
-    failure re-opens it for another cooldown. So a recovered provider is used again in the run.
+    After `cooldown` seconds exactly ONE trial call is allowed (half-open); other callers fail
+    fast while it is in flight. Success closes the breaker, failure re-opens it for another
+    cooldown. State transitions hold a lock, so the guard is safe under concurrent API requests;
+    the model call itself runs outside the lock.
     """
 
     def __init__(self, max_consecutive_failures: int = 3, deadline: float | None = None,
@@ -191,23 +193,37 @@ class ProviderGuard:
         self.state = "closed"
         self.opened_at = None
         self.trials = 0
+        self._lock = threading.Lock()
 
     @property
     def is_open(self) -> bool:
         return self.state == "open"
 
+    def _admit(self) -> bool:
+        """Decide under the lock whether this caller may call; True when it is the trial call."""
+        with self._lock:
+            if self.state == "half_open":
+                raise ProviderCircuitOpen("provider trial call in flight (circuit half-open)")
+            if self.state == "open":
+                if self.clock() - self.opened_at < self.cooldown:
+                    raise ProviderCircuitOpen("provider disabled after repeated failures (circuit open)")
+                self.state, self.trials = "half_open", self.trials + 1
+                return True
+            return False
+
     def call(self, fn, *args, **kwargs):
-        if self.state == "open":
-            if self.clock() - self.opened_at < self.cooldown:
-                raise ProviderCircuitOpen("provider disabled after repeated failures (circuit open)")
-            self.state, self.trials = "half_open", self.trials + 1     # one trial call
+        trial = self._admit()
         try:
             result = call_with_deadline(fn, self.deadline, *args, **kwargs)
         except Exception:
-            self.consecutive_failures += 1
-            self.total_failures += 1
-            if self.state == "half_open" or self.consecutive_failures >= self.max_failures:
-                self.state, self.opened_at = "open", self.clock()
+            with self._lock:
+                self.consecutive_failures += 1
+                self.total_failures += 1
+                if trial or self.consecutive_failures >= self.max_failures:
+                    self.state, self.opened_at = "open", self.clock()
             raise
-        self.consecutive_failures, self.state = 0, "closed"
+        with self._lock:
+            self.consecutive_failures = 0
+            if trial or self.state != "open":
+                self.state = "closed"
         return result

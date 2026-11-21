@@ -257,3 +257,11 @@ def test_experiment_policy_is_reproducible_and_never_replaces_the_approved_polic
     with pytest.raises(SystemExit, match="not measured"):
         ep.main(["--retriever", "embedding", "--chunking", "section", "--confidence", "0.71",
                  "--retrieval", "0.35", "--out", str(out)])
+
+
+def test_rendered_sentences_are_terminated():
+    from cloudserve.generate import GeneratedAnswer, render_generated
+    a = GeneratedAnswer(False, "", ({"text": "Check the device clock", "citations": ["DOC-A#x"], "quote": "q"},
+                                    {"text": "Then retry.", "citations": ["DOC-A#x"], "quote": "q"}))
+    out = render_generated(a, [{"passage_id": "DOC-A#x", "title": "T"}])
+    assert out.startswith("Check the device clock. [DOC-A#x] Then retry. [DOC-A#x]")

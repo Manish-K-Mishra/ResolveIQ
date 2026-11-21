@@ -16,6 +16,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import threading
 import time
 from pathlib import Path
 from . import ROOT
@@ -88,10 +89,18 @@ class CallLog:
     def __init__(self, cache: LLMCache | None = None, prices: dict | None = None):
         self.cache = cache
         self.prices = prices if prices is not None else load_prices()
-        self.entries: list[dict] = []
+        # Per thread: concurrent API requests each run a ticket on their own worker thread, so a
+        # thread's entries are exactly its current ticket's calls.
+        self._local = threading.local()
+
+    @property
+    def entries(self) -> list[dict]:
+        if not hasattr(self._local, "entries"):
+            self._local.entries = []
+        return self._local.entries
 
     def drain(self) -> list[dict]:
-        out, self.entries = self.entries, []
+        out, self._local.entries = self.entries, []
         return out
 
 
