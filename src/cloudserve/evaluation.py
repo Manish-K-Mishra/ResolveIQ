@@ -101,6 +101,45 @@ def citations_resolve(results: list[dict], kb) -> float | None:
     return frac(ok, len(spans))
 
 
+# Projected-cost volume. Source: Stakeholder_Interviews.txt, Marcus (support lead): "We take somewhere
+# north of five hundred tickets a week now". 500/week x 52 / 12 = 2,167 tickets a month, a LOWER
+# bound ("north of", and "volume is growing" in the Project Brief). No other document states volume.
+TICKETS_PER_WEEK = 500
+TICKETS_PER_MONTH = round(TICKETS_PER_WEEK * 52 / 12)
+VOLUME_SOURCE = ("Stakeholder_Interviews (Marcus, support lead): 'north of five hundred tickets a week'; "
+                 "500/week x 52/12 = 2,167/month, a lower bound because volume is growing (Project Brief)")
+
+
+def usage_metrics(results: list[dict], prices_as_of: str | None = None) -> dict:
+    """Model calls, tokens and estimated cost (R-08). Cache hits cost nothing now, so cost is
+    reported both as spent in this run and as if every call had been live."""
+    calls = [c for r in results for c in r.get("model_calls", [])]
+    n = len(results)
+
+    def tot(key, rows):
+        vals = [c[key] for c in rows]
+        return None if any(v is None for v in vals) else round(sum(vals), 6)
+    live = [c for c in calls if c["cache"] != "hit"]
+    if_live = tot("cost_if_live_usd", calls)
+    per_ticket_live = round(if_live / n, 8) if if_live is not None and n else None
+    return {
+        "model_calls": len(calls), "live_calls": len(live), "cache_hits": len(calls) - len(live),
+        "tickets_answered_entirely_from_cache": sum(r.get("llm_cache") == "hit" for r in results),
+        "calls_by_component": dict(Counter(c["component"] for c in calls)),
+        "input_tokens": tot("input_tokens", calls), "output_tokens": tot("output_tokens", calls),
+        "calls_without_token_usage": sum(c["input_tokens"] is None for c in calls),
+        "calls_with_unknown_price": sum(not c["price_known"] for c in calls),
+        "estimated_cost_this_run_usd": tot("cost_usd", calls),
+        "estimated_cost_if_all_calls_live_usd": if_live,
+        "estimated_cost_per_ticket_if_live_usd": per_ticket_live,
+        "projected_monthly_cost_usd": {
+            "tickets_per_month": TICKETS_PER_MONTH, "volume_source": VOLUME_SOURCE,
+            "cost_usd": round(per_ticket_live * TICKETS_PER_MONTH, 4) if per_ticket_live is not None else None,
+            "basis": "per-ticket cost of this input file (same mix of escalations, which make fewer model calls) "
+                     "x monthly volume; prices from config/model_prices.json" + (f" as of {prices_as_of}" if prices_as_of else "")},
+    }
+
+
 GROUNDING_FAILURES = ("invalid_citation", "quote_not_supported_by_source", "unsupported_claim")
 REVIEW_SAMPLE_SIZE = 50
 REVIEW_COLUMNS = ["ticket_id", "ticket_text_masked", "response", "cited_passages_text",
@@ -159,8 +198,11 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
     st = Counter(r["status"] for r in results)
     act = Counter(r["action_taken"] for r in results)
     sent = [r for r in results if r["answer_sent"]]
-    lat = sorted(r["latency_seconds"] for r in results)
-    sent_lat = sorted(r["latency_seconds"] for r in sent)
+    # Replayed (cache-hit) decisions are excluded from latency: their speed is not live speed.
+    live_results = [r for r in results if r.get("llm_cache") not in ("hit", "mixed")]
+    lat = sorted(r["latency_seconds"] for r in live_results)
+    lat_all = sorted(r["latency_seconds"] for r in results)
+    sent_lat = sorted(r["latency_seconds"] for r in sent if r.get("llm_cache") not in ("hit", "mixed"))
     outbound_pii = sum(bool(PII_PATTERN.search(r["response"])) for r in results if r["response"])
     guard_types = Counter(f for r in results for f in r["guardrail_failures"])
     for r in results:
@@ -188,7 +230,12 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
         },
         "technical": {"latency_seconds": {"mean": round(statistics.mean(lat), 4) if lat else None,
                                           "median": round(statistics.median(lat), 4) if lat else None,
-                                          "p95": percentile(lat, 0.95)}},
+                                          "p95": percentile(lat, 0.95), "n": len(lat),
+                                          "excludes": "decisions replayed from the LLM cache"},
+                      "latency_seconds_including_cache_hits": {
+                          "median": round(statistics.median(lat_all), 4) if lat_all else None,
+                          "p95": percentile(lat_all, 0.95), "n": len(lat_all)}},
+        "llm_usage": usage_metrics(results, run_info.get("prices_as_of")),
         "governance": {
             "decisions_logged": logged, "tickets_processed": len(results),
             "decision_log_reconciles": logged == len(results) == n,
@@ -286,6 +333,14 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
     return report
 
 
+def _prices_as_of():
+    try:
+        from .model_calls import load_prices
+        return load_prices().get("as_of")
+    except (OSError, ValueError):
+        return None
+
+
 def training_overlap(items: list, train_path) -> dict:
     """How many input bodies are verbatim copies of the classifier's training tickets."""
     try:
@@ -319,8 +374,11 @@ def summary_markdown(m: dict) -> str:
              f"| Escalated / blocked | {v['escalated']} / {v['blocked_by_guardrails']} |",
              f"| FCR (actual / if released) | {b['first_contact_resolution_pct']}% / {b['first_contact_resolution_if_kill_switch_released_pct']}% |",
              f"| Escalation rate (actual / if released) | {b['escalation_rate_pct']}% / {b['escalation_rate_if_kill_switch_released_pct']}% |",
-             f"| Latency median / p95 (s) | {m['technical']['latency_seconds']['median']} / {m['technical']['latency_seconds']['p95']} |",
+             f"| Latency median / p95 (s), live decisions only | {m['technical']['latency_seconds']['median']} / {m['technical']['latency_seconds']['p95']} |",
              f"| Private data in outbound responses | {g['private_data_in_outbound_responses']} |",
+             f"| Model calls (live / cache hits) | {m['llm_usage']['live_calls']} / {m['llm_usage']['cache_hits']} (cache mode: {m['run'].get('llm_cache')}) |",
+             f"| Tokens in / out; estimated cost this run / if all live (USD) | {m['llm_usage']['input_tokens']} / {m['llm_usage']['output_tokens']}; {m['llm_usage']['estimated_cost_this_run_usd']} / {m['llm_usage']['estimated_cost_if_all_calls_live_usd']} |",
+             f"| Projected monthly cost (USD, {m['llm_usage']['projected_monthly_cost_usd']['tickets_per_month']} tickets/month) | {m['llm_usage']['projected_monthly_cost_usd']['cost_usd']} |",
              f"| Retriever (fallback) | {m['run']['retrieval']['name']}, {m['run']['retrieval']['chunking']} passages (fallback: {m['run']['retrieval']['fallback']}) |",
              f"| Cited quotes found at their recorded corpus span | {g['citations_resolving_to_corpus_text']} |"]
     if "generation" in m:
@@ -344,7 +402,7 @@ def main(argv=None):
     p = argparse.ArgumentParser(description="Run the CloudServe evaluation unattended and write a metrics report")
     p.add_argument("--input", required=True, help="any JSON list of tickets with the dataset schema")
     p.add_argument("--output", default="evaluation/results", help="output directory")
-    add_engine_arguments(p)
+    add_engine_arguments(p, llm_cache_default="read_write")   # reproducible evaluation (A5 in LLM mode)
     a = p.parse_args(argv)
     out = Path(a.output)
     out.mkdir(parents=True, exist_ok=True)
@@ -365,6 +423,9 @@ def main(argv=None):
                 "generator": (engine._models().get("generator") or {}).get("name"),
                 "prompt_versions": engine._prompt_versions(), "policy_version": engine.policy["policy_version"],
                 "auto_send": engine.auto_send, "retrieval": engine.retrieval_info,
+                "llm_cache": a.llm_cache if engine._call_logs() else "not_used (no model in this run)",
+                "kill_switch_at_start": engine._kill_switch(),
+                "prices_as_of": _prices_as_of(),
                 "training_overlap": training_overlap(items, a.train)}
     metrics = evaluate(items, results, logged, wall, run_info, kb=engine.kb)
     (out / "decisions.json").write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
