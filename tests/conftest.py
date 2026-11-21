@@ -3,21 +3,27 @@ import pytest
 from cloudserve.classify import NaiveBayesIntentClassifier
 from cloudserve.graph import DecisionEngine
 from cloudserve.ingest import load_json
-from cloudserve.retrieve import KnowledgeBase
 from cloudserve.route import load_policy
+from cloudserve.runtime import build_knowledge_base
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 
 
 @pytest.fixture(scope="session")
-def kb():
-    return KnowledgeBase.from_path(DATA / "documentation.json")
+def retrieval():
+    """The retriever the committed policy was derived for, built exactly as the runtime does."""
+    return build_knowledge_base(load_json(DATA / "documentation.json"), load_policy())
 
 
 @pytest.fixture(scope="session")
-def policy():
-    return load_policy()
+def kb(retrieval):
+    return retrieval[0]
+
+
+@pytest.fixture(scope="session")
+def policy(retrieval):
+    return retrieval[1]
 
 
 @pytest.fixture(scope="session")
@@ -31,9 +37,12 @@ def validation():
 
 
 @pytest.fixture
-def make_engine(kb, policy, nb):
+def make_engine(retrieval, nb):
+    kb, policy, info = retrieval
+
     def _make(classifier=None, selector=None, auto_send=False, use_langgraph=True):
-        return DecisionEngine(kb, policy, classifier or nb, selector, auto_send=auto_send, use_langgraph=use_langgraph)
+        return DecisionEngine(kb, policy, classifier or nb, selector, auto_send=auto_send,
+                              use_langgraph=use_langgraph, retrieval_info=info)
     return _make
 
 

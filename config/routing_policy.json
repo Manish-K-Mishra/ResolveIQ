@@ -1,6 +1,6 @@
 {
   "policy_version": "RP-1.0",
-  "derived_on": "2026-11-21",
+  "derived_on": "2026-11-22",
   "derived_from": "data/development_tickets.json only; 5-fold out-of-fold predictions grouped by ticket body",
   "objective": "maximise auto-answer coverage s.t. 0 must_not_auto_respond violations and auto precision >= 0.8; among candidates within 1% of best coverage prefer the higher confidence floor",
   "target_auto_precision": 0.8,
@@ -85,6 +85,13 @@
     "webhook_issue": [
       "DOC-API-003"
     ]
+  },
+  "retrieval": {
+    "retriever": "lexical",
+    "name": "lexical:term-overlap",
+    "chunking": "article",
+    "min_score": 0.26,
+    "passages": 29
   },
   "classification_confidence_min": 0.7,
   "confidence_threshold_validated_for": "naive_bayes_intent",

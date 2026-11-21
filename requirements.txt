@@ -9,3 +9,7 @@ langchain-core==1.8.4
 langchain-ollama==1.1.0
 langchain-openai==1.8.5
 langchain-anthropic==1.7.12
+# Embedding retrieval (all-MiniLM-L6-v2 through ONNX Runtime on CPU; model files: scripts/fetch_models.py)
+numpy==2.4.6
+onnxruntime==1.32.0
+tokenizers==0.23.3

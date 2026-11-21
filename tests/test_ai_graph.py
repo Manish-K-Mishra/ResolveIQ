@@ -38,7 +38,7 @@ def test_graph_is_a_real_compiled_langgraph_with_a_route_branch(make_engine):
 def test_kill_switch_off_holds_answer_for_review(make_engine):
     r = make_engine(auto_send=False).process(LOGIN)
     assert (r["action_taken"], r["status"], r["answer_sent"]) == ("auto_respond", "held_for_review", False)
-    assert r["response"] and r["citations"] == ["DOC-AUTH-001"] and "kill switch" in r["reason"]
+    assert r["response"] and r["citations"] == ["DOC-AUTH-001#resolution"] and "kill switch" in r["reason"]
 
 
 def test_kill_switch_released_sends_answer(make_engine):

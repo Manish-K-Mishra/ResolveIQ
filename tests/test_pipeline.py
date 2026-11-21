@@ -46,8 +46,8 @@ def test_retrieval_returns_real_identifiable_passages(kb):
     hits = kb.search("invalid credentials console account locked login")
     assert hits and hits[0]["doc_id"] == "DOC-AUTH-001"
     for h in hits:
-        assert h["passage"] == kb.by_id[h["doc_id"]]["content"]
-        assert 0 < h["score"] <= 1
+        assert h["passage"] == kb.by_id[h["doc_id"]]["content"][h["start"]:h["end"]] == kb.resolve(h["passage_id"])
+        assert h["passage_id"].startswith(h["doc_id"] + "#") and 0 < h["score"] <= 1
 
 
 @pytest.mark.parametrize("q", ["hyperquantum zebra orbit magnet", "", "the and for"])

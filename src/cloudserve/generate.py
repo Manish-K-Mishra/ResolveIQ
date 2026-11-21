@@ -16,24 +16,32 @@ _RESOLUTION = re.compile(r"(?im)^## (?:Resolution|Steps|Workaround|How to|Fix|Re
 class EvidenceSelection:
     doc_id: str
     quote: str
+    passage_id: str | None = None    # DOC-XXX#<slug>; resolves to exact corpus text
+
+    @property
+    def citation(self) -> str:
+        return self.passage_id or self.doc_id
 
 
 def select_from_document(evidence: list[dict]) -> EvidenceSelection | None:
-    """Deterministic selector: the resolution section of the best approved article."""
+    """Deterministic selector: the resolution steps of the best-matching approved passage.
+
+    `evidence` is best first (KnowledgeBase.answer_passages): each article's resolution section.
+    """
     for m in evidence:
         section = _RESOLUTION.search(m["passage"])
         if not section:
             continue
         quote = re.split(r"(?m)^## ", m["passage"][section.end():], maxsplit=1)[0].strip()[:1200].strip()
         if len(quote) >= 40:
-            return EvidenceSelection(doc_id=m["doc_id"], quote=quote)
+            return EvidenceSelection(doc_id=m["doc_id"], quote=quote, passage_id=m.get("passage_id"))
     return None
 
 
 def render_response(selection: EvidenceSelection) -> str:
     """Only deterministic text surrounds the source-exact quotation."""
     return (f"CloudServe documentation contains these steps:\n\n{selection.quote}\n\n"
-            f"Source: [{selection.doc_id}]")
+            f"Source: [{selection.citation}]")
 
 
 class LangChainEvidenceSelector:
@@ -70,4 +78,6 @@ class LangChainEvidenceSelector:
                 HumanMessage(content=self.prompt["user"].replace("{payload_json}", payload))]
         result = self.guard.call(self.runnable.invoke, msgs)
         sel = self.schema.model_validate(result.model_dump() if hasattr(result, "model_dump") else result)
-        return EvidenceSelection(sel.doc_id, sel.quote)
+        # One candidate passage per article, so the returned doc_id identifies the passage.
+        passage_id = next((m.get("passage_id") for m in evidence[:3] if m["doc_id"] == sel.doc_id), None)
+        return EvidenceSelection(sel.doc_id, sel.quote, passage_id)
