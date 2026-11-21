@@ -48,9 +48,10 @@ class LangChainEvidenceSelector:
     """PR-04: a provider-independent model selects a verbatim quote (it never writes free text)."""
 
     def __init__(self, provider: str | None = None, model_name: str | None = None,
-                 base_url: str | None = None, model=None, guard=None):
+                 base_url: str | None = None, model=None, guard=None, calls=None):
         from .providers import ProviderGuard, build_model, load_prompt, structured
         from pydantic import BaseModel, ConfigDict, Field
+        self.calls = calls
 
         class Selected(BaseModel):
             model_config = ConfigDict(extra="forbid")
@@ -71,13 +72,15 @@ class LangChainEvidenceSelector:
 
     def select(self, ticket, evidence: list[dict]) -> EvidenceSelection:
         from langchain_core.messages import HumanMessage, SystemMessage
-        payload = json.dumps({"ticket_subject": ticket.subject[:300], "ticket_body": ticket.body[:3000],
+        from .model_calls import call_model
+        from .providers import for_provider
+        payload = json.dumps({"ticket_subject": for_provider(self.provider, ticket.subject[:300]),
+                              "ticket_body": for_provider(self.provider, ticket.body[:3000]),
                               "retrieved_documents": [{"doc_id": m["doc_id"], "passage": m["passage"][:4500]}
                                                       for m in evidence[:3]]}, ensure_ascii=False)
         msgs = [SystemMessage(content=self.prompt["system"]),
                 HumanMessage(content=self.prompt["user"].replace("{payload_json}", payload))]
-        result = self.guard.call(self.runnable.invoke, msgs)
-        sel = self.schema.model_validate(result.model_dump() if hasattr(result, "model_dump") else result)
+        sel = call_model(self, "evidence_selector", msgs)
         # One candidate passage per article, so the returned doc_id identifies the passage.
         passage_id = next((m.get("passage_id") for m in evidence[:3] if m["doc_id"] == sel.doc_id), None)
         return EvidenceSelection(sel.doc_id, sel.quote, passage_id)
@@ -133,9 +136,9 @@ class LangChainAnswerGenerator:
     """
 
     def __init__(self, provider: str | None = None, model_name: str | None = None,
-                 base_url: str | None = None, model=None, guard=None):
+                 base_url: str | None = None, model=None, guard=None, calls=None):
         from .providers import ProviderGuard, build_model, load_prompt, structured
-        self.schema = answer_schema()
+        self.schema, self.calls = answer_schema(), calls
         self.prompt = load_prompt("PR-02_grounded_answer.md")
         self.guard = guard or ProviderGuard()
         self.provider = provider or "injected"
@@ -151,15 +154,17 @@ class LangChainAnswerGenerator:
         from langchain_core.messages import HumanMessage, SystemMessage
         payload = json.dumps([{"passage_id": p["passage_id"], "title": p.get("title", ""), "text": p["passage"][:2500]}
                               for p in passages], ensure_ascii=False, indent=1)
+        from .providers import for_provider
         values = {"passages_json": payload, "ticket_id": ticket.ticket_id, "channel": ticket.channel,
-                  "subject": ticket.subject[:300], "body": ticket.body[:4000]}
+                  "subject": for_provider(self.provider, ticket.subject[:300]),
+                  "body": for_provider(self.provider, ticket.body[:4000])}
         # Single pass, so placeholder-like text inside the ticket or passages is never substituted.
         user = re.sub(r"\{(passages_json|ticket_id|channel|subject|body)\}", lambda m: values[m.group(1)],
                       self.prompt["user"])
         return [SystemMessage(content=self.prompt["system"]), HumanMessage(content=user)]
 
     def generate(self, ticket, passages: list[dict]) -> GeneratedAnswer:
-        result = self.guard.call(self.runnable.invoke, self.messages(ticket, passages))
-        v = self.schema.model_validate(result.model_dump() if hasattr(result, "model_dump") else result)
+        from .model_calls import call_model
+        v = call_model(self, "generator", self.messages(ticket, passages))
         return GeneratedAnswer(v.cannot_answer, v.reason,
                                tuple({"text": s.text, "citations": list(s.citations), "quote": s.quote} for s in v.sentences))

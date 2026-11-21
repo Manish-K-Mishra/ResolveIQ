@@ -13,18 +13,22 @@ behind adapters. Every path, including failures,
 ends in `finalize`, which builds one governance-schema decision record.
 
 Actions (Governance §1): auto_respond | escalate | block.
-Kill switch (Governance §5): when automatic sending is disabled (the default), an
-auto_respond decision is HELD for human review (status 'held_for_review', answer_sent false).
+Kill switch (Governance §5): when automatic sending is disabled (the default), or the runtime
+flag file is present (cloudserve.killswitch, read at finalize for every ticket), an auto_respond
+decision is HELD for human review (status 'held_for_review', answer_sent false).
 """
 from __future__ import annotations
 import os
 import time
 import uuid
+from pathlib import Path
 from typing import Any, TypedDict
 from .classify import UNKNOWN
 from .generate import select_from_document
 from .guardrails import mask_pii, validate_generated, validate_response
+from . import killswitch
 from .ingest import normalize, utc_now
+from .model_calls import CallLog, cache_status, summarise
 from .retrieve import KnowledgeBase
 from .route import route as route_policy
 
@@ -56,7 +60,7 @@ class DecisionEngine:
 
     def __init__(self, kb: KnowledgeBase, policy: dict, classifier, selector=None,
                  auto_send: bool = False, use_langgraph: bool = True, retrieval_info: dict | None = None,
-                 answer_mode: str = "extractive", generator=None):
+                 answer_mode: str = "extractive", generator=None, kill_switch_file=None):
         if answer_mode not in ANSWER_MODES:
             raise ValueError(f"answer_mode must be one of {ANSWER_MODES}")
         if answer_mode == "generated" and generator is None:
@@ -66,6 +70,7 @@ class DecisionEngine:
         # Which retriever actually ran (and whether it is the fallback), written into every record.
         self.retrieval_info = retrieval_info or {**kb.describe(), "fallback": False}
         self.auto_send = auto_send
+        self.kill_switch_file = Path(kill_switch_file) if kill_switch_file else killswitch.flag_path()
         self.implementation = "langgraph" if use_langgraph else "sequential"
         self.graph = self._build_graph() if use_langgraph else None
 
@@ -153,12 +158,24 @@ class DecisionEngine:
             s.update(self.validate(s))
         return self.finalize(s)["record"]
 
+    def _call_logs(self) -> list:
+        logs = [getattr(a, "calls", None) for a in (self.classifier, self.selector, self.generator)]
+        return list({id(x): x for x in logs if isinstance(x, CallLog)}.values())
+
+    def _drain_calls(self) -> list[dict]:
+        return [e for log in self._call_logs() for e in log.drain()]
+
     def process(self, raw: dict) -> dict:
         t0, started = time.perf_counter(), utc_now()
+        self._drain_calls()          # nothing from an earlier ticket is attributed to this one
         try:
             record = self.graph.invoke({"raw": raw})["record"] if self.graph else self._run_sequential(raw)
         except Exception as exc:     # malformed ticket or unexpected internal error: never crash the batch
             record = self._fallback_record(raw, exc)
+        calls = self._drain_calls()
+        record["model_calls"], record["usage"] = calls, summarise(calls)
+        record["llm_cache"] = cache_status(calls)
+        record["pii_masked_for_provider"] = (any(c["pii_masked_for_provider"] for c in calls) if calls else None)
         record["started_at"], record["completed_at"] = started, utc_now()
         record["latency_seconds"] = round(time.perf_counter() - t0, 4)
         return record
@@ -230,10 +247,16 @@ class DecisionEngine:
             action, stage, codes, response = "auto_respond", "validation", r["codes"], v["response"]
             reason = r["reason"] + " All pre-release checks passed."
             reqs += ["FR-05", "FR-06"]
+        ks = self._kill_switch()          # read now, at finalize, for every ticket
         if action == "auto_respond":
-            delivery = "sent" if self.auto_send else "held_kill_switch"
-            status = "auto_responded" if self.auto_send else "held_for_review"
-            if not self.auto_send:
+            release = self.auto_send and not ks["file_flag_engaged"]
+            delivery = "sent" if release else "held_kill_switch"
+            status = "auto_responded" if release else "held_for_review"
+            if ks["file_flag_engaged"]:
+                reason += (" The kill switch was engaged (" + ks["flag_file"] +
+                           (f", since {ks['engaged_at']}" if ks.get("engaged_at") else "") +
+                           "), so no answer is released; the answer is held for an agent.")
+            elif not self.auto_send:
                 reason += " Automatic sending is switched off (kill switch), so the answer is held for an agent."
         else:
             delivery, status = "not_applicable", {"escalate": "escalated", "block": "blocked"}[action]
@@ -273,7 +296,7 @@ class DecisionEngine:
             "reason": reason, "reason_codes": codes, "guardrail_results": guardrails,
             "guardrail_failures": sorted(set(failures)), "response": response, "flagged_input_for_review": flagged_input,
             "citations": citations, "citation_spans": spans, "retrieval": self.retrieval_info,
-            "answer_mode": self.answer_mode,
+            "answer_mode": self.answer_mode, "kill_switch": ks,
             "unsupported_claims": (v or {}).get("unsupported_claims", []),
             "generation": self._generation_block(s),
             "handoff": None if delivery == "sent" else {
@@ -291,6 +314,11 @@ class DecisionEngine:
         return {"passages_given": [p["passage_id"] for p in s["answer_passages"]],
                 "cannot_answer": bool(g and g.cannot_answer), "model_reason": g.reason if g else None,
                 "sentences": v.get("sentences", []), "error": s.get("selection_errors") or None}
+
+    def _kill_switch(self) -> dict:
+        st = killswitch.state(self.kill_switch_file)
+        return {"auto_send_enabled": self.auto_send, "file_flag_engaged": st["engaged"],
+                "flag_file": st["flag_file"], "engaged_at": st.get("engaged_at"), "reason": st.get("reason")}
 
     @staticmethod
     def _summary(t) -> str:
@@ -317,6 +345,7 @@ class DecisionEngine:
             "guardrail_failures": [], "response": "", "flagged_input_for_review": None, "citations": [],
             "citation_spans": [], "retrieval": self.retrieval_info,
             "answer_mode": self.answer_mode, "unsupported_claims": [], "generation": None,
+            "kill_switch": self._kill_switch(),
             "handoff": {"summary": "unreadable or invalid ticket", "intent": UNKNOWN, "urgency": None,
                         "sources": [], "why_escalated": reason},
             "prompt_version": self._prompt_versions(), "policy_version": self.policy["policy_version"],

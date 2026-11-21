@@ -51,7 +51,9 @@ All modules are in `src/cloudserve/` (named after the Setup Guide §08 component
 | Grounded generation (optional) | `generate.py` `LangChainAnswerGenerator` | PR-02 through LangChain with a strict Pydantic schema (§12) |
 | Guardrails | `guardrails.py` (patterns, `contains_injection`, `validate_response`, `validate_generated`), `graph.py` (confidence floor, kill switch) | Grounding, citations, support, PII, instruction integrity, scope, confidence floor |
 | Audit log | `logging_store.py` | SQLite. Each record holds the Governance minimum fields. |
-| Model providers | `providers.py` | Ollama, llama.cpp (OpenAI-compatible) and Anthropic, all through LangChain; timeouts, retries, deadline, circuit breaker |
+| Model providers | `providers.py` | Ollama, llama.cpp (OpenAI-compatible) and Anthropic, all through LangChain. Timeouts, retries, a deadline, a half-open circuit breaker, and PII masking for hosted providers |
+| Model calls | `model_calls.py` | LLM response cache, token usage and cost per call (§7a) |
+| Kill switch | `killswitch.py` | Runtime flag file and the `on`/`off`/`status` CLI (§4) |
 | Workflow and wiring | `graph.py`, `runtime.py`, `cli.py` | LangGraph `StateGraph`; shared engine construction; command line |
 | Evaluation harness | `evaluation.py`, entry point `evaluation/harness.py` | Unattended run that writes metrics JSON and a Markdown summary |
 
@@ -95,6 +97,24 @@ Automatic sending is **off by default**. An `auto_respond` decision is then held
 `held_for_review` and a handoff for the agent. `--auto-send` or `CLOUDSERVE_AUTO_SEND=true`
 releases answers. Guardrail blocks apply in both modes.
 
+Governance §5 asks for a way to "stop it answering automatically, immediately, without a
+deployment", and to say what it is, who can operate it and how long it takes to take effect.
+
+- **Mechanism.** A runtime flag file, `storage/KILL_SWITCH` by default
+  (`CLOUDSERVE_KILL_SWITCH_FILE` overrides the path). `python -m cloudserve.killswitch on --reason "..."`
+  engages it, `off` releases it, and `status` shows it.
+- **Effect.** `finalize` reads the flag for every ticket. While it is present, no answer is
+  released, even with `--auto-send`: `auto_respond` decisions are held, and the reason says the
+  kill switch was engaged and since when.
+- **Who.** Anyone with write access to the deployment's storage directory, which in practice
+  means the support lead and on-call operations. File-system permissions are the authorisation
+  control; there is no separate user model.
+- **Time to take effect.** The next ticket that finalises, including tickets already in flight.
+  There is no restart and no deployment. Decisions already finalised are not changed.
+- **Record.** Every record carries `kill_switch`: `auto_send_enabled`, `file_flag_engaged`, the
+  repository-relative `flag_file`, and `engaged_at` and `reason` from the flag file. Any file at
+  the path engages the switch, even an empty one.
+
 ## 5. Guardrails
 
 | Check | Fails when | Effect |
@@ -110,7 +130,10 @@ Generated answers get their own release check, `validate_generated`, described i
 ## 6. Failure handling
 
 - Each model call has a per-request timeout, bounded retries and a **wall-clock deadline**. The deadline catches servers that stream slowly.
-- After **3 consecutive failures** a circuit breaker opens, and the remaining tickets escalate immediately.
+- After **3 consecutive failures** a circuit breaker opens, and tickets escalate immediately without calling the provider.
+- **Half-open recovery.** After `CLOUDSERVE_BREAKER_COOLDOWN_SECONDS` (default 30) the breaker allows one trial call. Success closes it. Failure re-opens it for another cooldown. A provider that recovers is used again within the same run.
+- **Rate limits (429).** These are retried by the provider SDK within `CLOUDSERVE_MAX_RETRIES`, and the SDK honours `Retry-After`. If the limit persists, the call fails and the ticket escalates. A test against a local OpenAI-compatible server (the llama.cpp path) checks that exactly 1 + `max_retries` requests are made.
+- **PII masking (hosted providers).** For `anthropic` and `openai`, the ticket subject and body are PII-masked (`mask_pii`) before they are sent to the model, and the record says `pii_masked_for_provider: true`. Local providers (Ollama, llama.cpp) receive the text as written, because it never leaves the machine (`false`). Offline runs record `null`.
 - Malformed rows, empty bodies, unknown channels, no retrieval hit and a missing API key all end in a logged escalation or a clean configuration error, never a crash in the middle of a batch.
 
 ## 7. Audit record
@@ -130,6 +153,59 @@ and the per-sentence checks. It also holds `unsupported_claims`, which is record
 not the answer was blocked. In generated mode `citations` lists every cited passage id, and
 `citation_spans` holds one span per sentence quote. `persist` rejects incomplete records. Each
 evaluation run reconciles the number of logged decisions with the number of tickets processed.
+
+## 7a. Reproducibility, tokens and cost (A5 in LLM mode, R-08)
+
+`src/cloudserve/model_calls.py` handles every model call: the PR-01 classifier, the PR-04
+selector and the PR-02 generator.
+
+**Cache.** Responses are cached on disk under `storage/llm_cache/` (git-ignored).
+
+- **Key.** The sha256 of the provider, model, prompt id and version, the rendered messages, and
+  the schema (name plus a hash of its JSON schema).
+- **No secrets or tickets.** The key holds no API key, base URL or environment value. A cache
+  file stores only the validated output and its usage, never the messages. Failed calls are
+  never cached.
+- **Modes.** `--llm-cache read_write | read_only | off`.
+- **Defaults.** The evaluation harness defaults to `read_write`, so a re-run is reproducible
+  and free. The CLI, which is the live path, defaults to `off`. A live decision should come from
+  the model as it is now, with live latency. A replayed answer would hide a model or provider
+  change. Model output derived from customer tickets should also not be kept on disk unless an
+  operator asks for it.
+
+**What the record carries.**
+
+- `model_calls`: one entry per call, with the component, prompt, provider, model,
+  `cache: hit|miss|off`, input and output tokens, `cost_usd`, `cost_if_live_usd` and latency.
+- `usage`: the totals for the decision.
+- `llm_cache`: `hit`, `miss`, `mixed`, `off` or `not_used`.
+
+**Latency in the metrics.** Replayed decisions are excluded from the headline latency figures.
+`latency_seconds_including_cache_hits` reports both.
+
+**Cost.**
+
+- **Prices.** Taken from `config/model_prices.json`, which records its source and date. Claude
+  Haiku 4.5 is $1 input and $5 output per million tokens. Ollama and llama.cpp cost $0. Other
+  hosted models are recorded as `price_known: false` with a null cost, not a guess.
+- **Measures.** `llm_usage` in `metrics.json` reports total and per-ticket cost, both as spent
+  and as if every call were live.
+- **Projected monthly cost.** The live per-ticket cost × **2,167 tickets a month**. The source is
+  Stakeholder Interviews (Marcus): "north of five hundred tickets a week", so 500 × 52 / 12. That
+  is a lower bound, because volume is growing (Project Brief). No other document states a volume.
+- **Mix.** The per-ticket cost already reflects the input's mix of escalations, which make fewer
+  model calls.
+
+**Measured (Ollama gemma4:e2b).** We ran 5 validation tickets twice, with the LLM classifier
+and generated answers, using `read_write`.
+
+| Run | Model calls | Live / cache hits | Tokens in / out | Cost | p95 latency |
+|---|---|---|---|---|---|
+| First | 6 | 6 / 0 | 2,638 / 653 | $0 (local) | 7.18 s |
+| Second | 6 | 0 / 6 | — | $0 | replayed, so excluded; 2.8 ms including hits |
+
+The 6 calls were 5 classifier calls and 1 generator call. The second run produced identical
+decisions. Claude token counts and cost have not been measured; that needs a paid run by the PE.
 
 ## 8. Data findings that shaped the design
 
@@ -156,8 +232,9 @@ Full figures are in `evaluation/results/*/metrics_summary.md`.
 - **Retrieval is lexical** in RP-1.0, and 70% of unanswerable validation tickets still retrieve a passage. The intent→document map is what prevents those tickets from being answered. Embeddings retrieve far better (§11), but no embedding configuration met the routing objective with useful coverage.
 - **Confidence calibration misses the 5-point target.** On development data, out of fold, the 0.6–0.8 band states 0.705 but observes 0.44. LLM confidence is not calibrated at all.
 - **Injection detection is pattern-based,** so a paraphrased injection can pass. The released answer is still a verified documentation excerpt.
-- **The circuit breaker never recovers within a run** (there is no half-open state). Ticket text is sent unmasked to hosted providers.
-- **llama.cpp has not been run live,** and LLM runs are not reproducible without a response cache.
+- **PII masking is pattern-based.** A name, an address or an unusual identifier can still reach a hosted provider.
+- **llama.cpp has not been run live.** Only its 429 path has been tested, against a local fake server.
+- **The LLM cache replays exact repeats only.** Any change to the prompt, model, schema, passages or ticket text is a miss. Cost estimates use the tokens the provider reports for the final attempt, so retried attempts are not counted.
 - **Auto-answer rates differ between groups:** fluency 12.7 points, tier 14.3, region 15.4. Group sizes are small, and the cause has not been investigated yet.
 
 ## 11. Retrieval decision

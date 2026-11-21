@@ -14,12 +14,13 @@ from __future__ import annotations
 import hashlib
 import math
 import os
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 from .ingest import Ticket, load_json, tokens
-from .providers import ProviderGuard, build_model, load_prompt, structured
+from .providers import ProviderGuard, build_model, for_provider, load_prompt, structured
 
 INTENTS = (
     "account_access", "api_key_issue", "api_usage_question", "authentication_failure",
@@ -114,8 +115,9 @@ class LangChainClassifier:
     """PR-01 classification through any provider; same contract as the offline classifier."""
 
     def __init__(self, provider: str | None = None, model_name: str | None = None,
-                 base_url: str | None = None, model=None, guard: ProviderGuard | None = None):
+                 base_url: str | None = None, model=None, guard: ProviderGuard | None = None, calls=None):
         self.provider = provider or os.getenv("CLOUDSERVE_PROVIDER", "ollama")
+        self.schema, self.calls = Classification, calls
         self.prompt = load_prompt("PR-01_classification.md")
         self.guard = guard or ProviderGuard()
         if model is not None:                       # injected (tests): used as-is
@@ -129,15 +131,16 @@ class LangChainClassifier:
     def messages(self, ticket) -> list:
         from langchain_core.messages import HumanMessage, SystemMessage
         system = self.prompt["system"].replace("{allowed_intents}", ", ".join(INTENTS + (UNKNOWN,)))
-        user = (self.prompt["user"].replace("{ticket_id}", ticket.ticket_id)
-                .replace("{channel}", ticket.channel)
-                .replace("{subject}", ticket.subject[:300])
-                .replace("{body}", ticket.body[:4000]))
+        values = {"ticket_id": ticket.ticket_id, "channel": ticket.channel,
+                  "subject": for_provider(self.provider, ticket.subject[:300]),
+                  "body": for_provider(self.provider, ticket.body[:4000])}
+        # Single pass, so placeholder-like text inside the ticket is never substituted.
+        user = re.sub(r"\{(ticket_id|channel|subject|body)\}", lambda m: values[m.group(1)], self.prompt["user"])
         return [SystemMessage(content=system), HumanMessage(content=user)]
 
     def classify(self, ticket) -> dict:
-        result = self.guard.call(self.runnable.invoke, self.messages(ticket))
-        v = Classification.model_validate(result.model_dump() if hasattr(result, "model_dump") else result)
+        from .model_calls import call_model
+        v = call_model(self, "classifier", self.messages(ticket))
         alts = [a for a in dict.fromkeys(v.alternatives) if a != v.intent]
         return {"intent": v.intent, "urgency": v.urgency, "confidence": v.confidence,
                 # The model names alternatives but gives no per-alternative score.

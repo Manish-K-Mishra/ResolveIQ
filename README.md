@@ -7,8 +7,9 @@ decision is written to a SQLite audit log with the Governance §2 minimum record
 
 Critical decisions (routing, safety, guardrails) are **deterministic Python** with a versioned
 policy file. Models are used only behind adapters, for classification and evidence selection.
-Automatic sending is **off by default** (kill switch). Auto-response answers are held for an
-agent until you pass `--auto-send`.
+Automatic sending is **off by default**. Auto-response answers are held for an agent until you
+pass `--auto-send`. A runtime kill switch (`python -m cloudserve.killswitch on`) stops all
+automatic answers at the next ticket, with no deployment.
 
 > Design, routing policy, guardrails, data findings and known limitations:
 > [docs/architecture.md](docs/architecture.md).
@@ -169,7 +170,10 @@ an uncalibrated model score. Records mark this with
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `CLOUDSERVE_AUTO_SEND` | `false` | Kill switch. `true` releases automatic answers. |
+| `CLOUDSERVE_AUTO_SEND` | `false` | `true` releases automatic answers (unless the runtime kill switch is engaged) |
+| `CLOUDSERVE_KILL_SWITCH_FILE` | `storage/KILL_SWITCH` | Runtime kill-switch flag file; while it exists no answer is released |
+| `CLOUDSERVE_BREAKER_COOLDOWN_SECONDS` | `30` | Seconds before an open circuit breaker allows one trial call |
+| `CLOUDSERVE_LLM_CACHE_DIR` | `storage/llm_cache` | LLM response cache (`--llm-cache`: harness default `read_write`, CLI default `off`) |
 | `CLOUDSERVE_PROVIDER` / `CLOUDSERVE_MODEL` | `ollama` / provider default | LLM backend |
 | `CLOUDSERVE_TIMEOUT_SECONDS` | `30` | Per-request timeout |
 | `CLOUDSERVE_MAX_RETRIES` | `2` | Retries per call |
@@ -177,8 +181,33 @@ an uncalibrated model score. Records mark this with
 | `OLLAMA_BASE_URL`, `LLAMACPP_BASE_URL` | localhost | Local servers |
 | `CLOUDSERVE_EMBEDDING_MODEL_DIR` | `storage/models/all-MiniLM-L6-v2` | Embedding model files (only used by a policy that selects the embedding retriever) |
 
-After 3 consecutive provider failures the circuit breaker opens. The remaining tickets in that
-run then escalate immediately, with reason code `classification_model_failed`.
+After 3 consecutive provider failures the circuit breaker opens, and tickets escalate without
+calling the provider. For a classifier failure the reason code is `classification_model_failed`.
+After the cooldown, one trial call is allowed. If it succeeds, normal calls resume.
+
+**Runtime kill switch (no deployment).**
+
+```bash
+python -m cloudserve.killswitch on --reason "wrong answers about billing"   # takes effect at the next ticket
+python -m cloudserve.killswitch status
+python -m cloudserve.killswitch off
+```
+
+While the switch is engaged, every automatic answer is held for an agent, even with `--auto-send`.
+Each record's `kill_switch` field shows the state.
+
+**Cache, tokens and cost.**
+
+- **Cache.** Model responses are cached in `storage/llm_cache/`. The harness defaults to
+  `--llm-cache read_write`, so a second run makes no model calls and gives the same decisions.
+  The live CLI defaults to `off`.
+- **Recorded per decision.** Each record lists its model calls, tokens, estimated cost and
+  `cache: hit|miss`.
+- **Metrics.** `metrics.json` (`llm_usage`) gives the totals and a projected monthly cost at
+  2,167 tickets a month (500 a week, from the stakeholder interviews). Prices are in
+  `config/model_prices.json`.
+- **PII.** Ticket text sent to hosted providers (Anthropic, OpenAI) is PII-masked first. Local
+  providers receive it unchanged. See docs/architecture.md §6 and §7a.
 
 ## 7. Repository layout
 
@@ -190,6 +219,7 @@ run then escalate immediately, with reason code `classification_model_failed`.
 | `tests/` | Test suite (`python -m pytest -q`) |
 | `evaluation/harness.py`, `evaluation/results/` | Evaluation entry point and saved runs |
 | `config/routing_policy.json`, `scripts/` | Routing policy and the scripts that derive it, compare retrieval and fetch the model |
+| `config/model_prices.json` | Per-model token prices (source and date inside) used for cost estimates |
 | `docs/architecture.md` | Design notes |
 | `data/`, `examples/` | Supplied dataset files and small demo inputs |
 | `.github/workflows/ci.yml` | Continuous integration |
