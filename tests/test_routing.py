@@ -12,6 +12,8 @@ def decide(kb, policy, ticket=LOGIN, **cls):
 
 def test_policy_file_is_versioned_and_derived_from_development_data(policy):
     assert policy["policy_version"] == "RP-1.0"
+    assert (policy["retrieval"]["retriever"], policy["retrieval"]["chunking"]) == ("lexical", "article")
+    assert (policy["classification_confidence_min"], policy["retrieval_score_min"]) == (0.7, 0.4)
     assert "development_tickets" in policy["derived_from"]
     assert set(policy["restricted_intents"]) == {"compliance_request", "feature_request",
                                                  "security_incident", "unclear_request"}

@@ -1,6 +1,6 @@
-# Evaluation summary — run-20261121T182636-fb8452
+# Evaluation summary — run-20261121T185923-dd44fb
 
-Input `data/validation_tickets.json` (80 tickets), engine `langgraph`, classifier `naive_bayes_intent (nb-a8a09fec6990)`, policy `RP-1.0`, automatic sending ON, 2026-11-21T18:26:36+00:00.
+Input `data/validation_tickets.json` (80 tickets), engine `langgraph`, classifier `naive_bayes_intent (nb-a8a09fec6990)`, policy `RP-1.0`, automatic sending ON, 2026-11-21T18:59:23+00:00.
 
 | Measure | Value |
 |---|---|
@@ -9,8 +9,10 @@ Input `data/validation_tickets.json` (80 tickets), engine `langgraph`, classifie
 | Escalated / blocked | 47 / 0 |
 | FCR (actual / if released) | 41.2% / 41.2% |
 | Escalation rate (actual / if released) | 58.8% / 58.8% |
-| Latency median / p95 (s) | 0.0008 / 0.0011 |
+| Latency median / p95 (s) | 0.0009 / 0.0012 |
 | Private data in outbound responses | 0 |
+| Retriever (fallback) | lexical:term-overlap, article passages (fallback: False) |
+| Cited quotes found at their recorded corpus span | 1.0 |
 | Intent accuracy / macro precision / macro recall | 0.975 / 0.9849 / 0.9849 |
 | Retrieval hit rate (any / top-1) | 0.8113 / 0.7358 |
 | Citation accuracy vs expected docs (proxy) | 0.9615 |

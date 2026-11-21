@@ -2,12 +2,14 @@
 from __future__ import annotations
 import argparse
 import os
+import sys
 from pathlib import Path
 from . import ROOT
 from .classify import NaiveBayesIntentClassifier
 from .graph import DecisionEngine, auto_send_enabled_from_env
 from .logging_store import count_run, open_log, persist
-from .retrieve import KnowledgeBase
+from .ingest import load_json
+from .retrieve import DEFAULT_MODEL_DIR, EmbeddingModelUnavailable, KnowledgeBase, OnnxSentenceEmbedder
 from .route import DEFAULT_POLICY_PATH, load_policy
 
 
@@ -39,15 +41,40 @@ def add_engine_arguments(p: argparse.ArgumentParser) -> None:
                    help="release automatic answers (kill switch off); also CLOUDSERVE_AUTO_SEND=true")
 
 
+def build_knowledge_base(docs: list[dict], policy: dict, model_dir=None) -> tuple[KnowledgeBase, dict, dict]:
+    """Build the retriever the policy was derived for; return (kb, effective policy, retrieval info).
+
+    If the policy names the embedding retriever and the model cannot be loaded, fall back to the
+    policy's lexical fallback with ITS thresholds, and say so in every record (never silently).
+    """
+    cfg = policy.get("retrieval") or {"retriever": "lexical", "chunking": "article"}
+    if cfg["retriever"] == "lexical":
+        kb = KnowledgeBase(docs, chunking=cfg["chunking"], retriever="lexical")
+        return kb, policy, {**kb.describe(), "fallback": False}
+    try:
+        embedder = OnnxSentenceEmbedder(model_dir or os.getenv("CLOUDSERVE_EMBEDDING_MODEL_DIR") or DEFAULT_MODEL_DIR)
+        kb = KnowledgeBase(docs, chunking=cfg["chunking"], retriever="embedding", embedder=embedder)
+        return kb, policy, {**kb.describe(), "fallback": False}
+    except EmbeddingModelUnavailable as exc:
+        fb = policy.get("retrieval_fallback")
+        if not fb:
+            raise SystemExit(f"Embedding retriever unavailable ({exc}) and the policy defines no fallback")
+        kb = KnowledgeBase(docs, chunking=fb["chunking"], retriever="lexical")
+        effective = {**policy, "classification_confidence_min": fb["classification_confidence_min"],
+                     "retrieval_score_min": fb["retrieval_score_min"]}
+        print(f"WARNING: embedding retriever unavailable ({exc}); using the lexical fallback", file=sys.stderr)
+        return kb, effective, {**kb.describe(), "fallback": True, "fallback_reason": str(exc),
+                               "intended_retriever": cfg.get("name", cfg["retriever"])}
+
+
 def build_engine(a: argparse.Namespace) -> DecisionEngine:
     load_env()
     provider = a.provider or os.getenv("CLOUDSERVE_PROVIDER", "ollama")
     if a.base_url and provider in ("anthropic", "openai"):
         raise SystemExit("--base-url is only supported for local providers (ollama, llamacpp)")
-    kb = KnowledgeBase.from_path(a.docs)
-    policy = load_policy(a.policy)
+    kb, policy, retrieval_info = build_knowledge_base(load_json(a.docs), load_policy(a.policy))
     try:
-        return _build(a, provider, kb, policy)
+        return _build(a, provider, kb, policy, retrieval_info)
     except Exception as exc:
         from .providers import ModelUnavailable
         if isinstance(exc, ModelUnavailable):   # e.g. missing API key: clear message, no traceback
@@ -57,7 +84,7 @@ def build_engine(a: argparse.Namespace) -> DecisionEngine:
         raise
 
 
-def _build(a, provider, kb, policy) -> DecisionEngine:
+def _build(a, provider, kb, policy, retrieval_info) -> DecisionEngine:
     guard = None
     if a.classifier == "llm" or a.evidence_selector == "llm":
         from .providers import ProviderGuard
@@ -73,7 +100,7 @@ def _build(a, provider, kb, policy) -> DecisionEngine:
         selector = LangChainEvidenceSelector(provider=provider, model_name=a.model, base_url=a.base_url, guard=guard)
     return DecisionEngine(kb, policy, classifier, selector,
                           auto_send=a.auto_send or auto_send_enabled_from_env(),
-                          use_langgraph=a.engine == "graph")
+                          use_langgraph=a.engine == "graph", retrieval_info=retrieval_info)
 
 
 def run_batch(engine: DecisionEngine, items: list, db_path: str | Path, run_id: str) -> tuple[list[dict], int]:

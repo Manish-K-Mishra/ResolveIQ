@@ -36,6 +36,7 @@ class FlowState(TypedDict, total=False):
     classification: dict
     matches: list[dict]
     routing: dict
+    answer_passages: list[dict]
     selection: Any
     selection_errors: list[str]
     validation: dict
@@ -46,8 +47,10 @@ class DecisionEngine:
     """Holds the run's dependencies; `process(raw)` never raises and always returns a record."""
 
     def __init__(self, kb: KnowledgeBase, policy: dict, classifier, selector=None,
-                 auto_send: bool = False, use_langgraph: bool = True):
+                 auto_send: bool = False, use_langgraph: bool = True, retrieval_info: dict | None = None):
         self.kb, self.policy, self.classifier, self.selector = kb, policy, classifier, selector
+        # Which retriever actually ran (and whether it is the fallback), written into every record.
+        self.retrieval_info = retrieval_info or {**kb.describe(), "fallback": False}
         self.auto_send = auto_send
         self.implementation = "langgraph" if use_langgraph else "sequential"
         self.graph = self._build_graph() if use_langgraph else None
@@ -71,16 +74,19 @@ class DecisionEngine:
         return {"routing": route_policy(s["ticket"], s["classification"], s["matches"], self.policy)}
 
     def select_evidence(self, s: FlowState):
-        evidence = s["routing"]["evidence"]
+        # The complete resolution section of each approved matching article, best match first.
+        candidates = self.kb.answer_passages(s["routing"]["evidence"])
         if self.selector is None:
-            return {"selection": select_from_document(evidence), "selection_errors": []}
+            return {"answer_passages": candidates, "selection": select_from_document(candidates), "selection_errors": []}
         try:
-            return {"selection": self.selector.select(s["ticket"], evidence), "selection_errors": []}
+            return {"answer_passages": candidates, "selection": self.selector.select(s["ticket"], candidates),
+                    "selection_errors": []}
         except Exception as exc:
-            return {"selection": None, "selection_errors": ["evidence_selection_failed", type(exc).__name__]}
+            return {"answer_passages": candidates, "selection": None,
+                    "selection_errors": ["evidence_selection_failed", type(exc).__name__]}
 
     def validate(self, s: FlowState):
-        return {"validation": validate_response(s.get("selection"), s["routing"]["evidence"])}
+        return {"validation": validate_response(s.get("selection"), s.get("answer_passages", []))}
 
     def finalize(self, s: FlowState):
         return {"record": self._record(s)}
@@ -183,7 +189,22 @@ class DecisionEngine:
                 reason += " Automatic sending is switched off (kill switch), so the answer is held for an agent."
         else:
             delivery, status = "not_applicable", {"escalate": "escalated", "block": "blocked"}[action]
-        sources = [{"doc_id": m["doc_id"], "title": m.get("title", ""), "score": m["score"]} for m in s["matches"]]
+        sources = [{"passage_id": m.get("passage_id"), "doc_id": m["doc_id"], "title": m.get("title", ""),
+                    "section": m.get("section"), "score": m["score"], "start": m.get("start"), "end": m.get("end")}
+                   for m in s["matches"]]
+        citations, spans = [], []
+        if response:
+            sel = s["selection"]
+            # Same lookup as the grounding check (guardrails.validate_response), which already passed.
+            cited = next(m for m in s["answer_passages"] if m["doc_id"] == sel.doc_id
+                         and (sel.passage_id is None or m.get("passage_id") == sel.passage_id))
+            citations = [sel.citation]
+            # Exact character span of the quote inside the article content (DOC content[start:end]).
+            at = cited["passage"].find(sel.quote)
+            spans = [{"passage_id": sel.citation, "doc_id": sel.doc_id,
+                      "matched_passage_id": cited.get("matched_passage_id"), "score": cited["score"],
+                      "start": cited["start"] + at if at >= 0 and cited.get("start") is not None else None,
+                      "end": cited["start"] + at + len(sel.quote) if at >= 0 and cited.get("start") is not None else None}]
         summary = self._summary(t)
         return {
             "decision_id": uuid.uuid4().hex, "timestamp": utc_now(), "ticket_id": t.ticket_id,
@@ -198,10 +219,10 @@ class DecisionEngine:
             "action_taken": action, "status": status, "delivery": delivery, "answer_sent": delivery == "sent",
             "reason": reason, "reason_codes": codes, "guardrail_results": guardrails,
             "guardrail_failures": sorted(set(failures)), "response": response, "flagged_input_for_review": flagged_input,
-            "citations": [s["selection"].doc_id] if response else [],
+            "citations": citations, "citation_spans": spans, "retrieval": self.retrieval_info,
             "handoff": None if delivery == "sent" else {
                 "summary": summary, "intent": c["intent"], "urgency": c.get("urgency"),
-                "sources": [x["doc_id"] for x in sources], "why_escalated": reason},
+                "sources": [x["passage_id"] or x["doc_id"] for x in sources], "why_escalated": reason},
             "prompt_version": self._prompt_versions(), "policy_version": r["policy_version"],
             "requirement_ids": sorted(set(reqs)), "implementation": self.implementation,
         }
@@ -229,6 +250,7 @@ class DecisionEngine:
             "reason": reason, "reason_codes": ["invalid_ticket_or_internal_error", type(exc).__name__],
             "guardrail_results": {k: "not_run" for k in ("pii", "grounding", "instruction_integrity", "scope", "confidence_floor")},
             "guardrail_failures": [], "response": "", "flagged_input_for_review": None, "citations": [],
+            "citation_spans": [], "retrieval": self.retrieval_info,
             "handoff": {"summary": "unreadable or invalid ticket", "intent": UNKNOWN, "urgency": None,
                         "sources": [], "why_escalated": reason},
             "prompt_version": self._prompt_versions(), "policy_version": self.policy["policy_version"],

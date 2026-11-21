@@ -1,7 +1,7 @@
 {
   "run": {
-    "run_id": "run-20261121T182636-74b36f",
-    "date": "2026-11-21T18:26:36+00:00",
+    "run_id": "run-20261121T185923-9b900d",
+    "date": "2026-11-21T18:59:23+00:00",
     "input": "data/validation_tickets.json",
     "engine": "langgraph",
     "classifier": "naive_bayes_intent (nb-a8a09fec6990)",
@@ -11,6 +11,14 @@
     ],
     "policy_version": "RP-1.0",
     "auto_send": false,
+    "retrieval": {
+      "retriever": "lexical",
+      "name": "lexical:term-overlap",
+      "chunking": "article",
+      "min_score": 0.26,
+      "passages": 29,
+      "fallback": false
+    },
     "training_overlap": {
       "tickets": 80,
       "exact_body_matches": 62,
@@ -280,7 +288,7 @@
     "retrieval_returned_nothing_for_unanswerable": 0.2963,
     "citation_accuracy_vs_expected_docs": 0.9615,
     "citations_on_tickets_labelled_unanswerable": 7,
-    "citation_resolves_to_retrieved_passage": 1.0
+    "citation_article_in_retrieved_set": 1.0
   },
   "governance": {
     "decisions_logged": 80,
@@ -291,6 +299,7 @@
     },
     "private_data_detections": 0,
     "private_data_in_outbound_responses": 0,
+    "citations_resolving_to_corpus_text": 1.0,
     "confidence_calibration": {
       "bands": [
         {

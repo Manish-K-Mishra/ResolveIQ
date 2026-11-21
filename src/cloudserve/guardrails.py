@@ -54,6 +54,7 @@ RISK_PATTERN = re.compile(
 
 # Pre-release response checks.
 DOC_ID = re.compile(r"^DOC-[A-Z0-9-]+$")
+PASSAGE_ID = re.compile(r"^DOC-[A-Z0-9-]+#[a-z0-9-]+$")
 # Tone/scope: the system must not claim completed account actions or make commitments.
 SCOPE_PATTERN = re.compile(
     r"(?i)\b(?:we\s+have\s+(?:issued|refunded|credited|fixed|rotated|changed|reset|restored)"
@@ -71,8 +72,8 @@ def mask_pii(text: str) -> str:
 def validate_response(selection: EvidenceSelection | None, evidence: list[dict]) -> dict:
     """Pre-release checks. Returns {'passed', 'failures', 'guardrail_results', 'response'}.
 
-    grounding: cited doc must be one of the approved retrieved articles and the quote must occur
-    verbatim in it. pii: no private-data patterns in the outbound text. instruction_integrity:
+    grounding: the cited passage (or, without a passage id, the cited doc) must be one of the
+    approved evidence passages and the quote must occur verbatim in that passage's text. pii: no private-data patterns in the outbound text. instruction_integrity:
     no instruction-like text in the outbound text. scope: no completed-action claims/commitments.
     """
     results = {"grounding": "pass", "pii": "pass", "instruction_integrity": "pass", "scope": "pass"}
@@ -81,8 +82,14 @@ def validate_response(selection: EvidenceSelection | None, evidence: list[dict])
         results = {k: "not_run" for k in results}
         results["grounding"] = "fail"
         return {"passed": False, "failures": ["no_evidence_selection"], "guardrail_results": results, "response": ""}
-    source = next((m["passage"] for m in evidence if m["doc_id"] == selection.doc_id), None)
-    if not DOC_ID.fullmatch(selection.doc_id):
+    if selection.passage_id is None:
+        source = next((m["passage"] for m in evidence if m["doc_id"] == selection.doc_id), None)
+    else:
+        source = next((m["passage"] for m in evidence if m.get("passage_id") == selection.passage_id
+                       and m["doc_id"] == selection.doc_id), None)
+    if not DOC_ID.fullmatch(selection.doc_id) or (
+            selection.passage_id is not None and not (PASSAGE_ID.fullmatch(selection.passage_id)
+                                                      and selection.passage_id.startswith(selection.doc_id + "#"))):
         failures.append("invalid_document_id")
     if source is None:
         failures.append("citation_not_in_retrieval")

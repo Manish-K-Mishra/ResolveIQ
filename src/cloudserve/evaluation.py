@@ -75,7 +75,32 @@ def calibration_table(rows, bands=5):
     return out
 
 
-def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, run_info: dict) -> dict:
+def cited_doc(r: dict) -> str:
+    """Article of the first citation (citations are passage ids DOC-XXX#<slug>)."""
+    return r["citations"][0].split("#", 1)[0]
+
+
+def top_docs(r: dict, k: int = 3) -> list[str]:
+    """First k distinct articles among the retrieved passages, best first."""
+    out = []
+    for s in r["sources_used"]:
+        if s["doc_id"] not in out:
+            out.append(s["doc_id"])
+    return out[:k]
+
+
+def citations_resolve(results: list[dict], kb) -> float | None:
+    """Share of cited quotes found at their recorded span in the real corpus text."""
+    spans = [sp for r in results if r["response"] for sp in r.get("citation_spans", [])]
+    ok = 0
+    for sp in spans:
+        text = kb.resolve(sp["passage_id"])
+        doc = kb.by_id.get(sp["doc_id"], {}).get("content", "")
+        ok += bool(text) and sp["start"] is not None and doc[sp["start"]:sp["end"]] in text and sp["end"] > sp["start"]
+    return frac(ok, len(spans))
+
+
+def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, run_info: dict, kb=None) -> dict:
     n = len(items)
     st = Counter(r["status"] for r in results)
     act = Counter(r["action_taken"] for r in results)
@@ -116,6 +141,7 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
             "guardrail_activations_by_type": dict(sorted(guard_types.items())),
             "private_data_detections": guard_types.get("possible_private_data", 0),
             "private_data_in_outbound_responses": outbound_pii,
+            "citations_resolving_to_corpus_text": citations_resolve(results, kb) if kb is not None else None,
         },
     }
 
@@ -140,13 +166,13 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
             "intent_confusion_matrix": confusion(yi, pi),
             "urgency_accuracy": frac(sum(a == p for a, p in zip(yu, pu)), len(yu)),
             "urgency_precision_recall_by_class": per_class(yu, pu),
-            "retrieval_hit_rate_any_expected_doc": frac(sum(bool(set(l["expected_doc_ids"]) & {s["doc_id"] for s in r["sources_used"]}) for l, r in with_docs), len(with_docs)),
+            "retrieval_hit_rate_any_expected_doc": frac(sum(bool(set(l["expected_doc_ids"]) & set(top_docs(r))) for l, r in with_docs), len(with_docs)),
             "retrieval_hit_rate_top1": frac(sum(bool(r["sources_used"]) and r["sources_used"][0]["doc_id"] in l["expected_doc_ids"] for l, r in with_docs), len(with_docs)),
             "retrieval_eligible_tickets": len(with_docs),
             "retrieval_returned_nothing_for_unanswerable": frac(sum(not r["sources_used"] for _, r in unanswerable), len(unanswerable)),
-            "citation_accuracy_vs_expected_docs": frac(sum(r["citations"][0] in l["expected_doc_ids"] for l, r in cited_with_docs), len(cited_with_docs)),
+            "citation_accuracy_vs_expected_docs": frac(sum(cited_doc(r) in l["expected_doc_ids"] for l, r in cited_with_docs), len(cited_with_docs)),
             "citations_on_tickets_labelled_unanswerable": sum(not l.get("expected_doc_ids") for l, _ in cited),
-            "citation_resolves_to_retrieved_passage": frac(sum(r["citations"][0] in {s["doc_id"] for s in r["sources_used"]} for _, r in cited), len(cited)),
+            "citation_article_in_retrieved_set": frac(sum(cited_doc(r) in {s["doc_id"] for s in r["sources_used"]} for _, r in cited), len(cited)),
         })
         exp_auto = [l.get("expected_route") == "auto_respond" for l in L]
         dec_auto = [r["action_taken"] == "auto_respond" for r in R]
@@ -224,7 +250,9 @@ def summary_markdown(m: dict) -> str:
              f"| FCR (actual / if released) | {b['first_contact_resolution_pct']}% / {b['first_contact_resolution_if_kill_switch_released_pct']}% |",
              f"| Escalation rate (actual / if released) | {b['escalation_rate_pct']}% / {b['escalation_rate_if_kill_switch_released_pct']}% |",
              f"| Latency median / p95 (s) | {m['technical']['latency_seconds']['median']} / {m['technical']['latency_seconds']['p95']} |",
-             f"| Private data in outbound responses | {g['private_data_in_outbound_responses']} |"]
+             f"| Private data in outbound responses | {g['private_data_in_outbound_responses']} |",
+             f"| Retriever (fallback) | {m['run']['retrieval']['name']}, {m['run']['retrieval']['chunking']} passages (fallback: {m['run']['retrieval']['fallback']}) |",
+             f"| Cited quotes found at their recorded corpus span | {g['citations_resolving_to_corpus_text']} |"]
     if "routing" in m:
         t, r = m["technical"], m["routing"]
         lines += [f"| Intent accuracy / macro precision / macro recall | {t['intent_accuracy']} / {t['intent_macro_precision']} / {t['intent_macro_recall']} |",
@@ -259,8 +287,9 @@ def main(argv=None):
                 "classifier": f"{engine._models()['classifier']['name']} ({engine._models()['classifier']['version']})",
                 "evidence_selector": engine._models()["evidence_selector"]["name"],
                 "prompt_versions": engine._prompt_versions(), "policy_version": engine.policy["policy_version"],
-                "auto_send": engine.auto_send, "training_overlap": training_overlap(items, a.train)}
-    metrics = evaluate(items, results, logged, wall, run_info)
+                "auto_send": engine.auto_send, "retrieval": engine.retrieval_info,
+                "training_overlap": training_overlap(items, a.train)}
+    metrics = evaluate(items, results, logged, wall, run_info, kb=engine.kb)
     (out / "decisions.json").write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
     (out / "metrics.json").write_text(json.dumps(metrics, indent=2, ensure_ascii=False), encoding="utf-8")
     (out / "metrics_summary.md").write_text(summary_markdown(metrics), encoding="utf-8")

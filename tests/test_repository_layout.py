@@ -36,6 +36,7 @@ def test_every_build_prompt_is_in_the_register_with_its_version():
 def test_ci_runs_tests_and_the_unattended_gate_without_secrets():
     ci = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
     assert "python -m pytest -q" in ci
+    assert ci.index("python scripts/fetch_models.py") < ci.index("python -m pytest -q")
     assert "python -m evaluation.harness --input data/validation_tickets.json --output storage/ci_eval" in ci
     assert "secrets." not in ci and "API_KEY" not in ci
 

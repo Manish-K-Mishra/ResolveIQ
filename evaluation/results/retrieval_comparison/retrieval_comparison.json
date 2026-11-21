@@ -1,0 +1,1017 @@
+{
+  "corpus": "/Users/manishmishra/Desktop/Projects/ResolveIQ/data/documentation.json",
+  "development": "/Users/manishmishra/Desktop/Projects/ResolveIQ/data/development_tickets.json",
+  "validation": "/Users/manishmishra/Desktop/Projects/ResolveIQ/data/validation_tickets.json",
+  "embedding_model": "all-MiniLM-L6-v2@1110a24",
+  "measures": "(document level: a passage counts as a hit for the article it comes from)\n  hit@1          top passage's article is one of the expected articles\n  hit@3          an expected article is among the first three distinct articles returned\n  empty_answerable    answerable tickets for which retrieval returned nothing (lost answers)\n  empty_unanswerable  unanswerable tickets for which retrieval returned nothing (the requirement:\n                      \"returns nothing rather than something irrelevant\")",
+  "results": {
+    "article/lexical": {
+      "chunking": "article",
+      "retriever": "lexical",
+      "name": "lexical:term-overlap",
+      "passages": 29,
+      "development": {
+        "default_floor": 0.26,
+        "answerable": 357,
+        "unanswerable": 143,
+        "hit@1": 0.7395,
+        "hit@3": 0.7955,
+        "empty_answerable": 0.1176,
+        "empty_unanswerable": 0.1608,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 270,
+            "unanswerable": 110,
+            "hit@1": 0.7593,
+            "hit@3": 0.8074,
+            "empty_answerable": 0.1074,
+            "empty_unanswerable": 0.1545
+          },
+          "non_fluent": {
+            "answerable": 87,
+            "unanswerable": 33,
+            "hit@1": 0.6782,
+            "hit@3": 0.7586,
+            "empty_answerable": 0.1494,
+            "empty_unanswerable": 0.1818
+          }
+        },
+        "floor_sweep": {
+          "0.26": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.7395,
+            "hit@3": 0.7955,
+            "empty_answerable": 0.1176,
+            "empty_unanswerable": 0.1608
+          },
+          "0.30": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.6975,
+            "hit@3": 0.7227,
+            "empty_answerable": 0.1821,
+            "empty_unanswerable": 0.2238
+          },
+          "0.35": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.6359,
+            "hit@3": 0.6583,
+            "empty_answerable": 0.2745,
+            "empty_unanswerable": 0.3566
+          },
+          "0.40": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.4986,
+            "hit@3": 0.5098,
+            "empty_answerable": 0.4342,
+            "empty_unanswerable": 0.5315
+          },
+          "0.45": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.3725,
+            "hit@3": 0.3754,
+            "empty_answerable": 0.5938,
+            "empty_unanswerable": 0.6993
+          },
+          "0.50": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.2997,
+            "hit@3": 0.2997,
+            "empty_answerable": 0.6723,
+            "empty_unanswerable": 0.7902
+          }
+        }
+      },
+      "validation": {
+        "default_floor": 0.26,
+        "answerable": 53,
+        "unanswerable": 27,
+        "hit@1": 0.7358,
+        "hit@3": 0.8113,
+        "empty_answerable": 0.0943,
+        "empty_unanswerable": 0.2963,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 44,
+            "unanswerable": 17,
+            "hit@1": 0.7045,
+            "hit@3": 0.7727,
+            "empty_answerable": 0.1136,
+            "empty_unanswerable": 0.3529
+          },
+          "non_fluent": {
+            "answerable": 9,
+            "unanswerable": 10,
+            "hit@1": 0.8889,
+            "hit@3": 1.0,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.2
+          }
+        },
+        "floor_sweep": {
+          "0.26": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.7358,
+            "hit@3": 0.8113,
+            "empty_answerable": 0.0943,
+            "empty_unanswerable": 0.2963
+          },
+          "0.30": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.6981,
+            "hit@3": 0.717,
+            "empty_answerable": 0.1509,
+            "empty_unanswerable": 0.3333
+          },
+          "0.35": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.6792,
+            "hit@3": 0.6792,
+            "empty_answerable": 0.2453,
+            "empty_unanswerable": 0.4815
+          },
+          "0.40": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.5849,
+            "hit@3": 0.5849,
+            "empty_answerable": 0.3962,
+            "empty_unanswerable": 0.5556
+          },
+          "0.45": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.3774,
+            "hit@3": 0.3774,
+            "empty_answerable": 0.6226,
+            "empty_unanswerable": 0.7407
+          },
+          "0.50": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.2264,
+            "hit@3": 0.2264,
+            "empty_answerable": 0.7736,
+            "empty_unanswerable": 0.7407
+          }
+        }
+      }
+    },
+    "article/embedding": {
+      "chunking": "article",
+      "retriever": "embedding",
+      "name": "embedding:all-MiniLM-L6-v2@1110a24",
+      "passages": 29,
+      "development": {
+        "default_floor": 0.35,
+        "answerable": 357,
+        "unanswerable": 143,
+        "hit@1": 0.8908,
+        "hit@3": 0.9356,
+        "empty_answerable": 0.014,
+        "empty_unanswerable": 0.1259,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 270,
+            "unanswerable": 110,
+            "hit@1": 0.9037,
+            "hit@3": 0.9519,
+            "empty_answerable": 0.0074,
+            "empty_unanswerable": 0.1091
+          },
+          "non_fluent": {
+            "answerable": 87,
+            "unanswerable": 33,
+            "hit@1": 0.8506,
+            "hit@3": 0.8851,
+            "empty_answerable": 0.0345,
+            "empty_unanswerable": 0.1818
+          }
+        },
+        "floor_sweep": {
+          "0.20": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8992,
+            "hit@3": 0.9496,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.0699
+          },
+          "0.25": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8992,
+            "hit@3": 0.9468,
+            "empty_answerable": 0.0028,
+            "empty_unanswerable": 0.1049
+          },
+          "0.30": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8964,
+            "hit@3": 0.9412,
+            "empty_answerable": 0.0084,
+            "empty_unanswerable": 0.1259
+          },
+          "0.35": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8908,
+            "hit@3": 0.9356,
+            "empty_answerable": 0.014,
+            "empty_unanswerable": 0.1259
+          },
+          "0.40": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.888,
+            "hit@3": 0.9244,
+            "empty_answerable": 0.0224,
+            "empty_unanswerable": 0.1469
+          },
+          "0.45": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8403,
+            "hit@3": 0.8543,
+            "empty_answerable": 0.0728,
+            "empty_unanswerable": 0.2168
+          },
+          "0.50": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.7227,
+            "hit@3": 0.7311,
+            "empty_answerable": 0.2073,
+            "empty_unanswerable": 0.3497
+          }
+        }
+      },
+      "validation": {
+        "default_floor": 0.35,
+        "answerable": 53,
+        "unanswerable": 27,
+        "hit@1": 0.9434,
+        "hit@3": 0.9623,
+        "empty_answerable": 0.0189,
+        "empty_unanswerable": 0.2593,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 44,
+            "unanswerable": 17,
+            "hit@1": 0.9318,
+            "hit@3": 0.9545,
+            "empty_answerable": 0.0227,
+            "empty_unanswerable": 0.3529
+          },
+          "non_fluent": {
+            "answerable": 9,
+            "unanswerable": 10,
+            "hit@1": 1.0,
+            "hit@3": 1.0,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.1
+          }
+        },
+        "floor_sweep": {
+          "0.20": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9434,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.1481
+          },
+          "0.25": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9434,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.2593
+          },
+          "0.30": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9434,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0189,
+            "empty_unanswerable": 0.2593
+          },
+          "0.35": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9434,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0189,
+            "empty_unanswerable": 0.2593
+          },
+          "0.40": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9245,
+            "hit@3": 0.9434,
+            "empty_answerable": 0.0377,
+            "empty_unanswerable": 0.3333
+          },
+          "0.45": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.8113,
+            "hit@3": 0.8302,
+            "empty_answerable": 0.1509,
+            "empty_unanswerable": 0.3704
+          },
+          "0.50": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.6981,
+            "hit@3": 0.717,
+            "empty_answerable": 0.2642,
+            "empty_unanswerable": 0.4815
+          }
+        }
+      }
+    },
+    "section/lexical": {
+      "chunking": "section",
+      "retriever": "lexical",
+      "name": "lexical:term-overlap",
+      "passages": 116,
+      "development": {
+        "default_floor": 0.26,
+        "answerable": 357,
+        "unanswerable": 143,
+        "hit@1": 0.6751,
+        "hit@3": 0.7031,
+        "empty_answerable": 0.2297,
+        "empty_unanswerable": 0.3217,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 270,
+            "unanswerable": 110,
+            "hit@1": 0.6889,
+            "hit@3": 0.7222,
+            "empty_answerable": 0.2185,
+            "empty_unanswerable": 0.3273
+          },
+          "non_fluent": {
+            "answerable": 87,
+            "unanswerable": 33,
+            "hit@1": 0.6322,
+            "hit@3": 0.6437,
+            "empty_answerable": 0.2644,
+            "empty_unanswerable": 0.303
+          }
+        },
+        "floor_sweep": {
+          "0.26": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.6751,
+            "hit@3": 0.7031,
+            "empty_answerable": 0.2297,
+            "empty_unanswerable": 0.3217
+          },
+          "0.30": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.5294,
+            "hit@3": 0.5406,
+            "empty_answerable": 0.4118,
+            "empty_unanswerable": 0.5105
+          },
+          "0.35": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.3697,
+            "hit@3": 0.3697,
+            "empty_answerable": 0.5966,
+            "empty_unanswerable": 0.6993
+          },
+          "0.40": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.2493,
+            "hit@3": 0.2493,
+            "empty_answerable": 0.7283,
+            "empty_unanswerable": 0.8182
+          },
+          "0.45": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.1261,
+            "hit@3": 0.1261,
+            "empty_answerable": 0.8543,
+            "empty_unanswerable": 0.951
+          },
+          "0.50": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.07,
+            "hit@3": 0.07,
+            "empty_answerable": 0.916,
+            "empty_unanswerable": 0.972
+          }
+        }
+      },
+      "validation": {
+        "default_floor": 0.26,
+        "answerable": 53,
+        "unanswerable": 27,
+        "hit@1": 0.6604,
+        "hit@3": 0.6981,
+        "empty_answerable": 0.2453,
+        "empty_unanswerable": 0.5185,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 44,
+            "unanswerable": 17,
+            "hit@1": 0.6364,
+            "hit@3": 0.6818,
+            "empty_answerable": 0.25,
+            "empty_unanswerable": 0.5882
+          },
+          "non_fluent": {
+            "answerable": 9,
+            "unanswerable": 10,
+            "hit@1": 0.7778,
+            "hit@3": 0.7778,
+            "empty_answerable": 0.2222,
+            "empty_unanswerable": 0.4
+          }
+        },
+        "floor_sweep": {
+          "0.26": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.6604,
+            "hit@3": 0.6981,
+            "empty_answerable": 0.2453,
+            "empty_unanswerable": 0.5185
+          },
+          "0.30": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.5283,
+            "hit@3": 0.5472,
+            "empty_answerable": 0.434,
+            "empty_unanswerable": 0.6296
+          },
+          "0.35": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.434,
+            "hit@3": 0.434,
+            "empty_answerable": 0.566,
+            "empty_unanswerable": 0.7778
+          },
+          "0.40": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.3208,
+            "hit@3": 0.3208,
+            "empty_answerable": 0.6792,
+            "empty_unanswerable": 0.8519
+          },
+          "0.45": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.1509,
+            "hit@3": 0.1509,
+            "empty_answerable": 0.8491,
+            "empty_unanswerable": 0.9259
+          },
+          "0.50": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.0377,
+            "hit@3": 0.0377,
+            "empty_answerable": 0.9623,
+            "empty_unanswerable": 0.963
+          }
+        }
+      }
+    },
+    "section/embedding": {
+      "chunking": "section",
+      "retriever": "embedding",
+      "name": "embedding:all-MiniLM-L6-v2@1110a24",
+      "passages": 116,
+      "development": {
+        "default_floor": 0.35,
+        "answerable": 357,
+        "unanswerable": 143,
+        "hit@1": 0.8992,
+        "hit@3": 0.9496,
+        "empty_answerable": 0.0056,
+        "empty_unanswerable": 0.0979,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 270,
+            "unanswerable": 110,
+            "hit@1": 0.9148,
+            "hit@3": 0.9667,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.0727
+          },
+          "non_fluent": {
+            "answerable": 87,
+            "unanswerable": 33,
+            "hit@1": 0.8506,
+            "hit@3": 0.8966,
+            "empty_answerable": 0.023,
+            "empty_unanswerable": 0.1818
+          }
+        },
+        "floor_sweep": {
+          "0.20": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8992,
+            "hit@3": 0.958,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.0
+          },
+          "0.25": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8992,
+            "hit@3": 0.958,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.035
+          },
+          "0.30": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8992,
+            "hit@3": 0.9552,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.049
+          },
+          "0.35": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8992,
+            "hit@3": 0.9496,
+            "empty_answerable": 0.0056,
+            "empty_unanswerable": 0.0979
+          },
+          "0.40": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8936,
+            "hit@3": 0.9412,
+            "empty_answerable": 0.0112,
+            "empty_unanswerable": 0.1329
+          },
+          "0.45": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8739,
+            "hit@3": 0.9132,
+            "empty_answerable": 0.0364,
+            "empty_unanswerable": 0.1469
+          },
+          "0.50": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8627,
+            "hit@3": 0.8796,
+            "empty_answerable": 0.0476,
+            "empty_unanswerable": 0.1469
+          }
+        }
+      },
+      "validation": {
+        "default_floor": 0.35,
+        "answerable": 53,
+        "unanswerable": 27,
+        "hit@1": 0.9434,
+        "hit@3": 0.9623,
+        "empty_answerable": 0.0189,
+        "empty_unanswerable": 0.2593,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 44,
+            "unanswerable": 17,
+            "hit@1": 0.9318,
+            "hit@3": 0.9545,
+            "empty_answerable": 0.0227,
+            "empty_unanswerable": 0.3529
+          },
+          "non_fluent": {
+            "answerable": 9,
+            "unanswerable": 10,
+            "hit@1": 1.0,
+            "hit@3": 1.0,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.1
+          }
+        },
+        "floor_sweep": {
+          "0.20": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9434,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.037
+          },
+          "0.25": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9434,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.1111
+          },
+          "0.30": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9434,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.1852
+          },
+          "0.35": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9434,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0189,
+            "empty_unanswerable": 0.2593
+          },
+          "0.40": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9434,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0189,
+            "empty_unanswerable": 0.2963
+          },
+          "0.45": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9245,
+            "hit@3": 0.9434,
+            "empty_answerable": 0.0377,
+            "empty_unanswerable": 0.3333
+          },
+          "0.50": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.8679,
+            "hit@3": 0.8868,
+            "empty_answerable": 0.0943,
+            "empty_unanswerable": 0.3333
+          }
+        }
+      }
+    },
+    "window/lexical": {
+      "chunking": "window",
+      "retriever": "lexical",
+      "name": "lexical:term-overlap",
+      "passages": 58,
+      "development": {
+        "default_floor": 0.26,
+        "answerable": 357,
+        "unanswerable": 143,
+        "hit@1": 0.7339,
+        "hit@3": 0.7731,
+        "empty_answerable": 0.1401,
+        "empty_unanswerable": 0.1818,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 270,
+            "unanswerable": 110,
+            "hit@1": 0.7444,
+            "hit@3": 0.7852,
+            "empty_answerable": 0.1296,
+            "empty_unanswerable": 0.1727
+          },
+          "non_fluent": {
+            "answerable": 87,
+            "unanswerable": 33,
+            "hit@1": 0.7011,
+            "hit@3": 0.7356,
+            "empty_answerable": 0.1724,
+            "empty_unanswerable": 0.2121
+          }
+        },
+        "floor_sweep": {
+          "0.26": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.7339,
+            "hit@3": 0.7731,
+            "empty_answerable": 0.1401,
+            "empty_unanswerable": 0.1818
+          },
+          "0.30": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.6723,
+            "hit@3": 0.6835,
+            "empty_answerable": 0.2297,
+            "empty_unanswerable": 0.2937
+          },
+          "0.35": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.5994,
+            "hit@3": 0.6078,
+            "empty_answerable": 0.3333,
+            "empty_unanswerable": 0.4615
+          },
+          "0.40": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.4258,
+            "hit@3": 0.4286,
+            "empty_answerable": 0.535,
+            "empty_unanswerable": 0.6434
+          },
+          "0.45": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.3081,
+            "hit@3": 0.3109,
+            "empty_answerable": 0.6583,
+            "empty_unanswerable": 0.8112
+          },
+          "0.50": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.2353,
+            "hit@3": 0.2353,
+            "empty_answerable": 0.7395,
+            "empty_unanswerable": 0.8531
+          }
+        }
+      },
+      "validation": {
+        "default_floor": 0.26,
+        "answerable": 53,
+        "unanswerable": 27,
+        "hit@1": 0.7358,
+        "hit@3": 0.7925,
+        "empty_answerable": 0.0943,
+        "empty_unanswerable": 0.2963,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 44,
+            "unanswerable": 17,
+            "hit@1": 0.7045,
+            "hit@3": 0.75,
+            "empty_answerable": 0.1136,
+            "empty_unanswerable": 0.3529
+          },
+          "non_fluent": {
+            "answerable": 9,
+            "unanswerable": 10,
+            "hit@1": 0.8889,
+            "hit@3": 1.0,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.2
+          }
+        },
+        "floor_sweep": {
+          "0.26": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.7358,
+            "hit@3": 0.7925,
+            "empty_answerable": 0.0943,
+            "empty_unanswerable": 0.2963
+          },
+          "0.30": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.6604,
+            "hit@3": 0.6792,
+            "empty_answerable": 0.2075,
+            "empty_unanswerable": 0.3704
+          },
+          "0.35": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.5849,
+            "hit@3": 0.5849,
+            "empty_answerable": 0.3774,
+            "empty_unanswerable": 0.5926
+          },
+          "0.40": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.5094,
+            "hit@3": 0.5094,
+            "empty_answerable": 0.4906,
+            "empty_unanswerable": 0.6667
+          },
+          "0.45": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.3208,
+            "hit@3": 0.3208,
+            "empty_answerable": 0.6792,
+            "empty_unanswerable": 0.8148
+          },
+          "0.50": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.2075,
+            "hit@3": 0.2075,
+            "empty_answerable": 0.7925,
+            "empty_unanswerable": 0.8148
+          }
+        }
+      }
+    },
+    "window/embedding": {
+      "chunking": "window",
+      "retriever": "embedding",
+      "name": "embedding:all-MiniLM-L6-v2@1110a24",
+      "passages": 58,
+      "development": {
+        "default_floor": 0.35,
+        "answerable": 357,
+        "unanswerable": 143,
+        "hit@1": 0.8908,
+        "hit@3": 0.9356,
+        "empty_answerable": 0.0112,
+        "empty_unanswerable": 0.1189,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 270,
+            "unanswerable": 110,
+            "hit@1": 0.9074,
+            "hit@3": 0.9519,
+            "empty_answerable": 0.0074,
+            "empty_unanswerable": 0.1
+          },
+          "non_fluent": {
+            "answerable": 87,
+            "unanswerable": 33,
+            "hit@1": 0.8391,
+            "hit@3": 0.8851,
+            "empty_answerable": 0.023,
+            "empty_unanswerable": 0.1818
+          }
+        },
+        "floor_sweep": {
+          "0.20": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8964,
+            "hit@3": 0.9524,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.042
+          },
+          "0.25": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8964,
+            "hit@3": 0.9524,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.0769
+          },
+          "0.30": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8964,
+            "hit@3": 0.944,
+            "empty_answerable": 0.0028,
+            "empty_unanswerable": 0.0839
+          },
+          "0.35": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8908,
+            "hit@3": 0.9356,
+            "empty_answerable": 0.0112,
+            "empty_unanswerable": 0.1189
+          },
+          "0.40": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8824,
+            "hit@3": 0.9244,
+            "empty_answerable": 0.0252,
+            "empty_unanswerable": 0.1399
+          },
+          "0.45": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.8683,
+            "hit@3": 0.9048,
+            "empty_answerable": 0.042,
+            "empty_unanswerable": 0.1818
+          },
+          "0.50": {
+            "answerable": 357,
+            "unanswerable": 143,
+            "hit@1": 0.7843,
+            "hit@3": 0.7927,
+            "empty_answerable": 0.1345,
+            "empty_unanswerable": 0.2587
+          }
+        }
+      },
+      "validation": {
+        "default_floor": 0.35,
+        "answerable": 53,
+        "unanswerable": 27,
+        "hit@1": 0.9623,
+        "hit@3": 0.9623,
+        "empty_answerable": 0.0,
+        "empty_unanswerable": 0.2593,
+        "by_language_fluency": {
+          "fluent": {
+            "answerable": 44,
+            "unanswerable": 17,
+            "hit@1": 0.9545,
+            "hit@3": 0.9545,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.3529
+          },
+          "non_fluent": {
+            "answerable": 9,
+            "unanswerable": 10,
+            "hit@1": 1.0,
+            "hit@3": 1.0,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.1
+          }
+        },
+        "floor_sweep": {
+          "0.20": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9623,
+            "hit@3": 0.9811,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.1111
+          },
+          "0.25": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9623,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.2222
+          },
+          "0.30": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9623,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.2222
+          },
+          "0.35": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.9623,
+            "hit@3": 0.9623,
+            "empty_answerable": 0.0,
+            "empty_unanswerable": 0.2593
+          },
+          "0.40": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.8868,
+            "hit@3": 0.8868,
+            "empty_answerable": 0.0943,
+            "empty_unanswerable": 0.2963
+          },
+          "0.45": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.8868,
+            "hit@3": 0.8868,
+            "empty_answerable": 0.0943,
+            "empty_unanswerable": 0.3704
+          },
+          "0.50": {
+            "answerable": 53,
+            "unanswerable": 27,
+            "hit@1": 0.7736,
+            "hit@3": 0.7736,
+            "empty_answerable": 0.2075,
+            "empty_unanswerable": 0.4074
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,2491 @@
+{
+  "purpose": "evidence only: thresholds derived per retrieval configuration with the RP-1.0 objective; the routing policy is not changed by this search (docs/architecture.md \u00a711)",
+  "objective": "0 must_not_auto_respond violations and auto precision >= 0.8, maximise coverage",
+  "dev_out_of_fold_intent_accuracy": 0.954,
+  "configurations": [
+    {
+      "retriever": "lexical",
+      "name": "lexical:term-overlap",
+      "chunking": "article",
+      "min_score": 0.26,
+      "passages": 29,
+      "meets_objective": true,
+      "best": {
+        "classification_confidence_min": 0.7,
+        "retrieval_score_min": 0.4,
+        "auto": 205,
+        "auto_precision": 0.8049,
+        "must_not_auto_respond_violations": 0
+      },
+      "highest_precision_candidate": {
+        "classification_confidence_min": 0.5,
+        "retrieval_score_min": 0.6,
+        "auto": 50,
+        "auto_precision": 0.9,
+        "must_not_auto_respond_violations": 0
+      },
+      "candidates_considered": [
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.26,
+          "auto": 329,
+          "auto_precision": 0.769,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.3,
+          "auto": 297,
+          "auto_precision": 0.7677,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.35,
+          "auto": 266,
+          "auto_precision": 0.7895,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.4,
+          "auto": 206,
+          "auto_precision": 0.8058,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.45,
+          "auto": 156,
+          "auto_precision": 0.8013,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.5,
+          "auto": 128,
+          "auto_precision": 0.8203,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.55,
+          "auto": 72,
+          "auto_precision": 0.8472,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.6,
+          "auto": 50,
+          "auto_precision": 0.9,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.26,
+          "auto": 328,
+          "auto_precision": 0.7683,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.3,
+          "auto": 296,
+          "auto_precision": 0.7669,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.35,
+          "auto": 265,
+          "auto_precision": 0.7887,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.4,
+          "auto": 205,
+          "auto_precision": 0.8049,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.45,
+          "auto": 155,
+          "auto_precision": 0.8,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.5,
+          "auto": 127,
+          "auto_precision": 0.8189,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.55,
+          "auto": 71,
+          "auto_precision": 0.8451,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.6,
+          "auto": 49,
+          "auto_precision": 0.898,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.26,
+          "auto": 328,
+          "auto_precision": 0.7683,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.3,
+          "auto": 296,
+          "auto_precision": 0.7669,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.35,
+          "auto": 265,
+          "auto_precision": 0.7887,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.4,
+          "auto": 205,
+          "auto_precision": 0.8049,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.45,
+          "auto": 155,
+          "auto_precision": 0.8,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.5,
+          "auto": 127,
+          "auto_precision": 0.8189,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.55,
+          "auto": 71,
+          "auto_precision": 0.8451,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.6,
+          "auto": 49,
+          "auto_precision": 0.898,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.26,
+          "auto": 323,
+          "auto_precision": 0.7647,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.3,
+          "auto": 291,
+          "auto_precision": 0.7629,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.35,
+          "auto": 260,
+          "auto_precision": 0.7846,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.4,
+          "auto": 200,
+          "auto_precision": 0.8,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.45,
+          "auto": 150,
+          "auto_precision": 0.7933,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.5,
+          "auto": 124,
+          "auto_precision": 0.8145,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.55,
+          "auto": 68,
+          "auto_precision": 0.8382,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.6,
+          "auto": 46,
+          "auto_precision": 0.8913,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.26,
+          "auto": 310,
+          "auto_precision": 0.7613,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.3,
+          "auto": 278,
+          "auto_precision": 0.759,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.35,
+          "auto": 248,
+          "auto_precision": 0.7782,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.4,
+          "auto": 190,
+          "auto_precision": 0.7947,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.45,
+          "auto": 140,
+          "auto_precision": 0.7857,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.5,
+          "auto": 119,
+          "auto_precision": 0.8067,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.55,
+          "auto": 63,
+          "auto_precision": 0.8254,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.6,
+          "auto": 41,
+          "auto_precision": 0.878,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.26,
+          "auto": 300,
+          "auto_precision": 0.7533,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.3,
+          "auto": 268,
+          "auto_precision": 0.75,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.35,
+          "auto": 238,
+          "auto_precision": 0.7689,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.4,
+          "auto": 182,
+          "auto_precision": 0.7857,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.45,
+          "auto": 140,
+          "auto_precision": 0.7857,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.5,
+          "auto": 119,
+          "auto_precision": 0.8067,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.55,
+          "auto": 63,
+          "auto_precision": 0.8254,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.6,
+          "auto": 41,
+          "auto_precision": 0.878,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.26,
+          "auto": 293,
+          "auto_precision": 0.7577,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.3,
+          "auto": 261,
+          "auto_precision": 0.7548,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.35,
+          "auto": 233,
+          "auto_precision": 0.7725,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.4,
+          "auto": 178,
+          "auto_precision": 0.7865,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.45,
+          "auto": 136,
+          "auto_precision": 0.7868,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.5,
+          "auto": 116,
+          "auto_precision": 0.8103,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.55,
+          "auto": 63,
+          "auto_precision": 0.8254,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.6,
+          "auto": 41,
+          "auto_precision": 0.878,
+          "must_not_auto_respond_violations": 0
+        }
+      ]
+    },
+    {
+      "retriever": "lexical",
+      "name": "lexical:term-overlap",
+      "chunking": "section",
+      "min_score": 0.26,
+      "passages": 116,
+      "meets_objective": true,
+      "best": {
+        "classification_confidence_min": 0.5,
+        "retrieval_score_min": 0.45,
+        "auto": 54,
+        "auto_precision": 0.9074,
+        "must_not_auto_respond_violations": 0
+      },
+      "highest_precision_candidate": {
+        "classification_confidence_min": 0.5,
+        "retrieval_score_min": 0.55,
+        "auto": 7,
+        "auto_precision": 1.0,
+        "must_not_auto_respond_violations": 0
+      },
+      "candidates_considered": [
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.26,
+          "auto": 285,
+          "auto_precision": 0.7825,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.3,
+          "auto": 220,
+          "auto_precision": 0.7818,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.35,
+          "auto": 156,
+          "auto_precision": 0.7949,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.4,
+          "auto": 109,
+          "auto_precision": 0.7982,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.45,
+          "auto": 54,
+          "auto_precision": 0.9074,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.5,
+          "auto": 32,
+          "auto_precision": 0.875,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.55,
+          "auto": 7,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.6,
+          "auto": 2,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.26,
+          "auto": 284,
+          "auto_precision": 0.7817,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.3,
+          "auto": 219,
+          "auto_precision": 0.7808,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.35,
+          "auto": 155,
+          "auto_precision": 0.7935,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.4,
+          "auto": 108,
+          "auto_precision": 0.7963,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.45,
+          "auto": 53,
+          "auto_precision": 0.9057,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.5,
+          "auto": 31,
+          "auto_precision": 0.871,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.55,
+          "auto": 7,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.6,
+          "auto": 2,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.26,
+          "auto": 284,
+          "auto_precision": 0.7817,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.3,
+          "auto": 219,
+          "auto_precision": 0.7808,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.35,
+          "auto": 155,
+          "auto_precision": 0.7935,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.4,
+          "auto": 108,
+          "auto_precision": 0.7963,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.45,
+          "auto": 53,
+          "auto_precision": 0.9057,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.5,
+          "auto": 31,
+          "auto_precision": 0.871,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.55,
+          "auto": 7,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.6,
+          "auto": 2,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.26,
+          "auto": 279,
+          "auto_precision": 0.7778,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.3,
+          "auto": 216,
+          "auto_precision": 0.7778,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.35,
+          "auto": 155,
+          "auto_precision": 0.7935,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.4,
+          "auto": 108,
+          "auto_precision": 0.7963,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.45,
+          "auto": 53,
+          "auto_precision": 0.9057,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.5,
+          "auto": 31,
+          "auto_precision": 0.871,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.55,
+          "auto": 7,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.6,
+          "auto": 2,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.26,
+          "auto": 267,
+          "auto_precision": 0.7753,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.3,
+          "auto": 205,
+          "auto_precision": 0.7707,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.35,
+          "auto": 144,
+          "auto_precision": 0.7847,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.4,
+          "auto": 102,
+          "auto_precision": 0.7843,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.45,
+          "auto": 48,
+          "auto_precision": 0.8958,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.5,
+          "auto": 31,
+          "auto_precision": 0.871,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.55,
+          "auto": 7,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.6,
+          "auto": 2,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.26,
+          "auto": 258,
+          "auto_precision": 0.7674,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.3,
+          "auto": 205,
+          "auto_precision": 0.7707,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.35,
+          "auto": 144,
+          "auto_precision": 0.7847,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.4,
+          "auto": 102,
+          "auto_precision": 0.7843,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.45,
+          "auto": 48,
+          "auto_precision": 0.8958,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.5,
+          "auto": 31,
+          "auto_precision": 0.871,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.55,
+          "auto": 7,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.6,
+          "auto": 2,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.26,
+          "auto": 254,
+          "auto_precision": 0.7677,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.3,
+          "auto": 202,
+          "auto_precision": 0.7723,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.35,
+          "auto": 141,
+          "auto_precision": 0.7872,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.4,
+          "auto": 102,
+          "auto_precision": 0.7843,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.45,
+          "auto": 48,
+          "auto_precision": 0.8958,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.5,
+          "auto": 31,
+          "auto_precision": 0.871,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.55,
+          "auto": 7,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.6,
+          "auto": 2,
+          "auto_precision": 1.0,
+          "must_not_auto_respond_violations": 0
+        }
+      ]
+    },
+    {
+      "retriever": "lexical",
+      "name": "lexical:term-overlap",
+      "chunking": "window",
+      "min_score": 0.26,
+      "passages": 58,
+      "meets_objective": true,
+      "best": {
+        "classification_confidence_min": 0.7,
+        "retrieval_score_min": 0.35,
+        "auto": 238,
+        "auto_precision": 0.8025,
+        "must_not_auto_respond_violations": 0
+      },
+      "highest_precision_candidate": {
+        "classification_confidence_min": 0.5,
+        "retrieval_score_min": 0.6,
+        "auto": 30,
+        "auto_precision": 0.9333,
+        "must_not_auto_respond_violations": 0
+      },
+      "candidates_considered": [
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.26,
+          "auto": 316,
+          "auto_precision": 0.7722,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.3,
+          "auto": 273,
+          "auto_precision": 0.7802,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.35,
+          "auto": 239,
+          "auto_precision": 0.8033,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.4,
+          "auto": 171,
+          "auto_precision": 0.7895,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.45,
+          "auto": 128,
+          "auto_precision": 0.8125,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.5,
+          "auto": 102,
+          "auto_precision": 0.8137,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.55,
+          "auto": 57,
+          "auto_precision": 0.8246,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.6,
+          "auto": 30,
+          "auto_precision": 0.9333,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.26,
+          "auto": 315,
+          "auto_precision": 0.7714,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.3,
+          "auto": 272,
+          "auto_precision": 0.7794,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.35,
+          "auto": 238,
+          "auto_precision": 0.8025,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.4,
+          "auto": 170,
+          "auto_precision": 0.7882,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.45,
+          "auto": 127,
+          "auto_precision": 0.811,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.5,
+          "auto": 101,
+          "auto_precision": 0.8119,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.55,
+          "auto": 56,
+          "auto_precision": 0.8214,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.6,
+          "auto": 29,
+          "auto_precision": 0.931,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.26,
+          "auto": 315,
+          "auto_precision": 0.7714,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.3,
+          "auto": 272,
+          "auto_precision": 0.7794,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.35,
+          "auto": 238,
+          "auto_precision": 0.8025,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.4,
+          "auto": 170,
+          "auto_precision": 0.7882,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.45,
+          "auto": 127,
+          "auto_precision": 0.811,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.5,
+          "auto": 101,
+          "auto_precision": 0.8119,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.55,
+          "auto": 56,
+          "auto_precision": 0.8214,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.6,
+          "auto": 29,
+          "auto_precision": 0.931,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.26,
+          "auto": 310,
+          "auto_precision": 0.7677,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.3,
+          "auto": 267,
+          "auto_precision": 0.7753,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.35,
+          "auto": 233,
+          "auto_precision": 0.7983,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.4,
+          "auto": 165,
+          "auto_precision": 0.7818,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.45,
+          "auto": 122,
+          "auto_precision": 0.8033,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.5,
+          "auto": 98,
+          "auto_precision": 0.8061,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.55,
+          "auto": 53,
+          "auto_precision": 0.8113,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.6,
+          "auto": 28,
+          "auto_precision": 0.9286,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.26,
+          "auto": 297,
+          "auto_precision": 0.7643,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.3,
+          "auto": 254,
+          "auto_precision": 0.7717,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.35,
+          "auto": 222,
+          "auto_precision": 0.7928,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.4,
+          "auto": 160,
+          "auto_precision": 0.775,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.45,
+          "auto": 117,
+          "auto_precision": 0.7949,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.5,
+          "auto": 96,
+          "auto_precision": 0.8021,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.55,
+          "auto": 51,
+          "auto_precision": 0.8039,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.6,
+          "auto": 26,
+          "auto_precision": 0.9231,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.26,
+          "auto": 287,
+          "auto_precision": 0.7561,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.3,
+          "auto": 244,
+          "auto_precision": 0.7623,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.35,
+          "auto": 212,
+          "auto_precision": 0.783,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.4,
+          "auto": 160,
+          "auto_precision": 0.775,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.45,
+          "auto": 117,
+          "auto_precision": 0.7949,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.5,
+          "auto": 96,
+          "auto_precision": 0.8021,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.55,
+          "auto": 51,
+          "auto_precision": 0.8039,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.6,
+          "auto": 26,
+          "auto_precision": 0.9231,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.26,
+          "auto": 280,
+          "auto_precision": 0.7607,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.3,
+          "auto": 238,
+          "auto_precision": 0.7647,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.35,
+          "auto": 208,
+          "auto_precision": 0.7837,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.4,
+          "auto": 156,
+          "auto_precision": 0.7756,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.45,
+          "auto": 113,
+          "auto_precision": 0.7965,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.5,
+          "auto": 93,
+          "auto_precision": 0.8065,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.55,
+          "auto": 51,
+          "auto_precision": 0.8039,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.6,
+          "auto": 26,
+          "auto_precision": 0.9231,
+          "must_not_auto_respond_violations": 0
+        }
+      ]
+    },
+    {
+      "retriever": "embedding",
+      "name": "embedding:all-MiniLM-L6-v2@1110a24",
+      "chunking": "article",
+      "min_score": 0.35,
+      "passages": 29,
+      "meets_objective": false,
+      "best": null,
+      "highest_precision_candidate": {
+        "classification_confidence_min": 0.5,
+        "retrieval_score_min": 0.6,
+        "auto": 145,
+        "auto_precision": 0.7862,
+        "must_not_auto_respond_violations": 0
+      },
+      "candidates_considered": [
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.35,
+          "auto": 390,
+          "auto_precision": 0.7538,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.4,
+          "auto": 388,
+          "auto_precision": 0.7526,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.45,
+          "auto": 365,
+          "auto_precision": 0.7452,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.5,
+          "auto": 316,
+          "auto_precision": 0.7405,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.55,
+          "auto": 218,
+          "auto_precision": 0.7569,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.6,
+          "auto": 145,
+          "auto_precision": 0.7862,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.65,
+          "auto": 82,
+          "auto_precision": 0.7805,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.7,
+          "auto": 37,
+          "auto_precision": 0.7838,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.35,
+          "auto": 389,
+          "auto_precision": 0.7532,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.4,
+          "auto": 387,
+          "auto_precision": 0.7519,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.45,
+          "auto": 364,
+          "auto_precision": 0.7445,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.5,
+          "auto": 315,
+          "auto_precision": 0.7397,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.55,
+          "auto": 218,
+          "auto_precision": 0.7569,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.6,
+          "auto": 145,
+          "auto_precision": 0.7862,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.65,
+          "auto": 82,
+          "auto_precision": 0.7805,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.7,
+          "auto": 37,
+          "auto_precision": 0.7838,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.35,
+          "auto": 389,
+          "auto_precision": 0.7532,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.4,
+          "auto": 387,
+          "auto_precision": 0.7519,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.45,
+          "auto": 364,
+          "auto_precision": 0.7445,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.5,
+          "auto": 315,
+          "auto_precision": 0.7397,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.55,
+          "auto": 218,
+          "auto_precision": 0.7569,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.6,
+          "auto": 145,
+          "auto_precision": 0.7862,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.65,
+          "auto": 82,
+          "auto_precision": 0.7805,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.7,
+          "auto": 37,
+          "auto_precision": 0.7838,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.35,
+          "auto": 384,
+          "auto_precision": 0.75,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.4,
+          "auto": 382,
+          "auto_precision": 0.7487,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.45,
+          "auto": 361,
+          "auto_precision": 0.7424,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.5,
+          "auto": 313,
+          "auto_precision": 0.738,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.55,
+          "auto": 216,
+          "auto_precision": 0.7546,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.6,
+          "auto": 145,
+          "auto_precision": 0.7862,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.65,
+          "auto": 82,
+          "auto_precision": 0.7805,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.7,
+          "auto": 37,
+          "auto_precision": 0.7838,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.35,
+          "auto": 370,
+          "auto_precision": 0.7459,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.4,
+          "auto": 368,
+          "auto_precision": 0.7446,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.45,
+          "auto": 349,
+          "auto_precision": 0.7393,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.5,
+          "auto": 303,
+          "auto_precision": 0.736,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.55,
+          "auto": 212,
+          "auto_precision": 0.7547,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.6,
+          "auto": 145,
+          "auto_precision": 0.7862,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.65,
+          "auto": 82,
+          "auto_precision": 0.7805,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.7,
+          "auto": 37,
+          "auto_precision": 0.7838,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.35,
+          "auto": 356,
+          "auto_precision": 0.7388,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.4,
+          "auto": 354,
+          "auto_precision": 0.7373,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.45,
+          "auto": 338,
+          "auto_precision": 0.7337,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.5,
+          "auto": 301,
+          "auto_precision": 0.7342,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.55,
+          "auto": 211,
+          "auto_precision": 0.7536,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.6,
+          "auto": 144,
+          "auto_precision": 0.7847,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.65,
+          "auto": 82,
+          "auto_precision": 0.7805,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.7,
+          "auto": 37,
+          "auto_precision": 0.7838,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.35,
+          "auto": 349,
+          "auto_precision": 0.7421,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.4,
+          "auto": 347,
+          "auto_precision": 0.7406,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.45,
+          "auto": 332,
+          "auto_precision": 0.7349,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.5,
+          "auto": 297,
+          "auto_precision": 0.734,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.55,
+          "auto": 210,
+          "auto_precision": 0.7524,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.6,
+          "auto": 144,
+          "auto_precision": 0.7847,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.65,
+          "auto": 82,
+          "auto_precision": 0.7805,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.7,
+          "auto": 37,
+          "auto_precision": 0.7838,
+          "must_not_auto_respond_violations": 0
+        }
+      ]
+    },
+    {
+      "retriever": "embedding",
+      "name": "embedding:all-MiniLM-L6-v2@1110a24",
+      "chunking": "section",
+      "min_score": 0.35,
+      "passages": 116,
+      "meets_objective": false,
+      "best": null,
+      "highest_precision_candidate": {
+        "classification_confidence_min": 0.5,
+        "retrieval_score_min": 0.65,
+        "auto": 187,
+        "auto_precision": 0.7594,
+        "must_not_auto_respond_violations": 0
+      },
+      "candidates_considered": [
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.35,
+          "auto": 394,
+          "auto_precision": 0.7538,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.4,
+          "auto": 391,
+          "auto_precision": 0.7545,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.45,
+          "auto": 382,
+          "auto_precision": 0.7487,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.5,
+          "auto": 376,
+          "auto_precision": 0.7447,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.55,
+          "auto": 342,
+          "auto_precision": 0.7398,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.6,
+          "auto": 265,
+          "auto_precision": 0.7472,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.65,
+          "auto": 187,
+          "auto_precision": 0.7594,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.7,
+          "auto": 109,
+          "auto_precision": 0.7339,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.35,
+          "auto": 393,
+          "auto_precision": 0.7532,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.4,
+          "auto": 390,
+          "auto_precision": 0.7538,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.45,
+          "auto": 381,
+          "auto_precision": 0.748,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.5,
+          "auto": 375,
+          "auto_precision": 0.744,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.55,
+          "auto": 341,
+          "auto_precision": 0.739,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.6,
+          "auto": 264,
+          "auto_precision": 0.7462,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.65,
+          "auto": 186,
+          "auto_precision": 0.7581,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.7,
+          "auto": 109,
+          "auto_precision": 0.7339,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.35,
+          "auto": 393,
+          "auto_precision": 0.7532,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.4,
+          "auto": 390,
+          "auto_precision": 0.7538,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.45,
+          "auto": 381,
+          "auto_precision": 0.748,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.5,
+          "auto": 375,
+          "auto_precision": 0.744,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.55,
+          "auto": 341,
+          "auto_precision": 0.739,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.6,
+          "auto": 264,
+          "auto_precision": 0.7462,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.65,
+          "auto": 186,
+          "auto_precision": 0.7581,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.7,
+          "auto": 109,
+          "auto_precision": 0.7339,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.35,
+          "auto": 388,
+          "auto_precision": 0.75,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.4,
+          "auto": 385,
+          "auto_precision": 0.7506,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.45,
+          "auto": 376,
+          "auto_precision": 0.7447,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.5,
+          "auto": 371,
+          "auto_precision": 0.7412,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.55,
+          "auto": 337,
+          "auto_precision": 0.7359,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.6,
+          "auto": 262,
+          "auto_precision": 0.7443,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.65,
+          "auto": 186,
+          "auto_precision": 0.7581,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.7,
+          "auto": 109,
+          "auto_precision": 0.7339,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.35,
+          "auto": 373,
+          "auto_precision": 0.7453,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.4,
+          "auto": 371,
+          "auto_precision": 0.7466,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.45,
+          "auto": 363,
+          "auto_precision": 0.741,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.5,
+          "auto": 358,
+          "auto_precision": 0.7374,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.55,
+          "auto": 325,
+          "auto_precision": 0.7323,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.6,
+          "auto": 254,
+          "auto_precision": 0.7441,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.65,
+          "auto": 182,
+          "auto_precision": 0.7582,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.7,
+          "auto": 109,
+          "auto_precision": 0.7339,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.35,
+          "auto": 359,
+          "auto_precision": 0.7382,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.4,
+          "auto": 357,
+          "auto_precision": 0.7395,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.45,
+          "auto": 349,
+          "auto_precision": 0.7335,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.5,
+          "auto": 344,
+          "auto_precision": 0.7297,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.55,
+          "auto": 315,
+          "auto_precision": 0.727,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.6,
+          "auto": 248,
+          "auto_precision": 0.7379,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.65,
+          "auto": 181,
+          "auto_precision": 0.7569,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.7,
+          "auto": 108,
+          "auto_precision": 0.7315,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.35,
+          "auto": 352,
+          "auto_precision": 0.7415,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.4,
+          "auto": 350,
+          "auto_precision": 0.7429,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.45,
+          "auto": 342,
+          "auto_precision": 0.7368,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.5,
+          "auto": 337,
+          "auto_precision": 0.7329,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.55,
+          "auto": 308,
+          "auto_precision": 0.7305,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.6,
+          "auto": 247,
+          "auto_precision": 0.7368,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.65,
+          "auto": 180,
+          "auto_precision": 0.7556,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.7,
+          "auto": 107,
+          "auto_precision": 0.729,
+          "must_not_auto_respond_violations": 0
+        }
+      ]
+    },
+    {
+      "retriever": "embedding",
+      "name": "embedding:all-MiniLM-L6-v2@1110a24",
+      "chunking": "window",
+      "min_score": 0.35,
+      "passages": 58,
+      "meets_objective": true,
+      "best": {
+        "classification_confidence_min": 0.99,
+        "retrieval_score_min": 0.7,
+        "auto": 44,
+        "auto_precision": 0.8409,
+        "must_not_auto_respond_violations": 0
+      },
+      "highest_precision_candidate": {
+        "classification_confidence_min": 0.5,
+        "retrieval_score_min": 0.7,
+        "auto": 44,
+        "auto_precision": 0.8409,
+        "must_not_auto_respond_violations": 0
+      },
+      "candidates_considered": [
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.35,
+          "auto": 390,
+          "auto_precision": 0.7538,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.4,
+          "auto": 386,
+          "auto_precision": 0.7539,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.45,
+          "auto": 381,
+          "auto_precision": 0.7507,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.5,
+          "auto": 339,
+          "auto_precision": 0.7404,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.55,
+          "auto": 250,
+          "auto_precision": 0.74,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.6,
+          "auto": 181,
+          "auto_precision": 0.7569,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.65,
+          "auto": 110,
+          "auto_precision": 0.7636,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.5,
+          "retrieval_score_min": 0.7,
+          "auto": 44,
+          "auto_precision": 0.8409,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.35,
+          "auto": 389,
+          "auto_precision": 0.7532,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.4,
+          "auto": 385,
+          "auto_precision": 0.7532,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.45,
+          "auto": 380,
+          "auto_precision": 0.75,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.5,
+          "auto": 338,
+          "auto_precision": 0.7396,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.55,
+          "auto": 250,
+          "auto_precision": 0.74,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.6,
+          "auto": 181,
+          "auto_precision": 0.7569,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.65,
+          "auto": 110,
+          "auto_precision": 0.7636,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.6,
+          "retrieval_score_min": 0.7,
+          "auto": 44,
+          "auto_precision": 0.8409,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.35,
+          "auto": 389,
+          "auto_precision": 0.7532,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.4,
+          "auto": 385,
+          "auto_precision": 0.7532,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.45,
+          "auto": 380,
+          "auto_precision": 0.75,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.5,
+          "auto": 338,
+          "auto_precision": 0.7396,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.55,
+          "auto": 250,
+          "auto_precision": 0.74,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.6,
+          "auto": 181,
+          "auto_precision": 0.7569,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.65,
+          "auto": 110,
+          "auto_precision": 0.7636,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.7,
+          "retrieval_score_min": 0.7,
+          "auto": 44,
+          "auto_precision": 0.8409,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.35,
+          "auto": 384,
+          "auto_precision": 0.75,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.4,
+          "auto": 380,
+          "auto_precision": 0.75,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.45,
+          "auto": 375,
+          "auto_precision": 0.7467,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.5,
+          "auto": 336,
+          "auto_precision": 0.7381,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.55,
+          "auto": 248,
+          "auto_precision": 0.7379,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.6,
+          "auto": 181,
+          "auto_precision": 0.7569,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.65,
+          "auto": 110,
+          "auto_precision": 0.7636,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.8,
+          "retrieval_score_min": 0.7,
+          "auto": 44,
+          "auto_precision": 0.8409,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.35,
+          "auto": 370,
+          "auto_precision": 0.7459,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.4,
+          "auto": 366,
+          "auto_precision": 0.7459,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.45,
+          "auto": 361,
+          "auto_precision": 0.7424,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.5,
+          "auto": 325,
+          "auto_precision": 0.7354,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.55,
+          "auto": 241,
+          "auto_precision": 0.7344,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.6,
+          "auto": 181,
+          "auto_precision": 0.7569,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.65,
+          "auto": 110,
+          "auto_precision": 0.7636,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.9,
+          "retrieval_score_min": 0.7,
+          "auto": 44,
+          "auto_precision": 0.8409,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.35,
+          "auto": 356,
+          "auto_precision": 0.7388,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.4,
+          "auto": 352,
+          "auto_precision": 0.7386,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.45,
+          "auto": 350,
+          "auto_precision": 0.7371,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.5,
+          "auto": 320,
+          "auto_precision": 0.7344,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.55,
+          "auto": 240,
+          "auto_precision": 0.7333,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.6,
+          "auto": 180,
+          "auto_precision": 0.7556,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.65,
+          "auto": 110,
+          "auto_precision": 0.7636,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.95,
+          "retrieval_score_min": 0.7,
+          "auto": 44,
+          "auto_precision": 0.8409,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.35,
+          "auto": 349,
+          "auto_precision": 0.7421,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.4,
+          "auto": 345,
+          "auto_precision": 0.742,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.45,
+          "auto": 343,
+          "auto_precision": 0.7405,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.5,
+          "auto": 314,
+          "auto_precision": 0.7357,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.55,
+          "auto": 237,
+          "auto_precision": 0.7342,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.6,
+          "auto": 177,
+          "auto_precision": 0.7571,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.65,
+          "auto": 109,
+          "auto_precision": 0.7615,
+          "must_not_auto_respond_violations": 0
+        },
+        {
+          "classification_confidence_min": 0.99,
+          "retrieval_score_min": 0.7,
+          "auto": 44,
+          "auto_precision": 0.8409,
+          "must_not_auto_respond_violations": 0
+        }
+      ]
+    }
+  ]
+}
