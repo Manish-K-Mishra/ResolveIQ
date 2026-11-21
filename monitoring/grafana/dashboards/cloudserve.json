@@ -1,0 +1,307 @@
+{
+  "uid": "cloudserve-support",
+  "title": "CloudServe support system",
+  "tags": [
+    "cloudserve"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 41,
+  "version": 1,
+  "refresh": "30s",
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Tickets per hour by channel",
+      "description": "Setup Guide \u00a706: tickets processed per hour, split by channel.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "cloudserve-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "cloudserve-prometheus"
+          },
+          "expr": "sum by (channel) (increase(tickets_processed_total[1h]))",
+          "legendFormat": "{{channel}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "stacking": {
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Tickets per hour by outcome",
+      "description": "Setup Guide \u00a706: tickets processed per hour, split by outcome (auto_respond, escalate, block).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "cloudserve-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "cloudserve-prometheus"
+          },
+          "expr": "sum by (outcome) (increase(tickets_processed_total[1h]))",
+          "legendFormat": "{{outcome}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "stacking": {
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Answered automatically vs escalated",
+      "description": "Setup Guide \u00a706: share of decisions that were auto_respond against escalate or block, over the last hour. auto_respond includes answers held by the kill switch.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "cloudserve-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "cloudserve-prometheus"
+          },
+          "expr": "sum(increase(tickets_processed_total{outcome=\"auto_respond\"}[1h])) / sum(increase(tickets_processed_total[1h]))",
+          "legendFormat": "answered automatically"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "cloudserve-prometheus"
+          },
+          "expr": "sum(increase(tickets_processed_total{outcome=~\"escalate|block\"}[1h])) / sum(increase(tickets_processed_total[1h]))",
+          "legendFormat": "escalated or blocked"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "custom": {
+            "stacking": {
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Response latency p50 / p95",
+      "description": "Setup Guide \u00a706: end-to-end decision time at the median and 95th percentile (5-minute window; LLM cache replays excluded).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "cloudserve-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "cloudserve-prometheus"
+          },
+          "expr": "histogram_quantile(0.5, sum by (le) (rate(response_seconds_bucket[5m])))",
+          "legendFormat": "p50"
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "cloudserve-prometheus"
+          },
+          "expr": "histogram_quantile(0.95, sum by (le) (rate(response_seconds_bucket[5m])))",
+          "legendFormat": "p95"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": {
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Guardrail activations by guardrail",
+      "description": "Setup Guide \u00a706: guardrail checks that failed, by guardrail, over time (5-minute increase; blocks and escalations).",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "cloudserve-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 16,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "cloudserve-prometheus"
+          },
+          "expr": "sum by (guardrail) (increase(guardrail_activations_total[5m]))",
+          "legendFormat": "{{guardrail}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "stacking": {
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "bargauge",
+      "title": "Classification confidence distribution",
+      "description": "Setup Guide \u00a706: distribution of classifier confidence over the last hour; drift shows here first.",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "cloudserve-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 16,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "cloudserve-prometheus"
+          },
+          "expr": "sum by (le) (increase(classification_confidence_bucket[1h]))",
+          "legendFormat": "{{le}}",
+          "format": "heatmap",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "options": {
+        "orientation": "vertical",
+        "displayMode": "basic",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "values": false
+        }
+      }
+    }
+  ],
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  }
+}

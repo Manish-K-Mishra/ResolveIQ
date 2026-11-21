@@ -87,6 +87,74 @@ sqlite3 output/guard.sqlite "select ticket_id, action_taken, status, reason from
 Without `--auto-send` (or `CLOUDSERVE_AUTO_SEND=true`), auto-response decisions get status
 `held_for_review` and carry a `handoff` for the agent.
 
+### API service
+
+```bash
+python -m cloudserve.api                 # http://127.0.0.1:8000 (local only); the Build Spec's "python -m src.api"
+curl -s -X POST 127.0.0.1:8000/tickets -H 'content-type: application/json' \
+  -d '{"ticket_id":"T-1","channel":"email","subject":"Invalid credentials login","body":"Account locked with invalid credentials in console. How do I reset session?","customer_tier":"standard"}'
+curl -s 127.0.0.1:8000/health            # policy, models, kill switch, breaker
+curl -s 127.0.0.1:8000/metrics           # Prometheus exposition
+```
+
+**Startup.** The engine is built once at startup with the same options as the CLI. Flags
+(`--classifier llm --provider ollama --answer-mode generated ...`) or environment variables set
+them: `CLOUDSERVE_CLASSIFIER`, `CLOUDSERVE_EVIDENCE_SELECTOR`, `CLOUDSERVE_ANSWER_MODE`,
+`CLOUDSERVE_PROVIDER`, `CLOUDSERVE_AUTO_SEND`, `CLOUDSERVE_LLM_CACHE` (default `off`),
+`CLOUDSERVE_DB` (default `storage/decisions.sqlite`), `CLOUDSERVE_API_HOST` and `CLOUDSERVE_API_PORT`.
+
+**`POST /tickets`.** It returns the full decision record and writes it to the decision log.
+Automatic sending is off by default here too, and the runtime kill switch applies to every request.
+
+**Bad input.**
+
+- A body that is not a JSON object gets **422** and is not logged, because it is not a ticket.
+- A JSON object that is not a valid ticket becomes a logged escalation (200), as in the batch path.
+
+**`/health` and `/metrics`.** They carry only names, versions, states and counts: no keys,
+environment values or absolute paths.
+
+### Monitoring (Prometheus + Grafana, Docker)
+
+```bash
+python -m cloudserve.api &                                   # metrics source on the host
+docker compose -f monitoring/docker-compose.yml up -d        # Prometheus :9090, Grafana :3000 (127.0.0.1 only)
+open http://127.0.0.1:3000                                   # dashboard "CloudServe support system"
+docker compose -f monitoring/docker-compose.yml down
+```
+
+**Grafana login.** `admin` / `$GRAFANA_ADMIN_PASSWORD`. If the variable is unset the password is
+`admin`, which is a **local-only default** for a stack bound to 127.0.0.1. Set your own before
+binding the stack to anything else. Never commit a real password.
+
+**What Prometheus scrapes.** The API at `host.docker.internal:8000`. A long unattended run can
+also be watched: `python -m evaluation.harness ... --metrics-port 8001` serves the same series on
+`127.0.0.1:8001` while the run lasts.
+
+**Linux.** The API must listen on an address the containers can reach, for example
+`--host 0.0.0.0` behind a firewall. On Docker Desktop (macOS) `127.0.0.1` works.
+
+**Dashboard panels** (Setup Guide §06):
+
+| Panel | Shows | Query |
+|---|---|---|
+| Tickets per hour by channel | Tickets decided in the last hour, per channel | `increase(tickets_processed_total[1h])` by `channel` |
+| Tickets per hour by outcome | The same, per action: `auto_respond`, `escalate`, `block` | by `outcome` |
+| Answered automatically vs escalated | Share of decisions that were `auto_respond` (including answers held by the kill switch) against escalated or blocked | ratio of the above |
+| Response latency p50 / p95 | End-to-end decision time (LLM cache replays excluded) | `histogram_quantile` over `response_seconds` |
+| Guardrail activations by guardrail | Guardrail checks that failed, per guardrail, over time | `guardrail_activations_total` |
+| Classification confidence distribution | Confidence counts per 0.1 band over the last hour; drift shows here first | `classification_confidence_bucket` |
+
+**Other series** (not on the dashboard):
+
+- `guardrail_blocks_total`
+- `answers_total{delivery}`
+- `provider_failures_total{provider,error}`
+- `llm_cost_usd_total`
+- `llm_cache_hits_total`
+- `kill_switch_engaged`
+- `breaker_open`
+
 ## 4. Unattended evaluation (A9 / A10)
 
 ```bash
@@ -219,6 +287,7 @@ Each record's `kill_switch` field shows the state.
 | `tests/` | Test suite (`python -m pytest -q`) |
 | `evaluation/harness.py`, `evaluation/results/` | Evaluation entry point and saved runs |
 | `config/routing_policy.json`, `scripts/` | Routing policy and the scripts that derive it, compare retrieval and fetch the model |
+| `monitoring/` | Prometheus scrape config, Grafana provisioning and dashboard, docker-compose |
 | `config/model_prices.json` | Per-model token prices (source and date inside) used for cost estimates |
 | `docs/architecture.md` | Design notes |
 | `data/`, `examples/` | Supplied dataset files and small demo inputs |

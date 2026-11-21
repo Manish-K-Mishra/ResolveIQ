@@ -403,6 +403,8 @@ def main(argv=None):
     p.add_argument("--input", required=True, help="any JSON list of tickets with the dataset schema")
     p.add_argument("--output", default="evaluation/results", help="output directory")
     add_engine_arguments(p, llm_cache_default="read_write")   # reproducible evaluation (A5 in LLM mode)
+    p.add_argument("--metrics-port", type=int, default=None,
+                   help="also expose live Prometheus metrics on 127.0.0.1:<port>/metrics while the run lasts")
     a = p.parse_args(argv)
     out = Path(a.output)
     out.mkdir(parents=True, exist_ok=True)
@@ -413,7 +415,14 @@ def main(argv=None):
         db.unlink()                 # each evaluation run is self-contained and reconcilable
     run_id = new_run_id()
     t0 = time.perf_counter()
-    results, logged = run_batch(engine, items, db, run_id)
+    on_record = None
+    if a.metrics_port:
+        from .metrics import Metrics
+        live = Metrics(engine)
+        live.serve(a.metrics_port)
+        on_record = live.observe
+        print(f"Live metrics: http://127.0.0.1:{a.metrics_port}/metrics")
+    results, logged = run_batch(engine, items, db, run_id, on_record=on_record)
     wall = time.perf_counter() - t0
     run_info = {"run_id": run_id, "date": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                 "input": str(a.input), "engine": engine.implementation,

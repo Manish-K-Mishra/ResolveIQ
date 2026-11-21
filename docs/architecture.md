@@ -53,6 +53,8 @@ All modules are in `src/cloudserve/` (named after the Setup Guide §08 component
 | Audit log | `logging_store.py` | SQLite. Each record holds the Governance minimum fields. |
 | Model providers | `providers.py` | Ollama, llama.cpp (OpenAI-compatible) and Anthropic, all through LangChain. Timeouts, retries, a deadline, a half-open circuit breaker, and PII masking for hosted providers |
 | Model calls | `model_calls.py` | LLM response cache, token usage and cost per call (§7a) |
+| API service | `api.py` | FastAPI: `POST /tickets`, `GET /health`, `GET /metrics` (§13) |
+| Metrics | `metrics.py`, `monitoring/` | prometheus_client; Prometheus and Grafana through docker-compose (§13) |
 | Kill switch | `killswitch.py` | Runtime flag file and the `on`/`off`/`status` CLI (§4) |
 | Workflow and wiring | `graph.py`, `runtime.py`, `cli.py` | LangGraph `StateGraph`; shared engine construction; command line |
 | Evaluation harness | `evaluation.py`, entry point `evaluation/harness.py` | Unattended run that writes metrics JSON and a Markdown summary |
@@ -424,3 +426,85 @@ answerability gate did not fix the embedding configuration's precision with this
 embedding configuration still answers more tickets at lower precision, and remains below the 0.80
 objective. **RP-1.0 stays the default.** The comparison should be repeated with a stronger model
 before the decision is revisited.
+
+## 13. Service and monitoring
+
+**API** (`src/cloudserve/api.py`, `python -m cloudserve.api`, which is the package equivalent of
+the Build Spec's illustrative `python -m src.api`):
+
+- **Startup.** One `DecisionEngine` is built at startup by `runtime.build_engine`, the same
+  construction as the CLI, with options from flags or `CLOUDSERVE_*` variables. The server binds
+  127.0.0.1 by default.
+- **`POST /tickets`.** Runs the workflow, writes the record to the decision log
+  (`storage/decisions.sqlite`; each API process has its own `run_id`), updates the metrics and
+  returns the record.
+- **Bad input.** A body that is not a JSON object gets 422 and is not logged. A JSON object that
+  fails ticket validation becomes a logged escalation, so the API and batch paths behave the same
+  for any ticket-shaped input.
+- **`GET /health`.** Reports the policy version, answer mode, model and prompt versions,
+  auto-send, kill-switch state, breaker state, cache mode and retriever. It shows only names,
+  versions, booleans and repository-relative paths. Fallback reasons, base URLs, environment
+  values and keys are left out, and a test checks this.
+
+**Concurrency.** FastAPI runs the `def` handlers on a thread pool.
+
+- **Circuit breaker.** `ProviderGuard` changes state under a lock. In the half-open state it
+  admits exactly one trial call; other callers fail fast with `ProviderCircuitOpen` until the
+  trial finishes. A test runs 8 threads and gets 1 trial and 7 fast failures.
+- **Call log.** The model-call log (`CallLog`) is per thread, so a request's usage and cost
+  belong to that request only.
+- **Decision log.** Each request writes on its own SQLite connection, under a process-wide write
+  lock with a 30 s busy timeout. Tests make 16 concurrent API requests and 40 concurrent writes,
+  and every row is present.
+
+**Metrics** (`src/cloudserve/metrics.py`). These are updated from each finished record, using
+the Setup Guide names where it gives them.
+
+| Series | Labels | Purpose |
+|---|---|---|
+| `tickets_processed_total` | `channel`, `outcome` | Volume, and auto against escalated |
+| `response_seconds` | (histogram) | Latency, excluding LLM-cache replays |
+| `guardrail_blocks_total` | `guardrail` | Blocks |
+| `guardrail_activations_total` | `guardrail`, `action` | Every failed check |
+| `classification_confidence` | (histogram) | Drift |
+| `provider_failures_total` | `provider`, `error` | R-06 |
+| `llm_cost_usd_total` | | R-08 |
+| `llm_cache_hits_total` | | Cache hits |
+| `answers_total` | `delivery` | Answers sent or held |
+| `kill_switch_engaged` | | Read live from the flag file |
+| `breaker_open` | | Breaker state |
+
+Label values are bounded: known channels, actions and codes, never ticket text. The harness
+exposes the same series with `--metrics-port`.
+
+**Stack** (`monitoring/`):
+
+- **Prometheus** v3.5.0 scrapes `host.docker.internal:8000`, and `:8001` for a watched harness run.
+- **Grafana** 12.1.1 is provisioned with the Prometheus datasource and one dashboard. Its six
+  panels follow the Setup Guide list: tickets per hour by channel, tickets per hour by outcome,
+  auto against escalated proportion, latency p50/p95, guardrail activations by guardrail, and the
+  confidence distribution.
+- **Access.** Ports are bound to 127.0.0.1. The Grafana admin password comes from
+  `GRAFANA_ADMIN_PASSWORD`; the fallback is `admin`, a local-only default.
+- **CI.** CI does not need Docker. A test checks that the dashboard queries name only series the
+  application exposes.
+
+**Verified locally** (Docker 28.3.2, macOS).
+
+- The offline API took 80 validation tickets in 0.17 s, giving 33 `auto_respond` and 47
+  `escalate`, the same as the harness.
+- Prometheus reported the API target `up`. `sum by (outcome)(tickets_processed_total)` returned
+  33 / 47 / 0.
+- Grafana loaded the dashboard (`/api/dashboards/uid/cloudserve-support`), and every panel query
+  returned series through Grafana's datasource proxy.
+- The stack was then brought down.
+
+**Limits.**
+
+- **Restarts.** The API keeps metrics in memory, so counters reset on restart and Prometheus
+  `increase()` handles that.
+- **No authentication.** There is no authentication on the API, so it must stay on localhost or
+  behind a gateway.
+- **Single process.** There is one process with one engine. Several uvicorn workers would each
+  have their own breaker and metrics.
+

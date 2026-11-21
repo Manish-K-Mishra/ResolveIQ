@@ -118,10 +118,16 @@ class GeneratedAnswer:
     sentences: tuple      # of dicts {text, citations, quote}
 
 
+def _terminated(text: str) -> str:
+    """Sentence with closing punctuation, so rendered answers read as sentences."""
+    text = text.strip()
+    return text if not text or text[-1] in ".!?:" else text + "."
+
+
 def render_generated(answer: GeneratedAnswer, passages: list[dict]) -> str:
     """Each sentence keeps its own citation marker; a Sources line lists every cited passage."""
     titles = {p["passage_id"]: p.get("title", "") for p in passages}
-    body = " ".join(f"{s['text'].strip()} [{', '.join(s['citations'])}]" for s in answer.sentences)
+    body = " ".join(f"{_terminated(s['text'])} [{', '.join(s['citations'])}]" for s in answer.sentences)
     cited = list(dict.fromkeys(c for s in answer.sentences for c in s["citations"]))
     sources = "; ".join(f"{c} ({titles[c]})" if titles.get(c) else c for c in cited)
     return f"{body}\n\nSources: {sources}"

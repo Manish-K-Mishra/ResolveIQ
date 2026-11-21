@@ -119,8 +119,10 @@ def _build(a, provider, kb, policy, retrieval_info) -> DecisionEngine:
                           answer_mode=answer_mode, generator=generator)
 
 
-def run_batch(engine: DecisionEngine, items: list, db_path: str | Path, run_id: str) -> tuple[list[dict], int]:
-    """Process every item; persist each decision immediately so a crash loses nothing logged."""
+def run_batch(engine: DecisionEngine, items: list, db_path: str | Path, run_id: str,
+              on_record=None) -> tuple[list[dict], int]:
+    """Process every item; persist each decision immediately so a crash loses nothing logged.
+    `on_record(record)` is called after each write (e.g. Prometheus metrics for a watched run)."""
     con = open_log(db_path)
     results = []
     try:
@@ -129,6 +131,8 @@ def run_batch(engine: DecisionEngine, items: list, db_path: str | Path, run_id: 
             record["run_id"] = run_id
             persist(con, record, run_id)
             results.append(record)
+            if on_record is not None:
+                on_record(record)
         logged = count_run(con, run_id)
     finally:
         con.close()
