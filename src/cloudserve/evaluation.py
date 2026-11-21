@@ -1,6 +1,7 @@
 """Unattended evaluation harness (A9, A10).
 
-    python -m cloudserve.evaluation --input data/validation_tickets.json --output evaluation/results
+    python -m evaluation.harness --input data/validation_tickets.json --output evaluation/results/<run>
+    python -m cloudserve.evaluation ...   (same entry point)
 
 Runs the SAME decision engine as the CLI over every ticket in an arbitrary input file, writes
 decisions.json, a fresh decisions.sqlite audit log, metrics.json and metrics_summary.md.
@@ -15,8 +16,9 @@ import time
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from .audit import new_run_id
-from .pipeline import PII_PATTERN, load_tickets
+from .guardrails import PII_PATTERN
+from .ingest import load_tickets
+from .logging_store import new_run_id
 from .runtime import add_engine_arguments, build_engine, run_batch
 
 
@@ -187,7 +189,7 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
         (f"Training overlap: {ov.get('exact_body_matches', 'an unknown number')} of {ov.get('tickets', n)} ticket bodies "
          "in this input are exact copies of development tickets the offline classifier was trained on"
          + ("; intent accuracy on those measures recall of training data, not generalisation, so treat it with caution "
-            "(docs/ARCHITECTURE.md §8)." if ov.get("exact_body_matches") != 0 else
+            "(docs/architecture.md §8)." if ov.get("exact_body_matches") != 0 else
             ", so these figures are not inflated by training-set recall.")),
         "Urgency and expected_route labels vary for identical ticket text in the supplied data, which caps achievable urgency and routing accuracy.",
         "Citation accuracy here is a label-based proxy (cited document among expected_doc_ids); it is not the human claim-by-claim review the Evaluation Framework requires, and hallucination rate is not measured.",

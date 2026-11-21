@@ -19,16 +19,15 @@ from __future__ import annotations
 import argparse
 import json
 import random
-import sys
 from collections import defaultdict
 from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-from cloudserve.classifier import NaiveBayesIntentClassifier  # noqa: E402
-from cloudserve.pipeline import KnowledgeBase, load_json, normalize  # noqa: E402
-from cloudserve.routing import route  # noqa: E402
+from cloudserve.classify import NaiveBayesIntentClassifier
+from cloudserve.ingest import load_json, normalize
+from cloudserve.retrieve import KnowledgeBase
+from cloudserve.route import route
 
 TARGET_AUTO_PRECISION = 0.80
 CONF_GRID = [0.50, 0.60, 0.70, 0.80, 0.90, 0.95, 0.99]

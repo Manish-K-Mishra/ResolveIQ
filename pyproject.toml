@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloudserve"
+version = "0.5.0"
+description = "CloudServe support-ticket resolution workflow (LangGraph, deterministic routing and guardrails)"
+readme = "README.md"
+requires-python = ">=3.11"
+# Single source of truth for dependencies: requirements.txt (exact pins), with the full tested
+# tree in requirements.lock. README installs those first, then this package with --no-deps.
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

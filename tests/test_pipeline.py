@@ -1,7 +1,8 @@
 """Ingestion (A2) and retrieval (A4)."""
 import json
 import pytest
-from cloudserve.pipeline import KnowledgeBase, ValidationError, load_tickets, normalize
+from cloudserve.ingest import ValidationError, load_tickets, normalize
+from cloudserve.retrieve import KnowledgeBase
 
 
 def ticket(channel="email", **kw):

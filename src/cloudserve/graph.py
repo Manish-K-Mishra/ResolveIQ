@@ -3,7 +3,7 @@
     ingest -> classify -> retrieve -> route --(answer)--> select_evidence -> validate -> finalize
                                           `--(escalate)-----------------------------------^
 
-Critical decisions are deterministic Python (routing.route, grounding.validate_response);
+Critical decisions are deterministic Python (route.route, guardrails.validate_response);
 models only classify and select quotes behind adapters. Every path, including failures,
 ends in `finalize`, which builds one governance-schema decision record.
 
@@ -16,10 +16,12 @@ import os
 import time
 import uuid
 from typing import Any, TypedDict
-from .classifier import UNKNOWN
-from .grounding import select_from_document, validate_response
-from .pipeline import KnowledgeBase, mask_pii, normalize, utc_now
-from .routing import route as route_policy
+from .classify import UNKNOWN
+from .generate import select_from_document
+from .guardrails import mask_pii, validate_response
+from .ingest import normalize, utc_now
+from .retrieve import KnowledgeBase
+from .route import route as route_policy
 
 BASE_REQUIREMENTS = ["FR-01", "FR-02", "FR-03", "FR-04", "FR-07"]
 

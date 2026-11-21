@@ -1,6 +1,6 @@
 """Offline classifier (A3): taxonomy, probability, alternatives, no label leakage."""
-from cloudserve.classifier import INTENTS, UNKNOWN, NaiveBayesIntentClassifier
-from cloudserve.pipeline import normalize
+from cloudserve.classify import INTENTS, UNKNOWN, NaiveBayesIntentClassifier
+from cloudserve.ingest import normalize
 from conftest import LOGIN
 
 

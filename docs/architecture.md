@@ -33,21 +33,28 @@ versioned policy file.
                                                      +-----------------------+
 ```
 
-`cloudserve/graph.py` compiles this as a `StateGraph` with one conditional edge out of `route`.
+`src/cloudserve/graph.py` compiles this as a `StateGraph` with one conditional edge out of `route`.
 An escalated ticket never calls the evidence model. Every path, including internal errors and
 malformed input, ends in `finalize`.
 
+All modules are in `src/cloudserve/` (named after the Setup Guide §08 components).
+
 | Component | Module | Technology |
 |---|---|---|
-| Channel normalisation (email, chat, docs_comment, forum) | `pipeline.py` | Python dataclass. `labels` and `history` are dropped, because they are evaluation-only. |
-| Intent and urgency classification | `classifier.py` (offline), `ai.py` (LLM) | Multinomial naive Bayes trained on development tickets, or PR-01 through LangChain with a Pydantic schema |
-| Retrieval | `pipeline.py` `KnowledgeBase` | Lexical overlap over `data/documentation.json`. Whole articles are the unit (29 short articles). |
-| Routing policy | `routing.py`, `config/routing_policy.json` | Deterministic rules, policy RP-1.0 |
-| Evidence selection | `grounding.py` | A verbatim resolution section (deterministic), or PR-04 through LangChain |
-| Guardrails | `grounding.py`, `pipeline.py`, `graph.py` | Grounding, PII, instruction integrity, scope, confidence floor |
-| Audit log | `audit.py` | SQLite. Each record holds the Governance minimum fields. |
-| Model providers | `ai.py` | Ollama, llama.cpp (OpenAI-compatible) and Anthropic, all through LangChain |
-| Evaluation harness | `evaluation.py` | Unattended run that writes metrics JSON and a Markdown summary |
+| Channel normalisation (email, chat, docs_comment, forum) | `ingest.py` | Python dataclass. `labels` and `history` are dropped, because they are evaluation-only. |
+| Intent and urgency classification | `classify.py` (offline naive Bayes and the LLM `LangChainClassifier`) | Multinomial naive Bayes trained on development tickets, or PR-01 through LangChain with a Pydantic schema |
+| Retrieval | `retrieve.py` `KnowledgeBase` | Lexical overlap over `data/documentation.json`. Whole articles are the unit (29 short articles). |
+| Routing policy | `route.py`, `config/routing_policy.json` | Deterministic rules, policy RP-1.0 |
+| Evidence selection and answer rendering | `generate.py` | A verbatim resolution section (deterministic), or PR-04 through LangChain |
+| Guardrails | `guardrails.py` (patterns, `contains_injection`, `validate_response`), `graph.py` (confidence floor, kill switch) | Grounding, PII, instruction integrity, scope, confidence floor |
+| Audit log | `logging_store.py` | SQLite. Each record holds the Governance minimum fields. |
+| Model providers | `providers.py` | Ollama, llama.cpp (OpenAI-compatible) and Anthropic, all through LangChain; timeouts, retries, deadline, circuit breaker |
+| Workflow and wiring | `graph.py`, `runtime.py`, `cli.py` | LangGraph `StateGraph`; shared engine construction; command line |
+| Evaluation harness | `evaluation.py`, entry point `evaluation/harness.py` | Unattended run that writes metrics JSON and a Markdown summary |
+
+Prompts are versioned files in `prompts/build/`, indexed in `prompts/README.md`. Runtime
+artefacts belong in `storage/` (git-ignored). CI (`.github/workflows/ci.yml`) runs the tests and
+the unattended validation gate on every push and pull request.
 
 ## 3. Routing policy RP-1.0
 

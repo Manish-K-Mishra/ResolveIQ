@@ -1,5 +1,6 @@
 """Pre-release validation (A6 citations, A7 blocking)."""
-from cloudserve.grounding import EvidenceSelection, render_response, select_from_document, validate_response
+from cloudserve.generate import EvidenceSelection, render_response, select_from_document
+from cloudserve.guardrails import validate_response
 
 
 def evidence(kb, doc="DOC-AUTH-001"):

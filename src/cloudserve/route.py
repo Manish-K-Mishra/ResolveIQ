@@ -6,10 +6,12 @@ from DEVELOPMENT data only, and its version is written into every decision recor
 from __future__ import annotations
 import json
 from pathlib import Path
-from .classifier import UNKNOWN
-from .pipeline import RISK_PATTERN, Ticket, contains_injection
+from . import ROOT
+from .classify import UNKNOWN
+from .guardrails import RISK_PATTERN, contains_injection
+from .ingest import Ticket
 
-DEFAULT_POLICY_PATH = Path(__file__).resolve().parents[1] / "config" / "routing_policy.json"
+DEFAULT_POLICY_PATH = ROOT / "config" / "routing_policy.json"
 
 # Plain-language reasons a support manager can read (Build Spec §03 Route).
 REASON_TEXT = {

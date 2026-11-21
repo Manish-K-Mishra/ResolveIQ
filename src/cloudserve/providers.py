@@ -1,20 +1,17 @@
-"""Model-independent LLM adapters (Ollama, llama.cpp, Anthropic Claude, OpenAI).
+"""Model-independent LLM plumbing (Ollama, llama.cpp, Anthropic Claude, OpenAI).
 
-Every provider gets the same prompt (PR-01 from prompts/), the same strict schema, a bounded
-request timeout and bounded retries. A run-level circuit breaker (ProviderGuard) stops calling
-a provider that keeps failing, so an outage degrades the run instead of stalling it (A11).
-Model output never makes routing decisions; cloudserve/routing.py does.
+Every model call uses a versioned prompt from prompts/build/, a strict schema, a bounded request
+timeout and bounded retries. A run-level circuit breaker (ProviderGuard) stops calling a provider
+that keeps failing, so an outage degrades the run instead of stalling it (A11).
+Model output never makes routing decisions; route.py does.
 """
 from __future__ import annotations
 import os
 import re
 import threading
-from pathlib import Path
-from typing import Literal
-from pydantic import BaseModel, ConfigDict, Field
-from .classifier import INTENTS, UNKNOWN
+from . import ROOT
 
-PROMPT_DIR = Path(__file__).resolve().parents[1] / "prompts"
+PROMPT_DIR = ROOT / "prompts" / "build"
 PROVIDERS = ("ollama", "llamacpp", "anthropic", "openai")
 DEFAULT_MODELS = {
     "ollama": "gemma4:e2b",        # the model verified on the build machine; use `ollama list`
@@ -22,17 +19,6 @@ DEFAULT_MODELS = {
     "anthropic": "claude-haiku-4-5",
     "openai": "gpt-4o-mini",
 }
-IntentLabel = Literal[INTENTS + (UNKNOWN,)]
-
-
-class Classification(BaseModel):
-    """PR-01 v1.1 output contract: intent restricted to the 22 dataset intents or 'unknown'."""
-    model_config = ConfigDict(extra="forbid")
-    intent: IntentLabel
-    urgency: Literal["low", "medium", "high"]
-    confidence: float = Field(ge=0, le=1)
-    alternatives: list[IntentLabel] = Field(default_factory=list, max_length=3)
-    reason: str = Field(min_length=1, max_length=400)
 
 
 class ModelUnavailable(RuntimeError):
@@ -177,38 +163,3 @@ class ProviderGuard:
             raise
         self.consecutive_failures = 0
         return result
-
-
-class LangChainClassifier:
-    """PR-01 classification through any provider; same contract as the offline classifier."""
-
-    def __init__(self, provider: str | None = None, model_name: str | None = None,
-                 base_url: str | None = None, model=None, guard: ProviderGuard | None = None):
-        self.provider = provider or os.getenv("CLOUDSERVE_PROVIDER", "ollama")
-        self.prompt = load_prompt("PR-01_classification.md")
-        self.guard = guard or ProviderGuard()
-        if model is not None:                       # injected (tests): used as-is
-            self.runnable, self.model_name = model, model_name or "injected"
-        else:
-            chat, self.model_name, extra = build_model(self.provider, model_name, base_url)
-            self.runnable = structured(chat, Classification, self.provider, extra)
-        self.name = f"{self.provider}:{self.model_name}"
-        self.version = self.prompt["label"]
-
-    def messages(self, ticket) -> list:
-        from langchain_core.messages import HumanMessage, SystemMessage
-        system = self.prompt["system"].replace("{allowed_intents}", ", ".join(INTENTS + (UNKNOWN,)))
-        user = (self.prompt["user"].replace("{ticket_id}", ticket.ticket_id)
-                .replace("{channel}", ticket.channel)
-                .replace("{subject}", ticket.subject[:300])
-                .replace("{body}", ticket.body[:4000]))
-        return [SystemMessage(content=system), HumanMessage(content=user)]
-
-    def classify(self, ticket) -> dict:
-        result = self.guard.call(self.runnable.invoke, self.messages(ticket))
-        v = Classification.model_validate(result.model_dump() if hasattr(result, "model_dump") else result)
-        alts = [a for a in dict.fromkeys(v.alternatives) if a != v.intent]
-        return {"intent": v.intent, "urgency": v.urgency, "confidence": v.confidence,
-                # The model names alternatives but gives no per-alternative score.
-                "alternatives": [{"intent": a, "confidence": None} for a in alts],
-                "reason": v.reason, "confidence_type": "uncalibrated_model_score"}

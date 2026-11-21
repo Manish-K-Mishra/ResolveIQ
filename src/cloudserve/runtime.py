@@ -3,13 +3,12 @@ from __future__ import annotations
 import argparse
 import os
 from pathlib import Path
-from .audit import count_run, open_log, persist
-from .classifier import NaiveBayesIntentClassifier
+from . import ROOT
+from .classify import NaiveBayesIntentClassifier
 from .graph import DecisionEngine, auto_send_enabled_from_env
-from .pipeline import KnowledgeBase
-from .routing import DEFAULT_POLICY_PATH, load_policy
-
-ROOT = Path(__file__).resolve().parents[1]
+from .logging_store import count_run, open_log, persist
+from .retrieve import KnowledgeBase
+from .route import DEFAULT_POLICY_PATH, load_policy
 
 
 def load_env() -> None:
@@ -50,7 +49,7 @@ def build_engine(a: argparse.Namespace) -> DecisionEngine:
     try:
         return _build(a, provider, kb, policy)
     except Exception as exc:
-        from .ai import ModelUnavailable
+        from .providers import ModelUnavailable
         if isinstance(exc, ModelUnavailable):   # e.g. missing API key: clear message, no traceback
             raise SystemExit(f"Model provider not usable: {exc}. Use --classifier offline to run without a model.")
         if isinstance(exc, ValueError) and str(exc).startswith("CLOUDSERVE_"):   # bad numeric setting
@@ -61,16 +60,16 @@ def build_engine(a: argparse.Namespace) -> DecisionEngine:
 def _build(a, provider, kb, policy) -> DecisionEngine:
     guard = None
     if a.classifier == "llm" or a.evidence_selector == "llm":
-        from .ai import ProviderGuard
+        from .providers import ProviderGuard
         guard = ProviderGuard()       # one circuit breaker shared by both model calls in this run
     if a.classifier == "llm":
-        from .ai import LangChainClassifier
+        from .classify import LangChainClassifier
         classifier = LangChainClassifier(provider=provider, model_name=a.model, base_url=a.base_url, guard=guard)
     else:
         classifier = NaiveBayesIntentClassifier.from_development_file(a.train)
     selector = None
     if a.evidence_selector == "llm":
-        from .grounding import LangChainEvidenceSelector
+        from .generate import LangChainEvidenceSelector
         selector = LangChainEvidenceSelector(provider=provider, model_name=a.model, base_url=a.base_url, guard=guard)
     return DecisionEngine(kb, policy, classifier, selector,
                           auto_send=a.auto_send or auto_send_enabled_from_env(),

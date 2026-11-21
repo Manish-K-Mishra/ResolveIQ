@@ -1,20 +1,14 @@
-"""Evidence selection and pre-release validation (FR-05, FR-06, A6, A7).
+"""Answer generation with citations (FR-05): evidence selection and response rendering.
 
 The response is EXTRACTIVE: a fixed sentence around a verbatim quote from an approved,
 retrieved article, cited by doc_id. A model may select the quote (PR-04); it may not write
-free text. The validator runs on every candidate response before release and can block it.
+free text. guardrails.validate_response runs on every candidate response before release.
 """
 from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass
-from .pipeline import INJECTION_PATTERN, PII_PATTERN
 
-DOC_ID = re.compile(r"^DOC-[A-Z0-9-]+$")
-# Tone/scope: the system must not claim completed account actions or make commitments.
-SCOPE_PATTERN = re.compile(
-    r"(?i)\b(?:we\s+have\s+(?:issued|refunded|credited|fixed|rotated|changed|reset|restored)"
-    r"|we\s+(?:will|guarantee\s+to)\s+(?:refund|credit|compensate)|guaranteed?)\b")
 _RESOLUTION = re.compile(r"(?im)^## (?:Resolution|Steps|Workaround|How to|Fix|Recommended actions)\b[^\n]*\n")
 
 
@@ -22,10 +16,6 @@ _RESOLUTION = re.compile(r"(?im)^## (?:Resolution|Steps|Workaround|How to|Fix|Re
 class EvidenceSelection:
     doc_id: str
     quote: str
-
-
-def _normalize(s: str) -> str:
-    return re.sub(r"\s+", " ", s).strip()
 
 
 def select_from_document(evidence: list[dict]) -> EvidenceSelection | None:
@@ -46,48 +36,12 @@ def render_response(selection: EvidenceSelection) -> str:
             f"Source: [{selection.doc_id}]")
 
 
-def validate_response(selection: EvidenceSelection | None, evidence: list[dict]) -> dict:
-    """Pre-release checks. Returns {'passed', 'failures', 'guardrail_results', 'response'}.
-
-    grounding: cited doc must be one of the approved retrieved articles and the quote must occur
-    verbatim in it. pii: no private-data patterns in the outbound text. instruction_integrity:
-    no instruction-like text in the outbound text. scope: no completed-action claims/commitments.
-    """
-    results = {"grounding": "pass", "pii": "pass", "instruction_integrity": "pass", "scope": "pass"}
-    failures: list[str] = []
-    if selection is None:
-        results = {k: "not_run" for k in results}
-        results["grounding"] = "fail"
-        return {"passed": False, "failures": ["no_evidence_selection"], "guardrail_results": results, "response": ""}
-    source = next((m["passage"] for m in evidence if m["doc_id"] == selection.doc_id), None)
-    if not DOC_ID.fullmatch(selection.doc_id):
-        failures.append("invalid_document_id")
-    if source is None:
-        failures.append("citation_not_in_retrieval")
-    if not selection.quote or len(selection.quote.strip()) < 40 or len(selection.quote) > 1500:
-        failures.append("quote_invalid_length")
-    elif source is not None and _normalize(selection.quote) not in _normalize(source):
-        failures.append("quote_not_supported_by_source")
-    if failures:
-        results["grounding"] = "fail"
-    response = render_response(selection)
-    if PII_PATTERN.search(response):
-        failures.append("possible_private_data"); results["pii"] = "fail"
-    if INJECTION_PATTERN.search(response):
-        failures.append("suspicious_source_instructions"); results["instruction_integrity"] = "fail"
-    if SCOPE_PATTERN.search(response):
-        failures.append("out_of_scope_commitment"); results["scope"] = "fail"
-    passed = not failures
-    return {"passed": passed, "failures": sorted(set(failures)), "guardrail_results": results,
-            "response": response if passed else ""}
-
-
 class LangChainEvidenceSelector:
     """PR-04: a provider-independent model selects a verbatim quote (it never writes free text)."""
 
     def __init__(self, provider: str | None = None, model_name: str | None = None,
                  base_url: str | None = None, model=None, guard=None):
-        from .ai import ProviderGuard, build_model, load_prompt, structured
+        from .providers import ProviderGuard, build_model, load_prompt, structured
         from pydantic import BaseModel, ConfigDict, Field
 
         class Selected(BaseModel):

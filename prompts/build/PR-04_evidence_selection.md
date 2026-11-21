@@ -7,7 +7,7 @@ changes_from_previous: >
   First registered version. This prompt existed in code since Slice 4 but was never recorded in
   the Stage 3 register (register gap, to be noted in the Stage 5 revision log). It asks the model
   to SELECT a verbatim quote; it never generates free text. The deterministic verifier in
-  cloudserve/grounding.py decides whether the quote is usable.
+  src/cloudserve/guardrails.py decides whether the quote is usable.
 ---
 ## system
 You select supporting evidence for a CloudServe support reply.

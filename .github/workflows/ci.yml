@@ -1,0 +1,27 @@
+name: CI
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # Install exactly as README §1 says. No secrets: tests and the gate run offline.
+      - run: python -m pip install -r requirements.txt -c requirements.lock
+      - run: python -m pip install -e . --no-deps
+      - run: python -m pytest -q
+      # Unattended gate (A9/A10): exits non-zero if the decision log does not reconcile.
+      - run: python -m evaluation.harness --input data/validation_tickets.json --output storage/ci_eval
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ci-eval
+          path: storage/ci_eval
+          if-no-files-found: warn
