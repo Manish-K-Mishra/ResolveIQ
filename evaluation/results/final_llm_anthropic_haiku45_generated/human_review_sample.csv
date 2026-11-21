@@ -1,0 +1,260 @@
+ticket_id,ticket_text_masked,response,cited_passages_text,assessor_1_supported,assessor_2_supported,assessor_1_quality_1to5,assessor_2_quality_1to5,notes
+VAL-0013,"Question about this month's charges
+There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?","To identify what these charges relate to, you can open the usage breakdown for the period, which itemises charges by service and by environment. [DOC-BILL-001#resolution] It's worth checking for resources in staging or development environments, as these are billed at the same rate as production. [DOC-BILL-001#resolution] If you need to request an adjustment, note that invoices are finalised three days after the period ends, and adjustments requested before finalisation appear on the same invoice. [DOC-BILL-001#notes]
+
+Sources: DOC-BILL-001#resolution (Understanding your invoice and usage breakdown); DOC-BILL-001#notes (Understanding your invoice and usage breakdown)","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.
+---
+[DOC-BILL-001#notes] ## Notes
+
+Invoices are finalised three days after the period ends. Adjustments requested before finalisation appear on the same invoice.",,,,,
+VAL-0028,"Deployment rolls back every time
+builds that work last week are now fail during dependency resolution. we having not change our code at all.","Builds that previously succeeded without code changes often fail due to an unpinned dependency releasing a new incompatible version. [DOC-DEPLOY-003#symptoms, DOC-DEPLOY-003#common-causes] Pin your dependencies with exact versions and commit the lock file, as unpinned dependencies are the cause in the large majority of cases of this kind. [DOC-DEPLOY-003#resolution] Compare the runtime version declared in your build configuration against the version you use locally, as the build environment may use a different language runtime. [DOC-DEPLOY-003#common-causes, DOC-DEPLOY-003#resolution] Clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact. [DOC-DEPLOY-003#resolution]
+
+Sources: DOC-DEPLOY-003#symptoms (Build failures caused by dependency resolution); DOC-DEPLOY-003#common-causes (Build failures caused by dependency resolution); DOC-DEPLOY-003#resolution (Build failures caused by dependency resolution)","[DOC-DEPLOY-003#symptoms] ## Symptoms
+
+- Builds that previously succeeded now fail without code changes
+- The build works locally but fails in the pipeline
+- Dependency resolution takes far longer than usual
+---
+[DOC-DEPLOY-003#common-causes] ## Common causes
+
+- An unpinned dependency released a new incompatible version
+- The build environment uses a different language runtime than the local machine
+- The dependency cache holds a partially written artefact
+---
+[DOC-DEPLOY-003#resolution] ## Resolution
+
+1. Pin your dependencies with exact versions and commit the lock file. Unpinned dependencies are the cause in the large majority of cases of this kind.
+2. Compare the runtime version declared in your build configuration against the version you use locally.
+3. Clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact.
+4. If a specific dependency is failing to resolve, check whether its registry is reachable from the build network.",,,,,
+VAL-0033,"Duplicate webhook deliveries
+Signature verification fails for every delivery. We are computing the signature exactly as the documentation describes, over the parsed body.","Signature verification fails when the signature is computed over a parsed body rather than the raw bytes. [DOC-API-003#common-causes] You should compute the signature over the raw request body before any parsing, because re-serialising JSON changes the bytes and invalidates the signature. [DOC-API-003#resolution] To troubleshoot webhook issues, check the webhook delivery log, which records every attempt with the response status and body for the last seven days. [DOC-API-003#resolution]
+
+Sources: DOC-API-003#common-causes (Webhook delivery, retries and signature verification); DOC-API-003#resolution (Webhook delivery, retries and signature verification)","[DOC-API-003#common-causes] ## Common causes
+
+- The endpoint returned a non-2xx status and delivery is being retried
+- The endpoint responded too slowly and the delivery timed out
+- The signature was computed over a parsed body rather than the raw bytes
+---
+[DOC-API-003#resolution] ## Resolution
+
+1. Check the webhook delivery log, which records every attempt with the response status and body for the last seven days.
+2. Return 2xx as quickly as possible and process the event asynchronously. Deliveries time out after five seconds.
+3. Compute the signature over the raw request body before any parsing. Re-serialising JSON changes the bytes and invalidates the signature.
+4. Make your handler idempotent using the event identifier. At-least-once delivery means duplicates are expected rather than exceptional.",,,,,
+VAL-0037,"Question about backup regions
+Are backups replicated outside our primary region? A compliance review has raised this and I need a definite answer.","Backups are replicated to a second region by default. [DOC-DATA-003#common-causes] If your compliance requirements specify that data must remain in a single region, you should review the backup replication setting since cross-region replication is enabled by default. [DOC-DATA-003#resolution]
+
+Sources: DOC-DATA-003#common-causes (Data residency and regional storage); DOC-DATA-003#resolution (Data residency and regional storage)","[DOC-DATA-003#common-causes] ## Common causes
+
+- The organisation was created in a region that no longer suits the requirement
+- Read traffic is being served from the primary region only
+- Backups are replicated to a second region by default
+---
+[DOC-DATA-003#resolution] ## Resolution
+
+1. Check the region shown on the organisation settings page. This is fixed at creation and determines where primary data is stored.
+2. Enable read replicas in additional regions to reduce latency for distant users without moving primary storage.
+3. Review the backup replication setting if a single-region requirement applies, since cross-region replication is enabled by default.
+4. Migrating an organisation between regions requires a planned migration with support and involves a maintenance window.",,,,,
+VAL-0040,"Question about this month's charges
+There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?","Charges may appear for a service that is not in use if a resource was left running in a non-production environment. [DOC-BILL-001#common-causes, DOC-BILL-001#symptoms] To identify the source of these charges, you can open the usage breakdown for the period, which itemises charges by service and by environment. [DOC-BILL-001#resolution] Resources in staging or development environments are billed at the same rate as production, so it's worth checking those areas. [DOC-BILL-001#resolution]
+
+Sources: DOC-BILL-001#common-causes (Understanding your invoice and usage breakdown); DOC-BILL-001#symptoms (Understanding your invoice and usage breakdown); DOC-BILL-001#resolution (Understanding your invoice and usage breakdown)","[DOC-BILL-001#common-causes] ## Common causes
+
+- Usage-based charges accrued beyond the plan allowance
+- A resource was left running in a non-production environment
+- The billing period runs from the subscription date rather than the first of the month
+---
+[DOC-BILL-001#symptoms] ## Symptoms
+
+- The invoice is higher than expected
+- Charges appear for a service that is not in use
+- The billing period does not align with the calendar month
+---
+[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+VAL-0041,"Question about this month's charges
+There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?","Charges may appear for a service that is not in use if a resource was left running in a non-production environment. [DOC-BILL-001#common-causes] To identify these charges, you can open the usage breakdown for the period, which itemises charges by service and by environment. [DOC-BILL-001#resolution] It's worth checking for resources in staging or development environments, which are billed at the same rate as production. [DOC-BILL-001#resolution]
+
+Sources: DOC-BILL-001#common-causes (Understanding your invoice and usage breakdown); DOC-BILL-001#resolution (Understanding your invoice and usage breakdown)","[DOC-BILL-001#common-causes] ## Common causes
+
+- Usage-based charges accrued beyond the plan allowance
+- A resource was left running in a non-production environment
+- The billing period runs from the subscription date rather than the first of the month
+---
+[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+VAL-0042,Our staging environment is picking up production configuration values. I cannot work out where the override is coming from.,"Configuration can differ between environments unexpectedly when an environment override exists that is not visible on the main settings page. [DOC-DEPLOY-004#common-causes] You should review the environment overrides page, which lists values that differ from the defaults for each environment. [DOC-DEPLOY-004#resolution] Configuration scope follows a hierarchy where service scope overrides project scope, and project scope overrides organisation defaults. [DOC-DEPLOY-004#resolution]
+
+Sources: DOC-DEPLOY-004#common-causes (Configuring environment variables and secrets); DOC-DEPLOY-004#resolution (Configuring environment variables and secrets)","[DOC-DEPLOY-004#common-causes] ## Common causes
+
+- The variable was set at project scope but read at service scope
+- The application logs its configuration at startup
+- An environment override exists that is not visible on the main settings page
+---
+[DOC-DEPLOY-004#resolution] ## Resolution
+
+1. Check the scope at which the variable was defined. Service scope overrides project scope, and project scope overrides organisation defaults.
+2. Store anything sensitive as a secret rather than a variable. Secrets are masked in logs and are not readable through the API after creation.
+3. Review the environment overrides page, which lists values that differ from the defaults for each environment.
+4. Redeploy after changing configuration. Running containers do not pick up new values without a restart.",,,,,
+VAL-0044,There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?,"To identify unexpected charges, you can open the usage breakdown for your billing period, which itemises charges by service and by environment. [DOC-BILL-001#resolution] It's worth checking whether any resources are running in staging or development environments, as these are billed at the same rate as production. [DOC-BILL-001#resolution] You should also verify the billing period dates shown at the top of your invoice, as the period runs from the anniversary of your subscription date rather than the first of the month. [DOC-BILL-001#resolution]
+
+Sources: DOC-BILL-001#resolution (Understanding your invoice and usage breakdown)","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+VAL-0047,Are the search endpoints limited differently from the rest? Our read traffic is fine but search is being rejected constantly.,"Yes, search endpoints have different rate limits than general read endpoints. [DOC-API-001#resolution] To confirm the specific limit for your search endpoint, check the rate limit headers returned with every response, which show the limit, remaining allowance, and reset time. [DOC-API-001#resolution] When you receive 429 responses, implement exponential backoff with jitter rather than retrying immediately, as immediate retries prolong throttling. [DOC-API-001#resolution]
+
+Sources: DOC-API-001#resolution (Understanding API rate limits and quota tiers)","[DOC-API-001#resolution] ## Resolution
+
+1. Read the rate limit headers returned with every response. They give the limit, the remaining allowance and the reset time, which is more reliable than inferring the limit from behaviour.
+2. Confirm whether the endpoint has a specific limit. Search and export endpoints are more expensive and are limited more tightly than reads.
+3. Implement exponential backoff with jitter on 429 responses rather than retrying immediately, which prolongs the throttling.
+4. Where sustained higher throughput is genuinely required, the limit can be raised on Business and Enterprise plans through an account request.",,,,,
+VAL-0053,There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?,"To identify unexpected charges, you can open the usage breakdown for your billing period, which itemises charges by service and by environment. [DOC-BILL-001#resolution] It's worth checking whether any resources are running in staging or development environments, as these are billed at the same rate as production. [DOC-BILL-001#resolution] You should also verify the billing period dates shown at the top of your invoice, since the period runs from the anniversary of your subscription date rather than the first of the month. [DOC-BILL-001#resolution]
+
+Sources: DOC-BILL-001#resolution (Understanding your invoice and usage breakdown)","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+VAL-0060,"Webhooks not arriving
+Signature verification fails for every delivery. We are computing the signature exactly as the documentation describes, over the parsed body.","Signature verification fails when the signature is computed over a parsed body rather than the raw bytes. [DOC-API-003#common-causes] You should compute the signature over the raw request body before any parsing, since re-serialising JSON changes the bytes and invalidates the signature. [DOC-API-003#resolution] Check the webhook delivery log to see the response status and body for each attempt over the last seven days. [DOC-API-003#resolution]
+
+Sources: DOC-API-003#common-causes (Webhook delivery, retries and signature verification); DOC-API-003#resolution (Webhook delivery, retries and signature verification)","[DOC-API-003#common-causes] ## Common causes
+
+- The endpoint returned a non-2xx status and delivery is being retried
+- The endpoint responded too slowly and the delivery timed out
+- The signature was computed over a parsed body rather than the raw bytes
+---
+[DOC-API-003#resolution] ## Resolution
+
+1. Check the webhook delivery log, which records every attempt with the response status and body for the last seven days.
+2. Return 2xx as quickly as possible and process the event asynchronously. Deliveries time out after five seconds.
+3. Compute the signature over the raw request body before any parsing. Re-serialising JSON changes the bytes and invalidates the signature.
+4. Make your handler idempotent using the event identifier. At-least-once delivery means duplicates are expected rather than exceptional.",,,,,
+VAL-0061,"Webhooks not arriving
+Signature verification fails for every delivery. We are computing the signature exactly as the documentation describes, over the parsed body.","Signature verification fails when the signature is computed over a parsed body rather than the raw bytes. [DOC-API-003#common-causes] You should compute the signature over the raw request body before any parsing, since re-serialising JSON changes the bytes and invalidates the signature. [DOC-API-003#resolution] You can check the webhook delivery log to see every attempt with the response status and body for the last seven days. [DOC-API-003#resolution]
+
+Sources: DOC-API-003#common-causes (Webhook delivery, retries and signature verification); DOC-API-003#resolution (Webhook delivery, retries and signature verification)","[DOC-API-003#common-causes] ## Common causes
+
+- The endpoint returned a non-2xx status and delivery is being retried
+- The endpoint responded too slowly and the delivery timed out
+- The signature was computed over a parsed body rather than the raw bytes
+---
+[DOC-API-003#resolution] ## Resolution
+
+1. Check the webhook delivery log, which records every attempt with the response status and body for the last seven days.
+2. Return 2xx as quickly as possible and process the event asynchronously. Deliveries time out after five seconds.
+3. Compute the signature over the raw request body before any parsing. Re-serialising JSON changes the bytes and invalidates the signature.
+4. Make your handler idempotent using the event identifier. At-least-once delivery means duplicates are expected rather than exceptional.",,,,,
+VAL-0064,What is the right way to pull a very large extract? Requesting a big page size gets rejected and iterating page by page takes hours.,"For very large extracts, use the export endpoint, which runs asynchronously and returns a download link. [DOC-API-002#resolution] Keep page size at or below two hundred, as larger requests are rejected rather than truncated. [DOC-API-002#resolution] Use cursor pagination and pass the next_cursor value from each response as the cursor parameter of the following request, stopping when it is null. [DOC-API-002#resolution]
+
+Sources: DOC-API-002#resolution (Pagination and handling large result sets)","[DOC-API-002#resolution] ## Resolution
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.",,,,,
+VAL-0065,"Billing period dates unclear
+There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?","To identify what these charges relate to, you can open the usage breakdown for the period, which itemises charges by service and by environment. [DOC-BILL-001#resolution] It's worth checking whether any resources are running in staging or development environments, as these are billed at the same rate as production. [DOC-BILL-001#resolution] You should also verify the billing period dates at the top of your invoice, as the period runs from the anniversary of your subscription date rather than the first of the month. [DOC-BILL-001#resolution]
+
+Sources: DOC-BILL-001#resolution (Understanding your invoice and usage breakdown)","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+VAL-0069,Our staging environment is picking up production configuration values. I cannot work out where the override is coming from.,"Configuration can differ between environments unexpectedly when an environment override exists that is not visible on the main settings page. [DOC-DEPLOY-004#common-causes] You should review the environment overrides page, which lists values that differ from the defaults for each environment. [DOC-DEPLOY-004#resolution] Configuration scope follows a hierarchy where service scope overrides project scope, and project scope overrides organisation defaults. [DOC-DEPLOY-004#resolution]
+
+Sources: DOC-DEPLOY-004#common-causes (Configuring environment variables and secrets); DOC-DEPLOY-004#resolution (Configuring environment variables and secrets)","[DOC-DEPLOY-004#common-causes] ## Common causes
+
+- The variable was set at project scope but read at service scope
+- The application logs its configuration at startup
+- An environment override exists that is not visible on the main settings page
+---
+[DOC-DEPLOY-004#resolution] ## Resolution
+
+1. Check the scope at which the variable was defined. Service scope overrides project scope, and project scope overrides organisation defaults.
+2. Store anything sensitive as a secret rather than a variable. Secrets are masked in logs and are not readable through the API after creation.
+3. Review the environment overrides page, which lists values that differ from the defaults for each environment.
+4. Redeploy after changing configuration. Running containers do not pick up new values without a restart.",,,,,
+VAL-0073,"Invoice higher than expected
+bill is very high this month. i not understand the charge. please explain what is this.","To understand your invoice, you can open the usage breakdown for the period, which itemises charges by service and by environment. [DOC-BILL-001#resolution] Check whether any resources are running in staging or development environments, as these are billed at the same rate as production. [DOC-BILL-001#resolution] Also verify the billing period dates at the top of your invoice, since the period runs from the anniversary of your subscription date rather than the first of the month. [DOC-BILL-001#resolution]
+
+Sources: DOC-BILL-001#resolution (Understanding your invoice and usage breakdown)","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+VAL-0076,"Need data to stay in the EU
+We need our data to remain within the EU for a contract we are signing. Our organisation was created some time ago and I am not sure which region it is in.","To find which region your organisation is in, check the region shown on the organisation settings page, as this is fixed at creation and determines where primary data is stored. [DOC-DATA-003#resolution] If your organisation was created in a region that no longer suits your EU requirement, migrating an organisation between regions requires a planned migration with support and involves a maintenance window. [DOC-DATA-003#common-causes, DOC-DATA-003#resolution] Note that metadata such as account names and billing records is stored centrally regardless of the data region. [DOC-DATA-003#notes]
+
+Sources: DOC-DATA-003#resolution (Data residency and regional storage); DOC-DATA-003#common-causes (Data residency and regional storage); DOC-DATA-003#notes (Data residency and regional storage)","[DOC-DATA-003#resolution] ## Resolution
+
+1. Check the region shown on the organisation settings page. This is fixed at creation and determines where primary data is stored.
+2. Enable read replicas in additional regions to reduce latency for distant users without moving primary storage.
+3. Review the backup replication setting if a single-region requirement applies, since cross-region replication is enabled by default.
+4. Migrating an organisation between regions requires a planned migration with support and involves a maintenance window.
+---
+[DOC-DATA-003#common-causes] ## Common causes
+
+- The organisation was created in a region that no longer suits the requirement
+- Read traffic is being served from the primary region only
+- Backups are replicated to a second region by default
+---
+[DOC-DATA-003#notes] ## Notes
+
+Metadata such as account names and billing records is stored centrally regardless of the data region.",,,,,
+VAL-0077,"Our billing period does not seem to match the calendar month, which is making reconciliation difficult. Is that expected?","Yes, that is expected. The billing period runs from the anniversary of the subscription date rather than the first of the month. [DOC-BILL-001#resolution] You can check the billing period dates at the top of your invoice to confirm when your specific period runs. [DOC-BILL-001#resolution]
+
+Sources: DOC-BILL-001#resolution (Understanding your invoice and usage breakdown)","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+VAL-0080,Builds that worked last week are now failing during dependency resolution. We have not changed our code at all. This is blocking a release we had planned for yesterday morning.,"Builds that previously succeeded now failing without code changes is a known symptom of dependency resolution issues. [DOC-DEPLOY-003#symptoms] An unpinned dependency releasing a new incompatible version is the most common cause of this type of failure. [DOC-DEPLOY-003#common-causes] To resolve this, pin your dependencies with exact versions and commit the lock file, as unpinned dependencies cause the large majority of cases of this kind. [DOC-DEPLOY-003#resolution] You should also compare the runtime version declared in your build configuration against the version you use locally. [DOC-DEPLOY-003#resolution] If the issue persists, clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact. [DOC-DEPLOY-003#resolution] Build logs retain the full resolution output for thirty days, which can help identify which version changed. [DOC-DEPLOY-003#notes]
+
+Sources: DOC-DEPLOY-003#symptoms (Build failures caused by dependency resolution); DOC-DEPLOY-003#common-causes (Build failures caused by dependency resolution); DOC-DEPLOY-003#resolution (Build failures caused by dependency resolution); DOC-DEPLOY-003#notes (Build failures caused by dependency resolution)","[DOC-DEPLOY-003#symptoms] ## Symptoms
+
+- Builds that previously succeeded now fail without code changes
+- The build works locally but fails in the pipeline
+- Dependency resolution takes far longer than usual
+---
+[DOC-DEPLOY-003#common-causes] ## Common causes
+
+- An unpinned dependency released a new incompatible version
+- The build environment uses a different language runtime than the local machine
+- The dependency cache holds a partially written artefact
+---
+[DOC-DEPLOY-003#resolution] ## Resolution
+
+1. Pin your dependencies with exact versions and commit the lock file. Unpinned dependencies are the cause in the large majority of cases of this kind.
+2. Compare the runtime version declared in your build configuration against the version you use locally.
+3. Clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact.
+4. If a specific dependency is failing to resolve, check whether its registry is reachable from the build network.
+---
+[DOC-DEPLOY-003#notes] ## Notes
+
+Build logs retain the full resolution output for thirty days, which is usually enough to identify which version changed.",,,,,

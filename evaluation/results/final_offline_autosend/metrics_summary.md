@@ -1,16 +1,19 @@
-# Evaluation summary — run-20261121T185923-9b900d
+# Evaluation summary — run-20261121T195711-d12b9e
 
-Input `data/validation_tickets.json` (80 tickets), engine `langgraph`, classifier `naive_bayes_intent (nb-a8a09fec6990)`, policy `RP-1.0`, automatic sending OFF (kill switch), 2026-11-21T18:59:23+00:00.
+Input `data/validation_tickets.json` (80 tickets), engine `langgraph`, classifier `naive_bayes_intent (nb-a8a09fec6990)`, answer mode `extractive`, policy `RP-1.0`, automatic sending ON, 2026-11-21T19:57:11+00:00.
 
 | Measure | Value |
 |---|---|
 | Processed / logged | 80 / 80 (reconciles: True) |
-| Auto-responded (sent) / held by kill switch | 0 / 33 |
+| Auto-responded (sent) / held by kill switch | 33 / 0 |
 | Escalated / blocked | 47 / 0 |
-| FCR (actual / if released) | 0.0% / 41.2% |
-| Escalation rate (actual / if released) | 100.0% / 58.8% |
-| Latency median / p95 (s) | 0.0008 / 0.0011 |
+| FCR (actual / if released) | 41.2% / 41.2% |
+| Escalation rate (actual / if released) | 58.8% / 58.8% |
+| Latency median / p95 (s), live decisions only | 0.0009 / 0.0012 |
 | Private data in outbound responses | 0 |
+| Model calls (live / cache hits) | 0 / 0 (cache mode: not_used (no model in this run)) |
+| Tokens in / out; estimated cost this run / if all live (USD) | 0 / 0; 0 / 0 |
+| Projected monthly cost (USD, 2167 tickets/month) | 0.0 |
 | Retriever (fallback) | lexical:term-overlap, article passages (fallback: False) |
 | Cited quotes found at their recorded corpus span | 1.0 |
 | Intent accuracy / macro precision / macro recall | 0.975 / 0.9849 / 0.9849 |

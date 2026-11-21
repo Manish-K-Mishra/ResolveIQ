@@ -1,7 +1,7 @@
 [
   {
-    "decision_id": "099ac465386549798c77ea76a5bfe283",
-    "timestamp": "2026-11-21T18:59:23.613819+00:00",
+    "decision_id": "67a4127e2cd64834a5ae70ae6d2592c0",
+    "timestamp": "2026-11-21T19:57:10.933978+00:00",
     "ticket_id": "VAL-0001",
     "channel": "forum",
     "stage": "routing",
@@ -84,6 +84,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "forum ticket from a business customer: Need to rotate an exposed key One of our production keys started returning 401 at around yesterday morning without any change on our side. Other keys against th…",
       "intent": "api_key_issue",
@@ -106,14 +116,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.612048+00:00",
-    "completed_at": "2026-11-21T18:59:23.613905+00:00",
-    "latency_seconds": 0.0019,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.931599+00:00",
+    "completed_at": "2026-11-21T19:57:10.934074+00:00",
+    "latency_seconds": 0.0025,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "6be4bbf316634f7f92a178e7b0b43c35",
-    "timestamp": "2026-11-21T18:59:23.615031+00:00",
+    "decision_id": "76bc56a666a74e74a45af5c5152cefcc",
+    "timestamp": "2026-11-21T19:57:10.935216+00:00",
     "ticket_id": "VAL-0002",
     "channel": "chat",
     "stage": "routing",
@@ -204,6 +226,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a standard customer: Following up on my previous message. Any update?",
       "intent": "unclear_request",
@@ -227,14 +259,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.614240+00:00",
-    "completed_at": "2026-11-21T18:59:23.615098+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.934374+00:00",
+    "completed_at": "2026-11-21T19:57:10.935293+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "ec2a499e3c9c446bb25fcd29f3c97e3c",
-    "timestamp": "2026-11-21T18:59:23.616155+00:00",
+    "decision_id": "5c7a5aeb32a047f0945a4cff09f6f32d",
+    "timestamp": "2026-11-21T19:57:10.936406+00:00",
     "ticket_id": "VAL-0003",
     "channel": "docs_comment",
     "stage": "routing",
@@ -306,6 +350,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "docs_comment ticket from a standard customer: It is not working nothing is loading properly today. Can someone look into this? kindly check and revert.",
       "intent": "unclear_request",
@@ -326,14 +380,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.615414+00:00",
-    "completed_at": "2026-11-21T18:59:23.616219+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.935617+00:00",
+    "completed_at": "2026-11-21T19:57:10.936479+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "2050c97caea244cb9a64fc15af228f03",
-    "timestamp": "2026-11-21T18:59:23.617780+00:00",
+    "decision_id": "1e783b7999fc4ef899626e2344d29cae",
+    "timestamp": "2026-11-21T19:57:10.938235+00:00",
     "ticket_id": "VAL-0004",
     "channel": "email",
     "stage": "validation",
@@ -396,10 +462,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -434,7 +500,26 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a business customer: MFA code keeps getting rejected my authenticator app codes are being rejected every time. i am having tried generating new ones several times.",
+      "intent": "authentication_failure",
+      "urgency": "medium",
+      "sources": [
+        "DOC-AUTH-002#article",
+        "DOC-PERF-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -449,14 +534,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.616526+00:00",
-    "completed_at": "2026-11-21T18:59:23.617849+00:00",
-    "latency_seconds": 0.0013,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.936876+00:00",
+    "completed_at": "2026-11-21T19:57:10.938313+00:00",
+    "latency_seconds": 0.0014,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "bd6111b2b9f24c27ab1e77b486c52a04",
-    "timestamp": "2026-11-21T18:59:23.619182+00:00",
+    "decision_id": "3a062299bde14fd4b08272f6b027a9e5",
+    "timestamp": "2026-11-21T19:57:10.939991+00:00",
     "ticket_id": "VAL-0005",
     "channel": "chat",
     "stage": "validation",
@@ -510,10 +607,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -548,7 +645,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "chat ticket from a standard customer: Our cursor seems to stop working partway through a long iteration. Is there an expiry we should be handling?",
+      "intent": "api_usage_question",
+      "urgency": "medium",
+      "sources": [
+        "DOC-API-002#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -563,14 +678,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.618156+00:00",
-    "completed_at": "2026-11-21T18:59:23.619241+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.938889+00:00",
+    "completed_at": "2026-11-21T19:57:10.940065+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "04863ef5a6d7435a85d5930e7b204806",
-    "timestamp": "2026-11-21T18:59:23.620370+00:00",
+    "decision_id": "539699ac91a147b0833b90b843895081",
+    "timestamp": "2026-11-21T19:57:10.941234+00:00",
     "ticket_id": "VAL-0006",
     "channel": "email",
     "stage": "routing",
@@ -641,6 +768,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a standard customer: MFA code keeps getting rejected I have been trying to sign in for the last two hours and keep getting an invalid credentials message. I am certain the password …",
       "intent": "authentication_failure",
@@ -661,14 +798,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.619541+00:00",
-    "completed_at": "2026-11-21T18:59:23.620432+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.940352+00:00",
+    "completed_at": "2026-11-21T19:57:10.941304+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "9043de3ebf2e4e2fab5ad635a9db5310",
-    "timestamp": "2026-11-21T18:59:23.621420+00:00",
+    "decision_id": "b510506b1824450a8811fa885adf8225",
+    "timestamp": "2026-11-21T19:57:10.942455+00:00",
     "ticket_id": "VAL-0007",
     "channel": "chat",
     "stage": "routing",
@@ -740,6 +889,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a business customer: We have a problem and need someone to call us urgently.",
       "intent": "unclear_request",
@@ -760,14 +919,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.620729+00:00",
-    "completed_at": "2026-11-21T18:59:23.621485+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.941626+00:00",
+    "completed_at": "2026-11-21T19:57:10.942528+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "76b187e6206b4bbba21019ec899ee120",
-    "timestamp": "2026-11-21T18:59:23.622819+00:00",
+    "decision_id": "692e4d8d00c04111884681924c9c1ef5",
+    "timestamp": "2026-11-21T19:57:10.944011+00:00",
     "ticket_id": "VAL-0008",
     "channel": "chat",
     "stage": "validation",
@@ -821,10 +992,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -859,7 +1030,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "chat ticket from a standard customer: We are tightening permissions after a review and I want to understand how group membership interacts with directly assigned roles.",
+      "intent": "account_access",
+      "urgency": "medium",
+      "sources": [
+        "DOC-ACCT-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -874,14 +1063,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.621763+00:00",
-    "completed_at": "2026-11-21T18:59:23.622882+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.942903+00:00",
+    "completed_at": "2026-11-21T19:57:10.944084+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "a75eaccf51df49eaa364092d8bdc1d8a",
-    "timestamp": "2026-11-21T18:59:23.623969+00:00",
+    "decision_id": "0727b65608ab46aaa51d24571dcd05ad",
+    "timestamp": "2026-11-21T19:57:10.945137+00:00",
     "ticket_id": "VAL-0009",
     "channel": "docs_comment",
     "stage": "routing",
@@ -971,6 +1172,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "docs_comment ticket from a standard customer: Retention period question We need to demonstrate that read access to customer records is logged. I cannot find these events in the audit log.",
       "intent": "compliance_request",
@@ -994,14 +1205,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.623192+00:00",
-    "completed_at": "2026-11-21T18:59:23.624031+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.944386+00:00",
+    "completed_at": "2026-11-21T19:57:10.945202+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "ace0afc9822c4bcf8bc037aff428d152",
-    "timestamp": "2026-11-21T18:59:23.625071+00:00",
+    "decision_id": "681a795b99ce43fab6fa9b77efb0a39d",
+    "timestamp": "2026-11-21T19:57:10.946210+00:00",
     "ticket_id": "VAL-0010",
     "channel": "docs_comment",
     "stage": "routing",
@@ -1082,6 +1305,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "docs_comment ticket from a business customer: Invoice higher than expected Our invoice this month is considerably higher than usual and I cannot see why from the summary. Could you help me understand what h…",
       "intent": "billing_query",
@@ -1104,14 +1337,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.624331+00:00",
-    "completed_at": "2026-11-21T18:59:23.625131+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.945467+00:00",
+    "completed_at": "2026-11-21T19:57:10.946273+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "9def8969f31c4b58b2dd82fb57647c89",
-    "timestamp": "2026-11-21T18:59:23.626191+00:00",
+    "decision_id": "a07b4ebdd0c14c81b794d1903d71d036",
+    "timestamp": "2026-11-21T19:57:10.947364+00:00",
     "ticket_id": "VAL-0011",
     "channel": "forum",
     "stage": "routing",
@@ -1182,6 +1427,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "forum ticket from a standard customer: How do I revert to the previous revision We shipped a release yesterday morning that has broken checkout for a portion of our customers. We need to get back to …",
       "intent": "rollback_request",
@@ -1202,14 +1457,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.625391+00:00",
-    "completed_at": "2026-11-21T18:59:23.626261+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.946559+00:00",
+    "completed_at": "2026-11-21T19:57:10.947434+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "17af44d3d24146818c606b025a9b21d7",
-    "timestamp": "2026-11-21T18:59:23.627288+00:00",
+    "decision_id": "c8b13b332e6c477c841e6131f5bba2b5",
+    "timestamp": "2026-11-21T19:57:10.949011+00:00",
     "ticket_id": "VAL-0012",
     "channel": "email",
     "stage": "routing",
@@ -1290,6 +1557,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a standard customer: Need to roll back the latest release How do I revert to an earlier revision? The release we put out this morning is causing errors and I would rather roll back …",
       "intent": "rollback_request",
@@ -1312,14 +1589,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.626536+00:00",
-    "completed_at": "2026-11-21T18:59:23.627348+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.948087+00:00",
+    "completed_at": "2026-11-21T19:57:10.949082+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "163aae501cc64976922a0c3da1aed05b",
-    "timestamp": "2026-11-21T18:59:23.628782+00:00",
+    "decision_id": "c819c5ba5ae34aaa8fe5fa1240ebf8c3",
+    "timestamp": "2026-11-21T19:57:10.950600+00:00",
     "ticket_id": "VAL-0013",
     "channel": "docs_comment",
     "stage": "validation",
@@ -1373,10 +1662,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -1411,7 +1700,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "docs_comment ticket from a business customer: Question about this month's charges There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?",
+      "intent": "billing_query",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -1426,14 +1733,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.627679+00:00",
-    "completed_at": "2026-11-21T18:59:23.628841+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.949523+00:00",
+    "completed_at": "2026-11-21T19:57:10.950661+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "135a9093c4ab4bcd8109967c1aa87719",
-    "timestamp": "2026-11-21T18:59:23.629965+00:00",
+    "decision_id": "43d51d5a75d7400b8f13a94b8d2c90e9",
+    "timestamp": "2026-11-21T19:57:10.951692+00:00",
     "ticket_id": "VAL-0014",
     "channel": "email",
     "stage": "routing",
@@ -1504,6 +1823,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a standard customer: Bad release in production we shipped a release around 14:00 yesterday that has broken checkout for portion of our customers. We need to get back to the previous…",
       "intent": "rollback_request",
@@ -1524,14 +1853,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.629179+00:00",
-    "completed_at": "2026-11-21T18:59:23.630031+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.950948+00:00",
+    "completed_at": "2026-11-21T19:57:10.951754+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "83550de5daf64c58a5d8793434abcee3",
-    "timestamp": "2026-11-21T18:59:23.630957+00:00",
+    "decision_id": "f9a55c6d8ff74ce4b66ad24edf83d8d5",
+    "timestamp": "2026-11-21T19:57:10.952671+00:00",
     "ticket_id": "VAL-0015",
     "channel": "forum",
     "stage": "routing",
@@ -1603,6 +1944,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "forum ticket from a standard customer: Urgent help needed We have a problem and need someone to call us urgently.",
       "intent": "unclear_request",
@@ -1623,14 +1974,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.630338+00:00",
-    "completed_at": "2026-11-21T18:59:23.631013+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.952000+00:00",
+    "completed_at": "2026-11-21T19:57:10.952734+00:00",
     "latency_seconds": 0.0007,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "8366757f857e4a47a886b8cef6cd53e2",
-    "timestamp": "2026-11-21T18:59:23.631925+00:00",
+    "decision_id": "b4f5c84f6a2b4b429cdba465cb708fed",
+    "timestamp": "2026-11-21T19:57:10.953805+00:00",
     "ticket_id": "VAL-0016",
     "channel": "chat",
     "stage": "routing",
@@ -1701,6 +2064,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a standard customer: The service is noticeably slow during our afternoon peak and fine the rest of the day. We have autoscaling enabled so I expected it to cope.",
       "intent": "performance_degradation",
@@ -1721,14 +2094,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.631263+00:00",
-    "completed_at": "2026-11-21T18:59:23.631981+00:00",
-    "latency_seconds": 0.0007,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.953035+00:00",
+    "completed_at": "2026-11-21T19:57:10.953875+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "46dc8ee2026a4d6dbb7b60b2e37dc6be",
-    "timestamp": "2026-11-21T18:59:23.632836+00:00",
+    "decision_id": "cf5dbfcc38de42af9dfd923182835e4e",
+    "timestamp": "2026-11-21T19:57:10.954879+00:00",
     "ticket_id": "VAL-0017",
     "channel": "docs_comment",
     "stage": "routing",
@@ -1800,6 +2185,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "docs_comment ticket from a standard customer: Question It is not working. Please help.",
       "intent": "api_usage_question",
@@ -1820,14 +2215,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.632247+00:00",
-    "completed_at": "2026-11-21T18:59:23.632890+00:00",
-    "latency_seconds": 0.0006,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.954199+00:00",
+    "completed_at": "2026-11-21T19:57:10.954940+00:00",
+    "latency_seconds": 0.0007,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "0fbadb1dba4949f095ecbfe8b778e322",
-    "timestamp": "2026-11-21T18:59:23.634124+00:00",
+    "decision_id": "696295855e1c4480aa521ce9c12a6a3d",
+    "timestamp": "2026-11-21T19:57:10.956244+00:00",
     "ticket_id": "VAL-0018",
     "channel": "email",
     "stage": "validation",
@@ -1881,10 +2288,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -1919,7 +2326,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a enterprise customer: How do I page through large results Our cursor seems to stop working partway through a long iteration. Is there an expiry we should be handling?",
+      "intent": "api_usage_question",
+      "urgency": "medium",
+      "sources": [
+        "DOC-API-002#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -1934,14 +2359,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.633165+00:00",
-    "completed_at": "2026-11-21T18:59:23.634181+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.955198+00:00",
+    "completed_at": "2026-11-21T19:57:10.956315+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "b781bce5fb514a94a69cd384c233ac6f",
-    "timestamp": "2026-11-21T18:59:23.635246+00:00",
+    "decision_id": "aafc5f4a5bbc4470a8dfb91668d26d09",
+    "timestamp": "2026-11-21T19:57:10.957381+00:00",
     "ticket_id": "VAL-0019",
     "channel": "email",
     "stage": "routing",
@@ -2031,6 +2468,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a business customer: Remove a departing team member my team member not able to open project. i give permission already two time. still not working.",
       "intent": "account_access",
@@ -2054,14 +2501,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.634512+00:00",
-    "completed_at": "2026-11-21T18:59:23.635307+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.956608+00:00",
+    "completed_at": "2026-11-21T19:57:10.957453+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "8caa0aca870845e59b48f3508e007c4a",
-    "timestamp": "2026-11-21T18:59:23.636315+00:00",
+    "decision_id": "a428dd2d83a047e5906f3b5f97d7a4ab",
+    "timestamp": "2026-11-21T19:57:10.958543+00:00",
     "ticket_id": "VAL-0020",
     "channel": "email",
     "stage": "routing",
@@ -2143,6 +2602,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a standard customer: Would like custom retention Are staged rollouts on the roadmap? We would like to move traffic gradually rather than all at once.",
       "intent": "feature_request",
@@ -2165,14 +2634,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.635610+00:00",
-    "completed_at": "2026-11-21T18:59:23.636375+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.957747+00:00",
+    "completed_at": "2026-11-21T19:57:10.958610+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "0b33a17594d74c74b4e98f24e63d3b56",
-    "timestamp": "2026-11-21T18:59:23.637401+00:00",
+    "decision_id": "2d1b4dd139264f7d849158a967acfdbf",
+    "timestamp": "2026-11-21T19:57:10.959729+00:00",
     "ticket_id": "VAL-0021",
     "channel": "chat",
     "stage": "routing",
@@ -2243,6 +2724,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a standard customer: We shipped a release earlier today that has broken checkout for a portion of our customers. We need to get back to the previous version quickly. What is the fas…",
       "intent": "rollback_request",
@@ -2263,14 +2754,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.636658+00:00",
-    "completed_at": "2026-11-21T18:59:23.637462+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.958921+00:00",
+    "completed_at": "2026-11-21T19:57:10.959798+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "bd91edc58e7b420ea43444878643fd5b",
-    "timestamp": "2026-11-21T18:59:23.638435+00:00",
+    "decision_id": "9ed85c8f19934c61aa469f31696c066a",
+    "timestamp": "2026-11-21T19:57:10.960859+00:00",
     "ticket_id": "VAL-0022",
     "channel": "docs_comment",
     "stage": "routing",
@@ -2341,6 +2844,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "docs_comment ticket from a standard customer: Service slow at peak hours The service is noticeably slow during our afternoon peak and fine the rest of the day. We have autoscaling enabled so I expected it t…",
       "intent": "performance_degradation",
@@ -2361,14 +2874,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.637732+00:00",
-    "completed_at": "2026-11-21T18:59:23.638491+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.960094+00:00",
+    "completed_at": "2026-11-21T19:57:10.960925+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "a90dfe37716f473a8c35048a6f4db7d9",
-    "timestamp": "2026-11-21T18:59:23.639479+00:00",
+    "decision_id": "e0203742ba284a0dad1e01c651db3619",
+    "timestamp": "2026-11-21T19:57:10.961925+00:00",
     "ticket_id": "VAL-0023",
     "channel": "email",
     "stage": "routing",
@@ -2449,6 +2974,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a business customer: Migrating our app across We have just signed up and I am not sure where to start. We have a containerised application and would like to get it deployed.",
       "intent": "onboarding",
@@ -2471,14 +3006,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.638761+00:00",
-    "completed_at": "2026-11-21T18:59:23.639539+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.961197+00:00",
+    "completed_at": "2026-11-21T19:57:10.961995+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "3e3575c90d1346fe8d8018c53a9f200e",
-    "timestamp": "2026-11-21T18:59:23.640500+00:00",
+    "decision_id": "f6ca13aa10004e6ba91956494fd68ea8",
+    "timestamp": "2026-11-21T19:57:10.963110+00:00",
     "ticket_id": "VAL-0024",
     "channel": "chat",
     "stage": "routing",
@@ -2559,6 +3106,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a standard customer: A key can read fine but every write returns a permission error. I created it myself and I thought I gave it full access.",
       "intent": "api_key_issue",
@@ -2581,14 +3138,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.639810+00:00",
-    "completed_at": "2026-11-21T18:59:23.640567+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.962272+00:00",
+    "completed_at": "2026-11-21T19:57:10.963179+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "f9b57daf0b784b9f83e651dedada8b30",
-    "timestamp": "2026-11-21T18:59:23.641569+00:00",
+    "decision_id": "079005d8fe2b4ab789df24e19e21e9ef",
+    "timestamp": "2026-11-21T19:57:10.964263+00:00",
     "ticket_id": "VAL-0025",
     "channel": "chat",
     "stage": "routing",
@@ -2669,6 +3238,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a business customer: every deployment fails at health check stage. i am having increase timeout twice already and it makes no difference. kindly check and revert.",
       "intent": "deployment_failure",
@@ -2691,14 +3270,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.640848+00:00",
-    "completed_at": "2026-11-21T18:59:23.641628+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.963473+00:00",
+    "completed_at": "2026-11-21T19:57:10.964331+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "66d8b79c81324e8ba148123cac4389c7",
-    "timestamp": "2026-11-21T18:59:23.642621+00:00",
+    "decision_id": "88e2ca4510514706b2addc78377a6a0f",
+    "timestamp": "2026-11-21T19:57:10.965371+00:00",
     "ticket_id": "VAL-0026",
     "channel": "email",
     "stage": "routing",
@@ -2788,6 +3379,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a business customer: Need data to stay in the EU we need our data to remain within EU for contract we are signing. Our organisation created some time ago and i not sure which region…",
       "intent": "data_residency",
@@ -2811,14 +3412,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.641891+00:00",
-    "completed_at": "2026-11-21T18:59:23.642677+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.964621+00:00",
+    "completed_at": "2026-11-21T19:57:10.965437+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "c47b42d921434979b10821767506225b",
-    "timestamp": "2026-11-21T18:59:23.643872+00:00",
+    "decision_id": "cca40349250b4c4a9d3b16f9a505c613",
+    "timestamp": "2026-11-21T19:57:10.966789+00:00",
     "ticket_id": "VAL-0027",
     "channel": "email",
     "stage": "validation",
@@ -2881,10 +3494,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -2919,7 +3532,26 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a enterprise customer: Usage allowance already consumed Overage charges appeared on our invoice that we were not expecting. We thought we were well inside our allowance.",
+      "intent": "quota_or_overage",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-003#article",
+        "DOC-BILL-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -2934,14 +3566,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.642940+00:00",
-    "completed_at": "2026-11-21T18:59:23.643925+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.965710+00:00",
+    "completed_at": "2026-11-21T19:57:10.966855+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "59ab090b79b64fbfb1495568275e81cf",
-    "timestamp": "2026-11-21T18:59:23.645278+00:00",
+    "decision_id": "ba0855e7ecc8402281ff5134016546e6",
+    "timestamp": "2026-11-21T19:57:10.968434+00:00",
     "ticket_id": "VAL-0028",
     "channel": "email",
     "stage": "validation",
@@ -3031,10 +3675,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -3069,7 +3713,29 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a business customer: Deployment rolls back every time builds that work last week are now fail during dependency resolution. we having not change our code at all.",
+      "intent": "deployment_failure",
+      "urgency": "medium",
+      "sources": [
+        "DOC-DEPLOY-001#article",
+        "DOC-DEPLOY-003#article",
+        "DOC-PERF-001#article",
+        "DOC-DEPLOY-002#article",
+        "DOC-API-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -3084,14 +3750,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.644182+00:00",
-    "completed_at": "2026-11-21T18:59:23.645337+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.967341+00:00",
+    "completed_at": "2026-11-21T19:57:10.968501+00:00",
     "latency_seconds": 0.0012,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "ee23245e14b64d3ebd61ccf2ceeec285",
-    "timestamp": "2026-11-21T18:59:23.646357+00:00",
+    "decision_id": "0f155edcf3ce49b3a6339ad7a26e5f13",
+    "timestamp": "2026-11-21T19:57:10.969693+00:00",
     "ticket_id": "VAL-0029",
     "channel": "chat",
     "stage": "routing",
@@ -3208,6 +3886,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a standard customer: Could you point me at the right starting place? I have created an account but the console has more in it than I expected.",
       "intent": "onboarding",
@@ -3234,14 +3922,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.645632+00:00",
-    "completed_at": "2026-11-21T18:59:23.646416+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.968945+00:00",
+    "completed_at": "2026-11-21T19:57:10.969760+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "a408d73479b4484ea86cc5dd42e84055",
-    "timestamp": "2026-11-21T18:59:23.647414+00:00",
+    "decision_id": "e68595fced304daabb91fd870df7a61f",
+    "timestamp": "2026-11-21T19:57:10.970824+00:00",
     "ticket_id": "VAL-0030",
     "channel": "email",
     "stage": "routing",
@@ -3332,6 +4032,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a standard customer: Feature request: staged rollouts Are staged rollouts on the roadmap? We would like to move traffic gradually rather than all at once.",
       "intent": "feature_request",
@@ -3355,14 +4065,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.646701+00:00",
-    "completed_at": "2026-11-21T18:59:23.647474+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.970043+00:00",
+    "completed_at": "2026-11-21T19:57:10.970890+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "a1afafcadc334525bd759c9fdca46db5",
-    "timestamp": "2026-11-21T18:59:23.648478+00:00",
+    "decision_id": "cf978033d7de45719ba398c4a8bd01db",
+    "timestamp": "2026-11-21T19:57:10.971992+00:00",
     "ticket_id": "VAL-0031",
     "channel": "email",
     "stage": "routing",
@@ -3433,6 +4155,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a standard customer: Bad release in production We shipped a release yesterday morning that has broken checkout for a portion of our customers. We need to get back to the previous ve…",
       "intent": "rollback_request",
@@ -3453,14 +4185,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.647730+00:00",
-    "completed_at": "2026-11-21T18:59:23.648538+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.971171+00:00",
+    "completed_at": "2026-11-21T19:57:10.972056+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "6bb2339683a84ffc953e1969967b30c8",
-    "timestamp": "2026-11-21T18:59:23.649550+00:00",
+    "decision_id": "ebb5227c825f4ddf8c68138f916435fd",
+    "timestamp": "2026-11-21T19:57:10.973108+00:00",
     "ticket_id": "VAL-0032",
     "channel": "chat",
     "stage": "routing",
@@ -3569,6 +4313,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a enterprise customer: It would be very useful to set spend caps per project rather than only for the whole organisation. At the moment one team's overspend affects everyone.",
       "intent": "feature_request",
@@ -3594,14 +4348,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.648803+00:00",
-    "completed_at": "2026-11-21T18:59:23.649609+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.972337+00:00",
+    "completed_at": "2026-11-21T19:57:10.973175+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "82b2b153d3354c7a92a8a7c7a7bb3414",
-    "timestamp": "2026-11-21T18:59:23.651042+00:00",
+    "decision_id": "5d31fd57813b43f28a32fff82049d235",
+    "timestamp": "2026-11-21T19:57:10.974532+00:00",
     "ticket_id": "VAL-0033",
     "channel": "forum",
     "stage": "validation",
@@ -3655,10 +4421,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -3693,7 +4459,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "forum ticket from a standard customer: Duplicate webhook deliveries Signature verification fails for every delivery. We are computing the signature exactly as the documentation describes, over the pa…",
+      "intent": "webhook_issue",
+      "urgency": "medium",
+      "sources": [
+        "DOC-API-003#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -3708,14 +4492,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.649916+00:00",
-    "completed_at": "2026-11-21T18:59:23.651102+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.973470+00:00",
+    "completed_at": "2026-11-21T19:57:10.974602+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "9efe7764da42451096a3011a5d1136bd",
-    "timestamp": "2026-11-21T18:59:23.652196+00:00",
+    "decision_id": "5a9778933c154de18f19244b4ccc0280",
+    "timestamp": "2026-11-21T19:57:10.975762+00:00",
     "ticket_id": "VAL-0034",
     "channel": "email",
     "stage": "routing",
@@ -3796,6 +4592,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a business customer: Need to roll back the latest release How do I revert to an earlier revision? The release we put out this morning is causing errors and I would rather roll back …",
       "intent": "rollback_request",
@@ -3818,14 +4624,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.651428+00:00",
-    "completed_at": "2026-11-21T18:59:23.652263+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.974937+00:00",
+    "completed_at": "2026-11-21T19:57:10.975827+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "53614a1284454cfc87d032ab4f11ce2d",
-    "timestamp": "2026-11-21T18:59:23.653147+00:00",
+    "decision_id": "528acfe475544156904440c6c91eea46",
+    "timestamp": "2026-11-21T19:57:10.976879+00:00",
     "ticket_id": "VAL-0035",
     "channel": "chat",
     "stage": "routing",
@@ -3897,6 +4715,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a standard customer: It is not working. Please help.",
       "intent": "api_usage_question",
@@ -3917,14 +4745,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.652554+00:00",
-    "completed_at": "2026-11-21T18:59:23.653203+00:00",
-    "latency_seconds": 0.0007,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.976178+00:00",
+    "completed_at": "2026-11-21T19:57:10.976942+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "c398eaf66cf94c0884fd2cb3d42469dd",
-    "timestamp": "2026-11-21T18:59:23.654161+00:00",
+    "decision_id": "cfcdd68da7e7430f831be30db0cbf9d5",
+    "timestamp": "2026-11-21T19:57:10.977999+00:00",
     "ticket_id": "VAL-0036",
     "channel": "forum",
     "stage": "routing",
@@ -4014,6 +4854,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "forum ticket from a business customer: Getting started with first deployment Could you point me at the right starting place? I have created an account but the console has more in it than I expected.",
       "intent": "onboarding",
@@ -4037,14 +4887,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.653460+00:00",
-    "completed_at": "2026-11-21T18:59:23.654224+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.977211+00:00",
+    "completed_at": "2026-11-21T19:57:10.978061+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "51d2247db37044569414ac5105ab4101",
-    "timestamp": "2026-11-21T18:59:23.655497+00:00",
+    "decision_id": "8b9cda0de81345e98f4bbcf0f6c591c2",
+    "timestamp": "2026-11-21T19:57:10.979379+00:00",
     "ticket_id": "VAL-0037",
     "channel": "email",
     "stage": "validation",
@@ -4098,10 +4960,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -4136,7 +4998,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a standard customer: Question about backup regions Are backups replicated outside our primary region? A compliance review has raised this and I need a definite answer.",
+      "intent": "data_residency",
+      "urgency": "medium",
+      "sources": [
+        "DOC-DATA-003#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -4151,14 +5031,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.654496+00:00",
-    "completed_at": "2026-11-21T18:59:23.655553+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.978323+00:00",
+    "completed_at": "2026-11-21T19:57:10.979445+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "ead2b5120a0049028d2a9538b1760959",
-    "timestamp": "2026-11-21T18:59:23.656848+00:00",
+    "decision_id": "dce5485565744a1ea513967c14065cb7",
+    "timestamp": "2026-11-21T19:57:10.980630+00:00",
     "ticket_id": "VAL-0038",
     "channel": "forum",
     "stage": "routing",
@@ -4239,6 +5131,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "forum ticket from a standard customer: p95 latency is very high Our response times have roughly doubled since two days ago with no deployment on our side. The median looks acceptable but the 95th per…",
       "intent": "performance_degradation",
@@ -4261,14 +5163,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.655904+00:00",
-    "completed_at": "2026-11-21T18:59:23.656928+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.979773+00:00",
+    "completed_at": "2026-11-21T19:57:10.980697+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "d7c5e6081ed7442381a7055543623631",
-    "timestamp": "2026-11-21T18:59:23.658243+00:00",
+    "decision_id": "f2f48dd992b9434082b3b0aec918999f",
+    "timestamp": "2026-11-21T19:57:10.981832+00:00",
     "ticket_id": "VAL-0039",
     "channel": "forum",
     "stage": "routing",
@@ -4358,6 +5272,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "forum ticket from a standard customer: API key returning 401 One of our engineers pushed a key to a public repository by mistake. We need to replace it without taking the service down. What is the co…",
       "intent": "api_key_issue",
@@ -4381,14 +5305,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.657434+00:00",
-    "completed_at": "2026-11-21T18:59:23.658305+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.980998+00:00",
+    "completed_at": "2026-11-21T19:57:10.981899+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "5ba4fa3d993047cfa4b98da027c68b23",
-    "timestamp": "2026-11-21T18:59:23.659565+00:00",
+    "decision_id": "ad6142f2a555489184eaebf18483f35f",
+    "timestamp": "2026-11-21T19:57:10.983240+00:00",
     "ticket_id": "VAL-0040",
     "channel": "email",
     "stage": "validation",
@@ -4442,10 +5378,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -4480,7 +5416,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a business customer: Question about this month's charges There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?",
+      "intent": "billing_query",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -4495,14 +5449,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.658607+00:00",
-    "completed_at": "2026-11-21T18:59:23.659622+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.982179+00:00",
+    "completed_at": "2026-11-21T19:57:10.983309+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "1642c97a07964e2fa1372d8399a6b0e8",
-    "timestamp": "2026-11-21T18:59:23.660830+00:00",
+    "decision_id": "0a72f59aad1b4eb4986a8cfbfd6614ba",
+    "timestamp": "2026-11-21T19:57:10.984647+00:00",
     "ticket_id": "VAL-0041",
     "channel": "email",
     "stage": "validation",
@@ -4556,10 +5522,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -4594,7 +5560,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a business customer: Question about this month's charges There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?",
+      "intent": "billing_query",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -4609,14 +5593,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.659895+00:00",
-    "completed_at": "2026-11-21T18:59:23.660884+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.983616+00:00",
+    "completed_at": "2026-11-21T19:57:10.984712+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "bfc2ca2439c044589d2ed5d904a9f0fe",
-    "timestamp": "2026-11-21T18:59:23.662179+00:00",
+    "decision_id": "ace257b3a85f4a8f9e13faf3ef5ad576",
+    "timestamp": "2026-11-21T19:57:10.986062+00:00",
     "ticket_id": "VAL-0042",
     "channel": "chat",
     "stage": "validation",
@@ -4706,10 +5702,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -4744,7 +5740,29 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "chat ticket from a business customer: Our staging environment is picking up production configuration values. I cannot work out where the override is coming from.",
+      "intent": "configuration_help",
+      "urgency": "medium",
+      "sources": [
+        "DOC-ACCT-002#article",
+        "DOC-DEPLOY-004#article",
+        "DOC-BILL-001#article",
+        "DOC-DEPLOY-003#article",
+        "DOC-INT-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -4759,14 +5777,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.661165+00:00",
-    "completed_at": "2026-11-21T18:59:23.662237+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.984998+00:00",
+    "completed_at": "2026-11-21T19:57:10.986133+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "8639e6e22fce473faa4fcbf439830fbd",
-    "timestamp": "2026-11-21T18:59:23.663315+00:00",
+    "decision_id": "2bae72c345854043885396d5b6721bb7",
+    "timestamp": "2026-11-21T19:57:10.987584+00:00",
     "ticket_id": "VAL-0043",
     "channel": "forum",
     "stage": "routing",
@@ -4859,6 +5889,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "forum ticket from a standard customer: Suspicious activity in audit log One of our engineers believes their credentials may have been exposed in a breach at another service. What should we be doing r…",
       "intent": "security_incident",
@@ -4882,14 +5922,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.662546+00:00",
-    "completed_at": "2026-11-21T18:59:23.663380+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.986611+00:00",
+    "completed_at": "2026-11-21T19:57:10.987660+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "a8764e57fd824543824bc61cf7aad7e3",
-    "timestamp": "2026-11-21T18:59:23.664635+00:00",
+    "decision_id": "4dfce1deff1c48eab96554609de385d2",
+    "timestamp": "2026-11-21T19:57:10.989192+00:00",
     "ticket_id": "VAL-0044",
     "channel": "chat",
     "stage": "validation",
@@ -4943,10 +5995,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -4981,7 +6033,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "chat ticket from a business customer: There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?",
+      "intent": "billing_query",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -4996,14 +6066,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.663684+00:00",
-    "completed_at": "2026-11-21T18:59:23.664687+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.988115+00:00",
+    "completed_at": "2026-11-21T19:57:10.989259+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "94d3a06c91da463eba22c459288de7d9",
-    "timestamp": "2026-11-21T18:59:23.665925+00:00",
+    "decision_id": "3ad78d40a45e43f1b287cd05ff3b0644",
+    "timestamp": "2026-11-21T19:57:10.990679+00:00",
     "ticket_id": "VAL-0045",
     "channel": "email",
     "stage": "validation",
@@ -5057,10 +6139,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -5095,7 +6177,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a standard customer: Export missing recent records I started an export over the weekend and it is still showing as queued. It covers about two million records. Should I cancel and t…",
+      "intent": "data_export",
+      "urgency": "medium",
+      "sources": [
+        "DOC-DATA-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -5110,14 +6210,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.664940+00:00",
-    "completed_at": "2026-11-21T18:59:23.665983+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.989605+00:00",
+    "completed_at": "2026-11-21T19:57:10.990747+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "b528d86e792a43dbbe3dafe03cedba92",
-    "timestamp": "2026-11-21T18:59:23.667240+00:00",
+    "decision_id": "fc719fce4c4f4f9d863cb3e363a71e36",
+    "timestamp": "2026-11-21T19:57:10.992115+00:00",
     "ticket_id": "VAL-0046",
     "channel": "email",
     "stage": "validation",
@@ -5171,10 +6283,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -5209,7 +6321,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a standard customer: How do I page through large results when i do pagination some record coming two time and some missing. what is correct way?",
+      "intent": "api_usage_question",
+      "urgency": "medium",
+      "sources": [
+        "DOC-API-002#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -5224,14 +6354,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.666243+00:00",
-    "completed_at": "2026-11-21T18:59:23.667296+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.991048+00:00",
+    "completed_at": "2026-11-21T19:57:10.992181+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "ce37c0c0084a47a39a061f4c1c3d7535",
-    "timestamp": "2026-11-21T18:59:23.668675+00:00",
+    "decision_id": "a865ff1cecfb4a71a3e6845db8cdc97f",
+    "timestamp": "2026-11-21T19:57:10.993584+00:00",
     "ticket_id": "VAL-0047",
     "channel": "chat",
     "stage": "validation",
@@ -5294,10 +6436,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -5332,7 +6474,26 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "chat ticket from a business customer: Are the search endpoints limited differently from the rest? Our read traffic is fine but search is being rejected constantly.",
+      "intent": "rate_limit",
+      "urgency": "medium",
+      "sources": [
+        "DOC-API-001#article",
+        "DOC-AUTH-004#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -5347,14 +6508,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.667643+00:00",
-    "completed_at": "2026-11-21T18:59:23.668735+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.992498+00:00",
+    "completed_at": "2026-11-21T19:57:10.993651+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "d6b2fc6fe0194e66b2bf254be5cce804",
-    "timestamp": "2026-11-21T18:59:23.669990+00:00",
+    "decision_id": "9e7da657333144658aaebf54527ec736",
+    "timestamp": "2026-11-21T19:57:10.994755+00:00",
     "ticket_id": "VAL-0048",
     "channel": "chat",
     "stage": "routing",
@@ -5438,6 +6611,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a standard customer: one of our engineers believes their credentials may have been exposed in breach at another service. What should we be doing right now? please tell what to do.",
       "intent": "security_incident",
@@ -5460,14 +6643,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.669241+00:00",
-    "completed_at": "2026-11-21T18:59:23.670047+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.993960+00:00",
+    "completed_at": "2026-11-21T19:57:10.994825+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "376b737f52304ec19d04fa9d67f2e4eb",
-    "timestamp": "2026-11-21T18:59:23.671270+00:00",
+    "decision_id": "647dc631349a4b13ad910a5b3a4f0469",
+    "timestamp": "2026-11-21T19:57:10.995920+00:00",
     "ticket_id": "VAL-0049",
     "channel": "email",
     "stage": "routing",
@@ -5551,6 +6746,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a enterprise customer: Need to rotate an exposed key key can read fine but every write returns permission error. I created it myself and I thought I gave it full access. please help f…",
       "intent": "api_key_issue",
@@ -5573,14 +6778,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.670582+00:00",
-    "completed_at": "2026-11-21T18:59:23.671326+00:00",
-    "latency_seconds": 0.0007,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.995120+00:00",
+    "completed_at": "2026-11-21T19:57:10.995989+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "884f2fdf1bd44aa6afc75e9b9ab6664a",
-    "timestamp": "2026-11-21T18:59:23.672252+00:00",
+    "decision_id": "79b89673b59d45dbb914cafa30bea80c",
+    "timestamp": "2026-11-21T19:57:10.997039+00:00",
     "ticket_id": "VAL-0050",
     "channel": "email",
     "stage": "routing",
@@ -5679,6 +6896,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a enterprise customer: Getting started with first deployment We have just signed up and I am not sure where to start. We have a containerised application and would like to get it depl…",
       "intent": "onboarding",
@@ -5703,14 +6930,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.671590+00:00",
-    "completed_at": "2026-11-21T18:59:23.672308+00:00",
-    "latency_seconds": 0.0007,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.996263+00:00",
+    "completed_at": "2026-11-21T19:57:10.997105+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "4a75c62e28b1426988a0ec4209b9288b",
-    "timestamp": "2026-11-21T18:59:23.673643+00:00",
+    "decision_id": "3d971285da8949d09dbee7670f86cbe3",
+    "timestamp": "2026-11-21T19:57:10.998535+00:00",
     "ticket_id": "VAL-0051",
     "channel": "forum",
     "stage": "validation",
@@ -5764,10 +7003,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -5802,7 +7041,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "forum ticket from a standard customer: Log forwarding stopped working log forwarding to our external system stop two days ago and not resumed by itself. destination is healthy as we know. kindly chec…",
+      "intent": "integration_help",
+      "urgency": "medium",
+      "sources": [
+        "DOC-INT-002#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -5817,14 +7074,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.672596+00:00",
-    "completed_at": "2026-11-21T18:59:23.673698+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.997438+00:00",
+    "completed_at": "2026-11-21T19:57:10.998601+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "0cf76c6609454ea585554e85f056dcf3",
-    "timestamp": "2026-11-21T18:59:23.674779+00:00",
+    "decision_id": "c523b09bb5f74b89ad04de7f8f428fb4",
+    "timestamp": "2026-11-21T19:57:10.999786+00:00",
     "ticket_id": "VAL-0052",
     "channel": "chat",
     "stage": "routing",
@@ -5923,6 +7192,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a business customer: Since late last night I cannot get into the console at all. My colleague on the same team signs in without any trouble, so it does not appear to be a general ou…",
       "intent": "authentication_failure",
@@ -5947,14 +7226,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.673979+00:00",
-    "completed_at": "2026-11-21T18:59:23.674842+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:10.998907+00:00",
+    "completed_at": "2026-11-21T19:57:10.999856+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "9967b08df3f14bada46532a131ef0561",
-    "timestamp": "2026-11-21T18:59:23.676045+00:00",
+    "decision_id": "e1e2957f5d3c433b82fddca310de529d",
+    "timestamp": "2026-11-21T19:57:11.001165+00:00",
     "ticket_id": "VAL-0053",
     "channel": "chat",
     "stage": "validation",
@@ -6008,10 +7299,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -6046,7 +7337,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "chat ticket from a enterprise customer: There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?",
+      "intent": "billing_query",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -6061,14 +7370,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.675134+00:00",
-    "completed_at": "2026-11-21T18:59:23.676103+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.000147+00:00",
+    "completed_at": "2026-11-21T19:57:11.001230+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "c738ed013de74dafbb628139bf9d8999",
-    "timestamp": "2026-11-21T18:59:23.677119+00:00",
+    "decision_id": "5d61389d00034938a128dd81a4729791",
+    "timestamp": "2026-11-21T19:57:11.002274+00:00",
     "ticket_id": "VAL-0054",
     "channel": "email",
     "stage": "routing",
@@ -6139,6 +7460,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a standard customer: Where is our data stored One of our customers has asked for written confirmation of where their data is physically stored. Could you point me to something I can…",
       "intent": "data_residency",
@@ -6159,14 +7490,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.676388+00:00",
-    "completed_at": "2026-11-21T18:59:23.677179+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.001507+00:00",
+    "completed_at": "2026-11-21T19:57:11.002340+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "0355e6c7ca494adeaab48ccbd1c8ecbd",
-    "timestamp": "2026-11-21T18:59:23.678157+00:00",
+    "decision_id": "f562b30ad75e408191beb01d70e0de03",
+    "timestamp": "2026-11-21T19:57:11.003432+00:00",
     "ticket_id": "VAL-0055",
     "channel": "chat",
     "stage": "routing",
@@ -6247,6 +7590,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "chat ticket from a business customer: we connecting our CI pipeline and not are sure whether to use personal key or something else. What is recommended approach for automation? please tell what to d…",
       "intent": "integration_help",
@@ -6269,14 +7622,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.677442+00:00",
-    "completed_at": "2026-11-21T18:59:23.678218+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.002644+00:00",
+    "completed_at": "2026-11-21T19:57:11.003499+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "c0a6dc93d1f4468d891e22020a0c2285",
-    "timestamp": "2026-11-21T18:59:23.679241+00:00",
+    "decision_id": "51aa762b09bc43fa824ad22c52c6adb8",
+    "timestamp": "2026-11-21T19:57:11.004574+00:00",
     "ticket_id": "VAL-0056",
     "channel": "email",
     "stage": "routing",
@@ -6366,6 +7731,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a standard customer: Build fails in the pipeline Every deployment fails at the health check stage. I have increased the timeout twice already and it makes no difference.",
       "intent": "deployment_failure",
@@ -6389,14 +7764,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.678505+00:00",
-    "completed_at": "2026-11-21T18:59:23.679301+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.003771+00:00",
+    "completed_at": "2026-11-21T19:57:11.004644+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "84c59767769641a4a54b52a14c8f6e98",
-    "timestamp": "2026-11-21T18:59:23.680679+00:00",
+    "decision_id": "3db3a1fe2bb44c5d8b4b54bdf20c9a11",
+    "timestamp": "2026-11-21T19:57:11.006041+00:00",
     "ticket_id": "VAL-0057",
     "channel": "email",
     "stage": "validation",
@@ -6450,10 +7837,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -6488,7 +7875,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a standard customer: Deployment rolls back every time Our deployment reaches running and then rolls back after about a minute. The logs mention a health check timeout. It runs perfe…",
+      "intent": "deployment_failure",
+      "urgency": "medium",
+      "sources": [
+        "DOC-DEPLOY-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -6503,14 +7908,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.679629+00:00",
-    "completed_at": "2026-11-21T18:59:23.680734+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.004937+00:00",
+    "completed_at": "2026-11-21T19:57:11.006107+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "4bd1e8207a9943ec8aff5cad77d0d82e",
-    "timestamp": "2026-11-21T18:59:23.681737+00:00",
+    "decision_id": "8a3b389600344f23a25f8c17b472442a",
+    "timestamp": "2026-11-21T19:57:11.007240+00:00",
     "ticket_id": "VAL-0058",
     "channel": "docs_comment",
     "stage": "routing",
@@ -6593,6 +8010,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "docs_comment ticket from a standard customer: Need to rotate an exposed key one of our production keys start returning 401 at around last Friday without any change on our side. Other keys against same accou…",
       "intent": "api_key_issue",
@@ -6615,14 +8042,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.681000+00:00",
-    "completed_at": "2026-11-21T18:59:23.681797+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.006421+00:00",
+    "completed_at": "2026-11-21T19:57:11.007306+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "628177216ba049a88d08a0e18bef13f1",
-    "timestamp": "2026-11-21T18:59:23.683103+00:00",
+    "decision_id": "8e1e4fe1aa7f4a30abe12ed8037e95b4",
+    "timestamp": "2026-11-21T19:57:11.008689+00:00",
     "ticket_id": "VAL-0059",
     "channel": "docs_comment",
     "stage": "validation",
@@ -6676,10 +8115,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -6714,7 +8153,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "docs_comment ticket from a enterprise customer: Config differs between environments Where should secrets be stored so they do not appear in the logs? At the moment ours are being printed at startup and I am n…",
+      "intent": "configuration_help",
+      "urgency": "medium",
+      "sources": [
+        "DOC-DEPLOY-004#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -6729,14 +8186,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.682072+00:00",
-    "completed_at": "2026-11-21T18:59:23.683159+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.007580+00:00",
+    "completed_at": "2026-11-21T19:57:11.008754+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "5cc79b585e0c4fa38d452e392a12bf16",
-    "timestamp": "2026-11-21T18:59:23.684434+00:00",
+    "decision_id": "2005e6b6079140abb536603bf4b5eb9c",
+    "timestamp": "2026-11-21T19:57:11.010185+00:00",
     "ticket_id": "VAL-0060",
     "channel": "email",
     "stage": "validation",
@@ -6790,10 +8259,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -6828,7 +8297,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a business customer: Webhooks not arriving Signature verification fails for every delivery. We are computing the signature exactly as the documentation describes, over the parsed bo…",
+      "intent": "webhook_issue",
+      "urgency": "medium",
+      "sources": [
+        "DOC-API-003#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -6843,14 +8330,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.683436+00:00",
-    "completed_at": "2026-11-21T18:59:23.684492+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.009088+00:00",
+    "completed_at": "2026-11-21T19:57:11.010250+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "aa40c769334c4d1aadbdce02aaeaecef",
-    "timestamp": "2026-11-21T18:59:23.685803+00:00",
+    "decision_id": "d6abb0ef58a04d5faa76b5e394b6ef31",
+    "timestamp": "2026-11-21T19:57:11.011580+00:00",
     "ticket_id": "VAL-0061",
     "channel": "email",
     "stage": "validation",
@@ -6904,10 +8403,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -6942,7 +8441,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a standard customer: Webhooks not arriving Signature verification fails for every delivery. We are computing the signature exactly as the documentation describes, over the parsed bo…",
+      "intent": "webhook_issue",
+      "urgency": "medium",
+      "sources": [
+        "DOC-API-003#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -6957,14 +8474,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.684812+00:00",
-    "completed_at": "2026-11-21T18:59:23.685861+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.010528+00:00",
+    "completed_at": "2026-11-21T19:57:11.011652+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "fc163f6e58e44d9dad7ffca5a19fbef3",
-    "timestamp": "2026-11-21T18:59:23.687079+00:00",
+    "decision_id": "2cff1a449a7843fcb345029a4ba6d64e",
+    "timestamp": "2026-11-21T19:57:11.013032+00:00",
     "ticket_id": "VAL-0062",
     "channel": "docs_comment",
     "stage": "validation",
@@ -7018,10 +8547,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -7056,7 +8585,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "docs_comment ticket from a business customer: Connecting our CI pipeline log forwarding to our external system stop over weekend and not resumed by itself. destination healthy as we know.",
+      "intent": "integration_help",
+      "urgency": "medium",
+      "sources": [
+        "DOC-INT-002#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -7071,14 +8618,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.686143+00:00",
-    "completed_at": "2026-11-21T18:59:23.687131+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.011933+00:00",
+    "completed_at": "2026-11-21T19:57:11.013099+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "4919508ba32b4955aed3673f6810cb32",
-    "timestamp": "2026-11-21T18:59:23.688184+00:00",
+    "decision_id": "3cb5955991be4dfa941a43fa926d5c6b",
+    "timestamp": "2026-11-21T19:57:11.014191+00:00",
     "ticket_id": "VAL-0063",
     "channel": "email",
     "stage": "routing",
@@ -7186,6 +8745,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a business customer: Permission changes not taking effect One of our developers cannot see a project she should have access to. I have granted her the role twice and it does not see…",
       "intent": "account_access",
@@ -7211,14 +8780,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.687383+00:00",
-    "completed_at": "2026-11-21T18:59:23.688246+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.013399+00:00",
+    "completed_at": "2026-11-21T19:57:11.014257+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "32989ce0773e41be9f132ee35b7a38b2",
-    "timestamp": "2026-11-21T18:59:23.689540+00:00",
+    "decision_id": "2c5a11715c274f4194ab8f0dfc99c56f",
+    "timestamp": "2026-11-21T19:57:11.015639+00:00",
     "ticket_id": "VAL-0064",
     "channel": "chat",
     "stage": "validation",
@@ -7281,10 +8862,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -7319,7 +8900,26 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "chat ticket from a business customer: What is the right way to pull a very large extract? Requesting a big page size gets rejected and iterating page by page takes hours.",
+      "intent": "api_usage_question",
+      "urgency": "medium",
+      "sources": [
+        "DOC-API-002#article",
+        "DOC-DATA-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -7334,14 +8934,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.688564+00:00",
-    "completed_at": "2026-11-21T18:59:23.689593+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.014559+00:00",
+    "completed_at": "2026-11-21T19:57:11.015706+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "a25e79944e904a71b83335b44aee5648",
-    "timestamp": "2026-11-21T18:59:23.690847+00:00",
+    "decision_id": "9f2e3b5114bc4711b925adfed4eaaa74",
+    "timestamp": "2026-11-21T19:57:11.017434+00:00",
     "ticket_id": "VAL-0065",
     "channel": "email",
     "stage": "validation",
@@ -7404,10 +9016,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -7442,7 +9054,26 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a standard customer: Billing period dates unclear There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?",
+      "intent": "billing_query",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-001#article",
+        "DOC-BILL-003#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -7457,14 +9088,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.689877+00:00",
-    "completed_at": "2026-11-21T18:59:23.690901+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.016352+00:00",
+    "completed_at": "2026-11-21T19:57:11.017499+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "d1678e2c0b4d444c9aaaa4c52bb44598",
-    "timestamp": "2026-11-21T18:59:23.691979+00:00",
+    "decision_id": "e13a24576d1c44daaeae3caf77f8c674",
+    "timestamp": "2026-11-21T19:57:11.018737+00:00",
     "ticket_id": "VAL-0066",
     "channel": "forum",
     "stage": "routing",
@@ -7545,6 +9188,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "forum ticket from a enterprise customer: Question about backup regions one of our customers has asked for written confirmation of where their data is physically stored. Can you please point me to somet…",
       "intent": "data_residency",
@@ -7567,14 +9220,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.691197+00:00",
-    "completed_at": "2026-11-21T18:59:23.692041+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.017944+00:00",
+    "completed_at": "2026-11-21T19:57:11.018803+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "8f0590d35e84487c917605e51929cfef",
-    "timestamp": "2026-11-21T18:59:23.693116+00:00",
+    "decision_id": "6fb3ce2c1e9f402b9972d95fa238d538",
+    "timestamp": "2026-11-21T19:57:11.019893+00:00",
     "ticket_id": "VAL-0067",
     "channel": "docs_comment",
     "stage": "routing",
@@ -7664,6 +9329,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "docs_comment ticket from a standard customer: Suspicious activity in audit log We have found activity in our audit log from an address none of us recognise, going back to yesterday morning. Resources were c…",
       "intent": "security_incident",
@@ -7687,14 +9362,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.692328+00:00",
-    "completed_at": "2026-11-21T18:59:23.693177+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.019075+00:00",
+    "completed_at": "2026-11-21T19:57:11.019961+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "765963239c124f7c8d73abeef6335917",
-    "timestamp": "2026-11-21T18:59:23.694192+00:00",
+    "decision_id": "73d2f772cc054582b3cb42739e3cc0ee",
+    "timestamp": "2026-11-21T19:57:11.021258+00:00",
     "ticket_id": "VAL-0068",
     "channel": "email",
     "stage": "routing",
@@ -7784,6 +9471,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a business customer: Suspicious activity in audit log we having found activity in our audit log from address none of us recognise, going back to around 14:00 yesterday. Resources cr…",
       "intent": "security_incident",
@@ -7807,14 +9504,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.693459+00:00",
-    "completed_at": "2026-11-21T18:59:23.694248+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.020392+00:00",
+    "completed_at": "2026-11-21T19:57:11.021326+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "b4c3b85ceaff46d9a559cd7d0b5dab2d",
-    "timestamp": "2026-11-21T18:59:23.695504+00:00",
+    "decision_id": "53954982c61f4d18bc86932c54636232",
+    "timestamp": "2026-11-21T19:57:11.022573+00:00",
     "ticket_id": "VAL-0069",
     "channel": "chat",
     "stage": "validation",
@@ -7904,10 +9613,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -7942,7 +9651,29 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "chat ticket from a business customer: Our staging environment is picking up production configuration values. I cannot work out where the override is coming from.",
+      "intent": "configuration_help",
+      "urgency": "medium",
+      "sources": [
+        "DOC-ACCT-002#article",
+        "DOC-DEPLOY-004#article",
+        "DOC-BILL-001#article",
+        "DOC-DEPLOY-003#article",
+        "DOC-INT-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -7957,14 +9688,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.694521+00:00",
-    "completed_at": "2026-11-21T18:59:23.695561+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.021610+00:00",
+    "completed_at": "2026-11-21T19:57:11.022634+00:00",
     "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "839ba05b5d4945e3a63a8ca38bd7a403",
-    "timestamp": "2026-11-21T18:59:23.696629+00:00",
+    "decision_id": "51005a704e9b4dafae130effde77da6e",
+    "timestamp": "2026-11-21T19:57:11.023752+00:00",
     "ticket_id": "VAL-0070",
     "channel": "docs_comment",
     "stage": "routing",
@@ -8045,6 +9788,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "docs_comment ticket from a business customer: SSO works for some users only Single sign-on works for our engineering group but the finance group gets an error. Both are configured identically as far as we c…",
       "intent": "sso_configuration",
@@ -8067,14 +9820,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.695854+00:00",
-    "completed_at": "2026-11-21T18:59:23.696692+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.022956+00:00",
+    "completed_at": "2026-11-21T19:57:11.023813+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "147fb33f44ed4143b1a7de96d8467878",
-    "timestamp": "2026-11-21T18:59:23.698005+00:00",
+    "decision_id": "fbdfbe2ef09346fda98ab34ac890066c",
+    "timestamp": "2026-11-21T19:57:11.025199+00:00",
     "ticket_id": "VAL-0071",
     "channel": "docs_comment",
     "stage": "validation",
@@ -8128,10 +9893,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8166,7 +9931,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "docs_comment ticket from a standard customer: Spend cap stopped our service We were throttled over the weekend after a traffic increase and it took down part of our product. We would rather pay overage than…",
+      "intent": "quota_or_overage",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-003#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -8181,14 +9964,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.696966+00:00",
-    "completed_at": "2026-11-21T18:59:23.698058+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.024087+00:00",
+    "completed_at": "2026-11-21T19:57:11.025264+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "f1924f08df8e48edae6ddeed05fcf05e",
-    "timestamp": "2026-11-21T18:59:23.699237+00:00",
+    "decision_id": "2ef17e64ce804db888e98381d1e96049",
+    "timestamp": "2026-11-21T19:57:11.026666+00:00",
     "ticket_id": "VAL-0072",
     "channel": "docs_comment",
     "stage": "validation",
@@ -8242,10 +10037,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8280,7 +10075,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "docs_comment ticket from a standard customer: Invoice higher than expected There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?",
+      "intent": "billing_query",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -8295,14 +10108,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.698314+00:00",
-    "completed_at": "2026-11-21T18:59:23.699289+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.025603+00:00",
+    "completed_at": "2026-11-21T19:57:11.026732+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "41e85be81f8446fa99bf22c18902d7de",
-    "timestamp": "2026-11-21T18:59:23.700477+00:00",
+    "decision_id": "b2f532133f0b4330ae3ee34fca420498",
+    "timestamp": "2026-11-21T19:57:11.028065+00:00",
     "ticket_id": "VAL-0073",
     "channel": "forum",
     "stage": "validation",
@@ -8365,10 +10190,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8403,7 +10228,26 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "forum ticket from a business customer: Invoice higher than expected bill is very high this month. i not understand the charge. please explain what is this.",
+      "intent": "billing_query",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-001#article",
+        "DOC-BILL-002#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -8418,14 +10262,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.699545+00:00",
-    "completed_at": "2026-11-21T18:59:23.700534+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.027016+00:00",
+    "completed_at": "2026-11-21T19:57:11.028135+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "61bdc883e57142e9b0848a2936948f9b",
-    "timestamp": "2026-11-21T18:59:23.701897+00:00",
+    "decision_id": "117db045184e4cc4a80ecc1192b76463",
+    "timestamp": "2026-11-21T19:57:11.029486+00:00",
     "ticket_id": "VAL-0074",
     "channel": "docs_comment",
     "stage": "validation",
@@ -8479,10 +10335,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8517,7 +10373,25 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "docs_comment ticket from a standard customer: Remove a departing team member We are tightening permissions after a review and I want to understand how group membership interacts with directly assigned roles…",
+      "intent": "account_access",
+      "urgency": "medium",
+      "sources": [
+        "DOC-ACCT-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -8532,14 +10406,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.700840+00:00",
-    "completed_at": "2026-11-21T18:59:23.701957+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.028427+00:00",
+    "completed_at": "2026-11-21T19:57:11.029552+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "18360784f7904d35b6f5c1bcdb56cbd3",
-    "timestamp": "2026-11-21T18:59:23.702989+00:00",
+    "decision_id": "5826fd1c513d4f928888b2754cb60ac3",
+    "timestamp": "2026-11-21T19:57:11.030626+00:00",
     "ticket_id": "VAL-0075",
     "channel": "docs_comment",
     "stage": "routing",
@@ -8620,6 +10506,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "docs_comment ticket from a business customer: API key returning 401 A key can read fine but every write returns a permission error. I created it myself and I thought I gave it full access.",
       "intent": "api_key_issue",
@@ -8642,14 +10538,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.702244+00:00",
-    "completed_at": "2026-11-21T18:59:23.703053+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.029828+00:00",
+    "completed_at": "2026-11-21T19:57:11.030692+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "130959d49d8048759053e5b59a4b8dd7",
-    "timestamp": "2026-11-21T18:59:23.704336+00:00",
+    "decision_id": "e4c236aef27f45e69e872493c828c506",
+    "timestamp": "2026-11-21T19:57:11.032354+00:00",
     "ticket_id": "VAL-0076",
     "channel": "email",
     "stage": "validation",
@@ -8712,10 +10620,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8750,7 +10658,26 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "email ticket from a standard customer: Need data to stay in the EU We need our data to remain within the EU for a contract we are signing. Our organisation was created some time ago and I am not sure…",
+      "intent": "data_residency",
+      "urgency": "medium",
+      "sources": [
+        "DOC-DATA-003#article",
+        "DOC-AUTH-003#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -8765,14 +10692,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.703319+00:00",
-    "completed_at": "2026-11-21T18:59:23.704392+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.031242+00:00",
+    "completed_at": "2026-11-21T19:57:11.032422+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "5775f7aee8cb46ff8e71aa7275436e90",
-    "timestamp": "2026-11-21T18:59:23.705640+00:00",
+    "decision_id": "8f1a68a76e104d50a882442acda0cf31",
+    "timestamp": "2026-11-21T19:57:11.033784+00:00",
     "ticket_id": "VAL-0077",
     "channel": "chat",
     "stage": "validation",
@@ -8835,10 +10774,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8873,7 +10812,26 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "chat ticket from a business customer: Our billing period does not seem to match the calendar month, which is making reconciliation difficult. Is that expected?",
+      "intent": "billing_query",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-001#article",
+        "DOC-BILL-002#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -8888,14 +10846,26 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.704666+00:00",
-    "completed_at": "2026-11-21T18:59:23.705703+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.032748+00:00",
+    "completed_at": "2026-11-21T19:57:11.033849+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "502420891a8c432a80506b3980e810f4",
-    "timestamp": "2026-11-21T18:59:23.706688+00:00",
+    "decision_id": "3563557777d84678aade88e3feaa4f01",
+    "timestamp": "2026-11-21T19:57:11.034880+00:00",
     "ticket_id": "VAL-0078",
     "channel": "docs_comment",
     "stage": "routing",
@@ -8985,6 +10955,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "docs_comment ticket from a business customer: Database restore taking hours connection not available error coming. we scale up service then problem start. please check.",
       "intent": "database_issue",
@@ -9008,14 +10988,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.705981+00:00",
-    "completed_at": "2026-11-21T18:59:23.706748+00:00",
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.034135+00:00",
+    "completed_at": "2026-11-21T19:57:11.034945+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "d728a74adda54c77b56d568557732da0",
-    "timestamp": "2026-11-21T18:59:23.707761+00:00",
+    "decision_id": "85f404906f4b492f91e2f252b305dc75",
+    "timestamp": "2026-11-21T19:57:11.036007+00:00",
     "ticket_id": "VAL-0079",
     "channel": "email",
     "stage": "routing",
@@ -9096,6 +11088,16 @@
       "passages": 29,
       "fallback": false
     },
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
     "handoff": {
       "summary": "email ticket from a standard customer: Need data to stay in the EU one of our customers has asked for written confirmation of where their data is physically stored. Can you please point me to somethi…",
       "intent": "data_residency",
@@ -9118,14 +11120,26 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.707024+00:00",
-    "completed_at": "2026-11-21T18:59:23.707821+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.035214+00:00",
+    "completed_at": "2026-11-21T19:57:11.036072+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T195710-dd5d68"
   },
   {
-    "decision_id": "a4c59e64c5124ea391155c844936bb71",
-    "timestamp": "2026-11-21T18:59:23.709162+00:00",
+    "decision_id": "2e5445c5351d4df4a56f0217fefef618",
+    "timestamp": "2026-11-21T19:57:11.037713+00:00",
     "ticket_id": "VAL-0080",
     "channel": "chat",
     "stage": "validation",
@@ -9206,10 +11220,10 @@
       "confidence_floor_validated_for_this_classifier": true
     },
     "action_taken": "auto_respond",
-    "status": "auto_responded",
-    "delivery": "sent",
-    "answer_sent": true,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed.",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -9244,7 +11258,28 @@
       "passages": 29,
       "fallback": false
     },
-    "handoff": null,
+    "answer_mode": "extractive",
+    "kill_switch": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "unsupported_claims": [],
+    "generation": null,
+    "handoff": {
+      "summary": "chat ticket from a standard customer: Builds that worked last week are now failing during dependency resolution. We have not changed our code at all. This is blocking a release we had planned for ye…",
+      "intent": "deployment_failure",
+      "urgency": "medium",
+      "sources": [
+        "DOC-DEPLOY-003#article",
+        "DOC-AUTH-001#article",
+        "DOC-DEPLOY-002#article",
+        "DOC-PERF-001#article"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
     ],
@@ -9259,9 +11294,21 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:59:23.708163+00:00",
-    "completed_at": "2026-11-21T18:59:23.709215+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T185923-dd44fb"
+    "model_calls": [],
+    "usage": {
+      "model_calls": 0,
+      "live_calls": 0,
+      "cache_hits": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cost_usd": 0,
+      "cost_if_live_usd": 0
+    },
+    "llm_cache": "not_used",
+    "pii_masked_for_provider": null,
+    "started_at": "2026-11-21T19:57:11.036552+00:00",
+    "completed_at": "2026-11-21T19:57:11.037779+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261121T195710-dd5d68"
   }
 ]

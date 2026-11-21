@@ -1,0 +1,524 @@
+{
+  "run": "evaluation/results/final_offline_development",
+  "tickets_file": "data/development_tickets.json",
+  "run_id": "run-20261121T195711-b7ec5a",
+  "run_date": "2026-11-21T19:57:12+00:00",
+  "tickets": 500,
+  "length_split_median_body_words": 25.0,
+  "target_variation_points": 5.0,
+  "segments": {
+    "customer_tier": {
+      "groups": {
+        "business": {
+          "tickets": 164,
+          "resolution_rate": 0.4207,
+          "resolution_rate_ci95": [
+            0.3478,
+            0.4973
+          ],
+          "quality_routing_accuracy": 0.7134,
+          "quality_routing_accuracy_ci95": [
+            0.6399,
+            0.7771
+          ],
+          "auto_answers": 69,
+          "auto_precision": 0.9275,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.6463,
+          "resolution_rate_predicted_by_intent_mix": 0.3971,
+          "must_not_auto_respond_share": 0.189,
+          "intent_accuracy": 0.9939,
+          "median_top_retrieval_score": 0.4059,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 31,
+            "no_relevant_documentation": 11
+          },
+          "auto_answers_labelled_escalate": 5,
+          "retrieval_hit_top1": 0.7398,
+          "resolution_rate_points_below_best": 0.2,
+          "quality_routing_accuracy_points_below_best": 0.0
+        },
+        "enterprise": {
+          "tickets": 83,
+          "resolution_rate": 0.4096,
+          "resolution_rate_ci95": [
+            0.3101,
+            0.5171
+          ],
+          "quality_routing_accuracy": 0.6265,
+          "quality_routing_accuracy_ci95": [
+            0.519,
+            0.7228
+          ],
+          "auto_answers": 34,
+          "auto_precision": 0.7941,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.6145,
+          "resolution_rate_predicted_by_intent_mix": 0.4057,
+          "must_not_auto_respond_share": 0.1446,
+          "intent_accuracy": 1.0,
+          "median_top_retrieval_score": 0.4,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 15,
+            "no_relevant_documentation": 8,
+            "sensitive_request_manual_review": 1
+          },
+          "auto_answers_labelled_escalate": 7,
+          "retrieval_hit_top1": 0.7458,
+          "resolution_rate_points_below_best": 1.3,
+          "quality_routing_accuracy_points_below_best": 8.7
+        },
+        "standard": {
+          "tickets": 253,
+          "resolution_rate": 0.4229,
+          "resolution_rate_ci95": [
+            0.3636,
+            0.4845
+          ],
+          "quality_routing_accuracy": 0.5929,
+          "quality_routing_accuracy_ci95": [
+            0.5314,
+            0.6516
+          ],
+          "auto_answers": 107,
+          "auto_precision": 0.7383,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.6087,
+          "resolution_rate_predicted_by_intent_mix": 0.4396,
+          "must_not_auto_respond_share": 0.1739,
+          "intent_accuracy": 1.0,
+          "median_top_retrieval_score": 0.4,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 55,
+            "no_relevant_documentation": 18,
+            "sensitive_request_manual_review": 2
+          },
+          "auto_answers_labelled_escalate": 28,
+          "retrieval_hit_top1": 0.7371,
+          "resolution_rate_points_below_best": 0.0,
+          "quality_routing_accuracy_points_below_best": 12.1
+        }
+      },
+      "variation_points": {
+        "resolution_rate": 1.3,
+        "quality_routing_accuracy": 12.1,
+        "resolution_rate_predicted_by_intent_mix": 4.2
+      },
+      "meets_under_5_points": {
+        "resolution_rate": true,
+        "quality_routing_accuracy": false
+      }
+    },
+    "language_fluency": {
+      "groups": {
+        "fluent": {
+          "tickets": 380,
+          "resolution_rate": 0.4289,
+          "resolution_rate_ci95": [
+            0.3801,
+            0.4792
+          ],
+          "quality_routing_accuracy": 0.6526,
+          "quality_routing_accuracy_ci95": [
+            0.6034,
+            0.6988
+          ],
+          "auto_answers": 163,
+          "auto_precision": 0.8037,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.6079,
+          "resolution_rate_predicted_by_intent_mix": 0.4287,
+          "must_not_auto_respond_share": 0.1737,
+          "intent_accuracy": 1.0,
+          "median_top_retrieval_score": 0.4,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 75,
+            "no_relevant_documentation": 24,
+            "sensitive_request_manual_review": 1
+          },
+          "auto_answers_labelled_escalate": 32,
+          "retrieval_hit_top1": 0.7593,
+          "resolution_rate_points_below_best": 0.0,
+          "quality_routing_accuracy_points_below_best": 0.0
+        },
+        "non_fluent": {
+          "tickets": 120,
+          "resolution_rate": 0.3917,
+          "resolution_rate_ci95": [
+            0.309,
+            0.4811
+          ],
+          "quality_routing_accuracy": 0.5917,
+          "quality_routing_accuracy_ci95": [
+            0.5022,
+            0.6754
+          ],
+          "auto_answers": 47,
+          "auto_precision": 0.8298,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.6667,
+          "resolution_rate_predicted_by_intent_mix": 0.3925,
+          "must_not_auto_respond_share": 0.175,
+          "intent_accuracy": 0.9917,
+          "median_top_retrieval_score": 0.4059,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 26,
+            "no_relevant_documentation": 13,
+            "sensitive_request_manual_review": 2
+          },
+          "auto_answers_labelled_escalate": 8,
+          "retrieval_hit_top1": 0.6782,
+          "resolution_rate_points_below_best": 3.7,
+          "quality_routing_accuracy_points_below_best": 6.1
+        }
+      },
+      "variation_points": {
+        "resolution_rate": 3.7,
+        "quality_routing_accuracy": 6.1,
+        "resolution_rate_predicted_by_intent_mix": 3.6
+      },
+      "meets_under_5_points": {
+        "resolution_rate": true,
+        "quality_routing_accuracy": false
+      }
+    },
+    "length": {
+      "groups": {
+        "long": {
+          "tickets": 229,
+          "resolution_rate": 0.3755,
+          "resolution_rate_ci95": [
+            0.3154,
+            0.4398
+          ],
+          "quality_routing_accuracy": 0.5721,
+          "quality_routing_accuracy_ci95": [
+            0.5073,
+            0.6344
+          ],
+          "auto_answers": 86,
+          "auto_precision": 0.8023,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.655,
+          "resolution_rate_predicted_by_intent_mix": 0.4055,
+          "must_not_auto_respond_share": 0.0961,
+          "intent_accuracy": 1.0,
+          "median_top_retrieval_score": 0.3846,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 53,
+            "no_relevant_documentation": 28
+          },
+          "auto_answers_labelled_escalate": 17,
+          "retrieval_hit_top1": 0.7212,
+          "resolution_rate_points_below_best": 8.2,
+          "quality_routing_accuracy_points_below_best": 12.2
+        },
+        "short": {
+          "tickets": 271,
+          "resolution_rate": 0.4576,
+          "resolution_rate_ci95": [
+            0.3993,
+            0.5171
+          ],
+          "quality_routing_accuracy": 0.6937,
+          "quality_routing_accuracy_ci95": [
+            0.6365,
+            0.7456
+          ],
+          "auto_answers": 124,
+          "auto_precision": 0.8145,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.5941,
+          "resolution_rate_predicted_by_intent_mix": 0.4322,
+          "must_not_auto_respond_share": 0.2399,
+          "intent_accuracy": 0.9963,
+          "median_top_retrieval_score": 0.4286,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 48,
+            "no_relevant_documentation": 9,
+            "sensitive_request_manual_review": 3
+          },
+          "auto_answers_labelled_escalate": 23,
+          "retrieval_hit_top1": 0.7552,
+          "resolution_rate_points_below_best": 0.0,
+          "quality_routing_accuracy_points_below_best": 0.0
+        }
+      },
+      "variation_points": {
+        "resolution_rate": 8.2,
+        "quality_routing_accuracy": 12.2,
+        "resolution_rate_predicted_by_intent_mix": 2.7
+      },
+      "meets_under_5_points": {
+        "resolution_rate": false,
+        "quality_routing_accuracy": false
+      }
+    },
+    "channel": {
+      "groups": {
+        "chat": {
+          "tickets": 155,
+          "resolution_rate": 0.3419,
+          "resolution_rate_ci95": [
+            0.2719,
+            0.4196
+          ],
+          "quality_routing_accuracy": 0.5742,
+          "quality_routing_accuracy_ci95": [
+            0.4955,
+            0.6493
+          ],
+          "auto_answers": 53,
+          "auto_precision": 0.8679,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.6774,
+          "resolution_rate_predicted_by_intent_mix": 0.3754,
+          "must_not_auto_respond_share": 0.1355,
+          "intent_accuracy": 0.9935,
+          "median_top_retrieval_score": 0.3846,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 40,
+            "no_relevant_documentation": 19
+          },
+          "auto_answers_labelled_escalate": 7,
+          "retrieval_hit_top1": 0.6471,
+          "resolution_rate_points_below_best": 13.1,
+          "quality_routing_accuracy_points_below_best": 10.5
+        },
+        "docs_comment": {
+          "tickets": 78,
+          "resolution_rate": 0.4615,
+          "resolution_rate_ci95": [
+            0.3553,
+            0.5714
+          ],
+          "quality_routing_accuracy": 0.6795,
+          "quality_routing_accuracy_ci95": [
+            0.5696,
+            0.7725
+          ],
+          "auto_answers": 36,
+          "auto_precision": 0.7222,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.5256,
+          "resolution_rate_predicted_by_intent_mix": 0.4364,
+          "must_not_auto_respond_share": 0.2051,
+          "intent_accuracy": 1.0,
+          "median_top_retrieval_score": 0.4286,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 12,
+            "no_relevant_documentation": 3
+          },
+          "auto_answers_labelled_escalate": 10,
+          "retrieval_hit_top1": 0.7917,
+          "resolution_rate_points_below_best": 1.1,
+          "quality_routing_accuracy_points_below_best": 0.0
+        },
+        "email": {
+          "tickets": 212,
+          "resolution_rate": 0.4481,
+          "resolution_rate_ci95": [
+            0.3827,
+            0.5154
+          ],
+          "quality_routing_accuracy": 0.6698,
+          "quality_routing_accuracy_ci95": [
+            0.604,
+            0.7296
+          ],
+          "auto_answers": 95,
+          "auto_precision": 0.8316,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.6274,
+          "resolution_rate_predicted_by_intent_mix": 0.4364,
+          "must_not_auto_respond_share": 0.1934,
+          "intent_accuracy": 1.0,
+          "median_top_retrieval_score": 0.4167,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 43,
+            "no_relevant_documentation": 8,
+            "sensitive_request_manual_review": 3
+          },
+          "auto_answers_labelled_escalate": 16,
+          "retrieval_hit_top1": 0.7974,
+          "resolution_rate_points_below_best": 2.5,
+          "quality_routing_accuracy_points_below_best": 1.0
+        },
+        "forum": {
+          "tickets": 55,
+          "resolution_rate": 0.4727,
+          "resolution_rate_ci95": [
+            0.3469,
+            0.6021
+          ],
+          "quality_routing_accuracy": 0.6364,
+          "quality_routing_accuracy_ci95": [
+            0.5042,
+            0.7507
+          ],
+          "auto_answers": 26,
+          "auto_precision": 0.7308,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.5818,
+          "resolution_rate_predicted_by_intent_mix": 0.4593,
+          "must_not_auto_respond_share": 0.1636,
+          "intent_accuracy": 1.0,
+          "median_top_retrieval_score": 0.4211,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 6,
+            "no_relevant_documentation": 7
+          },
+          "auto_answers_labelled_escalate": 7,
+          "retrieval_hit_top1": 0.7297,
+          "resolution_rate_points_below_best": 0.0,
+          "quality_routing_accuracy_points_below_best": 4.3
+        }
+      },
+      "variation_points": {
+        "resolution_rate": 13.1,
+        "quality_routing_accuracy": 10.5,
+        "resolution_rate_predicted_by_intent_mix": 8.4
+      },
+      "meets_under_5_points": {
+        "resolution_rate": false,
+        "quality_routing_accuracy": false
+      }
+    },
+    "customer_region": {
+      "groups": {
+        "asia_pacific": {
+          "tickets": 119,
+          "resolution_rate": 0.4034,
+          "resolution_rate_ci95": [
+            0.3196,
+            0.4932
+          ],
+          "quality_routing_accuracy": 0.5966,
+          "quality_routing_accuracy_ci95": [
+            0.5068,
+            0.6804
+          ],
+          "auto_answers": 48,
+          "auto_precision": 0.6667,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.5378,
+          "resolution_rate_predicted_by_intent_mix": 0.3975,
+          "must_not_auto_respond_share": 0.2101,
+          "intent_accuracy": 1.0,
+          "median_top_retrieval_score": 0.4118,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 25,
+            "no_relevant_documentation": 6,
+            "sensitive_request_manual_review": 1
+          },
+          "auto_answers_labelled_escalate": 16,
+          "retrieval_hit_top1": 0.7237,
+          "resolution_rate_points_below_best": 16.3,
+          "quality_routing_accuracy_points_below_best": 15.3
+        },
+        "europe": {
+          "tickets": 151,
+          "resolution_rate": 0.4172,
+          "resolution_rate_ci95": [
+            0.3416,
+            0.497
+          ],
+          "quality_routing_accuracy": 0.6159,
+          "quality_routing_accuracy_ci95": [
+            0.5364,
+            0.6897
+          ],
+          "auto_answers": 63,
+          "auto_precision": 0.8571,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.6821,
+          "resolution_rate_predicted_by_intent_mix": 0.4586,
+          "must_not_auto_respond_share": 0.1589,
+          "intent_accuracy": 1.0,
+          "median_top_retrieval_score": 0.4118,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 38,
+            "no_relevant_documentation": 11
+          },
+          "auto_answers_labelled_escalate": 9,
+          "retrieval_hit_top1": 0.713,
+          "resolution_rate_points_below_best": 14.9,
+          "quality_routing_accuracy_points_below_best": 13.4
+        },
+        "latin_america": {
+          "tickets": 60,
+          "resolution_rate": 0.5667,
+          "resolution_rate_ci95": [
+            0.441,
+            0.6843
+          ],
+          "quality_routing_accuracy": 0.75,
+          "quality_routing_accuracy_ci95": [
+            0.6277,
+            0.8422
+          ],
+          "auto_answers": 34,
+          "auto_precision": 0.8529,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.65,
+          "resolution_rate_predicted_by_intent_mix": 0.4583,
+          "must_not_auto_respond_share": 0.1167,
+          "intent_accuracy": 1.0,
+          "median_top_retrieval_score": 0.4286,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 5,
+            "no_relevant_documentation": 5
+          },
+          "auto_answers_labelled_escalate": 5,
+          "retrieval_hit_top1": 0.7907,
+          "resolution_rate_points_below_best": 0.0,
+          "quality_routing_accuracy_points_below_best": 0.0
+        },
+        "north_america": {
+          "tickets": 170,
+          "resolution_rate": 0.3824,
+          "resolution_rate_ci95": [
+            0.3127,
+            0.4572
+          ],
+          "quality_routing_accuracy": 0.6471,
+          "quality_routing_accuracy_ci95": [
+            0.5727,
+            0.7149
+          ],
+          "auto_answers": 65,
+          "auto_precision": 0.8462,
+          "citation_support_rate_automated_proxy": null,
+          "label_ceiling_expected_auto": 0.6176,
+          "resolution_rate_predicted_by_intent_mix": 0.3879,
+          "must_not_auto_respond_share": 0.1824,
+          "intent_accuracy": 0.9941,
+          "median_top_retrieval_score": 0.4,
+          "missed_expected_auto_by_reason": {
+            "no_matching_documentation_for_intent": 33,
+            "no_relevant_documentation": 15,
+            "sensitive_request_manual_review": 2
+          },
+          "auto_answers_labelled_escalate": 10,
+          "retrieval_hit_top1": 0.7561,
+          "resolution_rate_points_below_best": 18.4,
+          "quality_routing_accuracy_points_below_best": 10.3
+        }
+      },
+      "variation_points": {
+        "resolution_rate": 18.4,
+        "quality_routing_accuracy": 15.3,
+        "resolution_rate_predicted_by_intent_mix": 7.1
+      },
+      "meets_under_5_points": {
+        "resolution_rate": false,
+        "quality_routing_accuracy": false
+      }
+    }
+  },
+  "largest_gap": {
+    "segment": "customer_region",
+    "measure": "resolution_rate",
+    "points": 18.4
+  }
+}
