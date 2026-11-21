@@ -1,0 +1,686 @@
+ticket_id,ticket_text_masked,response,cited_passages_text,assessor_1_supported,assessor_2_supported,assessor_1_quality_1to5,assessor_2_quality_1to5,notes
+DEV-0001,builds that work last week are now fail during dependency resolution. we are having not change our code at all.,"CloudServe documentation contains these steps:
+
+1. Pin your dependencies with exact versions and commit the lock file. Unpinned dependencies are the cause in the large majority of cases of this kind.
+2. Compare the runtime version declared in your build configuration against the version you use locally.
+3. Clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact.
+4. If a specific dependency is failing to resolve, check whether its registry is reachable from the build network.
+
+Source: [DOC-DEPLOY-003#resolution]","[DOC-DEPLOY-003#resolution] ## Resolution
+
+1. Pin your dependencies with exact versions and commit the lock file. Unpinned dependencies are the cause in the large majority of cases of this kind.
+2. Compare the runtime version declared in your build configuration against the version you use locally.
+3. Clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact.
+4. If a specific dependency is failing to resolve, check whether its registry is reachable from the build network.",,,,,
+DEV-0006,"Environment variable not being read
+Where should secrets be stored so they do not appear in the logs? At the moment ours are being printed at startup and I am not comfortable with that.","CloudServe documentation contains these steps:
+
+1. Check the scope at which the variable was defined. Service scope overrides project scope, and project scope overrides organisation defaults.
+2. Store anything sensitive as a secret rather than a variable. Secrets are masked in logs and are not readable through the API after creation.
+3. Review the environment overrides page, which lists values that differ from the defaults for each environment.
+4. Redeploy after changing configuration. Running containers do not pick up new values without a restart.
+
+Source: [DOC-DEPLOY-004#resolution]","[DOC-DEPLOY-004#resolution] ## Resolution
+
+1. Check the scope at which the variable was defined. Service scope overrides project scope, and project scope overrides organisation defaults.
+2. Store anything sensitive as a secret rather than a variable. Secrets are masked in logs and are not readable through the API after creation.
+3. Review the environment overrides page, which lists values that differ from the defaults for each environment.
+4. Redeploy after changing configuration. Running containers do not pick up new values without a restart.",,,,,
+DEV-0009,"How do I revert to the previous revision
+How do I revert to an earlier revision? The release we put out this morning is causing errors and I would rather roll back than try to fix forward.","CloudServe documentation contains these steps:
+
+1. Open the revisions page for the service and identify the last revision that was healthy.
+2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place.
+3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect.
+4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still fresh.
+
+Source: [DOC-DEPLOY-002#resolution]","[DOC-DEPLOY-002#resolution] ## Resolution
+
+1. Open the revisions page for the service and identify the last revision that was healthy.
+2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place.
+3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect.
+4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still fresh.",,,,,
+DEV-0011,We changed the password on our shared account over the weekend and now our automated jobs are all failing to authenticate. The console works fine with the new password.,"CloudServe documentation contains these steps:
+
+1. Confirm whether the account is locked by checking the security page of the console. A locked account displays a red banner and unlocks automatically after thirty minutes.
+2. Clear cookies for the CloudServe domain, or open a private browsing window, then attempt the login again.
+3. If the CLI is failing, run `cloudserve auth logout` followed by `cloudserve auth login` to discard the cached token.
+4. Where the account remains locked and the customer needs immediate access, an administrator on the account can release the lock from the team members page.
+
+Source: [DOC-AUTH-001#resolution]","[DOC-AUTH-001#resolution] ## Resolution
+
+1. Confirm whether the account is locked by checking the security page of the console. A locked account displays a red banner and unlocks automatically after thirty minutes.
+2. Clear cookies for the CloudServe domain, or open a private browsing window, then attempt the login again.
+3. If the CLI is failing, run `cloudserve auth logout` followed by `cloudserve auth login` to discard the cached token.
+4. Where the account remains locked and the customer needs immediate access, an administrator on the account can release the lock from the team members page.",,,,,
+DEV-0014,"Help configuring single sign-on
+We are setting up SAML with our identity provider and users are being bounced back to an error page after authenticating successfully on our side. The assertion looks correct to us.","CloudServe documentation contains these steps:
+
+1. Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page. They must match exactly, including the trailing path.
+2. Inspect a failing assertion and confirm the NameID is the user's email address in lower case.
+3. Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users.
+4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.
+
+Source: [DOC-AUTH-003#resolution]","[DOC-AUTH-003#resolution] ## Resolution
+
+1. Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page. They must match exactly, including the trailing path.
+2. Inspect a failing assertion and confirm the NameID is the user's email address in lower case.
+3. Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users.
+4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.",,,,,
+DEV-0017,"User cannot access a project
+One of our developers cannot see a project she should have access to. I have granted her the role twice and it does not seem to take effect.","CloudServe documentation contains these steps:
+
+1. Check the effective permissions view for the user, which resolves direct roles and group memberships together.
+2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days.
+3. Remove a departing user rather than only changing their password, and revoke any API keys they created.
+4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.
+
+Source: [DOC-ACCT-001#resolution]","[DOC-ACCT-001#resolution] ## Resolution
+
+1. Check the effective permissions view for the user, which resolves direct roles and group memberships together.
+2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days.
+3. Remove a departing user rather than only changing their password, and revoke any API keys they created.
+4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.",,,,,
+DEV-0018,"Pagination returns duplicates
+how to get all data? page size big is reject. small is very slow.","CloudServe documentation contains these steps:
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.
+
+Source: [DOC-API-002#resolution]","[DOC-API-002#resolution] ## Resolution
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.",,,,,
+DEV-0020,"SAML login returns an error page
+New starters are not being created automatically when they log in through SSO for the first time. We expected them to be provisioned. Have we missed a setting?","CloudServe documentation contains these steps:
+
+1. Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page. They must match exactly, including the trailing path.
+2. Inspect a failing assertion and confirm the NameID is the user's email address in lower case.
+3. Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users.
+4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.
+
+Source: [DOC-AUTH-003#resolution]","[DOC-AUTH-003#resolution] ## Resolution
+
+1. Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page. They must match exactly, including the trailing path.
+2. Inspect a failing assertion and confirm the NameID is the user's email address in lower case.
+3. Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users.
+4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.",,,,,
+DEV-0022,"Export missing recent records
+The download link from our export has expired and I cannot find a way to generate a new one. Is the file still available?","CloudServe documentation contains these steps:
+
+1. Check the exports page for job status. Jobs covering more than a million records commonly take several minutes.
+2. Request a fresh link from the exports page if the original has expired. The underlying file is retained for seven days.
+3. Note that the export reflects the moment the job began, so records created during processing are not included.
+4. For recurring needs, configure a scheduled export delivered to object storage rather than generating them manually.
+
+Source: [DOC-DATA-001#resolution]","[DOC-DATA-001#resolution] ## Resolution
+
+1. Check the exports page for job status. Jobs covering more than a million records commonly take several minutes.
+2. Request a fresh link from the exports page if the original has expired. The underlying file is retained for seven days.
+3. Note that the export reflects the moment the job began, so records created during processing are not included.
+4. For recurring needs, configure a scheduled export delivered to object storage rather than generating them manually.",,,,,
+DEV-0023,"User cannot access a project
+We are tightening permissions after a review and I want to understand how group membership interacts with directly assigned roles.","CloudServe documentation contains these steps:
+
+1. Check the effective permissions view for the user, which resolves direct roles and group memberships together.
+2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days.
+3. Remove a departing user rather than only changing their password, and revoke any API keys they created.
+4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.
+
+Source: [DOC-ACCT-001#resolution]","[DOC-ACCT-001#resolution] ## Resolution
+
+1. Check the effective permissions view for the user, which resolves direct roles and group memberships together.
+2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days.
+3. Remove a departing user rather than only changing their password, and revoke any API keys they created.
+4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.",,,,,
+DEV-0025,Our deployment reaches running and then rolls back after about a minute. The logs mention a health check timeout. It runs perfectly on my machine and in staging.,"CloudServe documentation contains these steps:
+
+1. Confirm the container is listening on the port declared in the service definition. A mismatch here produces a health check failure that looks like a timeout.
+2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a reasonable starting point for services that load models or caches.
+3. Compare the environment variables present in the deployment against those the application requires. Missing configuration frequently causes a silent startup failure.
+4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.
+
+Source: [DOC-DEPLOY-001#resolution]","[DOC-DEPLOY-001#resolution] ## Resolution
+
+1. Confirm the container is listening on the port declared in the service definition. A mismatch here produces a health check failure that looks like a timeout.
+2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a reasonable starting point for services that load models or caches.
+3. Compare the environment variables present in the deployment against those the application requires. Missing configuration frequently causes a silent startup failure.
+4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",,,,,
+DEV-0026,When I page through results I am seeing some records twice and missing others entirely. The collection does change while I iterate. Am I doing this the wrong way?,"CloudServe documentation contains these steps:
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.
+
+Source: [DOC-API-002#resolution]","[DOC-API-002#resolution] ## Resolution
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.",,,,,
+DEV-0027,"Pagination returns duplicates
+What is the right way to pull a very large extract? Requesting a big page size gets rejected and iterating page by page takes hours.","CloudServe documentation contains these steps:
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.
+
+Source: [DOC-API-002#resolution]","[DOC-API-002#resolution] ## Resolution
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.",,,,,
+DEV-0029,too many request error. we have 3 key so limit should be more no? please explain.,"CloudServe documentation contains these steps:
+
+1. Read the rate limit headers returned with every response. They give the limit, the remaining allowance and the reset time, which is more reliable than inferring the limit from behaviour.
+2. Confirm whether the endpoint has a specific limit. Search and export endpoints are more expensive and are limited more tightly than reads.
+3. Implement exponential backoff with jitter on 429 responses rather than retrying immediately, which prolongs the throttling.
+4. Where sustained higher throughput is genuinely required, the limit can be raised on Business and Enterprise plans through an account request.
+
+Source: [DOC-API-001#resolution]","[DOC-API-001#resolution] ## Resolution
+
+1. Read the rate limit headers returned with every response. They give the limit, the remaining allowance and the reset time, which is more reliable than inferring the limit from behaviour.
+2. Confirm whether the endpoint has a specific limit. Search and export endpoints are more expensive and are limited more tightly than reads.
+3. Implement exponential backoff with jitter on 429 responses rather than retrying immediately, which prolongs the throttling.
+4. Where sustained higher throughput is genuinely required, the limit can be raised on Business and Enterprise plans through an account request.",,,,,
+DEV-0032,"Connection pool exhausted
+We are getting errors saying no connection is available. This started when we scaled up our service. The database itself shows very few active queries.","CloudServe documentation contains these steps:
+
+1. Calculate the total possible connections as pool size multiplied by maximum instances, and compare it against your plan's connection limit.
+2. Reduce the per-instance pool size rather than raising the limit. A large number of small pools is usually the wrong shape for a scaled service.
+3. Look for queries that hold a transaction open across a network call to another service, which is the most common cause of leaks of this kind.
+4. Consider a connection proxy if the instance count must remain high, so that pooling happens once rather than per instance.
+
+Source: [DOC-PERF-003#resolution]","[DOC-PERF-003#resolution] ## Resolution
+
+1. Calculate the total possible connections as pool size multiplied by maximum instances, and compare it against your plan's connection limit.
+2. Reduce the per-instance pool size rather than raising the limit. A large number of small pools is usually the wrong shape for a scaled service.
+3. Look for queries that hold a transaction open across a network call to another service, which is the most common cause of leaks of this kind.
+4. Consider a connection proxy if the instance count must remain high, so that pooling happens once rather than per instance.",,,,,
+DEV-0033,We are setting up SAML with our identity provider and users are being bounced back to an error page after authenticating successfully on our side. The assertion looks correct to us.,"CloudServe documentation contains these steps:
+
+1. Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page. They must match exactly, including the trailing path.
+2. Inspect a failing assertion and confirm the NameID is the user's email address in lower case.
+3. Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users.
+4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.
+
+Source: [DOC-AUTH-003#resolution]","[DOC-AUTH-003#resolution] ## Resolution
+
+1. Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page. They must match exactly, including the trailing path.
+2. Inspect a failing assertion and confirm the NameID is the user's email address in lower case.
+3. Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users.
+4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.",,,,,
+DEV-0037,"Monitoring integration setup
+Log forwarding to our external system stopped around 14:00 yesterday and has not resumed by itself. The destination is healthy as far as we can tell.","CloudServe documentation contains these steps:
+
+1. Check the forwarding status page, which shows the last successful delivery and any error returned by the destination.
+2. Expect a delay of up to two minutes on metrics, since they are aggregated before being sent.
+3. Apply a level filter at source so that debug output is not forwarded, which is usually the reason volume is higher than expected.
+4. Verify the destination credential separately if delivery has stopped entirely, as expired credentials are the most common cause.
+
+Source: [DOC-INT-002#resolution]","[DOC-INT-002#resolution] ## Resolution
+
+1. Check the forwarding status page, which shows the last successful delivery and any error returned by the destination.
+2. Expect a delay of up to two minutes on metrics, since they are aggregated before being sent.
+3. Apply a level filter at source so that debug output is not forwarded, which is usually the reason volume is higher than expected.
+4. Verify the destination credential separately if delivery has stopped entirely, as expired credentials are the most common cause.",,,,,
+DEV-0038,"Monitoring integration setup
+Log forwarding to our external system stopped late last night and has not resumed by itself. The destination is healthy as far as we can tell.","CloudServe documentation contains these steps:
+
+1. Check the forwarding status page, which shows the last successful delivery and any error returned by the destination.
+2. Expect a delay of up to two minutes on metrics, since they are aggregated before being sent.
+3. Apply a level filter at source so that debug output is not forwarded, which is usually the reason volume is higher than expected.
+4. Verify the destination credential separately if delivery has stopped entirely, as expired credentials are the most common cause.
+
+Source: [DOC-INT-002#resolution]","[DOC-INT-002#resolution] ## Resolution
+
+1. Check the forwarding status page, which shows the last successful delivery and any error returned by the destination.
+2. Expect a delay of up to two minutes on metrics, since they are aggregated before being sent.
+3. Apply a level filter at source so that debug output is not forwarded, which is usually the reason volume is higher than expected.
+4. Verify the destination credential separately if delivery has stopped entirely, as expired credentials are the most common cause.",,,,,
+DEV-0039,"Config differs between environments
+Where should secrets be stored so they do not appear in the logs? At the moment ours are being printed at startup and I am not comfortable with that.","CloudServe documentation contains these steps:
+
+1. Check the scope at which the variable was defined. Service scope overrides project scope, and project scope overrides organisation defaults.
+2. Store anything sensitive as a secret rather than a variable. Secrets are masked in logs and are not readable through the API after creation.
+3. Review the environment overrides page, which lists values that differ from the defaults for each environment.
+4. Redeploy after changing configuration. Running containers do not pick up new values without a restart.
+
+Source: [DOC-DEPLOY-004#resolution]","[DOC-DEPLOY-004#resolution] ## Resolution
+
+1. Check the scope at which the variable was defined. Service scope overrides project scope, and project scope overrides organisation defaults.
+2. Store anything sensitive as a secret rather than a variable. Secrets are masked in logs and are not readable through the API after creation.
+3. Review the environment overrides page, which lists values that differ from the defaults for each environment.
+4. Redeploy after changing configuration. Running containers do not pick up new values without a restart.",,,,,
+DEV-0041,"Deployment rolls back every time
+Our deployment reaches running and then rolls back after about a minute. The logs mention a health check timeout. It runs perfectly on my machine and in staging.","CloudServe documentation contains these steps:
+
+1. Confirm the container is listening on the port declared in the service definition. A mismatch here produces a health check failure that looks like a timeout.
+2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a reasonable starting point for services that load models or caches.
+3. Compare the environment variables present in the deployment against those the application requires. Missing configuration frequently causes a silent startup failure.
+4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.
+
+Source: [DOC-DEPLOY-001#resolution]","[DOC-DEPLOY-001#resolution] ## Resolution
+
+1. Confirm the container is listening on the port declared in the service definition. A mismatch here produces a health check failure that looks like a timeout.
+2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a reasonable starting point for services that load models or caches.
+3. Compare the environment variables present in the deployment against those the application requires. Missing configuration frequently causes a silent startup failure.
+4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",,,,,
+DEV-0044,"Usage allowance already consumed
+our spend cap stop production workload overnight. We need it raised immediately and then we need to reconsider how we have this configured. please do the needful.","CloudServe documentation contains these steps:
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.
+
+Source: [DOC-BILL-003#resolution]","[DOC-BILL-003#resolution] ## Resolution
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.",,,,,
+DEV-0046,"Invoice higher than expected
+Our billing period does not seem to match the calendar month, which is making reconciliation difficult. Is that expected?","CloudServe documentation contains these steps:
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.
+
+Source: [DOC-BILL-001#resolution]","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+DEV-0048,"Spend cap stopped our service
+We were throttled over the weekend after a traffic increase and it took down part of our product. We would rather pay overage than be stopped. How do we change that?","CloudServe documentation contains these steps:
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.
+
+Source: [DOC-BILL-003#resolution]","[DOC-BILL-003#resolution] ## Resolution
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.",,,,,
+DEV-0050,"Question about this month's charges
+invoice showing service we not use. can you check and tell?","CloudServe documentation contains these steps:
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.
+
+Source: [DOC-BILL-001#resolution]","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+DEV-0055,When I page through results I am seeing some records twice and missing others entirely. The collection does change while I iterate. Am I doing this the wrong way?,"CloudServe documentation contains these steps:
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.
+
+Source: [DOC-API-002#resolution]","[DOC-API-002#resolution] ## Resolution
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.",,,,,
+DEV-0060,"Export missing recent records
+i start export two days ago and it still showing as queued. It covers about two million records. please tell what to do.","CloudServe documentation contains these steps:
+
+1. Check the exports page for job status. Jobs covering more than a million records commonly take several minutes.
+2. Request a fresh link from the exports page if the original has expired. The underlying file is retained for seven days.
+3. Note that the export reflects the moment the job began, so records created during processing are not included.
+4. For recurring needs, configure a scheduled export delivered to object storage rather than generating them manually.
+
+Source: [DOC-DATA-001#resolution]","[DOC-DATA-001#resolution] ## Resolution
+
+1. Check the exports page for job status. Jobs covering more than a million records commonly take several minutes.
+2. Request a fresh link from the exports page if the original has expired. The underlying file is retained for seven days.
+3. Note that the export reflects the moment the job began, so records created during processing are not included.
+4. For recurring needs, configure a scheduled export delivered to object storage rather than generating them manually.",,,,,
+DEV-0062,"Monitoring integration setup
+Log forwarding to our external system stopped earlier today and has not resumed by itself. The destination is healthy as far as we can tell.","CloudServe documentation contains these steps:
+
+1. Check the forwarding status page, which shows the last successful delivery and any error returned by the destination.
+2. Expect a delay of up to two minutes on metrics, since they are aggregated before being sent.
+3. Apply a level filter at source so that debug output is not forwarded, which is usually the reason volume is higher than expected.
+4. Verify the destination credential separately if delivery has stopped entirely, as expired credentials are the most common cause.
+
+Source: [DOC-INT-002#resolution]","[DOC-INT-002#resolution] ## Resolution
+
+1. Check the forwarding status page, which shows the last successful delivery and any error returned by the destination.
+2. Expect a delay of up to two minutes on metrics, since they are aggregated before being sent.
+3. Apply a level filter at source so that debug output is not forwarded, which is usually the reason volume is higher than expected.
+4. Verify the destination credential separately if delivery has stopped entirely, as expired credentials are the most common cause.",,,,,
+DEV-0063,"User cannot access a project
+One of our developers cannot see a project she should have access to. I have granted her the role twice and it does not seem to take effect.","CloudServe documentation contains these steps:
+
+1. Check the effective permissions view for the user, which resolves direct roles and group memberships together.
+2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days.
+3. Remove a departing user rather than only changing their password, and revoke any API keys they created.
+4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.
+
+Source: [DOC-ACCT-001#resolution]","[DOC-ACCT-001#resolution] ## Resolution
+
+1. Check the effective permissions view for the user, which resolves direct roles and group memberships together.
+2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days.
+3. Remove a departing user rather than only changing their password, and revoke any API keys they created.
+4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.",,,,,
+DEV-0064,"Unexpected overage charges
+Our spend cap stopped a production workload overnight. We need it raised immediately and then we need to reconsider how we have this configured.","CloudServe documentation contains these steps:
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.
+
+Source: [DOC-BILL-003#resolution]","[DOC-BILL-003#resolution] ## Resolution
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.",,,,,
+DEV-0065,"Export job stuck
+The download link from our export has expired and I cannot find a way to generate a new one. Is the file still available?","CloudServe documentation contains these steps:
+
+1. Check the exports page for job status. Jobs covering more than a million records commonly take several minutes.
+2. Request a fresh link from the exports page if the original has expired. The underlying file is retained for seven days.
+3. Note that the export reflects the moment the job began, so records created during processing are not included.
+4. For recurring needs, configure a scheduled export delivered to object storage rather than generating them manually.
+
+Source: [DOC-DATA-001#resolution]","[DOC-DATA-001#resolution] ## Resolution
+
+1. Check the exports page for job status. Jobs covering more than a million records commonly take several minutes.
+2. Request a fresh link from the exports page if the original has expired. The underlying file is retained for seven days.
+3. Note that the export reflects the moment the job began, so records created during processing are not included.
+4. For recurring needs, configure a scheduled export delivered to object storage rather than generating them manually.",,,,,
+DEV-0066,"Pagination returns duplicates
+What is the right way to pull a very large extract? Requesting a big page size gets rejected and iterating page by page takes hours.","CloudServe documentation contains these steps:
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.
+
+Source: [DOC-API-002#resolution]","[DOC-API-002#resolution] ## Resolution
+
+1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration.
+2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null.
+3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated.
+4. For very large extracts, use the export endpoint, which runs asynchronously and returns a download link.",,,,,
+DEV-0067,"Signature verification failing
+signature verification fails for every delivery. We are computing signature exactly as the documentation describes, over parsed body.","CloudServe documentation contains these steps:
+
+1. Check the webhook delivery log, which records every attempt with the response status and body for the last seven days.
+2. Return 2xx as quickly as possible and process the event asynchronously. Deliveries time out after five seconds.
+3. Compute the signature over the raw request body before any parsing. Re-serialising JSON changes the bytes and invalidates the signature.
+4. Make your handler idempotent using the event identifier. At-least-once delivery means duplicates are expected rather than exceptional.
+
+Source: [DOC-API-003#resolution]","[DOC-API-003#resolution] ## Resolution
+
+1. Check the webhook delivery log, which records every attempt with the response status and body for the last seven days.
+2. Return 2xx as quickly as possible and process the event asynchronously. Deliveries time out after five seconds.
+3. Compute the signature over the raw request body before any parsing. Re-serialising JSON changes the bytes and invalidates the signature.
+4. Make your handler idempotent using the event identifier. At-least-once delivery means duplicates are expected rather than exceptional.",,,,,
+DEV-0068,"Database restore taking hours
+We are getting errors saying no connection is available. This started when we scaled up our service. The database itself shows very few active queries.","CloudServe documentation contains these steps:
+
+1. Calculate the total possible connections as pool size multiplied by maximum instances, and compare it against your plan's connection limit.
+2. Reduce the per-instance pool size rather than raising the limit. A large number of small pools is usually the wrong shape for a scaled service.
+3. Look for queries that hold a transaction open across a network call to another service, which is the most common cause of leaks of this kind.
+4. Consider a connection proxy if the instance count must remain high, so that pooling happens once rather than per instance.
+
+Source: [DOC-PERF-003#resolution]","[DOC-PERF-003#resolution] ## Resolution
+
+1. Calculate the total possible connections as pool size multiplied by maximum instances, and compare it against your plan's connection limit.
+2. Reduce the per-instance pool size rather than raising the limit. A large number of small pools is usually the wrong shape for a scaled service.
+3. Look for queries that hold a transaction open across a network call to another service, which is the most common cause of leaks of this kind.
+4. Consider a connection proxy if the instance count must remain high, so that pooling happens once rather than per instance.",,,,,
+DEV-0069,We are setting up SAML with our identity provider and users are being bounced back to an error page after authenticating successfully on our side. The assertion looks correct to us.,"CloudServe documentation contains these steps:
+
+1. Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page. They must match exactly, including the trailing path.
+2. Inspect a failing assertion and confirm the NameID is the user's email address in lower case.
+3. Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users.
+4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.
+
+Source: [DOC-AUTH-003#resolution]","[DOC-AUTH-003#resolution] ## Resolution
+
+1. Compare the assertion consumer service URL in your identity provider against the value shown on the SSO settings page. They must match exactly, including the trailing path.
+2. Inspect a failing assertion and confirm the NameID is the user's email address in lower case.
+3. Enable just-in-time provisioning if new users should be created on first login, and set a default role for provisioned users.
+4. Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.",,,,,
+DEV-0070,"Connection pool exhausted
+We are getting errors saying no connection is available. This started when we scaled up our service. The database itself shows very few active queries.","CloudServe documentation contains these steps:
+
+1. Calculate the total possible connections as pool size multiplied by maximum instances, and compare it against your plan's connection limit.
+2. Reduce the per-instance pool size rather than raising the limit. A large number of small pools is usually the wrong shape for a scaled service.
+3. Look for queries that hold a transaction open across a network call to another service, which is the most common cause of leaks of this kind.
+4. Consider a connection proxy if the instance count must remain high, so that pooling happens once rather than per instance.
+
+Source: [DOC-PERF-003#resolution]","[DOC-PERF-003#resolution] ## Resolution
+
+1. Calculate the total possible connections as pool size multiplied by maximum instances, and compare it against your plan's connection limit.
+2. Reduce the per-instance pool size rather than raising the limit. A large number of small pools is usually the wrong shape for a scaled service.
+3. Look for queries that hold a transaction open across a network call to another service, which is the most common cause of leaks of this kind.
+4. Consider a connection proxy if the instance count must remain high, so that pooling happens once rather than per instance.",,,,,
+DEV-0073,"Invoice higher than expected
+There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?","CloudServe documentation contains these steps:
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.
+
+Source: [DOC-BILL-001#resolution]","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+DEV-0074,"Usage allowance already consumed
+We were throttled around 14:00 yesterday after a traffic increase and it took down part of our product. We would rather pay overage than be stopped. How do we change that?","CloudServe documentation contains these steps:
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.
+
+Source: [DOC-BILL-003#resolution]","[DOC-BILL-003#resolution] ## Resolution
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.",,,,,
+DEV-0075,"Build fails in the pipeline
+builds that work last week are now fail during dependency resolution. we having not change our code at all.","CloudServe documentation contains these steps:
+
+1. Pin your dependencies with exact versions and commit the lock file. Unpinned dependencies are the cause in the large majority of cases of this kind.
+2. Compare the runtime version declared in your build configuration against the version you use locally.
+3. Clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact.
+4. If a specific dependency is failing to resolve, check whether its registry is reachable from the build network.
+
+Source: [DOC-DEPLOY-003#resolution]","[DOC-DEPLOY-003#resolution] ## Resolution
+
+1. Pin your dependencies with exact versions and commit the lock file. Unpinned dependencies are the cause in the large majority of cases of this kind.
+2. Compare the runtime version declared in your build configuration against the version you use locally.
+3. Clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact.
+4. If a specific dependency is failing to resolve, check whether its registry is reachable from the build network.",,,,,
+DEV-0078,There are charges on our invoice for a service I do not believe we use. Could you explain what these relate to?,"CloudServe documentation contains these steps:
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.
+
+Source: [DOC-BILL-001#resolution]","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+DEV-0079,invoice showing service we not use. can you check and tell?,"CloudServe documentation contains these steps:
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.
+
+Source: [DOC-BILL-001#resolution]","[DOC-BILL-001#resolution] ## Resolution
+
+1. Open the usage breakdown for the period, which itemises charges by service and by environment.
+2. Look for resources in staging or development environments, which are billed at the same rate as production.
+3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date.
+4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",,,,,
+DEV-0080,"Webhooks not arriving
+Signature verification fails for every delivery. We are computing the signature exactly as the documentation describes, over the parsed body.","CloudServe documentation contains these steps:
+
+1. Check the webhook delivery log, which records every attempt with the response status and body for the last seven days.
+2. Return 2xx as quickly as possible and process the event asynchronously. Deliveries time out after five seconds.
+3. Compute the signature over the raw request body before any parsing. Re-serialising JSON changes the bytes and invalidates the signature.
+4. Make your handler idempotent using the event identifier. At-least-once delivery means duplicates are expected rather than exceptional.
+
+Source: [DOC-API-003#resolution]","[DOC-API-003#resolution] ## Resolution
+
+1. Check the webhook delivery log, which records every attempt with the response status and body for the last seven days.
+2. Return 2xx as quickly as possible and process the event asynchronously. Deliveries time out after five seconds.
+3. Compute the signature over the raw request body before any parsing. Re-serialising JSON changes the bytes and invalidates the signature.
+4. Make your handler idempotent using the event identifier. At-least-once delivery means duplicates are expected rather than exceptional.",,,,,
+DEV-0081,Our deployment reaches running and then rolls back after about a minute. The logs mention a health check timeout. It runs perfectly on my machine and in staging.,"CloudServe documentation contains these steps:
+
+1. Confirm the container is listening on the port declared in the service definition. A mismatch here produces a health check failure that looks like a timeout.
+2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a reasonable starting point for services that load models or caches.
+3. Compare the environment variables present in the deployment against those the application requires. Missing configuration frequently causes a silent startup failure.
+4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.
+
+Source: [DOC-DEPLOY-001#resolution]","[DOC-DEPLOY-001#resolution] ## Resolution
+
+1. Confirm the container is listening on the port declared in the service definition. A mismatch here produces a health check failure that looks like a timeout.
+2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a reasonable starting point for services that load models or caches.
+3. Compare the environment variables present in the deployment against those the application requires. Missing configuration frequently causes a silent startup failure.
+4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",,,,,
+DEV-0082,"Config differs between environments
+our staging environment is picking up production configuration values. I not able to work out where override is coming from.","CloudServe documentation contains these steps:
+
+1. Use a separate project per environment where isolation of configuration and billing matters. Folders within a project share configuration by design.
+2. Set shared values at organisation scope and override at project scope, rather than repeating values in every project.
+3. Plan project structure around who should be able to see what, since permissions are granted at project scope most naturally.
+4. Contact support for a project migration between organisations, which requires a short maintenance window.
+
+Source: [DOC-ACCT-002#resolution]","[DOC-ACCT-002#resolution] ## Resolution
+
+1. Use a separate project per environment where isolation of configuration and billing matters. Folders within a project share configuration by design.
+2. Set shared values at organisation scope and override at project scope, rather than repeating values in every project.
+3. Plan project structure around who should be able to see what, since permissions are granted at project scope most naturally.
+4. Contact support for a project migration between organisations, which requires a short maintenance window.",,,,,
+DEV-0086,"Deployment rolls back every time
+Every deployment fails at the health check stage. I have increased the timeout twice already and it makes no difference.","CloudServe documentation contains these steps:
+
+1. Confirm the container is listening on the port declared in the service definition. A mismatch here produces a health check failure that looks like a timeout.
+2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a reasonable starting point for services that load models or caches.
+3. Compare the environment variables present in the deployment against those the application requires. Missing configuration frequently causes a silent startup failure.
+4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.
+
+Source: [DOC-DEPLOY-001#resolution]","[DOC-DEPLOY-001#resolution] ## Resolution
+
+1. Confirm the container is listening on the port declared in the service definition. A mismatch here produces a health check failure that looks like a timeout.
+2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a reasonable starting point for services that load models or caches.
+3. Compare the environment variables present in the deployment against those the application requires. Missing configuration frequently causes a silent startup failure.
+4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",,,,,
+DEV-0087,"Export job stuck
+The download link from our export has expired and I cannot find a way to generate a new one. Is the file still available?","CloudServe documentation contains these steps:
+
+1. Check the exports page for job status. Jobs covering more than a million records commonly take several minutes.
+2. Request a fresh link from the exports page if the original has expired. The underlying file is retained for seven days.
+3. Note that the export reflects the moment the job began, so records created during processing are not included.
+4. For recurring needs, configure a scheduled export delivered to object storage rather than generating them manually.
+
+Source: [DOC-DATA-001#resolution]","[DOC-DATA-001#resolution] ## Resolution
+
+1. Check the exports page for job status. Jobs covering more than a million records commonly take several minutes.
+2. Request a fresh link from the exports page if the original has expired. The underlying file is retained for seven days.
+3. Note that the export reflects the moment the job began, so records created during processing are not included.
+4. For recurring needs, configure a scheduled export delivered to object storage rather than generating them manually.",,,,,
+DEV-0090,Builds that worked last week are now failing during dependency resolution. We have not changed our code at all. This is blocking a release we had planned for late last night.,"CloudServe documentation contains these steps:
+
+1. Pin your dependencies with exact versions and commit the lock file. Unpinned dependencies are the cause in the large majority of cases of this kind.
+2. Compare the runtime version declared in your build configuration against the version you use locally.
+3. Clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact.
+4. If a specific dependency is failing to resolve, check whether its registry is reachable from the build network.
+
+Source: [DOC-DEPLOY-003#resolution]","[DOC-DEPLOY-003#resolution] ## Resolution
+
+1. Pin your dependencies with exact versions and commit the lock file. Unpinned dependencies are the cause in the large majority of cases of this kind.
+2. Compare the runtime version declared in your build configuration against the version you use locally.
+3. Clear the build cache from the settings page and trigger a fresh build to rule out a corrupted artefact.
+4. If a specific dependency is failing to resolve, check whether its registry is reachable from the build network.",,,,,
+DEV-0092,"Usage allowance already consumed
+Our spend cap stopped a production workload overnight. We need it raised immediately and then we need to reconsider how we have this configured.","CloudServe documentation contains these steps:
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.
+
+Source: [DOC-BILL-003#resolution]","[DOC-BILL-003#resolution] ## Resolution
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.",,,,,
+DEV-0093,One of our developers cannot see a project she should have access to. I have granted her the role twice and it does not seem to take effect.,"CloudServe documentation contains these steps:
+
+1. Check the effective permissions view for the user, which resolves direct roles and group memberships together.
+2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days.
+3. Remove a departing user rather than only changing their password, and revoke any API keys they created.
+4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.
+
+Source: [DOC-ACCT-001#resolution]","[DOC-ACCT-001#resolution] ## Resolution
+
+1. Check the effective permissions view for the user, which resolves direct roles and group memberships together.
+2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days.
+3. Remove a departing user rather than only changing their password, and revoke any API keys they created.
+4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.",,,,,
+DEV-0096,we planning to migrate existing application across. It currently writes uploaded files to local disk.,"CloudServe documentation contains these steps:
+
+1. Externalise configuration before migrating. Anything read from a file on disk should move to environment variables or secrets.
+2. Identify local state such as uploaded files or session data and move it to object storage or the managed database first.
+3. Run in parallel with the existing deployment and shift a small share of traffic before committing to the move.
+4. Plan the database migration separately from the application migration; attempting both at once makes any failure hard to diagnose.
+
+Source: [DOC-ONB-002#resolution]","[DOC-ONB-002#resolution] ## Resolution
+
+1. Externalise configuration before migrating. Anything read from a file on disk should move to environment variables or secrets.
+2. Identify local state such as uploaded files or session data and move it to object storage or the managed database first.
+3. Run in parallel with the existing deployment and shift a small share of traffic before committing to the move.
+4. Plan the database migration separately from the application migration; attempting both at once makes any failure hard to diagnose.",,,,,
+DEV-0099,our spend cap stop a production workload overnight. We need it raised immediately and then we need to reconsider how we have this configured.,"CloudServe documentation contains these steps:
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.
+
+Source: [DOC-BILL-003#resolution]","[DOC-BILL-003#resolution] ## Resolution
+
+1. Check the current period usage against the plan allowance on the billing page.
+2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second.
+3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning.
+4. Where a cap has stopped a production service, an account owner can raise it immediately from the billing page and service resumes within a minute.",,,,,

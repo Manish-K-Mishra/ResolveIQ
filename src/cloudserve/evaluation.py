@@ -101,12 +101,12 @@ def citations_resolve(results: list[dict], kb) -> float | None:
     return frac(ok, len(spans))
 
 
-# Projected-cost volume. Source: Stakeholder_Interviews.txt, Marcus (support lead): "We take somewhere
+# Projected-cost volume. Source: Stakeholder_Interviews.txt, support lead: "We take somewhere
 # north of five hundred tickets a week now". 500/week x 52 / 12 = 2,167 tickets a month, a LOWER
 # bound ("north of", and "volume is growing" in the Project Brief). No other document states volume.
 TICKETS_PER_WEEK = 500
 TICKETS_PER_MONTH = round(TICKETS_PER_WEEK * 52 / 12)
-VOLUME_SOURCE = ("Stakeholder_Interviews (Marcus, support lead): 'north of five hundred tickets a week'; "
+VOLUME_SOURCE = ("Stakeholder_Interviews (support lead): 'north of five hundred tickets a week'; "
                  "500/week x 52/12 = 2,167/month, a lower bound because volume is growing (Project Brief)")
 
 
@@ -320,7 +320,10 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
          "in this input are exact copies of development tickets the offline classifier was trained on"
          + ("; intent accuracy on those measures recall of training data, not generalisation, so treat it with caution "
             "(docs/architecture.md §8)." if ov.get("exact_body_matches") != 0 else
-            ", so these figures are not inflated by training-set recall.")),
+            ", so these figures are not inflated by training-set recall.")
+         + ("" if str(run_info.get("classifier", "")).startswith("naive_bayes") else
+            " This run used an LLM classifier, which was not trained on these tickets; the overlap affects"
+            " only the dev-derived routing thresholds and the offline comparison.")),
         "Urgency and expected_route labels vary for identical ticket text in the supplied data, which caps achievable urgency and routing accuracy.",
         "Citation accuracy here is a label-based proxy (cited document among expected_doc_ids); it is not the human claim-by-claim review the Evaluation Framework requires, and hallucination rate is not measured.",
         ("Responses are generated sentences (PR-02); the citation support rate is an automated proxy from "

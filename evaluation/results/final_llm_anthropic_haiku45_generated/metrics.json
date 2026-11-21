@@ -1,16 +1,19 @@
 {
   "run": {
-    "run_id": "run-20261121T185923-dd44fb",
-    "date": "2026-11-21T18:59:23+00:00",
+    "run_id": "run-20261121T195724-7d4837",
+    "date": "2026-11-21T20:01:18+00:00",
     "input": "data/validation_tickets.json",
     "engine": "langgraph",
-    "classifier": "naive_bayes_intent (nb-a8a09fec6990)",
-    "evidence_selector": "deterministic_resolution_section",
+    "classifier": "anthropic:claude-haiku-4-5 (PR-01 v1.1)",
+    "evidence_selector": "not_used (generated answer mode)",
+    "answer_mode": "generated",
+    "generator": "anthropic:claude-haiku-4-5",
     "prompt_versions": [
-      "none (no model prompt used: offline classifier and deterministic selector)"
+      "PR-01 v1.1",
+      "PR-02 v1.0"
     ],
     "policy_version": "RP-1.0",
-    "auto_send": true,
+    "auto_send": false,
     "retrieval": {
       "retriever": "lexical",
       "name": "lexical:term-overlap",
@@ -19,31 +22,40 @@
       "passages": 29,
       "fallback": false
     },
+    "llm_cache": "read_write",
+    "kill_switch_at_start": {
+      "auto_send_enabled": false,
+      "file_flag_engaged": false,
+      "flag_file": "storage/KILL_SWITCH",
+      "engaged_at": null,
+      "reason": null
+    },
+    "prices_as_of": "2026-11-22",
     "training_overlap": {
       "tickets": 80,
       "exact_body_matches": 62,
       "training_file": "data/development_tickets.json"
     },
     "tickets_in_file": 80,
-    "wall_clock_seconds": 0.1
+    "wall_clock_seconds": 233.96
   },
   "volume": {
     "processed": 80,
     "decisions_logged": 80,
-    "auto_responded_sent": 33,
-    "auto_respond_decisions_held_by_kill_switch": 0,
-    "escalated": 47,
-    "blocked_by_guardrails": 0
+    "auto_responded_sent": 0,
+    "auto_respond_decisions_held_by_kill_switch": 19,
+    "escalated": 51,
+    "blocked_by_guardrails": 10
   },
   "business": {
-    "first_contact_resolution_pct": 41.2,
-    "first_contact_resolution_if_kill_switch_released_pct": 41.2,
-    "escalation_rate_pct": 58.8,
-    "escalation_rate_if_kill_switch_released_pct": 58.8,
+    "first_contact_resolution_pct": 0.0,
+    "first_contact_resolution_if_kill_switch_released_pct": 23.8,
+    "escalation_rate_pct": 100.0,
+    "escalation_rate_if_kill_switch_released_pct": 76.2,
     "time_to_first_reply_automatic_seconds": {
-      "n": 33,
-      "mean": 0.001,
-      "median": 0.001
+      "n": 0,
+      "mean": null,
+      "median": null
     },
     "time_to_first_reply_escalated": "not measurable offline: depends on the human queue",
     "customer_satisfaction": "not measurable offline: requires a human-scored sample",
@@ -51,37 +63,44 @@
   },
   "technical": {
     "latency_seconds": {
-      "mean": 0.0009,
-      "median": 0.0009,
-      "p95": 0.0012
+      "mean": 2.9233,
+      "median": 1.8897,
+      "p95": 5.1164,
+      "n": 80,
+      "excludes": "decisions replayed from the LLM cache"
     },
-    "intent_accuracy": 0.975,
-    "intent_macro_precision": 0.9849,
-    "intent_macro_recall": 0.9849,
+    "latency_seconds_including_cache_hits": {
+      "median": 1.8897,
+      "p95": 5.1164,
+      "n": 80
+    },
+    "intent_accuracy": 0.9125,
+    "intent_macro_precision": 0.9286,
+    "intent_macro_recall": 0.9091,
     "intent_precision_recall_by_class": {
       "account_access": {
+        "support": 4,
+        "predicted": 3,
+        "precision": 0.6667,
+        "recall": 0.5
+      },
+      "api_key_issue": {
+        "support": 6,
+        "predicted": 6,
+        "precision": 0.8333,
+        "recall": 0.8333
+      },
+      "api_usage_question": {
         "support": 4,
         "predicted": 4,
         "precision": 1.0,
         "recall": 1.0
       },
-      "api_key_issue": {
-        "support": 6,
-        "predicted": 6,
-        "precision": 1.0,
-        "recall": 1.0
-      },
-      "api_usage_question": {
-        "support": 4,
-        "predicted": 6,
-        "precision": 0.6667,
-        "recall": 1.0
-      },
       "authentication_failure": {
         "support": 3,
-        "predicted": 3,
+        "predicted": 2,
         "precision": 1.0,
-        "recall": 1.0
+        "recall": 0.6667
       },
       "billing_query": {
         "support": 10,
@@ -97,8 +116,8 @@
       },
       "configuration_help": {
         "support": 3,
-        "predicted": 3,
-        "precision": 1.0,
+        "predicted": 5,
+        "precision": 0.6,
         "recall": 1.0
       },
       "data_export": {
@@ -133,9 +152,9 @@
       },
       "integration_help": {
         "support": 3,
-        "predicted": 3,
-        "precision": 1.0,
-        "recall": 1.0
+        "predicted": 0,
+        "precision": null,
+        "recall": 0.0
       },
       "onboarding": {
         "support": 4,
@@ -169,8 +188,8 @@
       },
       "security_incident": {
         "support": 4,
-        "predicted": 4,
-        "precision": 1.0,
+        "predicted": 5,
+        "precision": 0.8,
         "recall": 1.0
       },
       "sso_configuration": {
@@ -181,29 +200,32 @@
       },
       "unclear_request": {
         "support": 6,
-        "predicted": 4,
+        "predicted": 6,
         "precision": 1.0,
-        "recall": 0.6667
+        "recall": 1.0
       },
       "webhook_issue": {
         "support": 3,
-        "predicted": 3,
-        "precision": 1.0,
+        "predicted": 5,
+        "precision": 0.6,
         "recall": 1.0
       }
     },
     "intent_confusion_matrix": {
       "account_access": {
-        "account_access": 4
+        "account_access": 2,
+        "configuration_help": 2
       },
       "api_key_issue": {
-        "api_key_issue": 6
+        "api_key_issue": 5,
+        "security_incident": 1
       },
       "api_usage_question": {
         "api_usage_question": 4
       },
       "authentication_failure": {
-        "authentication_failure": 3
+        "account_access": 1,
+        "authentication_failure": 2
       },
       "billing_query": {
         "billing_query": 10
@@ -230,7 +252,8 @@
         "feature_request": 3
       },
       "integration_help": {
-        "integration_help": 3
+        "api_key_issue": 1,
+        "webhook_issue": 2
       },
       "onboarding": {
         "onboarding": 4
@@ -254,48 +277,72 @@
         "sso_configuration": 1
       },
       "unclear_request": {
-        "api_usage_question": 2,
-        "unclear_request": 4
+        "unclear_request": 6
       },
       "webhook_issue": {
         "webhook_issue": 3
       }
     },
-    "urgency_accuracy": 0.45,
+    "urgency_accuracy": 0.3625,
     "urgency_precision_recall_by_class": {
       "high": {
         "support": 25,
-        "predicted": 6,
-        "precision": 0.5,
-        "recall": 0.12
+        "predicted": 42,
+        "precision": 0.3333,
+        "recall": 0.56
       },
       "low": {
         "support": 20,
-        "predicted": 0,
-        "precision": null,
-        "recall": 0.0
+        "predicted": 5,
+        "precision": 0.4,
+        "recall": 0.1
       },
       "medium": {
         "support": 35,
-        "predicted": 74,
-        "precision": 0.4459,
-        "recall": 0.9429
+        "predicted": 33,
+        "precision": 0.3939,
+        "recall": 0.3714
       }
     },
     "retrieval_hit_rate_any_expected_doc": 0.8113,
     "retrieval_hit_rate_top1": 0.7358,
     "retrieval_eligible_tickets": 53,
     "retrieval_returned_nothing_for_unanswerable": 0.2963,
-    "citation_accuracy_vs_expected_docs": 0.9615,
-    "citations_on_tickets_labelled_unanswerable": 7,
+    "citation_accuracy_vs_expected_docs": 0.9412,
+    "citations_on_tickets_labelled_unanswerable": 2,
     "citation_article_in_retrieved_set": 1.0
+  },
+  "llm_usage": {
+    "model_calls": 109,
+    "live_calls": 109,
+    "cache_hits": 0,
+    "tickets_answered_entirely_from_cache": 0,
+    "calls_by_component": {
+      "classifier": 80,
+      "generator": 29
+    },
+    "input_tokens": 161844,
+    "output_tokens": 20666,
+    "calls_without_token_usage": 0,
+    "calls_with_unknown_price": 0,
+    "estimated_cost_this_run_usd": 0.265174,
+    "estimated_cost_if_all_calls_live_usd": 0.265174,
+    "estimated_cost_per_ticket_if_live_usd": 0.00331468,
+    "projected_monthly_cost_usd": {
+      "tickets_per_month": 2167,
+      "volume_source": "Stakeholder_Interviews (Marcus, support lead): 'north of five hundred tickets a week'; 500/week x 52/12 = 2,167/month, a lower bound because volume is growing (Project Brief)",
+      "cost_usd": 7.1829,
+      "basis": "per-ticket cost of this input file (same mix of escalations, which make fewer model calls) x monthly volume; prices from config/model_prices.json as of 2026-11-22"
+    }
   },
   "governance": {
     "decisions_logged": 80,
     "tickets_processed": 80,
     "decision_log_reconciles": true,
     "guardrail_activations_by_type": {
-      "sensitive_request_manual_review": 10
+      "quote_not_supported_by_source": 4,
+      "sensitive_request_manual_review": 10,
+      "unsupported_claim": 7
     },
     "private_data_detections": 0,
     "private_data_in_outbound_responses": 0,
@@ -303,46 +350,61 @@
     "confidence_calibration": {
       "bands": [
         {
-          "band": "0.2-0.4",
-          "n": 1,
-          "stated": 0.2972,
-          "observed": 0.0,
-          "gap_points": 29.7
+          "band": "0.4-0.6",
+          "n": 4,
+          "stated": 0.45,
+          "observed": 1.0,
+          "gap_points": -55.0
         },
         {
-          "band": "0.4-0.6",
-          "n": 1,
-          "stated": 0.5977,
-          "observed": 0.0,
-          "gap_points": 59.8
+          "band": "0.6-0.8",
+          "n": 14,
+          "stated": 0.7293,
+          "observed": 0.6429,
+          "gap_points": 8.6
         },
         {
           "band": "0.8-1.0",
-          "n": 78,
-          "stated": 1.0,
-          "observed": 1.0,
-          "gap_points": -0.0
+          "n": 62,
+          "stated": 0.9029,
+          "observed": 0.9677,
+          "gap_points": -6.5
         }
       ],
-      "max_abs_gap_points": 59.8,
+      "max_abs_gap_points": 55.0,
       "target": "within 5 points per band"
     }
+  },
+  "generation": {
+    "generator_called": 29,
+    "answers_released_or_held": 19,
+    "citations_per_answer": 1.895,
+    "sentences_per_answer": 3.105,
+    "citation_support_rate_automated_proxy": 0.9206,
+    "citation_support_rate_all_generated_automated_proxy": 0.8586,
+    "support_rate_label": "automated proxy (deterministic string checks), not human-reviewed citation accuracy",
+    "blocked_by_grounding": 10,
+    "cannot_answer": 0,
+    "generation_failed": 0,
+    "unsupported_claims_flagged": 11
   },
   "labelled_tickets": 80,
   "routing": {
     "policy_version": "RP-1.0",
-    "auto_respond_decisions": 33,
-    "auto_precision_vs_expected_route": 0.7879,
-    "auto_recall_vs_expected_route": 0.5417,
-    "routing_accuracy_vs_expected_route": 0.6375,
+    "auto_respond_decisions": 19,
+    "auto_precision_vs_expected_route": 0.8947,
+    "auto_recall_vs_expected_route": 0.3542,
+    "routing_accuracy_vs_expected_route": 0.5875,
     "confusion_expected_vs_decided": {
       "auto_respond": {
-        "auto_respond": 26,
-        "escalate": 22
+        "auto_respond": 17,
+        "block": 6,
+        "escalate": 25
       },
       "escalate": {
-        "auto_respond": 7,
-        "escalate": 25
+        "auto_respond": 2,
+        "block": 4,
+        "escalate": 26
       }
     },
     "must_not_auto_respond_tickets": 14,
@@ -353,61 +415,61 @@
       "groups": {
         "business": {
           "n": 30,
-          "auto_respond_rate": 0.4667,
+          "auto_respond_rate": 0.4,
           "routing_accuracy": 0.6333,
-          "intent_accuracy": 1.0
+          "intent_accuracy": 0.9
         },
         "enterprise": {
           "n": 8,
-          "auto_respond_rate": 0.5,
-          "routing_accuracy": 0.75,
+          "auto_respond_rate": 0.125,
+          "routing_accuracy": 0.375,
           "intent_accuracy": 1.0
         },
         "standard": {
           "n": 42,
-          "auto_respond_rate": 0.3571,
-          "routing_accuracy": 0.619,
-          "intent_accuracy": 0.9524
+          "auto_respond_rate": 0.1429,
+          "routing_accuracy": 0.5952,
+          "intent_accuracy": 0.9048
         }
       },
       "variation_points": {
-        "auto_respond_rate": 14.3,
-        "routing_accuracy": 13.1,
-        "intent_accuracy": 4.8
+        "auto_respond_rate": 27.5,
+        "routing_accuracy": 25.8,
+        "intent_accuracy": 10.0
       }
     },
     "language_fluency": {
       "groups": {
         "fluent": {
           "n": 61,
-          "auto_respond_rate": 0.4426,
-          "routing_accuracy": 0.6557,
-          "intent_accuracy": 0.9672
+          "auto_respond_rate": 0.2787,
+          "routing_accuracy": 0.5574,
+          "intent_accuracy": 0.9344
         },
         "non_fluent": {
           "n": 19,
-          "auto_respond_rate": 0.3158,
-          "routing_accuracy": 0.5789,
-          "intent_accuracy": 1.0
+          "auto_respond_rate": 0.1053,
+          "routing_accuracy": 0.6842,
+          "intent_accuracy": 0.8421
         }
       },
       "variation_points": {
-        "auto_respond_rate": 12.7,
-        "routing_accuracy": 7.7,
-        "intent_accuracy": 3.3
+        "auto_respond_rate": 17.3,
+        "routing_accuracy": 12.7,
+        "intent_accuracy": 9.2
       }
     },
     "customer_region": {
       "groups": {
         "asia_pacific": {
           "n": 21,
-          "auto_respond_rate": 0.4286,
-          "routing_accuracy": 0.619,
-          "intent_accuracy": 1.0
+          "auto_respond_rate": 0.2381,
+          "routing_accuracy": 0.4286,
+          "intent_accuracy": 0.8571
         },
         "europe": {
           "n": 25,
-          "auto_respond_rate": 0.44,
+          "auto_respond_rate": 0.2,
           "routing_accuracy": 0.48,
           "intent_accuracy": 1.0
         },
@@ -415,52 +477,52 @@
           "n": 7,
           "auto_respond_rate": 0.2857,
           "routing_accuracy": 0.8571,
-          "intent_accuracy": 0.8571
+          "intent_accuracy": 1.0
         },
         "north_america": {
           "n": 27,
-          "auto_respond_rate": 0.4074,
+          "auto_respond_rate": 0.2593,
           "routing_accuracy": 0.7407,
-          "intent_accuracy": 0.963
+          "intent_accuracy": 0.8519
         }
       },
       "variation_points": {
-        "auto_respond_rate": 15.4,
-        "routing_accuracy": 37.7,
-        "intent_accuracy": 14.3
+        "auto_respond_rate": 8.6,
+        "routing_accuracy": 42.9,
+        "intent_accuracy": 14.8
       }
     },
     "channel": {
       "groups": {
         "chat": {
           "n": 22,
-          "auto_respond_rate": 0.4545,
-          "routing_accuracy": 0.8636,
-          "intent_accuracy": 0.9545
+          "auto_respond_rate": 0.3636,
+          "routing_accuracy": 0.7727,
+          "intent_accuracy": 0.8636
         },
         "docs_comment": {
           "n": 16,
-          "auto_respond_rate": 0.375,
-          "routing_accuracy": 0.625,
-          "intent_accuracy": 0.9375
+          "auto_respond_rate": 0.0625,
+          "routing_accuracy": 0.5625,
+          "intent_accuracy": 0.875
         },
         "email": {
           "n": 31,
-          "auto_respond_rate": 0.4516,
-          "routing_accuracy": 0.5161,
+          "auto_respond_rate": 0.2581,
+          "routing_accuracy": 0.4516,
           "intent_accuracy": 1.0
         },
         "forum": {
           "n": 11,
-          "auto_respond_rate": 0.2727,
-          "routing_accuracy": 0.5455,
-          "intent_accuracy": 1.0
+          "auto_respond_rate": 0.1818,
+          "routing_accuracy": 0.6364,
+          "intent_accuracy": 0.8182
         }
       },
       "variation_points": {
-        "auto_respond_rate": 18.2,
-        "routing_accuracy": 34.8,
-        "intent_accuracy": 6.2
+        "auto_respond_rate": 30.1,
+        "routing_accuracy": 32.1,
+        "intent_accuracy": 18.2
       }
     }
   },
@@ -468,7 +530,7 @@
     "Training overlap: 62 of 80 ticket bodies in this input are exact copies of development tickets the offline classifier was trained on; intent accuracy on those measures recall of training data, not generalisation, so treat it with caution (docs/architecture.md §8).",
     "Urgency and expected_route labels vary for identical ticket text in the supplied data, which caps achievable urgency and routing accuracy.",
     "Citation accuracy here is a label-based proxy (cited document among expected_doc_ids); it is not the human claim-by-claim review the Evaluation Framework requires, and hallucination rate is not measured.",
-    "Responses are extractive (a verbatim documentation section), not generated text.",
+    "Responses are generated sentences (PR-02); the citation support rate is an automated proxy from deterministic string checks, so hallucination still needs the two-assessor human review (human_review_sample.csv).",
     "Response time is processing latency for automatic answers only; human queue time, CSAT and repeat contacts cannot be measured offline.",
     "Segments with few tickets (e.g. 8 enterprise tickets in validation) make variation figures unstable."
   ]

@@ -193,7 +193,7 @@ selector and the PR-02 generator.
 - **Measures.** `llm_usage` in `metrics.json` reports total and per-ticket cost, both as spent
   and as if every call were live.
 - **Projected monthly cost.** The live per-ticket cost × **2,167 tickets a month**. The source is
-  Stakeholder Interviews (Marcus): "north of five hundred tickets a week", so 500 × 52 / 12. That
+  Stakeholder Interviews (support lead): "north of five hundred tickets a week", so 500 × 52 / 12. That
   is a lower bound, because volume is growing (Project Brief). No other document states a volume.
 - **Mix.** The per-ticket cost already reflects the input's mix of escalations, which make fewer
   model calls.
@@ -221,23 +221,31 @@ decisions. Claude token counts and cost have not been measured; that needs a pai
 
 Full figures are in `evaluation/results/*/metrics_summary.md`.
 
-| Run | Intent accuracy | Auto answers | Auto precision | Must-not violations | p95 latency |
-|---|---|---|---|---|---|
-| Validation (80), offline | 0.975 (inflated by overlap) | 33 | 0.788 | 0 of 14 | 1.3 ms |
-| First 10 validation, Ollama gemma4:e2b | 0.40 | 1 | 0.0 | 0 of 4 | 5.7 s |
-| First 10 validation, Claude Haiku 4.5 | 0.90 | 2 | 0.50 | 0 of 4 | 3.05 s |
-| Validation (80), generated answers (PR-02), Ollama gemma4:e2b, offline classifier | 0.975 (inflated by overlap) | 31 | 0.774 | 0 of 14 | 4.9 s |
+| Run (`evaluation/results/…`) | Intent accuracy | Auto answers (held) | Blocked | Auto precision | Must-not violations | p95 latency | Cost |
+|---|---|---|---|---|---|---|---|
+| Validation (80), offline, extractive (`final_offline_default`) | 0.975 (inflated by overlap) | 33 | 0 | 0.788 | 0 of 14 | 1.2 ms | $0 |
+| Validation (80), Ollama gemma4:e2b, LLM classifier + generated (`final_llm_ollama_gemma4_generated`) | 0.775 | 21 | 2 | 0.762 | 0 of 14 | 5.7 s | $0 |
+| Validation (80), Claude Haiku 4.5, LLM classifier + generated (`final_llm_anthropic_haiku45_generated`) | 0.9125 | 19 | 10 | 0.895 | 0 of 14 | 5.1 s | $0.265 |
+| Validation (80), generated answers, Ollama, offline classifier (`generation_comparison`, §12) | 0.975 (inflated by overlap) | 31 | 2 | 0.774 | 0 of 14 | 4.9 s | $0 |
+
+The overlap caveat applies to the offline classifier (trained on development tickets) and to the
+dev-derived routing thresholds; the LLM classifiers were not trained on these tickets. Of the 10
+Claude grounding blocks, review found most were faithful paraphrases failing the conservative 0.6
+content-word overlap (false positives that fail safe to a person) and about 3 contained claims
+about the customer's situation the documentation does not support (correct blocks). The
+threshold was not retuned on validation, which is the gate set. Report tables:
+`evaluation/results/final_report_tables.md`; fairness: `docs/governance/fairness_audit.md`.
 
 ## 10. Known limitations
 
 - **Answers are extractive by default.** The default answer is a verbatim documentation section with fixed wording. Generated answers (PR-02, §12) are optional. They need an LLM, and their support check is a deterministic proxy with the limits listed in §12.
 - **Retrieval is lexical** in RP-1.0, and 70% of unanswerable validation tickets still retrieve a passage. The intent→document map is what prevents those tickets from being answered. Embeddings retrieve far better (§11), but no embedding configuration met the routing objective with useful coverage.
 - **Confidence calibration misses the 5-point target.** On development data, out of fold, the 0.6–0.8 band states 0.705 but observes 0.44. LLM confidence is not calibrated at all.
-- **Injection detection is pattern-based,** so a paraphrased injection can pass. The released answer is still a verified documentation excerpt.
+- **Injection detection is pattern-based,** so a paraphrased injection can pass. In extractive mode the released answer is still a verified documentation excerpt; in generated mode the model's sentences must pass the citation, verbatim-quote and support checks, which limit but do not eliminate the effect of a successful injection.
 - **PII masking is pattern-based.** A name, an address or an unusual identifier can still reach a hosted provider.
 - **llama.cpp has not been run live.** Only its 429 path has been tested, against a local fake server.
 - **The LLM cache replays exact repeats only.** Any change to the prompt, model, schema, passages or ticket text is a miss. Cost estimates use the tokens the provider reports for the final attempt, so retried attempts are not counted.
-- **Auto-answer rates differ between groups:** fluency 12.7 points, tier 14.3, region 15.4. Group sizes are small, and the cause has not been investigated yet.
+- **Fairness targets are not met.** No segment family is within the 5-point target (`docs/governance/fairness_audit.md`). The largest resolution gap is ticket length (offline: short 58.1% vs long 21.6%). It is caused by retrieval, not intent mix: long and short tickets are equally often answerable, but the lexical term-share score dilutes on long tickets (median top score 0.353 vs 0.444 against the 0.40 floor). Group sizes are small.
 
 ## 11. Retrieval decision
 
@@ -409,7 +417,7 @@ policy. Full outputs are in `evaluation/results/generation_comparison/`.
 
 | Run | Generator called | Auto answers (held) | Auto precision vs expected_route | Auto on unanswerable tickets | cannot_answer | Grounding blocks | Generation failed | Must-not violations | p95 latency |
 |---|---|---|---|---|---|---|---|---|---|
-| Extractive, lexical/article (RP-1.0, `validation_offline_default`) | — | 33 | 0.788 | — | — | 0 | — | 0 of 14 | 1.1 ms |
+| Extractive, lexical/article (RP-1.0, `final_offline_default`) | — | 33 | 0.788 | — | — | 0 | — | 0 of 14 | 1.1 ms |
 | Extractive, embedding/section | — | 62 | 0.710 | 17 | — | 0 | — | 0 of 14 | 13 ms |
 | Generated, lexical/article (RP-1.0) | 33 | 31 | 0.774 | 7 | 0 | 2 | 0 | 0 of 14 | 4.9 s |
 | Generated, embedding/section | 62 | 51 | 0.725 | 14 | 0 | 8 | 3 | 0 of 14 | 7.9 s |

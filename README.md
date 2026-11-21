@@ -159,7 +159,7 @@ also be watched: `python -m evaluation.harness ... --metrics-port 8001` serves t
 
 ```bash
 python -m evaluation.harness --input data/validation_tickets.json \
-  --output evaluation/results/validation_offline_default
+  --output evaluation/results/final_offline_default
 ```
 
 `python evaluation/harness.py ...` and `python -m cloudserve.evaluation ...` are the same
@@ -173,9 +173,11 @@ The tested results saved under `evaluation/results/` are listed below. Each run 
 
 | Run | Folder |
 |---|---|
-| Validation, offline, kill switch on | `validation_offline_default/` |
-| Validation, offline, `--auto-send` | `validation_offline_autosend/` |
-| First 10 validation tickets, live Ollama `gemma4:e2b` (classifier and evidence selector) | `validation10_llm_ollama_gemma4/` |
+| Validation (80), offline, kill switch on (the CI gate configuration) | `final_offline_default/` |
+| Validation (80), offline, `--auto-send` | `final_offline_autosend/` |
+| Development (500), offline: unattended stress run; **in-sample** for the offline classifier, not a held-out score | `final_offline_development/` |
+| Validation (80), live Ollama `gemma4:e2b`, LLM classifier (PR-01) + generated answers (PR-02) | `final_llm_ollama_gemma4_generated/` |
+| Validation (80), live Claude Haiku 4.5, LLM classifier (PR-01) + generated answers (PR-02); cost recorded in `metrics.json` | `final_llm_anthropic_haiku45_generated/` |
 | Chunking × retriever comparison (development and validation) | `retrieval_comparison/` |
 | Generated answers (PR-02, Ollama `gemma4:e2b`): lexical/article vs embedding/section, plus the extractive embedding baseline | `generation_comparison/` (see docs/architecture.md §12) |
 
@@ -186,6 +188,27 @@ overstates generalisation.
 CI (`.github/workflows/ci.yml`) installs exactly as in §1, runs the tests, then runs this
 harness on `data/validation_tickets.json` into `storage/ci_eval` (uploaded as a build artefact).
 `storage/` is for runtime output and is git-ignored.
+
+### Report tables, fairness audit and governance
+
+```bash
+# Evaluation Framework §4 results table + confusion matrix, per-class P/R, calibration, latency
+python evaluation/analysis.py            # -> evaluation/results/final_report_tables.md
+# Segment audit (tier, fluency, length, channel, region) for one run
+python scripts/fairness_audit.py --run evaluation/results/final_offline_default \
+  --tickets data/validation_tickets.json --out evaluation/results/fairness/final_offline_default
+```
+
+Both read only saved run outputs; labels are used for scoring only. Governance documents:
+
+| Document | Contents |
+|---|---|
+| [docs/governance/declaration.md](docs/governance/declaration.md) | The four Governance §6 statements (read first) |
+| [docs/governance/risk_register.md](docs/governance/risk_register.md) | R-01..R-08 and project risks: mitigation in the design, residual risk, owner, evidence |
+| [docs/governance/fairness_audit.md](docs/governance/fairness_audit.md) | Segment results and the investigation of the largest gap |
+| [docs/governance/incident_response.md](docs/governance/incident_response.md) | Six-step runbook with exact commands, and the kill switch |
+| [docs/governance/decision_logging.md](docs/governance/decision_logging.md) | Record schema mapped to Governance §1, and reconciliation of the final runs |
+| [docs/stage5_prd_revision_log.md](docs/stage5_prd_revision_log.md) | Draft Stage 5 revision log (owner to transfer into the workbook) |
 
 ## 5. Model providers (optional)
 
@@ -285,11 +308,12 @@ Each record's `kill_switch` field shows the state.
 | `prompts/build/`, `prompts/README.md` | Versioned prompts that run in the system, and the register |
 | `prompts/evaluation/` | Prompts used to judge output (none yet; evaluation is deterministic) |
 | `tests/` | Test suite (`python -m pytest -q`) |
-| `evaluation/harness.py`, `evaluation/results/` | Evaluation entry point and saved runs |
-| `config/routing_policy.json`, `scripts/` | Routing policy and the scripts that derive it, compare retrieval and fetch the model |
+| `evaluation/harness.py`, `evaluation/analysis.py`, `evaluation/results/` | Evaluation entry point, report-table builder and saved runs |
+| `config/routing_policy.json`, `scripts/` | Routing policy and the scripts that derive it, compare retrieval, audit fairness and fetch the model |
 | `monitoring/` | Prometheus scrape config, Grafana provisioning and dashboard, docker-compose |
 | `config/model_prices.json` | Per-model token prices (source and date inside) used for cost estimates |
 | `docs/architecture.md` | Design notes |
+| `docs/governance/`, `docs/stage5_prd_revision_log.md` | Governance documents and the draft revision log |
 | `data/`, `examples/` | Supplied dataset files and small demo inputs |
 | `.github/workflows/ci.yml` | Continuous integration |
 
