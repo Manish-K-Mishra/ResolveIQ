@@ -1,9 +1,10 @@
 from pathlib import Path
 import pytest
-from cloudserve.classifier import NaiveBayesIntentClassifier
+from cloudserve.classify import NaiveBayesIntentClassifier
 from cloudserve.graph import DecisionEngine
-from cloudserve.pipeline import KnowledgeBase, load_json
-from cloudserve.routing import load_policy
+from cloudserve.ingest import load_json
+from cloudserve.retrieve import KnowledgeBase
+from cloudserve.route import load_policy
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"

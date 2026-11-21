@@ -1,8 +1,8 @@
 """End-to-end LangGraph workflow: actions, kill switch, guardrail blocking, failures, audit."""
 import json
 import pytest
-from cloudserve.audit import GOVERNANCE_FIELDS, count_run, open_log, persist
-from cloudserve.grounding import EvidenceSelection
+from cloudserve.logging_store import GOVERNANCE_FIELDS, count_run, open_log, persist
+from cloudserve.generate import EvidenceSelection
 from cloudserve.runtime import run_batch
 from conftest import LOGIN, FixedClassifier
 

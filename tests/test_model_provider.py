@@ -4,10 +4,9 @@ import threading
 import time
 import pytest
 from pydantic import ValidationError
-from cloudserve.ai import (Classification, LangChainClassifier, ModelUnavailable, ProviderCircuitOpen,
-                           ProviderGuard, build_model, load_prompt)
-from cloudserve.classifier import INTENTS
-from cloudserve.pipeline import normalize
+from cloudserve.classify import INTENTS, Classification, LangChainClassifier
+from cloudserve.ingest import normalize
+from cloudserve.providers import ModelUnavailable, ProviderCircuitOpen, ProviderGuard, build_model, load_prompt
 from conftest import LOGIN
 
 
@@ -206,7 +205,7 @@ def test_env_model_only_applies_to_its_own_provider(monkeypatch):
 
 @pytest.mark.parametrize("value", ["abc", "0", "-5"])
 def test_invalid_deadline_setting_is_a_clear_configuration_error(monkeypatch, value):
-    from cloudserve.ai import runtime_settings
+    from cloudserve.providers import runtime_settings
     monkeypatch.setenv("CLOUDSERVE_CALL_DEADLINE_SECONDS", value)
     with pytest.raises(ValueError, match="CLOUDSERVE_CALL_DEADLINE_SECONDS"):
         runtime_settings()

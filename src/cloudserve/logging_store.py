@@ -10,7 +10,7 @@ import json
 import sqlite3
 import uuid
 from pathlib import Path
-from .pipeline import utc_now
+from .ingest import utc_now
 
 GOVERNANCE_FIELDS = ("decision_id", "timestamp", "ticket_id", "stage", "input_summary", "model",
                      "prediction", "alternatives", "sources_used", "threshold_applied", "action_taken",

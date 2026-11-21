@@ -1,8 +1,11 @@
-"""Offline intent classifier: multinomial naive Bayes over ticket words (standard library only).
+"""Intent and urgency classification with confidence (FR-02).
 
-Trained ONLY on development tickets (data/development_tickets.json, which the Dataset Guide
-permits for "developing your classifier"). It never reads validation or hidden-set labels:
-`predict` receives a normalised Ticket, from which labels were stripped at ingestion.
+Two classifiers share one output contract: an offline multinomial naive Bayes over ticket words
+(the default, no network) and PR-01 through any LLM provider (LangChainClassifier).
+
+The offline classifier is trained ONLY on development tickets (data/development_tickets.json,
+which the Dataset Guide permits for "developing your classifier"). It never reads validation or
+hidden-set labels: `classify` receives a normalised Ticket, from which labels were stripped at ingestion.
 
 The posterior is reported as `confidence`. It is a model probability, not a calibrated one;
 calibration is measured by the evaluation harness (confidence bands vs observed accuracy).
@@ -10,9 +13,13 @@ calibration is measured by the evaluation harness (confidence bands vs observed 
 from __future__ import annotations
 import hashlib
 import math
+import os
 from collections import Counter, defaultdict
 from pathlib import Path
-from .pipeline import Ticket, load_json, tokens
+from typing import Literal
+from pydantic import BaseModel, ConfigDict, Field
+from .ingest import Ticket, load_json, tokens
+from .providers import ProviderGuard, build_model, load_prompt, structured
 
 INTENTS = (
     "account_access", "api_key_issue", "api_usage_question", "authentication_failure",
@@ -25,7 +32,7 @@ INTENTS = (
 UNKNOWN = "unknown"
 URGENCIES = ("low", "medium", "high")
 # Urgency is NOT learnable from the text in this dataset (identical bodies carry different
-# urgency labels; see docs/ARCHITECTURE.md §8). A transparent keyword rule is used and routing
+# urgency labels; see docs/architecture.md §8). A transparent keyword rule is used and routing
 # deliberately does not depend on it.
 _HIGH_URGENCY = ("urgent", "asap", "immediately", "production down", "outage", "cannot access",
                  "security breach", "all customers", "data loss", "right now")
@@ -88,3 +95,51 @@ class NaiveBayesIntentClassifier:
                 "alternatives": [{"intent": y, "confidence": round(q, 4)} for y, q in rest],
                 "reason": "Highest posterior among the 22 allowed intents.",
                 "confidence_type": "naive_bayes_posterior"}
+
+
+IntentLabel = Literal[INTENTS + (UNKNOWN,)]
+
+
+class Classification(BaseModel):
+    """PR-01 v1.1 output contract: intent restricted to the 22 dataset intents or 'unknown'."""
+    model_config = ConfigDict(extra="forbid")
+    intent: IntentLabel
+    urgency: Literal["low", "medium", "high"]
+    confidence: float = Field(ge=0, le=1)
+    alternatives: list[IntentLabel] = Field(default_factory=list, max_length=3)
+    reason: str = Field(min_length=1, max_length=400)
+
+
+class LangChainClassifier:
+    """PR-01 classification through any provider; same contract as the offline classifier."""
+
+    def __init__(self, provider: str | None = None, model_name: str | None = None,
+                 base_url: str | None = None, model=None, guard: ProviderGuard | None = None):
+        self.provider = provider or os.getenv("CLOUDSERVE_PROVIDER", "ollama")
+        self.prompt = load_prompt("PR-01_classification.md")
+        self.guard = guard or ProviderGuard()
+        if model is not None:                       # injected (tests): used as-is
+            self.runnable, self.model_name = model, model_name or "injected"
+        else:
+            chat, self.model_name, extra = build_model(self.provider, model_name, base_url)
+            self.runnable = structured(chat, Classification, self.provider, extra)
+        self.name = f"{self.provider}:{self.model_name}"
+        self.version = self.prompt["label"]
+
+    def messages(self, ticket) -> list:
+        from langchain_core.messages import HumanMessage, SystemMessage
+        system = self.prompt["system"].replace("{allowed_intents}", ", ".join(INTENTS + (UNKNOWN,)))
+        user = (self.prompt["user"].replace("{ticket_id}", ticket.ticket_id)
+                .replace("{channel}", ticket.channel)
+                .replace("{subject}", ticket.subject[:300])
+                .replace("{body}", ticket.body[:4000]))
+        return [SystemMessage(content=system), HumanMessage(content=user)]
+
+    def classify(self, ticket) -> dict:
+        result = self.guard.call(self.runnable.invoke, self.messages(ticket))
+        v = Classification.model_validate(result.model_dump() if hasattr(result, "model_dump") else result)
+        alts = [a for a in dict.fromkeys(v.alternatives) if a != v.intent]
+        return {"intent": v.intent, "urgency": v.urgency, "confidence": v.confidence,
+                # The model names alternatives but gives no per-alternative score.
+                "alternatives": [{"intent": a, "confidence": None} for a in alts],
+                "reason": v.reason, "confidence_type": "uncalibrated_model_score"}

@@ -1,7 +1,7 @@
 {
   "run": {
-    "run_id": "run-20261121T180922-9511a3",
-    "date": "2026-11-21T18:09:22+00:00",
+    "run_id": "run-20261121T182636-fb8452",
+    "date": "2026-11-21T18:26:36+00:00",
     "input": "data/validation_tickets.json",
     "engine": "langgraph",
     "classifier": "naive_bayes_intent (nb-a8a09fec6990)",
@@ -17,7 +17,7 @@
       "training_file": "/Users/manishmishra/Desktop/Projects/ResolveIQ/data/development_tickets.json"
     },
     "tickets_in_file": 80,
-    "wall_clock_seconds": 0.11
+    "wall_clock_seconds": 0.1
   },
   "volume": {
     "processed": 80,
@@ -43,9 +43,9 @@
   },
   "technical": {
     "latency_seconds": {
-      "mean": 0.001,
-      "median": 0.0009,
-      "p95": 0.0013
+      "mean": 0.0009,
+      "median": 0.0008,
+      "p95": 0.0011
     },
     "intent_accuracy": 0.975,
     "intent_macro_precision": 0.9849,
@@ -456,7 +456,7 @@
     }
   },
   "limitations": [
-    "Training overlap: 62 of 80 ticket bodies in this input are exact copies of development tickets the offline classifier was trained on; intent accuracy on those measures recall of training data, not generalisation, so treat it with caution (docs/ARCHITECTURE.md §8).",
+    "Training overlap: 62 of 80 ticket bodies in this input are exact copies of development tickets the offline classifier was trained on; intent accuracy on those measures recall of training data, not generalisation, so treat it with caution (docs/architecture.md §8).",
     "Urgency and expected_route labels vary for identical ticket text in the supplied data, which caps achievable urgency and routing accuracy.",
     "Citation accuracy here is a label-based proxy (cited document among expected_doc_ids); it is not the human claim-by-claim review the Evaluation Framework requires, and hallucination rate is not measured.",
     "Responses are extractive (a verbatim documentation section), not generated text.",

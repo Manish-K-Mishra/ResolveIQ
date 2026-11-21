@@ -1,7 +1,7 @@
 """Deterministic routing policy (A5, FR-04) including the Reviewer's adversarial probes."""
 import pytest
-from cloudserve.pipeline import normalize
-from cloudserve.routing import load_policy, route
+from cloudserve.ingest import normalize
+from cloudserve.route import load_policy, route
 from conftest import LOGIN, FixedClassifier
 
 
@@ -98,13 +98,13 @@ INJECTION_VARIANTS = [
 
 @pytest.mark.parametrize("text", INJECTION_VARIANTS)
 def test_injection_variants_are_detected_n8(text):
-    from cloudserve.pipeline import contains_injection
+    from cloudserve.guardrails import contains_injection
     assert contains_injection(f"Login fails. {text}")
 
 
 def test_injection_screen_has_no_false_positives_on_supplied_data():
     import json
-    from cloudserve.pipeline import INJECTION_PATTERN, contains_injection
+    from cloudserve.guardrails import INJECTION_PATTERN, contains_injection
     for f in ("data/development_tickets.json", "data/validation_tickets.json"):
         for t in json.load(open(f, encoding="utf-8")):
             assert not contains_injection(f"{t.get('subject') or ''} {t['body']}"), t["ticket_id"]

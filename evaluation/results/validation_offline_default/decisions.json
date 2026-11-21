@@ -1,7 +1,7 @@
 [
   {
-    "decision_id": "769c3f39c82249de96861fa45a937504",
-    "timestamp": "2026-11-21T18:09:21.770319+00:00",
+    "decision_id": "99fb4f55e3bc4b96aee664252d49ef08",
+    "timestamp": "2026-11-21T18:26:36.051293+00:00",
     "ticket_id": "VAL-0001",
     "channel": "forum",
     "stage": "routing",
@@ -93,14 +93,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.767745+00:00",
-    "completed_at": "2026-11-21T18:09:21.770422+00:00",
-    "latency_seconds": 0.0027,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.049636+00:00",
+    "completed_at": "2026-11-21T18:26:36.051378+00:00",
+    "latency_seconds": 0.0017,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "de72cee52cfa46af9a4cc7c0b1530ae1",
-    "timestamp": "2026-11-21T18:09:21.771761+00:00",
+    "decision_id": "c6fa392aa487405f862a2c811dfc1eeb",
+    "timestamp": "2026-11-21T18:26:36.052567+00:00",
     "ticket_id": "VAL-0002",
     "channel": "chat",
     "stage": "routing",
@@ -197,14 +197,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.770853+00:00",
-    "completed_at": "2026-11-21T18:09:21.771835+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.051781+00:00",
+    "completed_at": "2026-11-21T18:26:36.052631+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "232f8d2563bc49a18f4f9fd5d31eb628",
-    "timestamp": "2026-11-21T18:09:21.773116+00:00",
+    "decision_id": "d415932b232843658f582f088230f0db",
+    "timestamp": "2026-11-21T18:26:36.053695+00:00",
     "ticket_id": "VAL-0003",
     "channel": "docs_comment",
     "stage": "routing",
@@ -287,14 +287,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.772258+00:00",
-    "completed_at": "2026-11-21T18:09:21.773191+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.052998+00:00",
+    "completed_at": "2026-11-21T18:26:36.053755+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "95ccb59b861f453e83ccaaf2062aad3b",
-    "timestamp": "2026-11-21T18:09:21.774839+00:00",
+    "decision_id": "6c2642a635574f2d812ea1b76fc86525",
+    "timestamp": "2026-11-21T18:26:36.055223+00:00",
     "ticket_id": "VAL-0004",
     "channel": "email",
     "stage": "validation",
@@ -393,14 +393,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.773530+00:00",
-    "completed_at": "2026-11-21T18:09:21.774907+00:00",
-    "latency_seconds": 0.0014,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.054033+00:00",
+    "completed_at": "2026-11-21T18:26:36.055287+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "275830fe04a84a008605ce4161537626",
-    "timestamp": "2026-11-21T18:09:21.776245+00:00",
+    "decision_id": "48fba3afeb4748cbb9c3055fe176a333",
+    "timestamp": "2026-11-21T18:26:36.056560+00:00",
     "ticket_id": "VAL-0005",
     "channel": "chat",
     "stage": "validation",
@@ -493,14 +493,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.775207+00:00",
-    "completed_at": "2026-11-21T18:09:21.776306+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.055582+00:00",
+    "completed_at": "2026-11-21T18:26:36.056615+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "9a572f05281c48a5988ec3ed19d1b69a",
-    "timestamp": "2026-11-21T18:09:21.777419+00:00",
+    "decision_id": "4026ba29ae6f4cf6a8a2c945bc9054f6",
+    "timestamp": "2026-11-21T18:26:36.057629+00:00",
     "ticket_id": "VAL-0006",
     "channel": "email",
     "stage": "routing",
@@ -582,14 +582,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.776597+00:00",
-    "completed_at": "2026-11-21T18:09:21.777482+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.056886+00:00",
+    "completed_at": "2026-11-21T18:26:36.057686+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "192f044d46924627837829ec3693ae06",
-    "timestamp": "2026-11-21T18:09:21.778462+00:00",
+    "decision_id": "de69eb66a59541ac9ea6e835a3943a26",
+    "timestamp": "2026-11-21T18:26:36.058635+00:00",
     "ticket_id": "VAL-0007",
     "channel": "chat",
     "stage": "routing",
@@ -672,14 +672,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.777785+00:00",
-    "completed_at": "2026-11-21T18:09:21.778525+00:00",
+    "started_at": "2026-11-21T18:26:36.057966+00:00",
+    "completed_at": "2026-11-21T18:26:36.058694+00:00",
     "latency_seconds": 0.0007,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "96b7d026ea8c416c91cb4ab778526dc3",
-    "timestamp": "2026-11-21T18:09:21.779905+00:00",
+    "decision_id": "e73a6e744973402ab5b6e49f1fc7a263",
+    "timestamp": "2026-11-21T18:26:36.059919+00:00",
     "ticket_id": "VAL-0008",
     "channel": "chat",
     "stage": "validation",
@@ -772,14 +772,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.778820+00:00",
-    "completed_at": "2026-11-21T18:09:21.779972+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.058958+00:00",
+    "completed_at": "2026-11-21T18:26:36.059978+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "52a03e590fed4b5b96f65d69acacc3fb",
-    "timestamp": "2026-11-21T18:09:21.781019+00:00",
+    "decision_id": "940779257c7849a0b47fd32fa556f41c",
+    "timestamp": "2026-11-21T18:26:36.061006+00:00",
     "ticket_id": "VAL-0009",
     "channel": "docs_comment",
     "stage": "routing",
@@ -875,14 +875,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.780255+00:00",
-    "completed_at": "2026-11-21T18:09:21.781084+00:00",
+    "started_at": "2026-11-21T18:26:36.060280+00:00",
+    "completed_at": "2026-11-21T18:26:36.061067+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "ed56fb9b848d4c699242f87e6cf719c3",
-    "timestamp": "2026-11-21T18:09:21.782343+00:00",
+    "decision_id": "ae2178178cc147dcb86975bed8620e99",
+    "timestamp": "2026-11-21T18:26:36.062058+00:00",
     "ticket_id": "VAL-0010",
     "channel": "docs_comment",
     "stage": "routing",
@@ -972,14 +972,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.781430+00:00",
-    "completed_at": "2026-11-21T18:09:21.782424+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.061363+00:00",
+    "completed_at": "2026-11-21T18:26:36.062113+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "d966c1300c7141a2bacdd24b26246de0",
-    "timestamp": "2026-11-21T18:09:21.783733+00:00",
+    "decision_id": "abcd802cebb54b6583cad60dfc9dadc2",
+    "timestamp": "2026-11-21T18:26:36.063074+00:00",
     "ticket_id": "VAL-0011",
     "channel": "forum",
     "stage": "routing",
@@ -1061,14 +1061,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.782860+00:00",
-    "completed_at": "2026-11-21T18:09:21.783853+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.062367+00:00",
+    "completed_at": "2026-11-21T18:26:36.063128+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "c5012ab2d2004b0cb899fbd01cce3ea1",
-    "timestamp": "2026-11-21T18:09:21.785145+00:00",
+    "decision_id": "548f822894bd4cf8afeaf303f2a3019b",
+    "timestamp": "2026-11-21T18:26:36.064118+00:00",
     "ticket_id": "VAL-0012",
     "channel": "email",
     "stage": "routing",
@@ -1158,14 +1158,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.784312+00:00",
-    "completed_at": "2026-11-21T18:09:21.785214+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.063385+00:00",
+    "completed_at": "2026-11-21T18:26:36.064176+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "468faca107004efd9aa8e0ab1da57ce4",
-    "timestamp": "2026-11-21T18:09:21.786605+00:00",
+    "decision_id": "0cc40922ee54472d948e87126cceceb9",
+    "timestamp": "2026-11-21T18:26:36.065452+00:00",
     "ticket_id": "VAL-0013",
     "channel": "docs_comment",
     "stage": "validation",
@@ -1258,14 +1258,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.785549+00:00",
-    "completed_at": "2026-11-21T18:09:21.786668+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.064470+00:00",
+    "completed_at": "2026-11-21T18:26:36.065507+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "5f0bb1e2c9364294a1fecaa4362e4d3b",
-    "timestamp": "2026-11-21T18:09:21.787747+00:00",
+    "decision_id": "80197719f25447499d1047bf41a4a56d",
+    "timestamp": "2026-11-21T18:26:36.066501+00:00",
     "ticket_id": "VAL-0014",
     "channel": "email",
     "stage": "routing",
@@ -1347,14 +1347,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.786972+00:00",
-    "completed_at": "2026-11-21T18:09:21.787811+00:00",
+    "started_at": "2026-11-21T18:26:36.065788+00:00",
+    "completed_at": "2026-11-21T18:26:36.066556+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "d9c610664f4b4572a6e697e080665334",
-    "timestamp": "2026-11-21T18:09:21.788761+00:00",
+    "decision_id": "3601ed6be5444e2a8e4cc1c77bd9fc44",
+    "timestamp": "2026-11-21T18:26:36.067424+00:00",
     "ticket_id": "VAL-0015",
     "channel": "forum",
     "stage": "routing",
@@ -1437,14 +1437,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.788090+00:00",
-    "completed_at": "2026-11-21T18:09:21.788831+00:00",
+    "started_at": "2026-11-21T18:26:36.066810+00:00",
+    "completed_at": "2026-11-21T18:26:36.067478+00:00",
     "latency_seconds": 0.0007,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "e6bd070140ab43ada1c024fe7f145cea",
-    "timestamp": "2026-11-21T18:09:21.790104+00:00",
+    "decision_id": "7535eed4d12448af814175526e1c9415",
+    "timestamp": "2026-11-21T18:26:36.068418+00:00",
     "ticket_id": "VAL-0016",
     "channel": "chat",
     "stage": "routing",
@@ -1526,14 +1526,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.789190+00:00",
-    "completed_at": "2026-11-21T18:09:21.790179+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.067739+00:00",
+    "completed_at": "2026-11-21T18:26:36.068484+00:00",
+    "latency_seconds": 0.0007,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "f48e11cde57e4a3790893e9c9b35b2a5",
-    "timestamp": "2026-11-21T18:09:21.791365+00:00",
+    "decision_id": "7fcc01745f1e4eb2912bfa7d8708ebba",
+    "timestamp": "2026-11-21T18:26:36.069447+00:00",
     "ticket_id": "VAL-0017",
     "channel": "docs_comment",
     "stage": "routing",
@@ -1616,14 +1616,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.790675+00:00",
-    "completed_at": "2026-11-21T18:09:21.791428+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.068798+00:00",
+    "completed_at": "2026-11-21T18:26:36.069505+00:00",
+    "latency_seconds": 0.0007,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "0cc892ebb2114971af6fe3ff6fea0318",
-    "timestamp": "2026-11-21T18:09:21.792797+00:00",
+    "decision_id": "b79de6527413465f94a60a4685878492",
+    "timestamp": "2026-11-21T18:26:36.070852+00:00",
     "ticket_id": "VAL-0018",
     "channel": "email",
     "stage": "validation",
@@ -1716,14 +1716,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.791745+00:00",
-    "completed_at": "2026-11-21T18:09:21.792857+00:00",
+    "started_at": "2026-11-21T18:26:36.069787+00:00",
+    "completed_at": "2026-11-21T18:26:36.070904+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "4b3ed4c20fca4c87a8409d896f44267e",
-    "timestamp": "2026-11-21T18:09:21.793887+00:00",
+    "decision_id": "cf49c1c7d5474bf889aaaa85bbd195a6",
+    "timestamp": "2026-11-21T18:26:36.071897+00:00",
     "ticket_id": "VAL-0019",
     "channel": "email",
     "stage": "routing",
@@ -1819,14 +1819,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.793154+00:00",
-    "completed_at": "2026-11-21T18:09:21.793949+00:00",
+    "started_at": "2026-11-21T18:26:36.071187+00:00",
+    "completed_at": "2026-11-21T18:26:36.071952+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "bda21c2202e14a3e819b414baa15d750",
-    "timestamp": "2026-11-21T18:09:21.794968+00:00",
+    "decision_id": "802352b619b04c829c57cbdd6de3b2e4",
+    "timestamp": "2026-11-21T18:26:36.072886+00:00",
     "ticket_id": "VAL-0020",
     "channel": "email",
     "stage": "routing",
@@ -1917,14 +1917,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.794248+00:00",
-    "completed_at": "2026-11-21T18:09:21.795031+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.072242+00:00",
+    "completed_at": "2026-11-21T18:26:36.072939+00:00",
+    "latency_seconds": 0.0007,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "b6bcc1b8773844aba0821cf707a46024",
-    "timestamp": "2026-11-21T18:09:21.796061+00:00",
+    "decision_id": "25e91204cfe7424787e48e3d0f2904ed",
+    "timestamp": "2026-11-21T18:26:36.073896+00:00",
     "ticket_id": "VAL-0021",
     "channel": "chat",
     "stage": "routing",
@@ -2006,14 +2006,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.795315+00:00",
-    "completed_at": "2026-11-21T18:09:21.796124+00:00",
+    "started_at": "2026-11-21T18:26:36.073201+00:00",
+    "completed_at": "2026-11-21T18:26:36.073956+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "bb65ce8eebab4d58b7dce5f6abba2e08",
-    "timestamp": "2026-11-21T18:09:21.797243+00:00",
+    "decision_id": "daba096ebed94e008b72c8f51138509e",
+    "timestamp": "2026-11-21T18:26:36.074965+00:00",
     "ticket_id": "VAL-0022",
     "channel": "docs_comment",
     "stage": "routing",
@@ -2095,14 +2095,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.796433+00:00",
-    "completed_at": "2026-11-21T18:09:21.797309+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.074257+00:00",
+    "completed_at": "2026-11-21T18:26:36.075023+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "035290f825164c38ab08f1966687a2d7",
-    "timestamp": "2026-11-21T18:09:21.798505+00:00",
+    "decision_id": "6a785c006f5a43b7a82eba8572553b1c",
+    "timestamp": "2026-11-21T18:26:36.075988+00:00",
     "ticket_id": "VAL-0023",
     "channel": "email",
     "stage": "routing",
@@ -2192,14 +2192,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.797652+00:00",
-    "completed_at": "2026-11-21T18:09:21.798574+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.075296+00:00",
+    "completed_at": "2026-11-21T18:26:36.076055+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "a69cfb2e672741b4ac1e8f683a7f5470",
-    "timestamp": "2026-11-21T18:09:21.799666+00:00",
+    "decision_id": "7f054bf9d3bf4cea8d27f18406d031cf",
+    "timestamp": "2026-11-21T18:26:36.077066+00:00",
     "ticket_id": "VAL-0024",
     "channel": "chat",
     "stage": "routing",
@@ -2289,14 +2289,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.798915+00:00",
-    "completed_at": "2026-11-21T18:09:21.799730+00:00",
+    "started_at": "2026-11-21T18:26:36.076342+00:00",
+    "completed_at": "2026-11-21T18:26:36.077127+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "2fb2a465a3114098927e21b56038cfd8",
-    "timestamp": "2026-11-21T18:09:21.800774+00:00",
+    "decision_id": "b4bb9f81d8114d09a64bbcff7665714f",
+    "timestamp": "2026-11-21T18:26:36.078086+00:00",
     "ticket_id": "VAL-0025",
     "channel": "chat",
     "stage": "routing",
@@ -2386,14 +2386,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.800029+00:00",
-    "completed_at": "2026-11-21T18:09:21.800839+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.077422+00:00",
+    "completed_at": "2026-11-21T18:26:36.078138+00:00",
+    "latency_seconds": 0.0007,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "9814731ec989468e88bf9b24a5a1a9e6",
-    "timestamp": "2026-11-21T18:09:21.801911+00:00",
+    "decision_id": "ed3e4a4d633f4debb98db2692a4b5b62",
+    "timestamp": "2026-11-21T18:26:36.079149+00:00",
     "ticket_id": "VAL-0026",
     "channel": "email",
     "stage": "routing",
@@ -2489,14 +2489,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.801159+00:00",
-    "completed_at": "2026-11-21T18:09:21.801976+00:00",
+    "started_at": "2026-11-21T18:26:36.078416+00:00",
+    "completed_at": "2026-11-21T18:26:36.079208+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "4611f1b1d41549bca8c90e52395097cf",
-    "timestamp": "2026-11-21T18:09:21.803315+00:00",
+    "decision_id": "284062b335f54ec29deca4d676d0727f",
+    "timestamp": "2026-11-21T18:26:36.080486+00:00",
     "ticket_id": "VAL-0027",
     "channel": "email",
     "stage": "validation",
@@ -2595,14 +2595,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.802276+00:00",
-    "completed_at": "2026-11-21T18:09:21.803381+00:00",
+    "started_at": "2026-11-21T18:26:36.079486+00:00",
+    "completed_at": "2026-11-21T18:26:36.080542+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "8aec901f15004ab48ad4c3d51361239c",
-    "timestamp": "2026-11-21T18:09:21.804751+00:00",
+    "decision_id": "58c84b7c2a494a839a97ca4a69b1c138",
+    "timestamp": "2026-11-21T18:26:36.081877+00:00",
     "ticket_id": "VAL-0028",
     "channel": "email",
     "stage": "validation",
@@ -2707,14 +2707,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.803665+00:00",
-    "completed_at": "2026-11-21T18:09:21.804811+00:00",
+    "started_at": "2026-11-21T18:26:36.080843+00:00",
+    "completed_at": "2026-11-21T18:26:36.081933+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "1c0a9f37e0f344439a9c83f543c85928",
-    "timestamp": "2026-11-21T18:09:21.805866+00:00",
+    "decision_id": "baf8e2d5202247528fa12601dd3185e9",
+    "timestamp": "2026-11-21T18:26:36.082927+00:00",
     "ticket_id": "VAL-0029",
     "channel": "chat",
     "stage": "routing",
@@ -2816,14 +2816,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.805150+00:00",
-    "completed_at": "2026-11-21T18:09:21.805931+00:00",
+    "started_at": "2026-11-21T18:26:36.082234+00:00",
+    "completed_at": "2026-11-21T18:26:36.082990+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "6feced46173b4f3fa7bd7414f99aa12a",
-    "timestamp": "2026-11-21T18:09:21.806911+00:00",
+    "decision_id": "3c76f4bcdfc04b5dbdd2036ab0fc10ce",
+    "timestamp": "2026-11-21T18:26:36.083912+00:00",
     "ticket_id": "VAL-0030",
     "channel": "email",
     "stage": "routing",
@@ -2920,14 +2920,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.806201+00:00",
-    "completed_at": "2026-11-21T18:09:21.806972+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.083261+00:00",
+    "completed_at": "2026-11-21T18:26:36.083971+00:00",
+    "latency_seconds": 0.0007,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "78c316542bd2438791fef63b53590296",
-    "timestamp": "2026-11-21T18:09:21.808062+00:00",
+    "decision_id": "e0811481688b40539bb6065c809ca49e",
+    "timestamp": "2026-11-21T18:26:36.084985+00:00",
     "ticket_id": "VAL-0031",
     "channel": "email",
     "stage": "routing",
@@ -3009,14 +3009,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.807280+00:00",
-    "completed_at": "2026-11-21T18:09:21.808125+00:00",
+    "started_at": "2026-11-21T18:26:36.084250+00:00",
+    "completed_at": "2026-11-21T18:26:36.085043+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "b374d1a65ed14ea1962cffb816c25664",
-    "timestamp": "2026-11-21T18:09:21.809172+00:00",
+    "decision_id": "b6d3a77af90540f6958f3acad47f2fe0",
+    "timestamp": "2026-11-21T18:26:36.086056+00:00",
     "ticket_id": "VAL-0032",
     "channel": "chat",
     "stage": "routing",
@@ -3119,14 +3119,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.808424+00:00",
-    "completed_at": "2026-11-21T18:09:21.809233+00:00",
+    "started_at": "2026-11-21T18:26:36.085327+00:00",
+    "completed_at": "2026-11-21T18:26:36.086115+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "ff037393adb94789a07f5e67eb44da7e",
-    "timestamp": "2026-11-21T18:09:21.810576+00:00",
+    "decision_id": "a3f376f2d2d3431d951aaac13994a153",
+    "timestamp": "2026-11-21T18:26:36.087466+00:00",
     "ticket_id": "VAL-0033",
     "channel": "forum",
     "stage": "validation",
@@ -3219,14 +3219,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.809523+00:00",
-    "completed_at": "2026-11-21T18:09:21.810634+00:00",
+    "started_at": "2026-11-21T18:26:36.086426+00:00",
+    "completed_at": "2026-11-21T18:26:36.087525+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "0858497b17b1421fb4ab7d7f23a0859c",
-    "timestamp": "2026-11-21T18:09:21.811735+00:00",
+    "decision_id": "ccf1237723fa4514b29df7926680ab50",
+    "timestamp": "2026-11-21T18:26:36.088627+00:00",
     "ticket_id": "VAL-0034",
     "channel": "email",
     "stage": "routing",
@@ -3316,14 +3316,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.810952+00:00",
-    "completed_at": "2026-11-21T18:09:21.811798+00:00",
+    "started_at": "2026-11-21T18:26:36.087883+00:00",
+    "completed_at": "2026-11-21T18:26:36.088687+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "68f752d5123a4aa8ab75081849547650",
-    "timestamp": "2026-11-21T18:09:21.812735+00:00",
+    "decision_id": "38cb0b2a5c6f4eb69b8e1def623392c2",
+    "timestamp": "2026-11-21T18:26:36.089569+00:00",
     "ticket_id": "VAL-0035",
     "channel": "chat",
     "stage": "routing",
@@ -3406,14 +3406,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.812102+00:00",
-    "completed_at": "2026-11-21T18:09:21.812795+00:00",
-    "latency_seconds": 0.0007,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.088987+00:00",
+    "completed_at": "2026-11-21T18:26:36.089625+00:00",
+    "latency_seconds": 0.0006,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "2b5fef5d9f6a484b85c720bedf8b519b",
-    "timestamp": "2026-11-21T18:09:21.813809+00:00",
+    "decision_id": "47dd5ab1181647418566caf702a8b33a",
+    "timestamp": "2026-11-21T18:26:36.090627+00:00",
     "ticket_id": "VAL-0036",
     "channel": "forum",
     "stage": "routing",
@@ -3509,14 +3509,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.813080+00:00",
-    "completed_at": "2026-11-21T18:09:21.813871+00:00",
+    "started_at": "2026-11-21T18:26:36.089910+00:00",
+    "completed_at": "2026-11-21T18:26:36.090687+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "865dc698f5834274853fe536562103e4",
-    "timestamp": "2026-11-21T18:09:21.815253+00:00",
+    "decision_id": "fe8a524da6a84ccf96b2413e33f8b2c2",
+    "timestamp": "2026-11-21T18:26:36.092033+00:00",
     "ticket_id": "VAL-0037",
     "channel": "email",
     "stage": "validation",
@@ -3609,14 +3609,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.814183+00:00",
-    "completed_at": "2026-11-21T18:09:21.815315+00:00",
+    "started_at": "2026-11-21T18:26:36.090994+00:00",
+    "completed_at": "2026-11-21T18:26:36.092085+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "1eeb707ddf52458da42f08b5654d0835",
-    "timestamp": "2026-11-21T18:09:21.816466+00:00",
+    "decision_id": "5d6f122b0d514633ba7c4f8d1f0cb678",
+    "timestamp": "2026-11-21T18:26:36.093057+00:00",
     "ticket_id": "VAL-0038",
     "channel": "forum",
     "stage": "routing",
@@ -3706,14 +3706,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.815659+00:00",
-    "completed_at": "2026-11-21T18:09:21.816528+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.092352+00:00",
+    "completed_at": "2026-11-21T18:26:36.093111+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "db540657c1c74c08838581b421c658c4",
-    "timestamp": "2026-11-21T18:09:21.817577+00:00",
+    "decision_id": "39a3b43da7d24abca654defa115f68dc",
+    "timestamp": "2026-11-21T18:26:36.094125+00:00",
     "ticket_id": "VAL-0039",
     "channel": "forum",
     "stage": "routing",
@@ -3809,14 +3809,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.816809+00:00",
-    "completed_at": "2026-11-21T18:09:21.817643+00:00",
+    "started_at": "2026-11-21T18:26:36.093387+00:00",
+    "completed_at": "2026-11-21T18:26:36.094187+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "9a1231e21d5940719e4c8802672217e4",
-    "timestamp": "2026-11-21T18:09:21.818973+00:00",
+    "decision_id": "fec5a34857ca4cb5be317740d0b265dd",
+    "timestamp": "2026-11-21T18:26:36.095397+00:00",
     "ticket_id": "VAL-0040",
     "channel": "email",
     "stage": "validation",
@@ -3909,14 +3909,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.817938+00:00",
-    "completed_at": "2026-11-21T18:09:21.819031+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.094474+00:00",
+    "completed_at": "2026-11-21T18:26:36.095449+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "9dfb61a0906b43d781aaca6f1c7d03e5",
-    "timestamp": "2026-11-21T18:09:21.820321+00:00",
+    "decision_id": "baf37d8a2e394effb6c1a963d04b3228",
+    "timestamp": "2026-11-21T18:26:36.096610+00:00",
     "ticket_id": "VAL-0041",
     "channel": "email",
     "stage": "validation",
@@ -4009,14 +4009,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.819324+00:00",
-    "completed_at": "2026-11-21T18:09:21.820380+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.095700+00:00",
+    "completed_at": "2026-11-21T18:26:36.096662+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "83f5f2cbc2d147459f6fe27af3912905",
-    "timestamp": "2026-11-21T18:09:21.821701+00:00",
+    "decision_id": "f36b230089cb4ab8ad643ef62e0704a5",
+    "timestamp": "2026-11-21T18:26:36.097864+00:00",
     "ticket_id": "VAL-0042",
     "channel": "chat",
     "stage": "validation",
@@ -4121,14 +4121,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.820679+00:00",
-    "completed_at": "2026-11-21T18:09:21.821760+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.096914+00:00",
+    "completed_at": "2026-11-21T18:26:36.097920+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "156fab67591c4dd28b8b89d780803f79",
-    "timestamp": "2026-11-21T18:09:21.822821+00:00",
+    "decision_id": "bbb62f86ad7140958341feefbaa95fc5",
+    "timestamp": "2026-11-21T18:26:36.098872+00:00",
     "ticket_id": "VAL-0043",
     "channel": "forum",
     "stage": "routing",
@@ -4227,14 +4227,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.822089+00:00",
-    "completed_at": "2026-11-21T18:09:21.822882+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.098208+00:00",
+    "completed_at": "2026-11-21T18:26:36.098927+00:00",
+    "latency_seconds": 0.0007,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "36683fa36f2b44009a135539378fb8c2",
-    "timestamp": "2026-11-21T18:09:21.824403+00:00",
+    "decision_id": "575908b742ca4304af4aa67b31d028c0",
+    "timestamp": "2026-11-21T18:26:36.100141+00:00",
     "ticket_id": "VAL-0044",
     "channel": "chat",
     "stage": "validation",
@@ -4327,14 +4327,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.823242+00:00",
-    "completed_at": "2026-11-21T18:09:21.824472+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.099203+00:00",
+    "completed_at": "2026-11-21T18:26:36.100203+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "bb264386794246349c6cb96d97970be9",
-    "timestamp": "2026-11-21T18:09:21.826077+00:00",
+    "decision_id": "79db3908b5d2451f93bfb4201bd3f56f",
+    "timestamp": "2026-11-21T18:26:36.101511+00:00",
     "ticket_id": "VAL-0045",
     "channel": "email",
     "stage": "validation",
@@ -4427,14 +4427,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.824964+00:00",
-    "completed_at": "2026-11-21T18:09:21.826141+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.100505+00:00",
+    "completed_at": "2026-11-21T18:26:36.101567+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "e0981665308140b7a39dacbe547ee203",
-    "timestamp": "2026-11-21T18:09:21.827660+00:00",
+    "decision_id": "50ce93a2ed79406fb0a7f5b57e36b706",
+    "timestamp": "2026-11-21T18:26:36.102846+00:00",
     "ticket_id": "VAL-0046",
     "channel": "email",
     "stage": "validation",
@@ -4527,14 +4527,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.826502+00:00",
-    "completed_at": "2026-11-21T18:09:21.827726+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.101860+00:00",
+    "completed_at": "2026-11-21T18:26:36.102902+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "8dfceea9c1014726a4f00a7b2ad3656b",
-    "timestamp": "2026-11-21T18:09:21.829109+00:00",
+    "decision_id": "b6a73ffbb1b044b8a56f8265710b27e0",
+    "timestamp": "2026-11-21T18:26:36.104192+00:00",
     "ticket_id": "VAL-0047",
     "channel": "chat",
     "stage": "validation",
@@ -4633,14 +4633,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.828032+00:00",
-    "completed_at": "2026-11-21T18:09:21.829169+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.103213+00:00",
+    "completed_at": "2026-11-21T18:26:36.104249+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "4d0d1a7327794c9bbd5d893891231270",
-    "timestamp": "2026-11-21T18:09:21.830401+00:00",
+    "decision_id": "390333ebbc924ef598384c47423612e3",
+    "timestamp": "2026-11-21T18:26:36.105207+00:00",
     "ticket_id": "VAL-0048",
     "channel": "chat",
     "stage": "routing",
@@ -4733,14 +4733,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.829545+00:00",
-    "completed_at": "2026-11-21T18:09:21.830472+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.104549+00:00",
+    "completed_at": "2026-11-21T18:26:36.105274+00:00",
+    "latency_seconds": 0.0007,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "86eaf478940c4aa38bef9c337c20dd6d",
-    "timestamp": "2026-11-21T18:09:21.831587+00:00",
+    "decision_id": "45543ccf0aa245379d87264c9a3d0d9b",
+    "timestamp": "2026-11-21T18:26:36.106546+00:00",
     "ticket_id": "VAL-0049",
     "channel": "email",
     "stage": "routing",
@@ -4833,14 +4833,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.830813+00:00",
-    "completed_at": "2026-11-21T18:09:21.831654+00:00",
+    "started_at": "2026-11-21T18:26:36.105795+00:00",
+    "completed_at": "2026-11-21T18:26:36.106609+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "ae298c7870e340e08829999f33a37f53",
-    "timestamp": "2026-11-21T18:09:21.832744+00:00",
+    "decision_id": "dc8a9f8deb0448969ff5ea3e0b2620bd",
+    "timestamp": "2026-11-21T18:26:36.107582+00:00",
     "ticket_id": "VAL-0050",
     "channel": "email",
     "stage": "routing",
@@ -4942,14 +4942,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.831992+00:00",
-    "completed_at": "2026-11-21T18:09:21.832809+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.106901+00:00",
+    "completed_at": "2026-11-21T18:26:36.107642+00:00",
+    "latency_seconds": 0.0007,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "1f75e84870274cec98b96315f1dd0ba0",
-    "timestamp": "2026-11-21T18:09:21.834197+00:00",
+    "decision_id": "227717da9c7d4d2aace22dd3d3bca768",
+    "timestamp": "2026-11-21T18:26:36.108943+00:00",
     "ticket_id": "VAL-0051",
     "channel": "forum",
     "stage": "validation",
@@ -5042,14 +5042,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.833109+00:00",
-    "completed_at": "2026-11-21T18:09:21.834259+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.107922+00:00",
+    "completed_at": "2026-11-21T18:26:36.109000+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "c15b6d26690c43009ad0e10409a1bf9f",
-    "timestamp": "2026-11-21T18:09:21.835370+00:00",
+    "decision_id": "50239d7caacd4e048fcf7e644e2c000f",
+    "timestamp": "2026-11-21T18:26:36.110092+00:00",
     "ticket_id": "VAL-0052",
     "channel": "chat",
     "stage": "routing",
@@ -5151,14 +5151,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.834551+00:00",
-    "completed_at": "2026-11-21T18:09:21.835433+00:00",
+    "started_at": "2026-11-21T18:26:36.109303+00:00",
+    "completed_at": "2026-11-21T18:26:36.110153+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "47f74e3d06874f43a6fd11bfc672c047",
-    "timestamp": "2026-11-21T18:09:21.836730+00:00",
+    "decision_id": "1dff61a14ba043d3a419c76121abd571",
+    "timestamp": "2026-11-21T18:26:36.111469+00:00",
     "ticket_id": "VAL-0053",
     "channel": "chat",
     "stage": "validation",
@@ -5251,14 +5251,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.835718+00:00",
-    "completed_at": "2026-11-21T18:09:21.836789+00:00",
+    "started_at": "2026-11-21T18:26:36.110443+00:00",
+    "completed_at": "2026-11-21T18:26:36.111528+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "4f10dfcfb1a147e5b0368d217339f9e7",
-    "timestamp": "2026-11-21T18:09:21.837873+00:00",
+    "decision_id": "b147314bccfd488183087dda49c9ee6d",
+    "timestamp": "2026-11-21T18:26:36.112533+00:00",
     "ticket_id": "VAL-0054",
     "channel": "email",
     "stage": "routing",
@@ -5340,14 +5340,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.837113+00:00",
-    "completed_at": "2026-11-21T18:09:21.837937+00:00",
+    "started_at": "2026-11-21T18:26:36.111823+00:00",
+    "completed_at": "2026-11-21T18:26:36.112593+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "71a125c7ff6b4381a92de53ccb2f3fd3",
-    "timestamp": "2026-11-21T18:09:21.839000+00:00",
+    "decision_id": "7ca3988ef486453c9766c8402bc2e963",
+    "timestamp": "2026-11-21T18:26:36.113573+00:00",
     "ticket_id": "VAL-0055",
     "channel": "chat",
     "stage": "routing",
@@ -5437,14 +5437,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.838257+00:00",
-    "completed_at": "2026-11-21T18:09:21.839063+00:00",
+    "started_at": "2026-11-21T18:26:36.112873+00:00",
+    "completed_at": "2026-11-21T18:26:36.113632+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "f77f83dab5a6468282546f53aa7c711f",
-    "timestamp": "2026-11-21T18:09:21.840079+00:00",
+    "decision_id": "a123955ae6a448ccadbe00dc71ed6793",
+    "timestamp": "2026-11-21T18:26:36.114620+00:00",
     "ticket_id": "VAL-0056",
     "channel": "email",
     "stage": "routing",
@@ -5540,14 +5540,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.839348+00:00",
-    "completed_at": "2026-11-21T18:09:21.840142+00:00",
+    "started_at": "2026-11-21T18:26:36.113918+00:00",
+    "completed_at": "2026-11-21T18:26:36.114680+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "15d2cc91904042c2a3db271114b1a9d8",
-    "timestamp": "2026-11-21T18:09:21.841543+00:00",
+    "decision_id": "9502a170a2984c9e90bfe622238f67fb",
+    "timestamp": "2026-11-21T18:26:36.116045+00:00",
     "ticket_id": "VAL-0057",
     "channel": "email",
     "stage": "validation",
@@ -5640,14 +5640,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.840434+00:00",
-    "completed_at": "2026-11-21T18:09:21.841603+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.114984+00:00",
+    "completed_at": "2026-11-21T18:26:36.116104+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "0888f9cacbcb4ef5948b448ceb5cf02a",
-    "timestamp": "2026-11-21T18:09:21.842697+00:00",
+    "decision_id": "2d012b72d6dc450b87b20519bfaaf2d8",
+    "timestamp": "2026-11-21T18:26:36.117148+00:00",
     "ticket_id": "VAL-0058",
     "channel": "docs_comment",
     "stage": "routing",
@@ -5739,14 +5739,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.841908+00:00",
-    "completed_at": "2026-11-21T18:09:21.842758+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.116396+00:00",
+    "completed_at": "2026-11-21T18:26:36.117207+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "614855561adf4cb6993215febaea4468",
-    "timestamp": "2026-11-21T18:09:21.844088+00:00",
+    "decision_id": "bdbd681c57804d959da6e8ada04674b1",
+    "timestamp": "2026-11-21T18:26:36.118517+00:00",
     "ticket_id": "VAL-0059",
     "channel": "docs_comment",
     "stage": "validation",
@@ -5839,14 +5839,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.843046+00:00",
-    "completed_at": "2026-11-21T18:09:21.844146+00:00",
+    "started_at": "2026-11-21T18:26:36.117499+00:00",
+    "completed_at": "2026-11-21T18:26:36.118573+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "eac2b96edee449df924415342f46d5f3",
-    "timestamp": "2026-11-21T18:09:21.845510+00:00",
+    "decision_id": "1941aa29d9334c78b9d79253f1d7af54",
+    "timestamp": "2026-11-21T18:26:36.119857+00:00",
     "ticket_id": "VAL-0060",
     "channel": "email",
     "stage": "validation",
@@ -5939,14 +5939,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.844454+00:00",
-    "completed_at": "2026-11-21T18:09:21.845568+00:00",
+    "started_at": "2026-11-21T18:26:36.118860+00:00",
+    "completed_at": "2026-11-21T18:26:36.119912+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "e624ea1898184559b39ac9bcfb252b39",
-    "timestamp": "2026-11-21T18:09:21.846930+00:00",
+    "decision_id": "c0ac657374514c1da046330c96b76ef8",
+    "timestamp": "2026-11-21T18:26:36.121182+00:00",
     "ticket_id": "VAL-0061",
     "channel": "email",
     "stage": "validation",
@@ -6039,14 +6039,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.845903+00:00",
-    "completed_at": "2026-11-21T18:09:21.846988+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.120199+00:00",
+    "completed_at": "2026-11-21T18:26:36.121237+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "ff3fe7aa0c5a40e39cd24f533cfb554f",
-    "timestamp": "2026-11-21T18:09:21.848348+00:00",
+    "decision_id": "ef6f38d057974922909c2c65f3a77fe7",
+    "timestamp": "2026-11-21T18:26:36.122533+00:00",
     "ticket_id": "VAL-0062",
     "channel": "docs_comment",
     "stage": "validation",
@@ -6139,14 +6139,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.847311+00:00",
-    "completed_at": "2026-11-21T18:09:21.848407+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.121545+00:00",
+    "completed_at": "2026-11-21T18:26:36.122589+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "6378912f95054cb4a7f79453ac63c887",
-    "timestamp": "2026-11-21T18:09:21.849589+00:00",
+    "decision_id": "f56655a0ea4a4a7a8f502d712ea8de00",
+    "timestamp": "2026-11-21T18:26:36.123638+00:00",
     "ticket_id": "VAL-0063",
     "channel": "email",
     "stage": "routing",
@@ -6248,14 +6248,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.848775+00:00",
-    "completed_at": "2026-11-21T18:09:21.849653+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.122882+00:00",
+    "completed_at": "2026-11-21T18:26:36.123697+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "fb6cccd93f5d44beb034fd83b0e13eea",
-    "timestamp": "2026-11-21T18:09:21.851048+00:00",
+    "decision_id": "bbb542c528e74720800f7fa528265d82",
+    "timestamp": "2026-11-21T18:26:36.125005+00:00",
     "ticket_id": "VAL-0064",
     "channel": "chat",
     "stage": "validation",
@@ -6354,14 +6354,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.849998+00:00",
-    "completed_at": "2026-11-21T18:09:21.851109+00:00",
+    "started_at": "2026-11-21T18:26:36.123986+00:00",
+    "completed_at": "2026-11-21T18:26:36.125064+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "49f1c79a55034f29acc58bc8eaf62897",
-    "timestamp": "2026-11-21T18:09:21.852564+00:00",
+    "decision_id": "1d438b5be3d448a5a9e20d14f6798307",
+    "timestamp": "2026-11-21T18:26:36.126388+00:00",
     "ticket_id": "VAL-0065",
     "channel": "email",
     "stage": "validation",
@@ -6460,14 +6460,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.851459+00:00",
-    "completed_at": "2026-11-21T18:09:21.852632+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.125346+00:00",
+    "completed_at": "2026-11-21T18:26:36.126448+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "81412daf0be04016a16cf9077bbd7258",
-    "timestamp": "2026-11-21T18:09:21.853797+00:00",
+    "decision_id": "55875d0f69da469b9f9c755551dafdbc",
+    "timestamp": "2026-11-21T18:26:36.127673+00:00",
     "ticket_id": "VAL-0066",
     "channel": "forum",
     "stage": "routing",
@@ -6557,14 +6557,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.853012+00:00",
-    "completed_at": "2026-11-21T18:09:21.853862+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.126787+00:00",
+    "completed_at": "2026-11-21T18:26:36.127737+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "7db0a2d0b5b640cf8832c560d78e541d",
-    "timestamp": "2026-11-21T18:09:21.854981+00:00",
+    "decision_id": "817c3672399d4556a92b68fe1f6df4bb",
+    "timestamp": "2026-11-21T18:26:36.128864+00:00",
     "ticket_id": "VAL-0067",
     "channel": "docs_comment",
     "stage": "routing",
@@ -6660,14 +6660,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.854200+00:00",
-    "completed_at": "2026-11-21T18:09:21.855044+00:00",
+    "started_at": "2026-11-21T18:26:36.128106+00:00",
+    "completed_at": "2026-11-21T18:26:36.128924+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "12f3a29c493e4f73aee883bc51b6f563",
-    "timestamp": "2026-11-21T18:09:21.856247+00:00",
+    "decision_id": "f2e8872e49624fda8c779fa66e4a35a7",
+    "timestamp": "2026-11-21T18:26:36.130000+00:00",
     "ticket_id": "VAL-0068",
     "channel": "email",
     "stage": "routing",
@@ -6763,14 +6763,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.855383+00:00",
-    "completed_at": "2026-11-21T18:09:21.856319+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.129241+00:00",
+    "completed_at": "2026-11-21T18:26:36.130057+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "a660692bef4f4118aa47dce6e88c11d9",
-    "timestamp": "2026-11-21T18:09:21.857758+00:00",
+    "decision_id": "e83a97e211934aad90af9496d35ee7b6",
+    "timestamp": "2026-11-21T18:26:36.131266+00:00",
     "ticket_id": "VAL-0069",
     "channel": "chat",
     "stage": "validation",
@@ -6875,14 +6875,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.856711+00:00",
-    "completed_at": "2026-11-21T18:09:21.857819+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.130332+00:00",
+    "completed_at": "2026-11-21T18:26:36.131321+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "99492a275a37469ab7384f4f8f5e6ddb",
-    "timestamp": "2026-11-21T18:09:21.858999+00:00",
+    "decision_id": "0b90f0ba9d05462c85fc0c7f6035ad87",
+    "timestamp": "2026-11-21T18:26:36.132332+00:00",
     "ticket_id": "VAL-0070",
     "channel": "docs_comment",
     "stage": "routing",
@@ -6972,14 +6972,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.858164+00:00",
-    "completed_at": "2026-11-21T18:09:21.859066+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.131612+00:00",
+    "completed_at": "2026-11-21T18:26:36.132397+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "133615f9dd444eeab6d5e55298626e94",
-    "timestamp": "2026-11-21T18:09:21.860507+00:00",
+    "decision_id": "87685090c7d9441dba905502d190802c",
+    "timestamp": "2026-11-21T18:26:36.133736+00:00",
     "ticket_id": "VAL-0071",
     "channel": "docs_comment",
     "stage": "validation",
@@ -7072,14 +7072,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.859402+00:00",
-    "completed_at": "2026-11-21T18:09:21.860568+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.132687+00:00",
+    "completed_at": "2026-11-21T18:26:36.133798+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "7913b036c296410a938c9f27c05d5d4d",
-    "timestamp": "2026-11-21T18:09:21.861973+00:00",
+    "decision_id": "2ee6e196d87c4693b3868c24f0a36abc",
+    "timestamp": "2026-11-21T18:26:36.135105+00:00",
     "ticket_id": "VAL-0072",
     "channel": "docs_comment",
     "stage": "validation",
@@ -7172,14 +7172,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.860945+00:00",
-    "completed_at": "2026-11-21T18:09:21.862032+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.134118+00:00",
+    "completed_at": "2026-11-21T18:26:36.135160+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "3815428e849b47418427c39ab28421e9",
-    "timestamp": "2026-11-21T18:09:21.863370+00:00",
+    "decision_id": "25828d2865da4928943c546e49625539",
+    "timestamp": "2026-11-21T18:26:36.136360+00:00",
     "ticket_id": "VAL-0073",
     "channel": "forum",
     "stage": "validation",
@@ -7278,14 +7278,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.862357+00:00",
-    "completed_at": "2026-11-21T18:09:21.863429+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.135447+00:00",
+    "completed_at": "2026-11-21T18:26:36.136413+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "59730bd05fff4164b96655a23b3720b0",
-    "timestamp": "2026-11-21T18:09:21.864819+00:00",
+    "decision_id": "1a1a97508c284e06b8782ae08fca35f8",
+    "timestamp": "2026-11-21T18:26:36.137605+00:00",
     "ticket_id": "VAL-0074",
     "channel": "docs_comment",
     "stage": "validation",
@@ -7378,14 +7378,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.863765+00:00",
-    "completed_at": "2026-11-21T18:09:21.864880+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.136678+00:00",
+    "completed_at": "2026-11-21T18:26:36.137658+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "bda3760e8e98414a8eec6d6f9b05f9b5",
-    "timestamp": "2026-11-21T18:09:21.866044+00:00",
+    "decision_id": "53a26c420c5343308e606d3e524118d3",
+    "timestamp": "2026-11-21T18:26:36.138658+00:00",
     "ticket_id": "VAL-0075",
     "channel": "docs_comment",
     "stage": "routing",
@@ -7475,14 +7475,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.865250+00:00",
-    "completed_at": "2026-11-21T18:09:21.866108+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.137956+00:00",
+    "completed_at": "2026-11-21T18:26:36.138715+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "4caa42301fec46d987e898b354a2f905",
-    "timestamp": "2026-11-21T18:09:21.867498+00:00",
+    "decision_id": "74b55deb7db64382b586f792f7f0b672",
+    "timestamp": "2026-11-21T18:26:36.139966+00:00",
     "ticket_id": "VAL-0076",
     "channel": "email",
     "stage": "validation",
@@ -7581,14 +7581,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.866427+00:00",
-    "completed_at": "2026-11-21T18:09:21.867562+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.139003+00:00",
+    "completed_at": "2026-11-21T18:26:36.140020+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "0053fc1de9994c54855cc39d452d6d82",
-    "timestamp": "2026-11-21T18:09:21.869003+00:00",
+    "decision_id": "396235c619d5442784ac306461be07ca",
+    "timestamp": "2026-11-21T18:26:36.141313+00:00",
     "ticket_id": "VAL-0077",
     "channel": "chat",
     "stage": "validation",
@@ -7687,14 +7687,14 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.867936+00:00",
-    "completed_at": "2026-11-21T18:09:21.869067+00:00",
+    "started_at": "2026-11-21T18:26:36.140303+00:00",
+    "completed_at": "2026-11-21T18:26:36.141367+00:00",
     "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "84c9870f7b074aedaee46ac056aeb72f",
-    "timestamp": "2026-11-21T18:09:21.870126+00:00",
+    "decision_id": "fb265a8ad87f4506afbebdc1619b350b",
+    "timestamp": "2026-11-21T18:26:36.142283+00:00",
     "ticket_id": "VAL-0078",
     "channel": "docs_comment",
     "stage": "routing",
@@ -7790,14 +7790,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.869390+00:00",
-    "completed_at": "2026-11-21T18:09:21.870190+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.141628+00:00",
+    "completed_at": "2026-11-21T18:26:36.142343+00:00",
+    "latency_seconds": 0.0007,
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "e52f9bac2bd3460f963b0d51794f06ec",
-    "timestamp": "2026-11-21T18:09:21.871263+00:00",
+    "decision_id": "7139513d0273407f9e1bc5cf1e8af685",
+    "timestamp": "2026-11-21T18:26:36.143377+00:00",
     "ticket_id": "VAL-0079",
     "channel": "email",
     "stage": "routing",
@@ -7887,14 +7887,14 @@
       "FR-08"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.870494+00:00",
-    "completed_at": "2026-11-21T18:09:21.871325+00:00",
+    "started_at": "2026-11-21T18:26:36.142640+00:00",
+    "completed_at": "2026-11-21T18:26:36.143438+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T180921-4f94f8"
+    "run_id": "run-20261121T182636-74b36f"
   },
   {
-    "decision_id": "1b384a50cf024fdcabd36cf49b822974",
-    "timestamp": "2026-11-21T18:09:21.872738+00:00",
+    "decision_id": "3ce47cc764714a3090ab33782d9ab667",
+    "timestamp": "2026-11-21T18:26:36.144693+00:00",
     "ticket_id": "VAL-0080",
     "channel": "chat",
     "stage": "validation",
@@ -7999,9 +7999,9 @@
       "FR-07"
     ],
     "implementation": "langgraph",
-    "started_at": "2026-11-21T18:09:21.871659+00:00",
-    "completed_at": "2026-11-21T18:09:21.872799+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T180921-4f94f8"
+    "started_at": "2026-11-21T18:26:36.143715+00:00",
+    "completed_at": "2026-11-21T18:26:36.144746+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261121T182636-74b36f"
   }
 ]
