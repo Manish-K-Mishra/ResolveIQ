@@ -169,11 +169,13 @@ class KnowledgeBase:
         self.passage_by_id = {p["passage_id"]: p for p in self.passages}
         # Answer units: each article's complete resolution section, whatever the search chunking,
         # so an answer never quotes a window that cuts a numbered sequence in half.
-        self.resolution_by_doc = {}
+        # Section passages are also the units handed to the answer generator; all of them resolve.
+        self.resolution_by_doc, self.sections_by_doc = {}, {}
         for p in build_passages(docs, "section"):
+            self.passage_by_id.setdefault(p["passage_id"], p)
+            self.sections_by_doc.setdefault(p["doc_id"], []).append(p)
             if RESOLUTION_SECTION.fullmatch(p["section"]) and p["doc_id"] not in self.resolution_by_doc:
                 self.resolution_by_doc[p["doc_id"]] = p
-                self.passage_by_id.setdefault(p["passage_id"], p)
         self.docs = [(self.by_id[p["doc_id"]], p) for p in self.passages]   # kept for introspection
         self.min_score = min_score if min_score is not None else (
             self.EMBEDDING_MIN_SCORE if retriever == "embedding" else self.LEXICAL_MIN_SCORE)
@@ -201,6 +203,30 @@ class KnowledgeBase:
         """Exact corpus text for a passage id (None if the id does not exist)."""
         p = self.passage_by_id.get(passage_id)
         return None if p is None else self.by_id[p["doc_id"]]["content"][p["start"]:p["end"]]
+
+    def generation_passages(self, evidence: list[dict], max_docs: int = 3) -> list[dict]:
+        """Approved passages handed to the answer generator, best-matching article first.
+
+        With section or window chunking these are the approved evidence passages themselves.
+        With whole-article chunking a passage IS an article, so the article is handed over as its
+        section passages (Symptoms, Common causes, Resolution, Notes) instead: smaller, separately
+        citable units that are exact sub-spans of the retrieved article. Each carries the score of
+        the evidence passage that brought it in and resolves through `resolve`.
+        """
+        out, docs = [], []
+        for m in evidence:
+            if m["doc_id"] not in docs:
+                if len(docs) == max_docs:
+                    continue
+                docs.append(m["doc_id"])
+            units = self.sections_by_doc.get(m["doc_id"], []) if self.chunking == "article" else [m]
+            for p in units:
+                if all(p["passage_id"] != q["passage_id"] for q in out):
+                    out.append({"passage_id": p["passage_id"], "doc_id": p["doc_id"], "title": p.get("title", ""),
+                                "section": p.get("section"), "start": p["start"], "end": p["end"],
+                                "score": m["score"], "passage": p.get("text", p.get("passage")),
+                                "matched_passage_id": m["passage_id"]})
+        return out
 
     def answer_passages(self, evidence: list[dict]) -> list[dict]:
         """Resolution-section passages for the approved evidence, best-matching article first.

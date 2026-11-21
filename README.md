@@ -45,6 +45,9 @@ ingest -> classify -> retrieve -> route --(answer)--> select_evidence -> validat
                                         `--(escalate)-------------------------------------^
 ```
 
+With `--answer-mode generated`, a `generate` node takes the place of `select_evidence`. The
+rest of the graph is the same, and escalated tickets never reach the generator.
+
 | Step | What it does | Code |
 |---|---|---|
 | ingest | Normalises email / chat / docs / forum tickets; drops `labels` and `history` (evaluation only) | `src/cloudserve/ingest.py` |
@@ -52,7 +55,8 @@ ingest -> classify -> retrieve -> route --(answer)--> select_evidence -> validat
 | retrieve | Ranked passages (`DOC-XXX#article`) with scores and character offsets from `data/documentation.json`; lexical over whole articles in RP-1.0 | `src/cloudserve/retrieve.py` |
 | route | Policy RP-1.0 decides: restricted intents, injection or sensitive text, a confidence floor of 0.70, and a retrieval floor of 0.40 with an approved document for the intent | `src/cloudserve/route.py`, `config/routing_policy.json` |
 | select_evidence | The complete resolution section of the best-matching approved article, cited as `DOC-XXX#resolution` (deterministic), or PR-04 quote selection through an LLM | `src/cloudserve/generate.py` |
-| validate | Grounding, PII, instruction-integrity and scope checks before release | `src/cloudserve/guardrails.py` |
+| generate (`--answer-mode generated`) | PR-02 through an LLM: at most 6 sentences written only from the approved passages. Each sentence cites passage ids and copies a verbatim quote. The model returns `cannot_answer` when the passages do not answer | `src/cloudserve/generate.py`, `prompts/build/PR-02_grounded_answer.md` |
+| validate | Grounding, PII, instruction-integrity and scope checks before release. For generated answers, `validate_generated` checks every sentence's citations, quote and support | `src/cloudserve/guardrails.py` |
 | finalize | Action `auto_respond` / `escalate` / `block`, kill switch, handoff, audit record | `src/cloudserve/graph.py`, `src/cloudserve/logging_store.py` |
 
 The thresholds and the retrieval configuration are derived from development data only, with
@@ -104,6 +108,7 @@ The tested results saved under `evaluation/results/` are listed below. Each run 
 | Validation, offline, `--auto-send` | `validation_offline_autosend/` |
 | First 10 validation tickets, live Ollama `gemma4:e2b` (classifier and evidence selector) | `validation10_llm_ollama_gemma4/` |
 | Chunking × retriever comparison (development and validation) | `retrieval_comparison/` |
+| Generated answers (PR-02, Ollama `gemma4:e2b`): lexical/article vs embedding/section, plus the extractive embedding baseline | `generation_comparison/` (see docs/architecture.md §12) |
 
 Read the limitations section in each `metrics_summary.md`. For example, 62 of the 80
 validation bodies are exact copies of development tickets, so offline intent accuracy
@@ -129,6 +134,27 @@ python -m cloudserve.cli --input examples/one_ticket.json --output output/llm.js
 # Anthropic Claude (verified on 10 tickets with claude-haiku-4-5; needs your own key; costs about $0.002 per ticket)
 ...  --classifier llm --provider anthropic --model claude-haiku-4-5
 ```
+
+**Generated answers (PR-02).** By default the answer is a verbatim documentation section
+(`--answer-mode extractive`, offline). `--answer-mode generated` asks the model to write a short
+cited answer, and `guardrails.validate_generated` checks it before release. This mode needs an
+LLM provider. It can be combined with the offline classifier, so only generation uses the model.
+It cannot be combined with `--evidence-selector llm`, because generation replaces evidence selection.
+
+```bash
+# Ollama (verified locally with gemma4:e2b)
+python -m evaluation.harness --input data/validation_tickets.json --output storage/gen_ollama \
+  --answer-mode generated --provider ollama --model gemma4:e2b
+
+# Anthropic Claude (needs your own key in .env; not run in this build)
+python -m evaluation.harness --input data/validation_tickets.json --output storage/gen_claude \
+  --answer-mode generated --provider anthropic --model claude-haiku-4-5
+```
+
+The harness then also reports citations per answer, an automated citation-support rate
+(labelled as an automated proxy), grounding blocks and `cannot_answer` escalations. It writes
+`human_review_sample.csv`: the first 50 answered or held responses, in input order, with
+empty columns for two assessors. The harness writes this file in both answer modes.
 
 Claude setup: copy `.env.example` to `.env` and set `ANTHROPIC_API_KEY` there locally. Never
 commit `.env` (it is in `.gitignore`) or paste a key into a chat or agent prompt.

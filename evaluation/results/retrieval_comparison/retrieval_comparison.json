@@ -1,7 +1,7 @@
 {
-  "corpus": "/Users/manishmishra/Desktop/Projects/ResolveIQ/data/documentation.json",
-  "development": "/Users/manishmishra/Desktop/Projects/ResolveIQ/data/development_tickets.json",
-  "validation": "/Users/manishmishra/Desktop/Projects/ResolveIQ/data/validation_tickets.json",
+  "corpus": "data/documentation.json",
+  "development": "data/development_tickets.json",
+  "validation": "data/validation_tickets.json",
   "embedding_model": "all-MiniLM-L6-v2@1110a24",
   "measures": "(document level: a passage counts as a hit for the article it comes from)\n  hit@1          top passage's article is one of the expected articles\n  hit@3          an expected article is among the first three distinct articles returned\n  empty_answerable    answerable tickets for which retrieval returned nothing (lost answers)\n  empty_unanswerable  unanswerable tickets for which retrieval returned nothing (the requirement:\n                      \"returns nothing rather than something irrelevant\")",
   "results": {

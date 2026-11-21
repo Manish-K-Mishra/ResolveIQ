@@ -3,8 +3,13 @@
     ingest -> classify -> retrieve -> route --(answer)--> select_evidence -> validate -> finalize
                                           `--(escalate)-----------------------------------^
 
-Critical decisions are deterministic Python (route.route, guardrails.validate_response);
-models only classify and select quotes behind adapters. Every path, including failures,
+In generated answer mode (`answer_mode="generated"`) a `generate` node (PR-02, cited sentences
+over the approved passages) takes the place of `select_evidence`; the shape is otherwise the same,
+and escalated tickets never reach the generator.
+
+Critical decisions are deterministic Python (route.route, guardrails.validate_response and
+guardrails.validate_generated); models only classify, select quotes or draft cited sentences
+behind adapters. Every path, including failures,
 ends in `finalize`, which builds one governance-schema decision record.
 
 Actions (Governance §1): auto_respond | escalate | block.
@@ -18,12 +23,14 @@ import uuid
 from typing import Any, TypedDict
 from .classify import UNKNOWN
 from .generate import select_from_document
-from .guardrails import mask_pii, validate_response
+from .guardrails import mask_pii, validate_generated, validate_response
 from .ingest import normalize, utc_now
 from .retrieve import KnowledgeBase
 from .route import route as route_policy
 
 BASE_REQUIREMENTS = ["FR-01", "FR-02", "FR-03", "FR-04", "FR-07"]
+ANSWER_MODES = ("extractive", "generated")
+CANNOT_ANSWER_REASON = "the documentation does not answer this"
 
 
 def auto_send_enabled_from_env() -> bool:
@@ -39,6 +46,7 @@ class FlowState(TypedDict, total=False):
     answer_passages: list[dict]
     selection: Any
     selection_errors: list[str]
+    generated: Any
     validation: dict
     record: dict
 
@@ -47,8 +55,14 @@ class DecisionEngine:
     """Holds the run's dependencies; `process(raw)` never raises and always returns a record."""
 
     def __init__(self, kb: KnowledgeBase, policy: dict, classifier, selector=None,
-                 auto_send: bool = False, use_langgraph: bool = True, retrieval_info: dict | None = None):
+                 auto_send: bool = False, use_langgraph: bool = True, retrieval_info: dict | None = None,
+                 answer_mode: str = "extractive", generator=None):
+        if answer_mode not in ANSWER_MODES:
+            raise ValueError(f"answer_mode must be one of {ANSWER_MODES}")
+        if answer_mode == "generated" and generator is None:
+            raise ValueError("generated answer mode needs a generator (an LLM provider)")
         self.kb, self.policy, self.classifier, self.selector = kb, policy, classifier, selector
+        self.answer_mode, self.generator = answer_mode, generator
         # Which retriever actually ran (and whether it is the fallback), written into every record.
         self.retrieval_info = retrieval_info or {**kb.describe(), "fallback": False}
         self.auto_send = auto_send
@@ -85,7 +99,21 @@ class DecisionEngine:
             return {"answer_passages": candidates, "selection": None,
                     "selection_errors": ["evidence_selection_failed", type(exc).__name__]}
 
+    def generate(self, s: FlowState):
+        # Approved passages only (with passage ids), never whole articles: retrieve.generation_passages.
+        passages = self.kb.generation_passages(s["routing"]["evidence"])
+        try:
+            return {"answer_passages": passages, "generated": self.generator.generate(s["ticket"], passages),
+                    "selection_errors": []}
+        except Exception as exc:   # outage, timeout, open circuit, malformed / schema-invalid output
+            return {"answer_passages": passages, "generated": None,
+                    "selection_errors": ["generation_failed", type(exc).__name__]}
+
     def validate(self, s: FlowState):
+        if self.answer_mode == "generated":
+            if s.get("generated") is None:      # generation failed: _record escalates on selection_errors
+                return {"validation": None}
+            return {"validation": validate_generated(s["generated"], s.get("answer_passages", []))}
         return {"validation": validate_response(s.get("selection"), s.get("answer_passages", []))}
 
     def finalize(self, s: FlowState):
@@ -98,25 +126,30 @@ class DecisionEngine:
         except ImportError as exc:
             raise RuntimeError("LangGraph is not installed: pip install -r requirements.txt") from exc
         g = StateGraph(FlowState)
-        for name in ("ingest", "classify", "retrieve", "route", "select_evidence", "validate", "finalize"):
+        answer_node = self._answer_node
+        for name in ("ingest", "classify", "retrieve", "route", answer_node, "validate", "finalize"):
             g.add_node(name, getattr(self, name))
         g.add_edge(START, "ingest")
         g.add_edge("ingest", "classify")
         g.add_edge("classify", "retrieve")
         g.add_edge("retrieve", "route")
         g.add_conditional_edges("route", lambda s: s["routing"]["route"],
-                                {"answer": "select_evidence", "escalate": "finalize"})
-        g.add_edge("select_evidence", "validate")
+                                {"answer": answer_node, "escalate": "finalize"})
+        g.add_edge(answer_node, "validate")
         g.add_edge("validate", "finalize")
         g.add_edge("finalize", END)
         return g.compile()
+
+    @property
+    def _answer_node(self) -> str:
+        return "generate" if self.answer_mode == "generated" else "select_evidence"
 
     def _run_sequential(self, raw: dict) -> dict:
         s: FlowState = {"raw": raw}
         for step in (self.ingest, self.classify, self.retrieve, self.route):
             s.update(step(s))
         if s["routing"]["route"] == "answer":
-            s.update(self.select_evidence(s))
+            s.update(getattr(self, self._answer_node)(s))
             s.update(self.validate(s))
         return self.finalize(s)["record"]
 
@@ -136,10 +169,16 @@ class DecisionEngine:
              "version": getattr(self.classifier, "version", "unversioned")}
         sel = ({"name": self.selector.name, "version": self.selector.version} if self.selector
                else {"name": "deterministic_resolution_section", "version": "1.0"})
-        return {"classifier": c, "evidence_selector": sel}
+        out = {"classifier": c, "evidence_selector": sel}
+        if self.answer_mode == "generated":
+            out["evidence_selector"] = {"name": "not_used (generated answer mode)", "version": "n/a"}
+            out["generator"] = {"name": getattr(self.generator, "name", type(self.generator).__name__),
+                                "version": getattr(self.generator, "version", "unversioned")}
+        return out
 
     def _prompt_versions(self) -> list[str]:
-        versions = [v for v in (getattr(self.classifier, "version", ""), getattr(self.selector, "version", ""))
+        answerer = self.generator if self.answer_mode == "generated" else self.selector
+        versions = [v for v in (getattr(self.classifier, "version", ""), getattr(answerer, "version", ""))
                     if str(v).startswith("PR-")]
         return versions or ["none (no model prompt used: offline classifier and deterministic selector)"]
 
@@ -151,6 +190,8 @@ class DecisionEngine:
         conf = c.get("confidence") if isinstance(c.get("confidence"), (int, float)) else 0.0
         guardrails = {"pii": "not_run", "grounding": "not_run", "instruction_integrity": "not_run",
                       "scope": "not_run", "confidence_floor": "pass" if conf >= conf_min else "fail"}
+        if self.answer_mode == "generated":
+            guardrails.update({"citations": "not_run", "support": "not_run"})
         reqs = list(BASE_REQUIREMENTS)
         response, failures, flagged_input = "", [], None
         if "untrusted_instruction_in_ticket" in r["codes"]:
@@ -169,8 +210,15 @@ class DecisionEngine:
             reqs += ["FR-08"] + (["FR-10"] if c.get("confidence_type") == "model_failed" else [])
         elif sel_errors:
             action, stage, codes = "escalate", "generation", sel_errors
-            reason = "The evidence-selection model failed or was unavailable, so the ticket was escalated."
+            what = "answer-generation" if self.answer_mode == "generated" else "evidence-selection"
+            reason = f"The {what} model failed, was unavailable or returned invalid output, so the ticket was escalated."
             reqs += ["FR-05", "FR-08", "FR-10"]
+        elif v.get("cannot_answer"):
+            # The model said the approved passages do not answer the ticket: escalate, do not block.
+            action, stage, codes = "escalate", "generation", ["documentation_does_not_answer"]
+            reason = (f"Escalated to a person: {CANNOT_ANSWER_REASON}"
+                      + (f" (model: {v['reason'][:200]})" if v.get("reason") else "") + ".")
+            reqs += ["FR-05", "FR-08"]
         elif not v["passed"]:
             guardrails.update(v["guardrail_results"])
             action, stage, codes, failures = "block", "validation", v["failures"], failures + v["failures"]
@@ -193,7 +241,12 @@ class DecisionEngine:
                     "section": m.get("section"), "score": m["score"], "start": m.get("start"), "end": m.get("end")}
                    for m in s["matches"]]
         citations, spans = [], []
-        if response:
+        if response and self.answer_mode == "generated":
+            by_id = {p["passage_id"]: p for p in s["answer_passages"]}
+            spans = [{**sp, "matched_passage_id": by_id[sp["passage_id"]].get("matched_passage_id"),
+                      "score": by_id[sp["passage_id"]].get("score")} for sp in v["citation_spans"]]
+            citations = list(dict.fromkeys(c for e in v["sentences"] for c in e["citations"]))
+        elif response:
             sel = s["selection"]
             # Same lookup as the grounding check (guardrails.validate_response), which already passed.
             cited = next(m for m in s["answer_passages"] if m["doc_id"] == sel.doc_id
@@ -220,12 +273,24 @@ class DecisionEngine:
             "reason": reason, "reason_codes": codes, "guardrail_results": guardrails,
             "guardrail_failures": sorted(set(failures)), "response": response, "flagged_input_for_review": flagged_input,
             "citations": citations, "citation_spans": spans, "retrieval": self.retrieval_info,
+            "answer_mode": self.answer_mode,
+            "unsupported_claims": (v or {}).get("unsupported_claims", []),
+            "generation": self._generation_block(s),
             "handoff": None if delivery == "sent" else {
                 "summary": summary, "intent": c["intent"], "urgency": c.get("urgency"),
                 "sources": [x["passage_id"] or x["doc_id"] for x in sources], "why_escalated": reason},
             "prompt_version": self._prompt_versions(), "policy_version": r["policy_version"],
             "requirement_ids": sorted(set(reqs)), "implementation": self.implementation,
         }
+
+    def _generation_block(self, s: FlowState) -> dict | None:
+        """What the generator was given and returned, plus the per-sentence checks (generated mode)."""
+        if self.answer_mode != "generated" or "answer_passages" not in s:
+            return None
+        g, v = s.get("generated"), s.get("validation") or {}
+        return {"passages_given": [p["passage_id"] for p in s["answer_passages"]],
+                "cannot_answer": bool(g and g.cannot_answer), "model_reason": g.reason if g else None,
+                "sentences": v.get("sentences", []), "error": s.get("selection_errors") or None}
 
     @staticmethod
     def _summary(t) -> str:
@@ -251,6 +316,7 @@ class DecisionEngine:
             "guardrail_results": {k: "not_run" for k in ("pii", "grounding", "instruction_integrity", "scope", "confidence_floor")},
             "guardrail_failures": [], "response": "", "flagged_input_for_review": None, "citations": [],
             "citation_spans": [], "retrieval": self.retrieval_info,
+            "answer_mode": self.answer_mode, "unsupported_claims": [], "generation": None,
             "handoff": {"summary": "unreadable or invalid ticket", "intent": UNKNOWN, "urgency": None,
                         "sources": [], "why_escalated": reason},
             "prompt_version": self._prompt_versions(), "policy_version": self.policy["policy_version"],
