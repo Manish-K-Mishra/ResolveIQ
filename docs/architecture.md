@@ -34,7 +34,9 @@ versioned policy file.
 ```
 
 `src/cloudserve/graph.py` compiles this as a `StateGraph` with one conditional edge out of `route`.
-An escalated ticket never calls the evidence model. Every path, including internal errors and
+In generated answer mode (`--answer-mode generated`, §12), a `generate` node takes the place of
+`select_evidence`, and the graph is otherwise unchanged. An escalated ticket never calls the
+evidence model or the generator. Every path, including internal errors and
 malformed input, ends in `finalize`.
 
 All modules are in `src/cloudserve/` (named after the Setup Guide §08 components).
@@ -46,7 +48,8 @@ All modules are in `src/cloudserve/` (named after the Setup Guide §08 component
 | Retrieval | `retrieve.py` `KnowledgeBase` | Ranked passages with stable ids and character offsets. Policy RP-1.0 uses lexical term overlap over whole articles (29 passages). all-MiniLM-L6-v2 embeddings (ONNX Runtime, in-memory index) were measured and are supported, with a lexical fallback. See §11. |
 | Routing policy | `route.py`, `config/routing_policy.json` | Deterministic rules, policy RP-1.0 |
 | Evidence selection and answer rendering | `generate.py` | A verbatim resolution section (deterministic), or PR-04 through LangChain |
-| Guardrails | `guardrails.py` (patterns, `contains_injection`, `validate_response`), `graph.py` (confidence floor, kill switch) | Grounding, PII, instruction integrity, scope, confidence floor |
+| Grounded generation (optional) | `generate.py` `LangChainAnswerGenerator` | PR-02 through LangChain with a strict Pydantic schema (§12) |
+| Guardrails | `guardrails.py` (patterns, `contains_injection`, `validate_response`, `validate_generated`), `graph.py` (confidence floor, kill switch) | Grounding, citations, support, PII, instruction integrity, scope, confidence floor |
 | Audit log | `logging_store.py` | SQLite. Each record holds the Governance minimum fields. |
 | Model providers | `providers.py` | Ollama, llama.cpp (OpenAI-compatible) and Anthropic, all through LangChain; timeouts, retries, deadline, circuit breaker |
 | Workflow and wiring | `graph.py`, `runtime.py`, `cli.py` | LangGraph `StateGraph`; shared engine construction; command line |
@@ -102,6 +105,8 @@ releases answers. Guardrail blocks apply in both modes.
 | PII | Email, phone, API-key, access-key or card-number shapes in the outbound answer | **block** |
 | Confidence floor | Confidence is below 0.70 | escalate |
 
+Generated answers get their own release check, `validate_generated`, described in §12.
+
 ## 6. Failure handling
 
 - Each model call has a per-request timeout, bounded retries and a **wall-clock deadline**. The deadline catches servers that stream slowly.
@@ -118,7 +123,12 @@ Each decision is persisted before the next ticket is processed. The record holds
 (`passage_id`, `doc_id`, `section`, `score`, `start`/`end` offsets). `citations` holds the cited
 passage id, and `citation_spans` the exact character span of the quote in the article, so
 `content[start:end]` is the quoted text. `retrieval` names the retriever that actually ran and
-whether it was the fallback. `persist` rejects incomplete records. Each
+whether it was the fallback. `answer_mode` says whether the answer was extractive or generated.
+In generated mode the record also holds `model.generator`, `PR-02 v1.0` in `prompt_version`,
+and a `generation` block: the passage ids the model was given, `cannot_answer` and its reason,
+and the per-sentence checks. It also holds `unsupported_claims`, which is recorded whether or
+not the answer was blocked. In generated mode `citations` lists every cited passage id, and
+`citation_spans` holds one span per sentence quote. `persist` rejects incomplete records. Each
 evaluation run reconciles the number of logged decisions with the number of tickets processed.
 
 ## 8. Data findings that shaped the design
@@ -138,10 +148,11 @@ Full figures are in `evaluation/results/*/metrics_summary.md`.
 | Validation (80), offline | 0.975 (inflated by overlap) | 33 | 0.788 | 0 of 14 | 1.3 ms |
 | First 10 validation, Ollama gemma4:e2b | 0.40 | 1 | 0.0 | 0 of 4 | 5.7 s |
 | First 10 validation, Claude Haiku 4.5 | 0.90 | 2 | 0.50 | 0 of 4 | 3.05 s |
+| Validation (80), generated answers (PR-02), Ollama gemma4:e2b, offline classifier | 0.975 (inflated by overlap) | 31 | 0.774 | 0 of 14 | 4.9 s |
 
 ## 10. Known limitations
 
-- **Answers are extractive.** Each answer is a verbatim documentation section with fixed wording; nothing is generated. Grounded generation (PR-02) is not built yet.
+- **Answers are extractive by default.** The default answer is a verbatim documentation section with fixed wording. Generated answers (PR-02, §12) are optional. They need an LLM, and their support check is a deterministic proxy with the limits listed in §12.
 - **Retrieval is lexical** in RP-1.0, and 70% of unanswerable validation tickets still retrieve a passage. The intent→document map is what prevents those tickets from being answered. Embeddings retrieve far better (§11), but no embedding configuration met the routing objective with useful coverage.
 - **Confidence calibration misses the 5-point target.** On development data, out of fold, the 0.6–0.8 band states 0.705 but observes 0.44. LLM confidence is not calibrated at all.
 - **Injection detection is pattern-based,** so a paraphrased injection can pass. The released answer is still a verified documentation excerpt.
@@ -242,7 +253,97 @@ from a search space six times larger than the one that produced RP-1.0, which in
 development results. That evidence does not justify replacing an owner-approved policy, so
 **RP-1.0 (lexical, whole articles, 0.70 / 0.40) stays the default**.
 
-**Next (Slice 7).** We will re-evaluate the embedding retriever together with generated answers
-that carry an explicit `cannot_answer` check, because the missing piece is an answerability
-decision rather than better ranking. The embedding retriever, the fallback and both
-measurement scripts stay in the code and tests for that work.
+**Re-evaluated with generation (Slice 7).** We re-ran the embedding retriever together with
+generated answers that carry an explicit `cannot_answer` check, because the missing piece looked
+like an answerability decision rather than better ranking. The results are in §12. The default
+policy is unchanged.
+
+## 12. Grounded generation and validation (PR-02)
+
+Requirements (Build Specification). **Generate:** "Produces an answer grounded in the retrieved
+passages, with citations attached to claims." "States plainly when it does not know rather than
+filling the gap." "Separates the ticket content from your instructions so that customer text
+cannot redirect the system." "Produces output in a defined structure your code can parse
+reliably." **Validate:** "Runs on every generated response before it is released." "Checks at
+minimum for private data and for claims unsupported by the retrieved sources." "Can block."
+"Records what it checked and what it found, whether or not it blocked." A6: "Generated answers
+carry citations that resolve to the passages actually retrieved." Governance §4: "Block and
+escalate with the unsupported claim flagged", with no commitments about refunds or timelines.
+
+**Generate** (`--answer-mode generated`, `generate.py` `LangChainAnswerGenerator`,
+`prompts/build/PR-02_grounded_answer.md`):
+
+- **Input.** The model receives only the approved passages, never whole articles. These are the
+  section passages of up to three approved, retrieved articles (`KnowledgeBase.generation_passages`),
+  each with its `passage_id`.
+- **Untrusted ticket.** The system message holds only the rules. The ticket sits in a delimited
+  untrusted block in the user message, as in PR-01. Placeholders are filled in a single pass, so
+  placeholder-like text inside a ticket is never substituted.
+- **Output.** The model returns a strict Pydantic schema with `extra=forbid`:
+  `{cannot_answer, reason ≤300, sentences ≤6 of {text ≤400, citations 1–3, quote ≤500}}`.
+  Output that does not parse, or a provider failure, escalates with `generation_failed`. Calls go
+  through the shared `ProviderGuard` (deadline and circuit breaker).
+- **Rendering.** The response is the sentences, each followed by its passage ids, then a
+  `Sources:` line with each passage id and its document title.
+
+**Validate** (`guardrails.validate_generated`, deterministic, run on every generated answer):
+
+| Check | Fails when | Result key |
+|---|---|---|
+| Citations | A sentence has no citation, or cites anything that is not one of the approved passages given to the model | `citations` |
+| Grounding | The quote is shorter than 15 characters or 3 words, or is not verbatim in one of the sentence's cited passages. Whitespace is normalised, and surrounding quote marks and a trailing full stop are ignored. | `grounding` |
+| Support | A strict term in the sentence is missing from its cited passages (case-insensitive). Strict terms are numbers, inline code and CLI commands, URLs, `--flags`, paths, dotted or snake_case keys, and ALL-CAPS identifiers. The check also fails when fewer than 60% of the sentence's content words, crudely stemmed and with stop and frame words removed, occur in its cited passages. | `support` |
+| PII, instruction integrity, scope | Applied to the rendered text. Scope adds refund, credit, timeline, guarantee and "we have already done X" patterns. | `pii`, `instruction_integrity`, `scope` |
+
+- **Outcomes.** Any failure blocks the answer and escalates it to a person. Failing sentences are
+  written to `unsupported_claims` with their problems and missing terms.
+  `cannot_answer=true` escalates (it does not block) with code `documentation_does_not_answer`
+  and the reason "the documentation does not answer this".
+- **Recording.** Every check result goes to `guardrail_results`, and per-sentence results go to
+  `generation.sentences`, whether or not the answer was blocked.
+- **Citation spans.** Each passing quote gets a `citation_spans` entry, where
+  `content[start:end]` is the quote.
+
+**Why 60%.** The tests in `tests/test_generation.py` fix the boundary on the DOC-AUTH-001
+resolution text. Faithful paraphrases score 0.667–1.0, and must pass. Sentences that add a false
+condition or a wrong cause around borrowed words score 0.5, and must fail. Unrelated claims score
+0.0–0.14.
+
+**Limits of the deterministic support check** (it is an automated proxy, not a judgement of
+meaning):
+
+- **Negation.** It does not see negation or reversed meaning: "never unlocks automatically" overlaps as well as "unlocks automatically".
+- **Joining facts.** It cannot tell when facts from two passages are combined into a claim that neither passage makes.
+- **Case.** Strict terms are matched case-insensitively.
+- **Stemming.** The crude stemming can merge unrelated words that share a 6-character prefix.
+- **Paraphrase.** A true paraphrase that uses different vocabulary is blocked. That is a safe failure.
+
+Hallucination rate therefore still needs the two-assessor human review. The harness writes
+`human_review_sample.csv`: the first 50 answered or held responses, with empty assessor columns.
+
+**Item-9 measurement: lexical/article vs embedding/section with generation.** We used the 80
+validation tickets, the offline classifier, and local Ollama `gemma4:e2b` for generation only.
+The kill switch was on. The experimental embedding policy is
+`evaluation/results/generation_comparison/policy_embedding_section.json`. It was written by
+`scripts/experiment_policy.py` from the development search (0.70 / 0.35) and is not the approved
+policy. Full outputs are in `evaluation/results/generation_comparison/`.
+
+| Run | Generator called | Auto answers (held) | Auto precision vs expected_route | Auto on unanswerable tickets | cannot_answer | Grounding blocks | Generation failed | Must-not violations | p95 latency |
+|---|---|---|---|---|---|---|---|---|---|
+| Extractive, lexical/article (RP-1.0, `validation_offline_default`) | — | 33 | 0.788 | — | — | 0 | — | 0 of 14 | 1.1 ms |
+| Extractive, embedding/section | — | 62 | 0.710 | 17 | — | 0 | — | 0 of 14 | 13 ms |
+| Generated, lexical/article (RP-1.0) | 33 | 31 | 0.774 | 7 | 0 | 2 | 0 | 0 of 14 | 4.9 s |
+| Generated, embedding/section | 62 | 51 | 0.725 | 14 | 0 | 8 | 3 | 0 of 14 | 7.9 s |
+
+- **Citation accuracy.** It was 1.0 against the expected documents in both generated runs, and
+  every cited span resolved to the corpus.
+- **Citations per answer.** 1.90 (lexical) and 1.77 (embedding).
+- **Automated citation-support rate.** 0.952 and 0.956. This is an automated proxy, not a human judgement.
+- **Grounding blocks.** All but one were the model putting quote text, rather than a passage id,
+  into `citations`. The other was a quote that was too short. `validate_generated` blocked all of them.
+
+**Finding.** `gemma4:e2b` never returned `cannot_answer`, even for unanswerable tickets, so the
+answerability gate did not fix the embedding configuration's precision with this model. The
+embedding configuration still answers more tickets at lower precision, and remains below the 0.80
+objective. **RP-1.0 stays the default.** The comparison should be repeated with a stronger model
+before the decision is revisited.

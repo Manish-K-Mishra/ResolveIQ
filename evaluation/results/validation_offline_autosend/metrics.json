@@ -22,7 +22,7 @@
     "training_overlap": {
       "tickets": 80,
       "exact_body_matches": 62,
-      "training_file": "/Users/manishmishra/Desktop/Projects/ResolveIQ/data/development_tickets.json"
+      "training_file": "data/development_tickets.json"
     },
     "tickets_in_file": 80,
     "wall_clock_seconds": 0.1

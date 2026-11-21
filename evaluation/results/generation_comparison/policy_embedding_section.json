@@ -1,0 +1,114 @@
+{
+  "policy_version": "RP-1.0-experiment-embedding-section",
+  "purpose": "experiment only (Slice 7 item 9); NOT the approved routing policy",
+  "derived_from": "RP-1.0 approvals plus the dev out-of-fold search in policy_search.json",
+  "restricted_intents": [
+    "compliance_request",
+    "feature_request",
+    "security_incident",
+    "unclear_request"
+  ],
+  "intent_documents": {
+    "account_access": [
+      "DOC-ACCT-001"
+    ],
+    "api_key_issue": [
+      "DOC-AUTH-004",
+      "DOC-SEC-002"
+    ],
+    "api_usage_question": [
+      "DOC-API-002",
+      "DOC-API-003"
+    ],
+    "authentication_failure": [
+      "DOC-AUTH-001",
+      "DOC-AUTH-002"
+    ],
+    "billing_query": [
+      "DOC-BILL-001",
+      "DOC-BILL-002"
+    ],
+    "compliance_request": [
+      "DOC-SEC-003"
+    ],
+    "configuration_help": [
+      "DOC-ACCT-002",
+      "DOC-DEPLOY-004"
+    ],
+    "data_export": [
+      "DOC-DATA-001"
+    ],
+    "data_residency": [
+      "DOC-DATA-003"
+    ],
+    "database_issue": [
+      "DOC-DATA-002",
+      "DOC-PERF-003"
+    ],
+    "deployment_failure": [
+      "DOC-DEPLOY-001",
+      "DOC-DEPLOY-003"
+    ],
+    "feature_request": [],
+    "integration_help": [
+      "DOC-INT-001",
+      "DOC-INT-002"
+    ],
+    "onboarding": [
+      "DOC-ONB-001",
+      "DOC-ONB-002"
+    ],
+    "performance_degradation": [
+      "DOC-PERF-001",
+      "DOC-PERF-002"
+    ],
+    "quota_or_overage": [
+      "DOC-API-001",
+      "DOC-BILL-003"
+    ],
+    "rate_limit": [
+      "DOC-API-001"
+    ],
+    "rollback_request": [
+      "DOC-DEPLOY-002"
+    ],
+    "security_incident": [
+      "DOC-SEC-001",
+      "DOC-SEC-002"
+    ],
+    "sso_configuration": [
+      "DOC-AUTH-003"
+    ],
+    "unclear_request": [],
+    "webhook_issue": [
+      "DOC-API-003"
+    ]
+  },
+  "target_auto_precision": 0.8,
+  "confidence_threshold_validated_for": "naive_bayes_intent",
+  "retrieval": {
+    "retriever": "embedding",
+    "name": "embedding:all-MiniLM-L6-v2@1110a24",
+    "chunking": "section",
+    "min_score": 0.35,
+    "passages": 116
+  },
+  "classification_confidence_min": 0.7,
+  "retrieval_score_min": 0.35,
+  "dev_out_of_fold": {
+    "classification_confidence_min": 0.7,
+    "retrieval_score_min": 0.35,
+    "auto": 393,
+    "auto_precision": 0.7532,
+    "must_not_auto_respond_violations": 0
+  },
+  "retrieval_fallback": {
+    "retriever": "lexical",
+    "name": "lexical:term-overlap",
+    "chunking": "article",
+    "min_score": 0.26,
+    "passages": 29,
+    "classification_confidence_min": 0.7,
+    "retrieval_score_min": 0.4
+  }
+}

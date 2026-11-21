@@ -33,6 +33,9 @@ def add_engine_arguments(p: argparse.ArgumentParser) -> None:
                    help="offline = naive Bayes (no network); llm = PR-01 through --provider")
     p.add_argument("--evidence-selector", choices=["extractive", "llm"], default="extractive",
                    help="extractive = deterministic; llm = PR-04 verbatim quote selection")
+    p.add_argument("--answer-mode", choices=["extractive", "generated"], default="extractive",
+                   help="extractive = verbatim resolution quote (offline default); generated = PR-02 cited "
+                        "sentences written by the model through --provider, checked by validate_generated")
     p.add_argument("--provider", choices=["ollama", "llamacpp", "anthropic", "openai"], default=None,
                    help="model backend (default: CLOUDSERVE_PROVIDER or ollama)")
     p.add_argument("--model", default=None, help="model name (default: CLOUDSERVE_MODEL or provider default)")
@@ -85,8 +88,11 @@ def build_engine(a: argparse.Namespace) -> DecisionEngine:
 
 
 def _build(a, provider, kb, policy, retrieval_info) -> DecisionEngine:
+    answer_mode = getattr(a, "answer_mode", "extractive")
+    if answer_mode == "generated" and a.evidence_selector == "llm":
+        raise SystemExit("--answer-mode generated replaces evidence selection; drop --evidence-selector llm")
     guard = None
-    if a.classifier == "llm" or a.evidence_selector == "llm":
+    if a.classifier == "llm" or a.evidence_selector == "llm" or answer_mode == "generated":
         from .providers import ProviderGuard
         guard = ProviderGuard()       # one circuit breaker shared by both model calls in this run
     if a.classifier == "llm":
@@ -98,9 +104,14 @@ def _build(a, provider, kb, policy, retrieval_info) -> DecisionEngine:
     if a.evidence_selector == "llm":
         from .generate import LangChainEvidenceSelector
         selector = LangChainEvidenceSelector(provider=provider, model_name=a.model, base_url=a.base_url, guard=guard)
+    generator = None
+    if answer_mode == "generated":    # needs an LLM provider; build_model raises ModelUnavailable otherwise
+        from .generate import LangChainAnswerGenerator
+        generator = LangChainAnswerGenerator(provider=provider, model_name=a.model, base_url=a.base_url, guard=guard)
     return DecisionEngine(kb, policy, classifier, selector,
                           auto_send=a.auto_send or auto_send_enabled_from_env(),
-                          use_langgraph=a.engine == "graph", retrieval_info=retrieval_info)
+                          use_langgraph=a.engine == "graph", retrieval_info=retrieval_info,
+                          answer_mode=answer_mode, generator=generator)
 
 
 def run_batch(engine: DecisionEngine, items: list, db_path: str | Path, run_id: str) -> tuple[list[dict], int]:

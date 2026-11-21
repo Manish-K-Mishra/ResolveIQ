@@ -86,12 +86,12 @@ def sweep_table(results: dict, split: str) -> list[str]:
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Compare chunking and retrievers on labelled tickets")
-    ap.add_argument("--docs", default=str(ROOT / "data/documentation.json"))
-    ap.add_argument("--dev", default=str(ROOT / "data/development_tickets.json"))
-    ap.add_argument("--validation", default=str(ROOT / "data/validation_tickets.json"))
+    ap.add_argument("--docs", default="data/documentation.json")
+    ap.add_argument("--dev", default="data/development_tickets.json")
+    ap.add_argument("--validation", default="data/validation_tickets.json")
     ap.add_argument("--out", default=str(ROOT / "evaluation/results/retrieval_comparison"))
     a = ap.parse_args(argv)
-    docs, dev, val = load_json(a.docs), load_json(a.dev), load_json(a.validation)
+    docs, dev, val = (load_json(ROOT / p) for p in (a.docs, a.dev, a.validation))
     embedder = OnnxSentenceEmbedder()     # fails loudly if the model was not fetched
     results = {}
     for chunking in CHUNKINGS:

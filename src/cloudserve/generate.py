@@ -81,3 +81,85 @@ class LangChainEvidenceSelector:
         # One candidate passage per article, so the returned doc_id identifies the passage.
         passage_id = next((m.get("passage_id") for m in evidence[:3] if m["doc_id"] == sel.doc_id), None)
         return EvidenceSelection(sel.doc_id, sel.quote, passage_id)
+
+
+# ---------------- grounded generation (PR-02) ----------------
+MAX_SENTENCES = 6
+MAX_CITATIONS = 3
+
+
+def answer_schema():
+    """PR-02 output contract (extra fields forbidden; bounded sizes)."""
+    from pydantic import BaseModel, ConfigDict, Field
+
+    class GeneratedSentence(BaseModel):
+        model_config = ConfigDict(extra="forbid")
+        text: str = Field(min_length=1, max_length=400)
+        citations: list[str] = Field(min_length=1, max_length=MAX_CITATIONS)
+        quote: str = Field(min_length=1, max_length=500)
+
+    class GeneratedAnswer(BaseModel):
+        model_config = ConfigDict(extra="forbid")
+        cannot_answer: bool
+        reason: str = Field(default="", max_length=300)
+        sentences: list[GeneratedSentence] = Field(default_factory=list, max_length=MAX_SENTENCES)
+
+    return GeneratedAnswer
+
+
+@dataclass(frozen=True)
+class GeneratedAnswer:
+    """Parsed generator output: plain data, independent of the model library."""
+    cannot_answer: bool
+    reason: str
+    sentences: tuple      # of dicts {text, citations, quote}
+
+
+def render_generated(answer: GeneratedAnswer, passages: list[dict]) -> str:
+    """Each sentence keeps its own citation marker; a Sources line lists every cited passage."""
+    titles = {p["passage_id"]: p.get("title", "") for p in passages}
+    body = " ".join(f"{s['text'].strip()} [{', '.join(s['citations'])}]" for s in answer.sentences)
+    cited = list(dict.fromkeys(c for s in answer.sentences for c in s["citations"]))
+    sources = "; ".join(f"{c} ({titles[c]})" if titles.get(c) else c for c in cited)
+    return f"{body}\n\nSources: {sources}"
+
+
+class LangChainAnswerGenerator:
+    """PR-02: a provider-independent model writes a short answer from approved passages only.
+
+    The ticket is placed in a delimited untrusted block in the user message; the system message
+    holds only the rules. Output is parsed into a strict schema; anything else raises, and the
+    workflow escalates. guardrails.validate_generated decides whether the answer can be released.
+    """
+
+    def __init__(self, provider: str | None = None, model_name: str | None = None,
+                 base_url: str | None = None, model=None, guard=None):
+        from .providers import ProviderGuard, build_model, load_prompt, structured
+        self.schema = answer_schema()
+        self.prompt = load_prompt("PR-02_grounded_answer.md")
+        self.guard = guard or ProviderGuard()
+        self.provider = provider or "injected"
+        if model is not None:                       # injected (tests): used as-is
+            self.runnable, self.model_name = model, model_name or "injected"
+        else:
+            chat, self.model_name, extra = build_model(self.provider, model_name, base_url)
+            self.runnable = structured(chat, self.schema, self.provider, extra)
+        self.name = f"{self.provider}:{self.model_name}"
+        self.version = self.prompt["label"]
+
+    def messages(self, ticket, passages: list[dict]) -> list:
+        from langchain_core.messages import HumanMessage, SystemMessage
+        payload = json.dumps([{"passage_id": p["passage_id"], "title": p.get("title", ""), "text": p["passage"][:2500]}
+                              for p in passages], ensure_ascii=False, indent=1)
+        values = {"passages_json": payload, "ticket_id": ticket.ticket_id, "channel": ticket.channel,
+                  "subject": ticket.subject[:300], "body": ticket.body[:4000]}
+        # Single pass, so placeholder-like text inside the ticket or passages is never substituted.
+        user = re.sub(r"\{(passages_json|ticket_id|channel|subject|body)\}", lambda m: values[m.group(1)],
+                      self.prompt["user"])
+        return [SystemMessage(content=self.prompt["system"]), HumanMessage(content=user)]
+
+    def generate(self, ticket, passages: list[dict]) -> GeneratedAnswer:
+        result = self.guard.call(self.runnable.invoke, self.messages(ticket, passages))
+        v = self.schema.model_validate(result.model_dump() if hasattr(result, "model_dump") else result)
+        return GeneratedAnswer(v.cannot_answer, v.reason,
+                               tuple({"text": s.text, "citations": list(s.citations), "quote": s.quote} for s in v.sentences))

@@ -10,13 +10,14 @@ Unlabelled files (e.g. the hidden set without labels) still produce volume/gover
 """
 from __future__ import annotations
 import argparse
+import csv
 import json
 import statistics
 import time
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from .guardrails import PII_PATTERN
+from .guardrails import PII_PATTERN, mask_pii
 from .ingest import load_tickets
 from .logging_store import new_run_id
 from .runtime import add_engine_arguments, build_engine, run_batch
@@ -100,6 +101,59 @@ def citations_resolve(results: list[dict], kb) -> float | None:
     return frac(ok, len(spans))
 
 
+GROUNDING_FAILURES = ("invalid_citation", "quote_not_supported_by_source", "unsupported_claim")
+REVIEW_SAMPLE_SIZE = 50
+REVIEW_COLUMNS = ["ticket_id", "ticket_text_masked", "response", "cited_passages_text",
+                  "assessor_1_supported", "assessor_2_supported",
+                  "assessor_1_quality_1to5", "assessor_2_quality_1to5", "notes"]
+
+
+def generation_metrics(results: list[dict]) -> dict | None:
+    """Generated-answer measures (answer_mode generated). Support is an AUTOMATED PROXY: the
+    deterministic support check of guardrails.validate_generated, not a human judgement."""
+    gen = [r for r in results if r.get("answer_mode") == "generated"]
+    if not gen:
+        return None
+    answered = [r for r in gen if r["action_taken"] == "auto_respond"]
+    per_cite = [ok for r in answered for e in (r.get("generation") or {}).get("sentences", [])
+                for ok in e["citation_support"].values()]
+    checked = [ok for r in gen if r.get("generation") for e in r["generation"]["sentences"]
+               for ok in e["citation_support"].values()]
+    return {
+        "generator_called": sum(r.get("generation") is not None for r in gen),
+        "answers_released_or_held": len(answered),
+        "citations_per_answer": round(statistics.mean(len(r["citations"]) for r in answered), 3) if answered else None,
+        "sentences_per_answer": round(statistics.mean(len(r["generation"]["sentences"]) for r in answered), 3) if answered else None,
+        "citation_support_rate_automated_proxy": frac(sum(per_cite), len(per_cite)),
+        "citation_support_rate_all_generated_automated_proxy": frac(sum(checked), len(checked)),
+        "support_rate_label": "automated proxy (deterministic string checks), not human-reviewed citation accuracy",
+        "blocked_by_grounding": sum(r["action_taken"] == "block" and bool(set(r["guardrail_failures"]) & set(GROUNDING_FAILURES)) for r in gen),
+        "cannot_answer": sum("documentation_does_not_answer" in r["reason_codes"] for r in gen),
+        "generation_failed": sum("generation_failed" in r["reason_codes"] for r in gen),
+        "unsupported_claims_flagged": sum(len(r.get("unsupported_claims", [])) for r in gen),
+    }
+
+
+def write_human_review_sample(items: list, results: list[dict], kb, path) -> int:
+    """First REVIEW_SAMPLE_SIZE answered (auto_respond, sent or held) decisions in input order, for
+    two assessors (Evaluation Framework: hallucination needs >=50 human-reviewed responses).
+    Assessor columns are left empty on purpose."""
+    rows = []
+    for t, r in zip(items, results):
+        if r["action_taken"] != "auto_respond" or len(rows) >= REVIEW_SAMPLE_SIZE:
+            continue
+        t = t if isinstance(t, dict) else {}
+        text = mask_pii(f"{t.get('subject') or ''}\n{t.get('body') or ''}".strip())
+        cited = "\n---\n".join(f"[{pid}] {kb.resolve(pid) if kb is not None else ''}" for pid in r["citations"])
+        rows.append({"ticket_id": r["ticket_id"], "ticket_text_masked": text, "response": r["response"],
+                     "cited_passages_text": cited, **{c: "" for c in REVIEW_COLUMNS[4:]}})
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=REVIEW_COLUMNS)
+        w.writeheader()
+        w.writerows(rows)
+    return len(rows)
+
+
 def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, run_info: dict, kb=None) -> dict:
     n = len(items)
     st = Counter(r["status"] for r in results)
@@ -144,6 +198,9 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
             "citations_resolving_to_corpus_text": citations_resolve(results, kb) if kb is not None else None,
         },
     }
+    gen = generation_metrics(results)
+    if gen is not None:
+        report["generation"] = gen
 
     labelled = [(t, r) for t, r in zip(items, results) if isinstance(t, dict) and isinstance(t.get("labels"), dict)]
     report["labelled_tickets"] = len(labelled)
@@ -219,7 +276,10 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
             ", so these figures are not inflated by training-set recall.")),
         "Urgency and expected_route labels vary for identical ticket text in the supplied data, which caps achievable urgency and routing accuracy.",
         "Citation accuracy here is a label-based proxy (cited document among expected_doc_ids); it is not the human claim-by-claim review the Evaluation Framework requires, and hallucination rate is not measured.",
-        "Responses are extractive (a verbatim documentation section), not generated text.",
+        ("Responses are generated sentences (PR-02); the citation support rate is an automated proxy from "
+         "deterministic string checks, so hallucination still needs the two-assessor human review "
+         "(human_review_sample.csv)." if gen is not None else
+         "Responses are extractive (a verbatim documentation section), not generated text."),
         "Response time is processing latency for automatic answers only; human queue time, CSAT and repeat contacts cannot be measured offline.",
         "Segments with few tickets (e.g. 8 enterprise tickets in validation) make variation figures unstable.",
     ]
@@ -234,14 +294,24 @@ def training_overlap(items: list, train_path) -> dict:
         return {"tickets": len(items), "exact_body_matches": "unknown (training file unreadable)"}
     bodies = [str(t.get("body") or "").strip().lower() for t in items if isinstance(t, dict)]
     return {"tickets": len(items), "exact_body_matches": sum(b in trained for b in bodies if b),
-            "training_file": str(train_path)}
+            "training_file": _repo_relative(train_path)}
+
+
+def _repo_relative(path) -> str:
+    """Repo-relative path for published results (never the local machine's absolute path)."""
+    from pathlib import Path
+    from . import ROOT
+    try:
+        return Path(path).resolve().relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        return Path(path).name
 
 
 def summary_markdown(m: dict) -> str:
     v, b, g = m["volume"], m["business"], m["governance"]
     lines = [f"# Evaluation summary — {m['run']['run_id']}", "",
              f"Input `{m['run']['input']}` ({m['run']['tickets_in_file']} tickets), engine `{m['run']['engine']}`, "
-             f"classifier `{m['run']['classifier']}`, policy `{m['run']['policy_version']}`, "
+             f"classifier `{m['run']['classifier']}`, answer mode `{m['run'].get('answer_mode', 'extractive')}`, policy `{m['run']['policy_version']}`, "
              f"automatic sending {'ON' if m['run']['auto_send'] else 'OFF (kill switch)'}, {m['run']['date']}.", "",
              "| Measure | Value |", "|---|---|",
              f"| Processed / logged | {v['processed']} / {v['decisions_logged']} (reconciles: {g['decision_log_reconciles']}) |",
@@ -253,6 +323,11 @@ def summary_markdown(m: dict) -> str:
              f"| Private data in outbound responses | {g['private_data_in_outbound_responses']} |",
              f"| Retriever (fallback) | {m['run']['retrieval']['name']}, {m['run']['retrieval']['chunking']} passages (fallback: {m['run']['retrieval']['fallback']}) |",
              f"| Cited quotes found at their recorded corpus span | {g['citations_resolving_to_corpus_text']} |"]
+    if "generation" in m:
+        q = m["generation"]
+        lines += [f"| Generated answers (released or held) / cannot_answer / generation failed | {q['answers_released_or_held']} / {q['cannot_answer']} / {q['generation_failed']} |",
+                  f"| Blocked by grounding checks / unsupported claims flagged | {q['blocked_by_grounding']} / {q['unsupported_claims_flagged']} |",
+                  f"| Citations per answer / citation support rate (automated proxy) | {q['citations_per_answer']} / {q['citation_support_rate_automated_proxy']} |"]
     if "routing" in m:
         t, r = m["technical"], m["routing"]
         lines += [f"| Intent accuracy / macro precision / macro recall | {t['intent_accuracy']} / {t['intent_macro_precision']} / {t['intent_macro_recall']} |",
@@ -286,6 +361,8 @@ def main(argv=None):
                 "input": str(a.input), "engine": engine.implementation,
                 "classifier": f"{engine._models()['classifier']['name']} ({engine._models()['classifier']['version']})",
                 "evidence_selector": engine._models()["evidence_selector"]["name"],
+                "answer_mode": engine.answer_mode,
+                "generator": (engine._models().get("generator") or {}).get("name"),
                 "prompt_versions": engine._prompt_versions(), "policy_version": engine.policy["policy_version"],
                 "auto_send": engine.auto_send, "retrieval": engine.retrieval_info,
                 "training_overlap": training_overlap(items, a.train)}
@@ -293,6 +370,7 @@ def main(argv=None):
     (out / "decisions.json").write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
     (out / "metrics.json").write_text(json.dumps(metrics, indent=2, ensure_ascii=False), encoding="utf-8")
     (out / "metrics_summary.md").write_text(summary_markdown(metrics), encoding="utf-8")
+    write_human_review_sample(items, results, engine.kb, out / "human_review_sample.csv")
     v = metrics["volume"]
     print(f"Processed {v['processed']}/{len(items)}; logged {logged}; sent {v['auto_responded_sent']}; "
           f"held {v['auto_respond_decisions_held_by_kill_switch']}; escalated {v['escalated']}; "
