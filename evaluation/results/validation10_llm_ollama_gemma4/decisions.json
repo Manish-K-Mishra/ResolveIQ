@@ -1,0 +1,943 @@
+[
+  {
+    "decision_id": "0f0840cfd1e047ae8daa9be48ee35c1a",
+    "timestamp": "2026-11-21T17:46:38.613433+00:00",
+    "ticket_id": "VAL-0001",
+    "channel": "forum",
+    "stage": "routing",
+    "input_summary": "forum ticket from a business customer: Need to rotate an exposed key One of our production keys started returning 401 at around yesterday morning without any change on our side. Other keys against th…",
+    "model": {
+      "classifier": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-01 v1.1"
+      },
+      "evidence_selector": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-04 v1.0"
+      }
+    },
+    "prediction": {
+      "value": "api_key_issue",
+      "confidence": 0.95,
+      "urgency": "high",
+      "confidence_type": "uncalibrated_model_score",
+      "error_type": null
+    },
+    "alternatives": [
+      {
+        "intent": "authentication_failure",
+        "confidence": null
+      },
+      {
+        "intent": "security_incident",
+        "confidence": null
+      },
+      {
+        "intent": "configuration_help",
+        "confidence": null
+      }
+    ],
+    "sources_used": [
+      {
+        "doc_id": "DOC-AUTH-004",
+        "title": "API key rotation and scope management",
+        "score": 0.4286
+      }
+    ],
+    "threshold_applied": 0.7,
+    "thresholds": {
+      "classification_confidence_min": 0.7,
+      "retrieval_score_min": 0.4,
+      "confidence_floor_validated_for_this_classifier": false
+    },
+    "action_taken": "escalate",
+    "status": "escalated",
+    "delivery": "not_applicable",
+    "answer_sent": false,
+    "reason": "The ticket mentions a legal, breach, exposed-credential or refund matter, which only staff may handle.",
+    "reason_codes": [
+      "sensitive_request_manual_review"
+    ],
+    "guardrail_results": {
+      "pii": "not_run",
+      "grounding": "not_run",
+      "instruction_integrity": "not_run",
+      "scope": "fail",
+      "confidence_floor": "pass"
+    },
+    "guardrail_failures": [
+      "sensitive_request_manual_review"
+    ],
+    "response": "",
+    "flagged_input_for_review": null,
+    "citations": [],
+    "handoff": {
+      "summary": "forum ticket from a business customer: Need to rotate an exposed key One of our production keys started returning 401 at around yesterday morning without any change on our side. Other keys against th…",
+      "intent": "api_key_issue",
+      "urgency": "high",
+      "sources": [
+        "DOC-AUTH-004"
+      ],
+      "why_escalated": "The ticket mentions a legal, breach, exposed-credential or refund matter, which only staff may handle."
+    },
+    "prompt_version": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "requirement_ids": [
+      "FR-01",
+      "FR-02",
+      "FR-03",
+      "FR-04",
+      "FR-07",
+      "FR-08"
+    ],
+    "implementation": "langgraph",
+    "started_at": "2026-11-21T17:46:36.103769+00:00",
+    "completed_at": "2026-11-21T17:46:38.613536+00:00",
+    "latency_seconds": 2.5098,
+    "run_id": "run-20261121T174636-87ff9a"
+  },
+  {
+    "decision_id": "34efef9f45124f89bc9f0970ffafe6ca",
+    "timestamp": "2026-11-21T17:46:39.475156+00:00",
+    "ticket_id": "VAL-0002",
+    "channel": "chat",
+    "stage": "routing",
+    "input_summary": "chat ticket from a standard customer: Following up on my previous message. Any update?",
+    "model": {
+      "classifier": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-01 v1.1"
+      },
+      "evidence_selector": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-04 v1.0"
+      }
+    },
+    "prediction": {
+      "value": "unknown",
+      "confidence": 0.0,
+      "urgency": "low",
+      "confidence_type": "uncalibrated_model_score",
+      "error_type": null
+    },
+    "alternatives": [],
+    "sources_used": [
+      {
+        "doc_id": "DOC-API-002",
+        "title": "Pagination and handling large result sets",
+        "score": 0.4
+      },
+      {
+        "doc_id": "DOC-SEC-002",
+        "title": "Handling exposed secrets and credential rotation",
+        "score": 0.4
+      }
+    ],
+    "threshold_applied": 0.7,
+    "thresholds": {
+      "classification_confidence_min": 0.7,
+      "retrieval_score_min": 0.4,
+      "confidence_floor_validated_for_this_classifier": false
+    },
+    "action_taken": "escalate",
+    "status": "escalated",
+    "delivery": "not_applicable",
+    "answer_sent": false,
+    "reason": "The system could not tell what the customer needs. The system was only 0% sure of the request type; the policy requires at least 70%. The documentation found does not cover this type of request (best match DOC-API-002 at 0.40; needs one of the approved articles at 0.40 or more).",
+    "reason_codes": [
+      "intent_unknown",
+      "confidence_below_threshold",
+      "no_matching_documentation_for_intent"
+    ],
+    "guardrail_results": {
+      "pii": "not_run",
+      "grounding": "not_run",
+      "instruction_integrity": "not_run",
+      "scope": "not_run",
+      "confidence_floor": "fail"
+    },
+    "guardrail_failures": [],
+    "response": "",
+    "flagged_input_for_review": null,
+    "citations": [],
+    "handoff": {
+      "summary": "chat ticket from a standard customer: Following up on my previous message. Any update?",
+      "intent": "unknown",
+      "urgency": "low",
+      "sources": [
+        "DOC-API-002",
+        "DOC-SEC-002"
+      ],
+      "why_escalated": "The system could not tell what the customer needs. The system was only 0% sure of the request type; the policy requires at least 70%. The documentation found does not cover this type of request (best match DOC-API-002 at 0.40; needs one of the approved articles at 0.40 or more)."
+    },
+    "prompt_version": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "requirement_ids": [
+      "FR-01",
+      "FR-02",
+      "FR-03",
+      "FR-04",
+      "FR-07",
+      "FR-08"
+    ],
+    "implementation": "langgraph",
+    "started_at": "2026-11-21T17:46:38.614087+00:00",
+    "completed_at": "2026-11-21T17:46:39.475266+00:00",
+    "latency_seconds": 0.8612,
+    "run_id": "run-20261121T174636-87ff9a"
+  },
+  {
+    "decision_id": "7dcf51dad61d4c1fa6fa903faae4c399",
+    "timestamp": "2026-11-21T17:46:40.553411+00:00",
+    "ticket_id": "VAL-0003",
+    "channel": "docs_comment",
+    "stage": "routing",
+    "input_summary": "docs_comment ticket from a standard customer: It is not working nothing is loading properly today. Can someone look into this? kindly check and revert.",
+    "model": {
+      "classifier": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-01 v1.1"
+      },
+      "evidence_selector": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-04 v1.0"
+      }
+    },
+    "prediction": {
+      "value": "unknown",
+      "confidence": 0.1,
+      "urgency": "medium",
+      "confidence_type": "uncalibrated_model_score",
+      "error_type": null
+    },
+    "alternatives": [
+      {
+        "intent": "performance_degradation",
+        "confidence": null
+      },
+      {
+        "intent": "deployment_failure",
+        "confidence": null
+      }
+    ],
+    "sources_used": [],
+    "threshold_applied": 0.7,
+    "thresholds": {
+      "classification_confidence_min": 0.7,
+      "retrieval_score_min": 0.4,
+      "confidence_floor_validated_for_this_classifier": false
+    },
+    "action_taken": "escalate",
+    "status": "escalated",
+    "delivery": "not_applicable",
+    "answer_sent": false,
+    "reason": "The system could not tell what the customer needs. The system was only 10% sure of the request type; the policy requires at least 70%. No documentation article was relevant enough to answer from.",
+    "reason_codes": [
+      "intent_unknown",
+      "confidence_below_threshold",
+      "no_relevant_documentation"
+    ],
+    "guardrail_results": {
+      "pii": "not_run",
+      "grounding": "not_run",
+      "instruction_integrity": "not_run",
+      "scope": "not_run",
+      "confidence_floor": "fail"
+    },
+    "guardrail_failures": [],
+    "response": "",
+    "flagged_input_for_review": null,
+    "citations": [],
+    "handoff": {
+      "summary": "docs_comment ticket from a standard customer: It is not working nothing is loading properly today. Can someone look into this? kindly check and revert.",
+      "intent": "unknown",
+      "urgency": "medium",
+      "sources": [],
+      "why_escalated": "The system could not tell what the customer needs. The system was only 10% sure of the request type; the policy requires at least 70%. No documentation article was relevant enough to answer from."
+    },
+    "prompt_version": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "requirement_ids": [
+      "FR-01",
+      "FR-02",
+      "FR-03",
+      "FR-04",
+      "FR-07",
+      "FR-08"
+    ],
+    "implementation": "langgraph",
+    "started_at": "2026-11-21T17:46:39.476110+00:00",
+    "completed_at": "2026-11-21T17:46:40.553501+00:00",
+    "latency_seconds": 1.0774,
+    "run_id": "run-20261121T174636-87ff9a"
+  },
+  {
+    "decision_id": "f5d88e291ed049bd94c429830f0dd808",
+    "timestamp": "2026-11-21T17:46:46.298667+00:00",
+    "ticket_id": "VAL-0004",
+    "channel": "email",
+    "stage": "validation",
+    "input_summary": "email ticket from a business customer: MFA code keeps getting rejected my authenticator app codes are being rejected every time. i am having tried generating new ones several times.",
+    "model": {
+      "classifier": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-01 v1.1"
+      },
+      "evidence_selector": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-04 v1.0"
+      }
+    },
+    "prediction": {
+      "value": "authentication_failure",
+      "confidence": 0.95,
+      "urgency": "medium",
+      "confidence_type": "uncalibrated_model_score",
+      "error_type": null
+    },
+    "alternatives": [
+      {
+        "intent": "account_access",
+        "confidence": null
+      },
+      {
+        "intent": "sso_configuration",
+        "confidence": null
+      }
+    ],
+    "sources_used": [
+      {
+        "doc_id": "DOC-AUTH-002",
+        "title": "Multi-factor authentication setup and recovery",
+        "score": 0.4118
+      },
+      {
+        "doc_id": "DOC-PERF-001",
+        "title": "Diagnosing elevated response latency",
+        "score": 0.2941
+      }
+    ],
+    "threshold_applied": 0.7,
+    "thresholds": {
+      "classification_confidence_min": 0.7,
+      "retrieval_score_min": 0.4,
+      "confidence_floor_validated_for_this_classifier": false
+    },
+    "action_taken": "auto_respond",
+    "status": "held_for_review",
+    "delivery": "held_kill_switch",
+    "answer_sent": false,
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason_codes": [
+      "eligible_for_automatic_answer"
+    ],
+    "guardrail_results": {
+      "pii": "pass",
+      "grounding": "pass",
+      "instruction_integrity": "pass",
+      "scope": "pass",
+      "confidence_floor": "pass"
+    },
+    "guardrail_failures": [],
+    "response": "CloudServe documentation contains these steps:\n\n# Multi-factor authentication setup and recovery\n\n**Applies to:** All plans\n\n## Symptoms\n\n- The authenticator code is rejected as invalid\n- A user has lost the device holding their authenticator\n- Recovery codes were never downloaded\n\n## Common causes\n\n- Device clock drift of more than thirty seconds invalidates time-based codes\n- The authenticator was enrolled against a different account\n- Recovery codes were regenerated, invalidating the older set\n\n## Resolution\n\n1. Ask the user to check that automatic time synchronisation is enabled on the device generating the code. Drift is the most common cause by a wide margin.\n2. If the device is lost, the user should sign in with one of their recovery codes and then re-enrol a new device from the security page.\n3. Where no recovery codes are available, an account administrator can reset multi-factor authentication for that user from the team members page.\n4. If the user is the sole administrator and has no recovery codes, identity verification through support is required and takes up to one business day.\n\n## Notes\n\nSupport cannot disable multi-factor authentication without identity verification, regardless of urgency.\n\nSource: [DOC-AUTH-002]",
+    "flagged_input_for_review": null,
+    "citations": [
+      "DOC-AUTH-002"
+    ],
+    "handoff": {
+      "summary": "email ticket from a business customer: MFA code keeps getting rejected my authenticator app codes are being rejected every time. i am having tried generating new ones several times.",
+      "intent": "authentication_failure",
+      "urgency": "medium",
+      "sources": [
+        "DOC-AUTH-002",
+        "DOC-PERF-001"
+      ],
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+    },
+    "prompt_version": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "requirement_ids": [
+      "FR-01",
+      "FR-02",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-07"
+    ],
+    "implementation": "langgraph",
+    "started_at": "2026-11-21T17:46:40.554315+00:00",
+    "completed_at": "2026-11-21T17:46:46.298753+00:00",
+    "latency_seconds": 5.7444,
+    "run_id": "run-20261121T174636-87ff9a"
+  },
+  {
+    "decision_id": "e28f42ed10bd4e7e9052fdb5e2cc39c9",
+    "timestamp": "2026-11-21T17:46:47.118316+00:00",
+    "ticket_id": "VAL-0005",
+    "channel": "chat",
+    "stage": "routing",
+    "input_summary": "chat ticket from a standard customer: Our cursor seems to stop working partway through a long iteration. Is there an expiry we should be handling?",
+    "model": {
+      "classifier": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-01 v1.1"
+      },
+      "evidence_selector": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-04 v1.0"
+      }
+    },
+    "prediction": {
+      "value": "unknown",
+      "confidence": 0.0,
+      "urgency": "medium",
+      "confidence_type": "uncalibrated_model_score",
+      "error_type": null
+    },
+    "alternatives": [],
+    "sources_used": [
+      {
+        "doc_id": "DOC-API-002",
+        "title": "Pagination and handling large result sets",
+        "score": 0.7
+      }
+    ],
+    "threshold_applied": 0.7,
+    "thresholds": {
+      "classification_confidence_min": 0.7,
+      "retrieval_score_min": 0.4,
+      "confidence_floor_validated_for_this_classifier": false
+    },
+    "action_taken": "escalate",
+    "status": "escalated",
+    "delivery": "not_applicable",
+    "answer_sent": false,
+    "reason": "The system could not tell what the customer needs. The system was only 0% sure of the request type; the policy requires at least 70%. The documentation found does not cover this type of request (best match DOC-API-002 at 0.70; needs one of the approved articles at 0.40 or more).",
+    "reason_codes": [
+      "intent_unknown",
+      "confidence_below_threshold",
+      "no_matching_documentation_for_intent"
+    ],
+    "guardrail_results": {
+      "pii": "not_run",
+      "grounding": "not_run",
+      "instruction_integrity": "not_run",
+      "scope": "not_run",
+      "confidence_floor": "fail"
+    },
+    "guardrail_failures": [],
+    "response": "",
+    "flagged_input_for_review": null,
+    "citations": [],
+    "handoff": {
+      "summary": "chat ticket from a standard customer: Our cursor seems to stop working partway through a long iteration. Is there an expiry we should be handling?",
+      "intent": "unknown",
+      "urgency": "medium",
+      "sources": [
+        "DOC-API-002"
+      ],
+      "why_escalated": "The system could not tell what the customer needs. The system was only 0% sure of the request type; the policy requires at least 70%. The documentation found does not cover this type of request (best match DOC-API-002 at 0.70; needs one of the approved articles at 0.40 or more)."
+    },
+    "prompt_version": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "requirement_ids": [
+      "FR-01",
+      "FR-02",
+      "FR-03",
+      "FR-04",
+      "FR-07",
+      "FR-08"
+    ],
+    "implementation": "langgraph",
+    "started_at": "2026-11-21T17:46:46.299705+00:00",
+    "completed_at": "2026-11-21T17:46:47.118397+00:00",
+    "latency_seconds": 0.8187,
+    "run_id": "run-20261121T174636-87ff9a"
+  },
+  {
+    "decision_id": "0271ee5a3e694252a55669c83b23d6d1",
+    "timestamp": "2026-11-21T17:46:48.266537+00:00",
+    "ticket_id": "VAL-0006",
+    "channel": "email",
+    "stage": "routing",
+    "input_summary": "email ticket from a standard customer: MFA code keeps getting rejected I have been trying to sign in for the last two hours and keep getting an invalid credentials message. I am certain the password …",
+    "model": {
+      "classifier": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-01 v1.1"
+      },
+      "evidence_selector": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-04 v1.0"
+      }
+    },
+    "prediction": {
+      "value": "authentication_failure",
+      "confidence": 0.95,
+      "urgency": "medium",
+      "confidence_type": "uncalibrated_model_score",
+      "error_type": null
+    },
+    "alternatives": [
+      {
+        "intent": "account_access",
+        "confidence": null
+      },
+      {
+        "intent": "security_incident",
+        "confidence": null
+      },
+      {
+        "intent": "unclear_request",
+        "confidence": null
+      }
+    ],
+    "sources_used": [],
+    "threshold_applied": 0.7,
+    "thresholds": {
+      "classification_confidence_min": 0.7,
+      "retrieval_score_min": 0.4,
+      "confidence_floor_validated_for_this_classifier": false
+    },
+    "action_taken": "escalate",
+    "status": "escalated",
+    "delivery": "not_applicable",
+    "answer_sent": false,
+    "reason": "No documentation article was relevant enough to answer from.",
+    "reason_codes": [
+      "no_relevant_documentation"
+    ],
+    "guardrail_results": {
+      "pii": "not_run",
+      "grounding": "not_run",
+      "instruction_integrity": "not_run",
+      "scope": "not_run",
+      "confidence_floor": "pass"
+    },
+    "guardrail_failures": [],
+    "response": "",
+    "flagged_input_for_review": null,
+    "citations": [],
+    "handoff": {
+      "summary": "email ticket from a standard customer: MFA code keeps getting rejected I have been trying to sign in for the last two hours and keep getting an invalid credentials message. I am certain the password …",
+      "intent": "authentication_failure",
+      "urgency": "medium",
+      "sources": [],
+      "why_escalated": "No documentation article was relevant enough to answer from."
+    },
+    "prompt_version": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "requirement_ids": [
+      "FR-01",
+      "FR-02",
+      "FR-03",
+      "FR-04",
+      "FR-07",
+      "FR-08"
+    ],
+    "implementation": "langgraph",
+    "started_at": "2026-11-21T17:46:47.119134+00:00",
+    "completed_at": "2026-11-21T17:46:48.266617+00:00",
+    "latency_seconds": 1.1475,
+    "run_id": "run-20261121T174636-87ff9a"
+  },
+  {
+    "decision_id": "846e37f685054713bd0d473ad6675b98",
+    "timestamp": "2026-11-21T17:46:49.060617+00:00",
+    "ticket_id": "VAL-0007",
+    "channel": "chat",
+    "stage": "routing",
+    "input_summary": "chat ticket from a business customer: We have a problem and need someone to call us urgently.",
+    "model": {
+      "classifier": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-01 v1.1"
+      },
+      "evidence_selector": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-04 v1.0"
+      }
+    },
+    "prediction": {
+      "value": "unknown",
+      "confidence": 0.0,
+      "urgency": "medium",
+      "confidence_type": "uncalibrated_model_score",
+      "error_type": null
+    },
+    "alternatives": [],
+    "sources_used": [],
+    "threshold_applied": 0.7,
+    "thresholds": {
+      "classification_confidence_min": 0.7,
+      "retrieval_score_min": 0.4,
+      "confidence_floor_validated_for_this_classifier": false
+    },
+    "action_taken": "escalate",
+    "status": "escalated",
+    "delivery": "not_applicable",
+    "answer_sent": false,
+    "reason": "The system could not tell what the customer needs. The system was only 0% sure of the request type; the policy requires at least 70%. No documentation article was relevant enough to answer from.",
+    "reason_codes": [
+      "intent_unknown",
+      "confidence_below_threshold",
+      "no_relevant_documentation"
+    ],
+    "guardrail_results": {
+      "pii": "not_run",
+      "grounding": "not_run",
+      "instruction_integrity": "not_run",
+      "scope": "not_run",
+      "confidence_floor": "fail"
+    },
+    "guardrail_failures": [],
+    "response": "",
+    "flagged_input_for_review": null,
+    "citations": [],
+    "handoff": {
+      "summary": "chat ticket from a business customer: We have a problem and need someone to call us urgently.",
+      "intent": "unknown",
+      "urgency": "medium",
+      "sources": [],
+      "why_escalated": "The system could not tell what the customer needs. The system was only 0% sure of the request type; the policy requires at least 70%. No documentation article was relevant enough to answer from."
+    },
+    "prompt_version": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "requirement_ids": [
+      "FR-01",
+      "FR-02",
+      "FR-03",
+      "FR-04",
+      "FR-07",
+      "FR-08"
+    ],
+    "implementation": "langgraph",
+    "started_at": "2026-11-21T17:46:48.267445+00:00",
+    "completed_at": "2026-11-21T17:46:49.060702+00:00",
+    "latency_seconds": 0.7933,
+    "run_id": "run-20261121T174636-87ff9a"
+  },
+  {
+    "decision_id": "5a2f8169628b4e0ebce79422868ce871",
+    "timestamp": "2026-11-21T17:46:50.202513+00:00",
+    "ticket_id": "VAL-0008",
+    "channel": "chat",
+    "stage": "routing",
+    "input_summary": "chat ticket from a standard customer: We are tightening permissions after a review and I want to understand how group membership interacts with directly assigned roles.",
+    "model": {
+      "classifier": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-01 v1.1"
+      },
+      "evidence_selector": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-04 v1.0"
+      }
+    },
+    "prediction": {
+      "value": "configuration_help",
+      "confidence": 0.9,
+      "urgency": "low",
+      "confidence_type": "uncalibrated_model_score",
+      "error_type": null
+    },
+    "alternatives": [
+      {
+        "intent": "account_access",
+        "confidence": null
+      },
+      {
+        "intent": "sso_configuration",
+        "confidence": null
+      },
+      {
+        "intent": "unclear_request",
+        "confidence": null
+      }
+    ],
+    "sources_used": [
+      {
+        "doc_id": "DOC-ACCT-001",
+        "title": "Managing team members, roles and permissions",
+        "score": 0.4167
+      }
+    ],
+    "threshold_applied": 0.7,
+    "thresholds": {
+      "classification_confidence_min": 0.7,
+      "retrieval_score_min": 0.4,
+      "confidence_floor_validated_for_this_classifier": false
+    },
+    "action_taken": "escalate",
+    "status": "escalated",
+    "delivery": "not_applicable",
+    "answer_sent": false,
+    "reason": "The documentation found does not cover this type of request (best match DOC-ACCT-001 at 0.42; needs one of the approved articles at 0.40 or more).",
+    "reason_codes": [
+      "no_matching_documentation_for_intent"
+    ],
+    "guardrail_results": {
+      "pii": "not_run",
+      "grounding": "not_run",
+      "instruction_integrity": "not_run",
+      "scope": "not_run",
+      "confidence_floor": "pass"
+    },
+    "guardrail_failures": [],
+    "response": "",
+    "flagged_input_for_review": null,
+    "citations": [],
+    "handoff": {
+      "summary": "chat ticket from a standard customer: We are tightening permissions after a review and I want to understand how group membership interacts with directly assigned roles.",
+      "intent": "configuration_help",
+      "urgency": "low",
+      "sources": [
+        "DOC-ACCT-001"
+      ],
+      "why_escalated": "The documentation found does not cover this type of request (best match DOC-ACCT-001 at 0.42; needs one of the approved articles at 0.40 or more)."
+    },
+    "prompt_version": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "requirement_ids": [
+      "FR-01",
+      "FR-02",
+      "FR-03",
+      "FR-04",
+      "FR-07",
+      "FR-08"
+    ],
+    "implementation": "langgraph",
+    "started_at": "2026-11-21T17:46:49.061612+00:00",
+    "completed_at": "2026-11-21T17:46:50.202597+00:00",
+    "latency_seconds": 1.141,
+    "run_id": "run-20261121T174636-87ff9a"
+  },
+  {
+    "decision_id": "0ad2626d957a4bb8b301ee4682d570b8",
+    "timestamp": "2026-11-21T17:46:51.362910+00:00",
+    "ticket_id": "VAL-0009",
+    "channel": "docs_comment",
+    "stage": "routing",
+    "input_summary": "docs_comment ticket from a standard customer: Retention period question We need to demonstrate that read access to customer records is logged. I cannot find these events in the audit log.",
+    "model": {
+      "classifier": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-01 v1.1"
+      },
+      "evidence_selector": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-04 v1.0"
+      }
+    },
+    "prediction": {
+      "value": "data_export",
+      "confidence": 0.6,
+      "urgency": "low",
+      "confidence_type": "uncalibrated_model_score",
+      "error_type": null
+    },
+    "alternatives": [
+      {
+        "intent": "configuration_help",
+        "confidence": null
+      },
+      {
+        "intent": "security_incident",
+        "confidence": null
+      },
+      {
+        "intent": "unknown",
+        "confidence": null
+      }
+    ],
+    "sources_used": [
+      {
+        "doc_id": "DOC-SEC-003",
+        "title": "Audit logging and compliance evidence",
+        "score": 0.6
+      },
+      {
+        "doc_id": "DOC-SEC-001",
+        "title": "Responding to a suspected account compromise",
+        "score": 0.3333
+      }
+    ],
+    "threshold_applied": 0.7,
+    "thresholds": {
+      "classification_confidence_min": 0.7,
+      "retrieval_score_min": 0.4,
+      "confidence_floor_validated_for_this_classifier": false
+    },
+    "action_taken": "escalate",
+    "status": "escalated",
+    "delivery": "not_applicable",
+    "answer_sent": false,
+    "reason": "The system was only 60% sure of the request type; the policy requires at least 70%. The documentation found does not cover this type of request (best match DOC-SEC-003 at 0.60; needs one of the approved articles at 0.40 or more).",
+    "reason_codes": [
+      "confidence_below_threshold",
+      "no_matching_documentation_for_intent"
+    ],
+    "guardrail_results": {
+      "pii": "not_run",
+      "grounding": "not_run",
+      "instruction_integrity": "not_run",
+      "scope": "not_run",
+      "confidence_floor": "fail"
+    },
+    "guardrail_failures": [],
+    "response": "",
+    "flagged_input_for_review": null,
+    "citations": [],
+    "handoff": {
+      "summary": "docs_comment ticket from a standard customer: Retention period question We need to demonstrate that read access to customer records is logged. I cannot find these events in the audit log.",
+      "intent": "data_export",
+      "urgency": "low",
+      "sources": [
+        "DOC-SEC-003",
+        "DOC-SEC-001"
+      ],
+      "why_escalated": "The system was only 60% sure of the request type; the policy requires at least 70%. The documentation found does not cover this type of request (best match DOC-SEC-003 at 0.60; needs one of the approved articles at 0.40 or more)."
+    },
+    "prompt_version": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "requirement_ids": [
+      "FR-01",
+      "FR-02",
+      "FR-03",
+      "FR-04",
+      "FR-07",
+      "FR-08"
+    ],
+    "implementation": "langgraph",
+    "started_at": "2026-11-21T17:46:50.203269+00:00",
+    "completed_at": "2026-11-21T17:46:51.362987+00:00",
+    "latency_seconds": 1.1597,
+    "run_id": "run-20261121T174636-87ff9a"
+  },
+  {
+    "decision_id": "54b6c7be2dfb418ca87971d5513adb91",
+    "timestamp": "2026-11-21T17:46:52.475764+00:00",
+    "ticket_id": "VAL-0010",
+    "channel": "docs_comment",
+    "stage": "routing",
+    "input_summary": "docs_comment ticket from a business customer: Invoice higher than expected Our invoice this month is considerably higher than usual and I cannot see why from the summary. Could you help me understand what h…",
+    "model": {
+      "classifier": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-01 v1.1"
+      },
+      "evidence_selector": {
+        "name": "ollama:gemma4:e2b",
+        "version": "PR-04 v1.0"
+      }
+    },
+    "prediction": {
+      "value": "billing_query",
+      "confidence": 0.95,
+      "urgency": "medium",
+      "confidence_type": "uncalibrated_model_score",
+      "error_type": null
+    },
+    "alternatives": [
+      {
+        "intent": "unknown",
+        "confidence": null
+      },
+      {
+        "intent": "account_access",
+        "confidence": null
+      },
+      {
+        "intent": "performance_degradation",
+        "confidence": null
+      }
+    ],
+    "sources_used": [
+      {
+        "doc_id": "DOC-BILL-001",
+        "title": "Understanding your invoice and usage breakdown",
+        "score": 0.2857
+      }
+    ],
+    "threshold_applied": 0.7,
+    "thresholds": {
+      "classification_confidence_min": 0.7,
+      "retrieval_score_min": 0.4,
+      "confidence_floor_validated_for_this_classifier": false
+    },
+    "action_taken": "escalate",
+    "status": "escalated",
+    "delivery": "not_applicable",
+    "answer_sent": false,
+    "reason": "The documentation found does not cover this type of request (best match DOC-BILL-001 at 0.29; needs one of the approved articles at 0.40 or more).",
+    "reason_codes": [
+      "no_matching_documentation_for_intent"
+    ],
+    "guardrail_results": {
+      "pii": "not_run",
+      "grounding": "not_run",
+      "instruction_integrity": "not_run",
+      "scope": "not_run",
+      "confidence_floor": "pass"
+    },
+    "guardrail_failures": [],
+    "response": "",
+    "flagged_input_for_review": null,
+    "citations": [],
+    "handoff": {
+      "summary": "docs_comment ticket from a business customer: Invoice higher than expected Our invoice this month is considerably higher than usual and I cannot see why from the summary. Could you help me understand what h…",
+      "intent": "billing_query",
+      "urgency": "medium",
+      "sources": [
+        "DOC-BILL-001"
+      ],
+      "why_escalated": "The documentation found does not cover this type of request (best match DOC-BILL-001 at 0.29; needs one of the approved articles at 0.40 or more)."
+    },
+    "prompt_version": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "requirement_ids": [
+      "FR-01",
+      "FR-02",
+      "FR-03",
+      "FR-04",
+      "FR-07",
+      "FR-08"
+    ],
+    "implementation": "langgraph",
+    "started_at": "2026-11-21T17:46:51.363825+00:00",
+    "completed_at": "2026-11-21T17:46:52.475845+00:00",
+    "latency_seconds": 1.112,
+    "run_id": "run-20261121T174636-87ff9a"
+  }
+]

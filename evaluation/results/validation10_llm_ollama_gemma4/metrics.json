@@ -1,0 +1,342 @@
+{
+  "run": {
+    "run_id": "run-20261121T174636-87ff9a",
+    "date": "2026-11-21T17:46:52+00:00",
+    "input": "evaluation/inputs/validation_first10.json",
+    "engine": "langgraph",
+    "classifier": "ollama:gemma4:e2b (PR-01 v1.1)",
+    "evidence_selector": "ollama:gemma4:e2b",
+    "prompt_versions": [
+      "PR-01 v1.1",
+      "PR-04 v1.0"
+    ],
+    "policy_version": "RP-1.0",
+    "auto_send": false,
+    "training_overlap": {
+      "tickets": 10,
+      "exact_body_matches": 7,
+      "training_file": "/Users/manishmishra/Desktop/Projects/ResolveIQ/data/development_tickets.json"
+    },
+    "tickets_in_file": 10,
+    "wall_clock_seconds": 16.37
+  },
+  "volume": {
+    "processed": 10,
+    "decisions_logged": 10,
+    "auto_responded_sent": 0,
+    "auto_respond_decisions_held_by_kill_switch": 1,
+    "escalated": 9,
+    "blocked_by_guardrails": 0
+  },
+  "business": {
+    "first_contact_resolution_pct": 0.0,
+    "first_contact_resolution_if_kill_switch_released_pct": 10.0,
+    "escalation_rate_pct": 100.0,
+    "escalation_rate_if_kill_switch_released_pct": 90.0,
+    "time_to_first_reply_automatic_seconds": {
+      "n": 0,
+      "mean": null,
+      "median": null
+    },
+    "time_to_first_reply_escalated": "not measurable offline: depends on the human queue",
+    "customer_satisfaction": "not measurable offline: requires a human-scored sample",
+    "repeat_contacts": "not measurable offline: requires a 7-day follow-up window"
+  },
+  "technical": {
+    "latency_seconds": {
+      "mean": 1.6365,
+      "median": 1.1265,
+      "p95": 5.7444
+    },
+    "intent_accuracy": 0.4,
+    "intent_macro_precision": 1.0,
+    "intent_macro_recall": 0.4286,
+    "intent_precision_recall_by_class": {
+      "account_access": {
+        "support": 1,
+        "predicted": 0,
+        "precision": null,
+        "recall": 0.0
+      },
+      "api_key_issue": {
+        "support": 1,
+        "predicted": 1,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "api_usage_question": {
+        "support": 1,
+        "predicted": 0,
+        "precision": null,
+        "recall": 0.0
+      },
+      "authentication_failure": {
+        "support": 2,
+        "predicted": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "billing_query": {
+        "support": 1,
+        "predicted": 1,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "compliance_request": {
+        "support": 1,
+        "predicted": 0,
+        "precision": null,
+        "recall": 0.0
+      },
+      "configuration_help": {
+        "support": 0,
+        "predicted": 1,
+        "precision": 0.0,
+        "recall": null
+      },
+      "data_export": {
+        "support": 0,
+        "predicted": 1,
+        "precision": 0.0,
+        "recall": null
+      },
+      "unclear_request": {
+        "support": 3,
+        "predicted": 0,
+        "precision": null,
+        "recall": 0.0
+      },
+      "unknown": {
+        "support": 0,
+        "predicted": 4,
+        "precision": 0.0,
+        "recall": null
+      }
+    },
+    "intent_confusion_matrix": {
+      "account_access": {
+        "configuration_help": 1
+      },
+      "api_key_issue": {
+        "api_key_issue": 1
+      },
+      "api_usage_question": {
+        "unknown": 1
+      },
+      "authentication_failure": {
+        "authentication_failure": 2
+      },
+      "billing_query": {
+        "billing_query": 1
+      },
+      "compliance_request": {
+        "data_export": 1
+      },
+      "unclear_request": {
+        "unknown": 3
+      }
+    },
+    "urgency_accuracy": 0.4,
+    "urgency_precision_recall_by_class": {
+      "high": {
+        "support": 4,
+        "predicted": 1,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "low": {
+        "support": 2,
+        "predicted": 3,
+        "precision": 0.3333,
+        "recall": 0.5
+      },
+      "medium": {
+        "support": 4,
+        "predicted": 6,
+        "precision": 0.5,
+        "recall": 0.75
+      }
+    },
+    "retrieval_hit_rate_any_expected_doc": 0.8333,
+    "retrieval_hit_rate_top1": 0.8333,
+    "retrieval_eligible_tickets": 6,
+    "retrieval_returned_nothing_for_unanswerable": 0.5,
+    "citation_accuracy_vs_expected_docs": null,
+    "citations_on_tickets_labelled_unanswerable": 1,
+    "citation_resolves_to_retrieved_passage": 1.0
+  },
+  "governance": {
+    "decisions_logged": 10,
+    "tickets_processed": 10,
+    "decision_log_reconciles": true,
+    "guardrail_activations_by_type": {
+      "sensitive_request_manual_review": 2
+    },
+    "private_data_detections": 0,
+    "private_data_in_outbound_responses": 0,
+    "confidence_calibration": {
+      "bands": [
+        {
+          "band": "0.0-0.2",
+          "n": 4,
+          "stated": 0.025,
+          "observed": 0.0,
+          "gap_points": 2.5
+        },
+        {
+          "band": "0.6-0.8",
+          "n": 1,
+          "stated": 0.6,
+          "observed": 0.0,
+          "gap_points": 60.0
+        },
+        {
+          "band": "0.8-1.0",
+          "n": 5,
+          "stated": 0.94,
+          "observed": 0.8,
+          "gap_points": 14.0
+        }
+      ],
+      "max_abs_gap_points": 60.0,
+      "target": "within 5 points per band"
+    }
+  },
+  "labelled_tickets": 10,
+  "routing": {
+    "policy_version": "RP-1.0",
+    "auto_respond_decisions": 1,
+    "auto_precision_vs_expected_route": 0.0,
+    "auto_recall_vs_expected_route": 0.0,
+    "routing_accuracy_vs_expected_route": 0.4,
+    "confusion_expected_vs_decided": {
+      "auto_respond": {
+        "escalate": 5
+      },
+      "escalate": {
+        "auto_respond": 1,
+        "escalate": 4
+      }
+    },
+    "must_not_auto_respond_tickets": 4,
+    "must_not_auto_respond_violations": 0
+  },
+  "fairness_segments": {
+    "customer_tier": {
+      "groups": {
+        "business": {
+          "n": 4,
+          "auto_respond_rate": 0.25,
+          "routing_accuracy": 0.25,
+          "intent_accuracy": 0.75
+        },
+        "standard": {
+          "n": 6,
+          "auto_respond_rate": 0.0,
+          "routing_accuracy": 0.5,
+          "intent_accuracy": 0.1667
+        }
+      },
+      "variation_points": {
+        "auto_respond_rate": 25.0,
+        "routing_accuracy": 25.0,
+        "intent_accuracy": 58.3
+      }
+    },
+    "language_fluency": {
+      "groups": {
+        "fluent": {
+          "n": 8,
+          "auto_respond_rate": 0.0,
+          "routing_accuracy": 0.375,
+          "intent_accuracy": 0.375
+        },
+        "non_fluent": {
+          "n": 2,
+          "auto_respond_rate": 0.5,
+          "routing_accuracy": 0.5,
+          "intent_accuracy": 0.5
+        }
+      },
+      "variation_points": {
+        "auto_respond_rate": 50.0,
+        "routing_accuracy": 12.5,
+        "intent_accuracy": 12.5
+      }
+    },
+    "customer_region": {
+      "groups": {
+        "asia_pacific": {
+          "n": 4,
+          "auto_respond_rate": 0.0,
+          "routing_accuracy": 0.0,
+          "intent_accuracy": 0.5
+        },
+        "europe": {
+          "n": 3,
+          "auto_respond_rate": 0.0,
+          "routing_accuracy": 0.6667,
+          "intent_accuracy": 0.3333
+        },
+        "latin_america": {
+          "n": 1,
+          "auto_respond_rate": 0.0,
+          "routing_accuracy": 1.0,
+          "intent_accuracy": 0.0
+        },
+        "north_america": {
+          "n": 2,
+          "auto_respond_rate": 0.5,
+          "routing_accuracy": 0.5,
+          "intent_accuracy": 0.5
+        }
+      },
+      "variation_points": {
+        "auto_respond_rate": 50.0,
+        "routing_accuracy": 100.0,
+        "intent_accuracy": 50.0
+      }
+    },
+    "channel": {
+      "groups": {
+        "chat": {
+          "n": 4,
+          "auto_respond_rate": 0.0,
+          "routing_accuracy": 0.5,
+          "intent_accuracy": 0.0
+        },
+        "docs_comment": {
+          "n": 3,
+          "auto_respond_rate": 0.0,
+          "routing_accuracy": 0.6667,
+          "intent_accuracy": 0.3333
+        },
+        "email": {
+          "n": 2,
+          "auto_respond_rate": 0.5,
+          "routing_accuracy": 0.0,
+          "intent_accuracy": 1.0
+        },
+        "forum": {
+          "n": 1,
+          "auto_respond_rate": 0.0,
+          "routing_accuracy": 0.0,
+          "intent_accuracy": 1.0
+        }
+      },
+      "variation_points": {
+        "auto_respond_rate": 50.0,
+        "routing_accuracy": 66.7,
+        "intent_accuracy": 100.0
+      }
+    }
+  },
+  "limitations": [
+    "The figures should be treated with caution because 7 of 10 ticket bodies in this input are exact copies of development tickets the offline classifier was trained on, so intent accuracy on them measures recall of training data, not generalisation (docs/BASELINE_AUDIT.md M1).",
+    "Urgency and expected_route labels vary for identical ticket text in the supplied data, which caps achievable urgency and routing accuracy.",
+    "Citation accuracy here is a label-based proxy (cited document among expected_doc_ids); it is not the human claim-by-claim review the Evaluation Framework requires, and hallucination rate is not measured.",
+    "Responses are extractive (a verbatim documentation section), not generated text.",
+    "Response time is processing latency for automatic answers only; human queue time, CSAT and repeat contacts cannot be measured offline.",
+    "Segments with few tickets (e.g. 8 enterprise tickets in validation) make variation figures unstable."
+  ]
+}

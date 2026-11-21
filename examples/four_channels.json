@@ -1,0 +1,6 @@
+[
+  {"ticket_id": "DEMO-EMAIL", "channel": "email", "subject": "Cannot sign in", "body": "The console reports invalid credentials even after my password changed and the account seems locked.", "customer_tier": "standard"},
+  {"ticket_id": "DEMO-CHAT", "channel": "chat", "subject": "", "body": "we are getting 429 too many requests from the api since this morning, what is the rate limit and how should we back off?", "customer_tier": "business"},
+  {"ticket_id": "DEMO-DOCS", "channel": "docs_comment", "subject": "Webhook signature", "body": "Signature verification fails for every webhook delivery. Which body should the signature be computed over?", "customer_tier": "standard"},
+  {"ticket_id": "DEMO-FORUM", "channel": "forum", "subject": "Credentials exposed?", "body": "One of our engineers believes their credentials may have been exposed in a breach at another service. What should we do right now?", "customer_tier": "enterprise"}
+]

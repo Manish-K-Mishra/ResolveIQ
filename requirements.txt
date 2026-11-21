@@ -1,0 +1,11 @@
+# CloudServe pinned dependencies (verified 21 Nov 2026, Python 3.11, macOS arm64).
+# One install covers the full system and the test suite:  pip install -r requirements.txt
+# Full transitive lock of the verified environment: requirements.lock
+pytest==9.2.0
+pydantic==2.14.4
+python-dotenv==1.2.4
+langgraph==1.2.24
+langchain-core==1.8.4
+langchain-ollama==1.1.0
+langchain-openai==1.8.5
+langchain-anthropic==1.7.12

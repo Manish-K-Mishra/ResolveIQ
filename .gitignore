@@ -1,0 +1,30 @@
+__pycache__/
+.pytest_cache/
+.venv/
+output/
+.env
+
+.env.*
+!.env.example
+*.sqlite
+*.db
+.DS_Store
+
+# Local working notes, internal reviews and course material: not part of the repository submission
+docs/BASELINE_AUDIT.md
+docs/BASELINE_REMEDIATION_REPORT.md
+docs/AGENT_BUILDER_REVIEWER_PROMPT.md
+docs/AGENT_TASKS.md
+docs/IMPLEMENTATION_STATUS_AND_REQUIREMENTS.md
+docs/assignment_reference/
+docs/Stage_*.docx
+README_HANDOFF.md
+AUDIT_SLICES_1_TO_3.md
+SLICE_4_EVIDENCE.md
+.vscode/
+# Superseded outputs from the pre-remediation harness
+evaluation/slice4_offline_*.json
+evaluation/SUPERSEDED_slice4_files.txt
+evaluation/results/SUPERSEDED_TOP_LEVEL_FILES.txt
+evaluation/results/decisions.json
+evaluation/results/metrics.json
