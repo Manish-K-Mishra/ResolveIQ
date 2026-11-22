@@ -1,7 +1,7 @@
 [
   {
-    "decision_id": "67a4127e2cd64834a5ae70ae6d2592c0",
-    "timestamp": "2026-11-21T19:57:10.933978+00:00",
+    "decision_id": "9512931e8c3e4478abb0abda03e90180",
+    "timestamp": "2026-11-22T03:42:19.902049+00:00",
     "ticket_id": "VAL-0001",
     "channel": "forum",
     "stage": "routing",
@@ -128,14 +128,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.931599+00:00",
-    "completed_at": "2026-11-21T19:57:10.934074+00:00",
-    "latency_seconds": 0.0025,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.900093+00:00",
+    "completed_at": "2026-11-22T03:42:19.902153+00:00",
+    "latency_seconds": 0.0021,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "76bc56a666a74e74a45af5c5152cefcc",
-    "timestamp": "2026-11-21T19:57:10.935216+00:00",
+    "decision_id": "4f42e9d7da3a4f5a89bd3118be297b92",
+    "timestamp": "2026-11-22T03:42:19.903646+00:00",
     "ticket_id": "VAL-0002",
     "channel": "chat",
     "stage": "routing",
@@ -271,14 +271,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.934374+00:00",
-    "completed_at": "2026-11-21T19:57:10.935293+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.902671+00:00",
+    "completed_at": "2026-11-22T03:42:19.903731+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "5c7a5aeb32a047f0945a4cff09f6f32d",
-    "timestamp": "2026-11-21T19:57:10.936406+00:00",
+    "decision_id": "e2d7bbdb19084e27a8ac8ce53f189d6f",
+    "timestamp": "2026-11-22T03:42:19.905601+00:00",
     "ticket_id": "VAL-0003",
     "channel": "docs_comment",
     "stage": "routing",
@@ -392,14 +392,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.935617+00:00",
-    "completed_at": "2026-11-21T19:57:10.936479+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.904238+00:00",
+    "completed_at": "2026-11-22T03:42:19.905692+00:00",
+    "latency_seconds": 0.0015,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "1e783b7999fc4ef899626e2344d29cae",
-    "timestamp": "2026-11-21T19:57:10.938235+00:00",
+    "decision_id": "0937de1bc49a4318841b3fa434b9288a",
+    "timestamp": "2026-11-22T03:42:19.907696+00:00",
     "ticket_id": "VAL-0004",
     "channel": "email",
     "stage": "validation",
@@ -463,9 +463,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -518,7 +518,7 @@
         "DOC-AUTH-002#article",
         "DOC-PERF-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -546,14 +546,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.936876+00:00",
-    "completed_at": "2026-11-21T19:57:10.938313+00:00",
-    "latency_seconds": 0.0014,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.906185+00:00",
+    "completed_at": "2026-11-22T03:42:19.907873+00:00",
+    "latency_seconds": 0.0017,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "3a062299bde14fd4b08272f6b027a9e5",
-    "timestamp": "2026-11-21T19:57:10.939991+00:00",
+    "decision_id": "3ce60aa0e914482fa01facfb88abff63",
+    "timestamp": "2026-11-22T03:42:19.909638+00:00",
     "ticket_id": "VAL-0005",
     "channel": "chat",
     "stage": "validation",
@@ -608,9 +608,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -662,7 +662,7 @@
       "sources": [
         "DOC-API-002#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -690,14 +690,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.938889+00:00",
-    "completed_at": "2026-11-21T19:57:10.940065+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.908384+00:00",
+    "completed_at": "2026-11-22T03:42:19.909719+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "539699ac91a147b0833b90b843895081",
-    "timestamp": "2026-11-21T19:57:10.941234+00:00",
+    "decision_id": "6e8e49bf492f46b19b8dd6d2d85289c6",
+    "timestamp": "2026-11-22T03:42:19.911189+00:00",
     "ticket_id": "VAL-0006",
     "channel": "email",
     "stage": "routing",
@@ -810,14 +810,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.940352+00:00",
-    "completed_at": "2026-11-21T19:57:10.941304+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.910190+00:00",
+    "completed_at": "2026-11-22T03:42:19.911267+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "b510506b1824450a8811fa885adf8225",
-    "timestamp": "2026-11-21T19:57:10.942455+00:00",
+    "decision_id": "d274afd18bf74c25b72573dcc559bf58",
+    "timestamp": "2026-11-22T03:42:19.912667+00:00",
     "ticket_id": "VAL-0007",
     "channel": "chat",
     "stage": "routing",
@@ -931,14 +931,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.941626+00:00",
-    "completed_at": "2026-11-21T19:57:10.942528+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.911771+00:00",
+    "completed_at": "2026-11-22T03:42:19.912751+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "692e4d8d00c04111884681924c9c1ef5",
-    "timestamp": "2026-11-21T19:57:10.944011+00:00",
+    "decision_id": "4bc09635bd0e402ba61bfc3ce7d75ba3",
+    "timestamp": "2026-11-22T03:42:19.915104+00:00",
     "ticket_id": "VAL-0008",
     "channel": "chat",
     "stage": "validation",
@@ -993,9 +993,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -1047,7 +1047,7 @@
       "sources": [
         "DOC-ACCT-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -1075,14 +1075,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.942903+00:00",
-    "completed_at": "2026-11-21T19:57:10.944084+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.913234+00:00",
+    "completed_at": "2026-11-22T03:42:19.915205+00:00",
+    "latency_seconds": 0.002,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "0727b65608ab46aaa51d24571dcd05ad",
-    "timestamp": "2026-11-21T19:57:10.945137+00:00",
+    "decision_id": "c68f8bb1b6bc4c2ab7a6f96f07f562c2",
+    "timestamp": "2026-11-22T03:42:19.916626+00:00",
     "ticket_id": "VAL-0009",
     "channel": "docs_comment",
     "stage": "routing",
@@ -1217,14 +1217,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.944386+00:00",
-    "completed_at": "2026-11-21T19:57:10.945202+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.915729+00:00",
+    "completed_at": "2026-11-22T03:42:19.916707+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "681a795b99ce43fab6fa9b77efb0a39d",
-    "timestamp": "2026-11-21T19:57:10.946210+00:00",
+    "decision_id": "9cab641f1b4a424e82910fb131e12b9d",
+    "timestamp": "2026-11-22T03:42:19.918074+00:00",
     "ticket_id": "VAL-0010",
     "channel": "docs_comment",
     "stage": "routing",
@@ -1349,14 +1349,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.945467+00:00",
-    "completed_at": "2026-11-21T19:57:10.946273+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.917159+00:00",
+    "completed_at": "2026-11-22T03:42:19.918150+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "a07b4ebdd0c14c81b794d1903d71d036",
-    "timestamp": "2026-11-21T19:57:10.947364+00:00",
+    "decision_id": "015c0cef408a4e309a65685677e2da4d",
+    "timestamp": "2026-11-22T03:42:19.919538+00:00",
     "ticket_id": "VAL-0011",
     "channel": "forum",
     "stage": "routing",
@@ -1469,14 +1469,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.946559+00:00",
-    "completed_at": "2026-11-21T19:57:10.947434+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.918605+00:00",
+    "completed_at": "2026-11-22T03:42:19.919611+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "c8b13b332e6c477c841e6131f5bba2b5",
-    "timestamp": "2026-11-21T19:57:10.949011+00:00",
+    "decision_id": "385082b386804651acef2f942e967ac9",
+    "timestamp": "2026-11-22T03:42:19.920957+00:00",
     "ticket_id": "VAL-0012",
     "channel": "email",
     "stage": "routing",
@@ -1601,14 +1601,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.948087+00:00",
-    "completed_at": "2026-11-21T19:57:10.949082+00:00",
+    "started_at": "2026-11-22T03:42:19.920063+00:00",
+    "completed_at": "2026-11-22T03:42:19.921033+00:00",
     "latency_seconds": 0.001,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "c819c5ba5ae34aaa8fe5fa1240ebf8c3",
-    "timestamp": "2026-11-21T19:57:10.950600+00:00",
+    "decision_id": "f4b68dbdcbab499f9c79c91520f46064",
+    "timestamp": "2026-11-22T03:42:19.922698+00:00",
     "ticket_id": "VAL-0013",
     "channel": "docs_comment",
     "stage": "validation",
@@ -1663,9 +1663,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -1717,7 +1717,7 @@
       "sources": [
         "DOC-BILL-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -1745,14 +1745,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.949523+00:00",
-    "completed_at": "2026-11-21T19:57:10.950661+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.921517+00:00",
+    "completed_at": "2026-11-22T03:42:19.922786+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "43d51d5a75d7400b8f13a94b8d2c90e9",
-    "timestamp": "2026-11-21T19:57:10.951692+00:00",
+    "decision_id": "b81f429aad5c43c0bfb32fcf0a0b1967",
+    "timestamp": "2026-11-22T03:42:19.924093+00:00",
     "ticket_id": "VAL-0014",
     "channel": "email",
     "stage": "routing",
@@ -1865,14 +1865,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.950948+00:00",
-    "completed_at": "2026-11-21T19:57:10.951754+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.923242+00:00",
+    "completed_at": "2026-11-22T03:42:19.924164+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "f9a55c6d8ff74ce4b66ad24edf83d8d5",
-    "timestamp": "2026-11-21T19:57:10.952671+00:00",
+    "decision_id": "79d2d4fc6da3426790697a06880c233a",
+    "timestamp": "2026-11-22T03:42:19.925310+00:00",
     "ticket_id": "VAL-0015",
     "channel": "forum",
     "stage": "routing",
@@ -1986,14 +1986,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.952000+00:00",
-    "completed_at": "2026-11-21T19:57:10.952734+00:00",
-    "latency_seconds": 0.0007,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.924554+00:00",
+    "completed_at": "2026-11-22T03:42:19.925382+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "b4f5c84f6a2b4b429cdba465cb708fed",
-    "timestamp": "2026-11-21T19:57:10.953805+00:00",
+    "decision_id": "29259d82a24a40a392cedaafe8e0f808",
+    "timestamp": "2026-11-22T03:42:19.926634+00:00",
     "ticket_id": "VAL-0016",
     "channel": "chat",
     "stage": "routing",
@@ -2106,14 +2106,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.953035+00:00",
-    "completed_at": "2026-11-21T19:57:10.953875+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.925807+00:00",
+    "completed_at": "2026-11-22T03:42:19.926706+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "cf5dbfcc38de42af9dfd923182835e4e",
-    "timestamp": "2026-11-21T19:57:10.954879+00:00",
+    "decision_id": "5ece4dd3dc324b7392d3a421995edd67",
+    "timestamp": "2026-11-22T03:42:19.927883+00:00",
     "ticket_id": "VAL-0017",
     "channel": "docs_comment",
     "stage": "routing",
@@ -2227,14 +2227,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.954199+00:00",
-    "completed_at": "2026-11-21T19:57:10.954940+00:00",
-    "latency_seconds": 0.0007,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.927129+00:00",
+    "completed_at": "2026-11-22T03:42:19.927955+00:00",
+    "latency_seconds": 0.0008,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "696295855e1c4480aa521ce9c12a6a3d",
-    "timestamp": "2026-11-21T19:57:10.956244+00:00",
+    "decision_id": "460170dd697f4d40bdd71e58bd834581",
+    "timestamp": "2026-11-22T03:42:19.929617+00:00",
     "ticket_id": "VAL-0018",
     "channel": "email",
     "stage": "validation",
@@ -2289,9 +2289,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -2343,7 +2343,7 @@
       "sources": [
         "DOC-API-002#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -2371,14 +2371,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.955198+00:00",
-    "completed_at": "2026-11-21T19:57:10.956315+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.928435+00:00",
+    "completed_at": "2026-11-22T03:42:19.929688+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "aafc5f4a5bbc4470a8dfb91668d26d09",
-    "timestamp": "2026-11-21T19:57:10.957381+00:00",
+    "decision_id": "9e6d572d0f7247b4bcca7c7a52dc887d",
+    "timestamp": "2026-11-22T03:42:19.930952+00:00",
     "ticket_id": "VAL-0019",
     "channel": "email",
     "stage": "routing",
@@ -2513,14 +2513,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.956608+00:00",
-    "completed_at": "2026-11-21T19:57:10.957453+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.930128+00:00",
+    "completed_at": "2026-11-22T03:42:19.931024+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "a428dd2d83a047e5906f3b5f97d7a4ab",
-    "timestamp": "2026-11-21T19:57:10.958543+00:00",
+    "decision_id": "e21c8bfcfc54402c92aec3269e031d5b",
+    "timestamp": "2026-11-22T03:42:19.932263+00:00",
     "ticket_id": "VAL-0020",
     "channel": "email",
     "stage": "routing",
@@ -2646,14 +2646,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.957747+00:00",
-    "completed_at": "2026-11-21T19:57:10.958610+00:00",
+    "started_at": "2026-11-22T03:42:19.931447+00:00",
+    "completed_at": "2026-11-22T03:42:19.932335+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "2d1b4dd139264f7d849158a967acfdbf",
-    "timestamp": "2026-11-21T19:57:10.959729+00:00",
+    "decision_id": "61085e6a7af8497bb5d7872e9acc4f25",
+    "timestamp": "2026-11-22T03:42:19.933579+00:00",
     "ticket_id": "VAL-0021",
     "channel": "chat",
     "stage": "routing",
@@ -2766,14 +2766,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.958921+00:00",
-    "completed_at": "2026-11-21T19:57:10.959798+00:00",
+    "started_at": "2026-11-22T03:42:19.932745+00:00",
+    "completed_at": "2026-11-22T03:42:19.933650+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "9ed85c8f19934c61aa469f31696c066a",
-    "timestamp": "2026-11-21T19:57:10.960859+00:00",
+    "decision_id": "d70dec308fd848dc9e79fdef88f5a1c9",
+    "timestamp": "2026-11-22T03:42:19.934915+00:00",
     "ticket_id": "VAL-0022",
     "channel": "docs_comment",
     "stage": "routing",
@@ -2886,14 +2886,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.960094+00:00",
-    "completed_at": "2026-11-21T19:57:10.960925+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.934065+00:00",
+    "completed_at": "2026-11-22T03:42:19.934986+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "e0203742ba284a0dad1e01c651db3619",
-    "timestamp": "2026-11-21T19:57:10.961925+00:00",
+    "decision_id": "837a3aa03d05492f8f6f5b1c072809cf",
+    "timestamp": "2026-11-22T03:42:19.936312+00:00",
     "ticket_id": "VAL-0023",
     "channel": "email",
     "stage": "routing",
@@ -3018,14 +3018,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.961197+00:00",
-    "completed_at": "2026-11-21T19:57:10.961995+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.935423+00:00",
+    "completed_at": "2026-11-22T03:42:19.936390+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "f6ca13aa10004e6ba91956494fd68ea8",
-    "timestamp": "2026-11-21T19:57:10.963110+00:00",
+    "decision_id": "95bc8511899b4499843adb30b8b6c64b",
+    "timestamp": "2026-11-22T03:42:19.937971+00:00",
     "ticket_id": "VAL-0024",
     "channel": "chat",
     "stage": "routing",
@@ -3150,14 +3150,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.962272+00:00",
-    "completed_at": "2026-11-21T19:57:10.963179+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.936875+00:00",
+    "completed_at": "2026-11-22T03:42:19.938260+00:00",
+    "latency_seconds": 0.0014,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "079005d8fe2b4ab789df24e19e21e9ef",
-    "timestamp": "2026-11-21T19:57:10.964263+00:00",
+    "decision_id": "8fa67593e85f48408c65871836e7bfe6",
+    "timestamp": "2026-11-22T03:42:19.939751+00:00",
     "ticket_id": "VAL-0025",
     "channel": "chat",
     "stage": "routing",
@@ -3282,14 +3282,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.963473+00:00",
-    "completed_at": "2026-11-21T19:57:10.964331+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.938815+00:00",
+    "completed_at": "2026-11-22T03:42:19.939828+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "88e2ca4510514706b2addc78377a6a0f",
-    "timestamp": "2026-11-21T19:57:10.965371+00:00",
+    "decision_id": "75ebc14382f445f8bf5e2d20b9849391",
+    "timestamp": "2026-11-22T03:42:19.941544+00:00",
     "ticket_id": "VAL-0026",
     "channel": "email",
     "stage": "routing",
@@ -3424,14 +3424,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.964621+00:00",
-    "completed_at": "2026-11-21T19:57:10.965437+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.940579+00:00",
+    "completed_at": "2026-11-22T03:42:19.941647+00:00",
+    "latency_seconds": 0.0011,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "cca40349250b4c4a9d3b16f9a505c613",
-    "timestamp": "2026-11-21T19:57:10.966789+00:00",
+    "decision_id": "25ebabb6445c48359c604973894d0ed0",
+    "timestamp": "2026-11-22T03:42:19.943335+00:00",
     "ticket_id": "VAL-0027",
     "channel": "email",
     "stage": "validation",
@@ -3495,9 +3495,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -3550,7 +3550,7 @@
         "DOC-BILL-003#article",
         "DOC-BILL-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -3578,14 +3578,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.965710+00:00",
-    "completed_at": "2026-11-21T19:57:10.966855+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.942125+00:00",
+    "completed_at": "2026-11-22T03:42:19.943408+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "ba0855e7ecc8402281ff5134016546e6",
-    "timestamp": "2026-11-21T19:57:10.968434+00:00",
+    "decision_id": "19875882c02d48b790c78dc8735eb3a7",
+    "timestamp": "2026-11-22T03:42:19.945137+00:00",
     "ticket_id": "VAL-0028",
     "channel": "email",
     "stage": "validation",
@@ -3676,9 +3676,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -3734,7 +3734,7 @@
         "DOC-DEPLOY-002#article",
         "DOC-API-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -3762,14 +3762,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.967341+00:00",
-    "completed_at": "2026-11-21T19:57:10.968501+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.943876+00:00",
+    "completed_at": "2026-11-22T03:42:19.945211+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "0f155edcf3ce49b3a6339ad7a26e5f13",
-    "timestamp": "2026-11-21T19:57:10.969693+00:00",
+    "decision_id": "d2bee56e2c37429d9e745ec9f7b32328",
+    "timestamp": "2026-11-22T03:42:19.946541+00:00",
     "ticket_id": "VAL-0029",
     "channel": "chat",
     "stage": "routing",
@@ -3934,14 +3934,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.968945+00:00",
-    "completed_at": "2026-11-21T19:57:10.969760+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.945727+00:00",
+    "completed_at": "2026-11-22T03:42:19.946615+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "e68595fced304daabb91fd870df7a61f",
-    "timestamp": "2026-11-21T19:57:10.970824+00:00",
+    "decision_id": "98bbf018c0eb49c8bec941479a4a67b1",
+    "timestamp": "2026-11-22T03:42:19.947895+00:00",
     "ticket_id": "VAL-0030",
     "channel": "email",
     "stage": "routing",
@@ -4077,14 +4077,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.970043+00:00",
-    "completed_at": "2026-11-21T19:57:10.970890+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.947073+00:00",
+    "completed_at": "2026-11-22T03:42:19.947966+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "cf978033d7de45719ba398c4a8bd01db",
-    "timestamp": "2026-11-21T19:57:10.971992+00:00",
+    "decision_id": "633cfbcb5fd44af3a8d9841c6bd11caa",
+    "timestamp": "2026-11-22T03:42:19.949294+00:00",
     "ticket_id": "VAL-0031",
     "channel": "email",
     "stage": "routing",
@@ -4197,14 +4197,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.971171+00:00",
-    "completed_at": "2026-11-21T19:57:10.972056+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.948398+00:00",
+    "completed_at": "2026-11-22T03:42:19.949368+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "ebb5227c825f4ddf8c68138f916435fd",
-    "timestamp": "2026-11-21T19:57:10.973108+00:00",
+    "decision_id": "42c1bf549e294b1ea92c53141126be61",
+    "timestamp": "2026-11-22T03:42:19.950689+00:00",
     "ticket_id": "VAL-0032",
     "channel": "chat",
     "stage": "routing",
@@ -4360,14 +4360,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.972337+00:00",
-    "completed_at": "2026-11-21T19:57:10.973175+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.949809+00:00",
+    "completed_at": "2026-11-22T03:42:19.950762+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "5d31fd57813b43f28a32fff82049d235",
-    "timestamp": "2026-11-21T19:57:10.974532+00:00",
+    "decision_id": "a5f079beb5ca445eb908083922eee44f",
+    "timestamp": "2026-11-22T03:42:19.952458+00:00",
     "ticket_id": "VAL-0033",
     "channel": "forum",
     "stage": "validation",
@@ -4422,9 +4422,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -4476,7 +4476,7 @@
       "sources": [
         "DOC-API-003#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -4504,14 +4504,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.973470+00:00",
-    "completed_at": "2026-11-21T19:57:10.974602+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.951262+00:00",
+    "completed_at": "2026-11-22T03:42:19.952530+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "5a9778933c154de18f19244b4ccc0280",
-    "timestamp": "2026-11-21T19:57:10.975762+00:00",
+    "decision_id": "2a5e6dcf1a8e4e9b95fecf49a8672cdd",
+    "timestamp": "2026-11-22T03:42:19.953851+00:00",
     "ticket_id": "VAL-0034",
     "channel": "email",
     "stage": "routing",
@@ -4636,14 +4636,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.974937+00:00",
-    "completed_at": "2026-11-21T19:57:10.975827+00:00",
+    "started_at": "2026-11-22T03:42:19.952988+00:00",
+    "completed_at": "2026-11-22T03:42:19.953922+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "528acfe475544156904440c6c91eea46",
-    "timestamp": "2026-11-21T19:57:10.976879+00:00",
+    "decision_id": "a08a69ca84da41e1b97346e4e41f0525",
+    "timestamp": "2026-11-22T03:42:19.955054+00:00",
     "ticket_id": "VAL-0035",
     "channel": "chat",
     "stage": "routing",
@@ -4757,14 +4757,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.976178+00:00",
-    "completed_at": "2026-11-21T19:57:10.976942+00:00",
+    "started_at": "2026-11-22T03:42:19.954338+00:00",
+    "completed_at": "2026-11-22T03:42:19.955125+00:00",
     "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "cfcdd68da7e7430f831be30db0cbf9d5",
-    "timestamp": "2026-11-21T19:57:10.977999+00:00",
+    "decision_id": "d61ee26a15424d86bd153985b6785f92",
+    "timestamp": "2026-11-22T03:42:19.956492+00:00",
     "ticket_id": "VAL-0036",
     "channel": "forum",
     "stage": "routing",
@@ -4899,14 +4899,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.977211+00:00",
-    "completed_at": "2026-11-21T19:57:10.978061+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.955537+00:00",
+    "completed_at": "2026-11-22T03:42:19.956565+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "8b9cda0de81345e98f4bbcf0f6c591c2",
-    "timestamp": "2026-11-21T19:57:10.979379+00:00",
+    "decision_id": "856ffe2ca77f48a6b475b69ee5476dc4",
+    "timestamp": "2026-11-22T03:42:19.958223+00:00",
     "ticket_id": "VAL-0037",
     "channel": "email",
     "stage": "validation",
@@ -4961,9 +4961,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -5015,7 +5015,7 @@
       "sources": [
         "DOC-DATA-003#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -5043,14 +5043,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.978323+00:00",
-    "completed_at": "2026-11-21T19:57:10.979445+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.957073+00:00",
+    "completed_at": "2026-11-22T03:42:19.958293+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "dce5485565744a1ea513967c14065cb7",
-    "timestamp": "2026-11-21T19:57:10.980630+00:00",
+    "decision_id": "813840c6be3f433a9590c6d103153405",
+    "timestamp": "2026-11-22T03:42:19.959618+00:00",
     "ticket_id": "VAL-0038",
     "channel": "forum",
     "stage": "routing",
@@ -5175,14 +5175,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.979773+00:00",
-    "completed_at": "2026-11-21T19:57:10.980697+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.958733+00:00",
+    "completed_at": "2026-11-22T03:42:19.959689+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "f2f48dd992b9434082b3b0aec918999f",
-    "timestamp": "2026-11-21T19:57:10.981832+00:00",
+    "decision_id": "c350d7ce6c04457e8d92ab3fdb375951",
+    "timestamp": "2026-11-22T03:42:19.960981+00:00",
     "ticket_id": "VAL-0039",
     "channel": "forum",
     "stage": "routing",
@@ -5317,14 +5317,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.980998+00:00",
-    "completed_at": "2026-11-21T19:57:10.981899+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.960096+00:00",
+    "completed_at": "2026-11-22T03:42:19.961053+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "ad6142f2a555489184eaebf18483f35f",
-    "timestamp": "2026-11-21T19:57:10.983240+00:00",
+    "decision_id": "f91212c0310642e4a7ec73273054e984",
+    "timestamp": "2026-11-22T03:42:19.962623+00:00",
     "ticket_id": "VAL-0040",
     "channel": "email",
     "stage": "validation",
@@ -5379,9 +5379,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -5433,7 +5433,7 @@
       "sources": [
         "DOC-BILL-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -5461,14 +5461,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.982179+00:00",
-    "completed_at": "2026-11-21T19:57:10.983309+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.961473+00:00",
+    "completed_at": "2026-11-22T03:42:19.962693+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "0a72f59aad1b4eb4986a8cfbfd6614ba",
-    "timestamp": "2026-11-21T19:57:10.984647+00:00",
+    "decision_id": "3da1fdbd8f5840588ccd078c1014b1ba",
+    "timestamp": "2026-11-22T03:42:19.964288+00:00",
     "ticket_id": "VAL-0041",
     "channel": "email",
     "stage": "validation",
@@ -5523,9 +5523,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -5577,7 +5577,7 @@
       "sources": [
         "DOC-BILL-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -5605,14 +5605,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.983616+00:00",
-    "completed_at": "2026-11-21T19:57:10.984712+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.963153+00:00",
+    "completed_at": "2026-11-22T03:42:19.964358+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "ace257b3a85f4a8f9e13faf3ef5ad576",
-    "timestamp": "2026-11-21T19:57:10.986062+00:00",
+    "decision_id": "ac26d4b46a5e44938ba6001c68e555ad",
+    "timestamp": "2026-11-22T03:42:19.965989+00:00",
     "ticket_id": "VAL-0042",
     "channel": "chat",
     "stage": "validation",
@@ -5703,9 +5703,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -5761,7 +5761,7 @@
         "DOC-DEPLOY-003#article",
         "DOC-INT-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -5789,14 +5789,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.984998+00:00",
-    "completed_at": "2026-11-21T19:57:10.986133+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.964794+00:00",
+    "completed_at": "2026-11-22T03:42:19.966065+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "2bae72c345854043885396d5b6721bb7",
-    "timestamp": "2026-11-21T19:57:10.987584+00:00",
+    "decision_id": "16e69b6f92534757899405bbe97cce88",
+    "timestamp": "2026-11-22T03:42:19.967387+00:00",
     "ticket_id": "VAL-0043",
     "channel": "forum",
     "stage": "routing",
@@ -5934,14 +5934,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.986611+00:00",
-    "completed_at": "2026-11-21T19:57:10.987660+00:00",
+    "started_at": "2026-11-22T03:42:19.966499+00:00",
+    "completed_at": "2026-11-22T03:42:19.967460+00:00",
     "latency_seconds": 0.001,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "4dfce1deff1c48eab96554609de385d2",
-    "timestamp": "2026-11-21T19:57:10.989192+00:00",
+    "decision_id": "4c46a2d624f94aac9eea1ba61a794685",
+    "timestamp": "2026-11-22T03:42:19.968967+00:00",
     "ticket_id": "VAL-0044",
     "channel": "chat",
     "stage": "validation",
@@ -5996,9 +5996,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -6050,7 +6050,7 @@
       "sources": [
         "DOC-BILL-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -6078,14 +6078,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.988115+00:00",
-    "completed_at": "2026-11-21T19:57:10.989259+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.967863+00:00",
+    "completed_at": "2026-11-22T03:42:19.969036+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "3ad78d40a45e43f1b287cd05ff3b0644",
-    "timestamp": "2026-11-21T19:57:10.990679+00:00",
+    "decision_id": "5f5c1a44d33e418bb30f942b12ce9381",
+    "timestamp": "2026-11-22T03:42:19.970650+00:00",
     "ticket_id": "VAL-0045",
     "channel": "email",
     "stage": "validation",
@@ -6140,9 +6140,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -6194,7 +6194,7 @@
       "sources": [
         "DOC-DATA-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -6222,14 +6222,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.989605+00:00",
-    "completed_at": "2026-11-21T19:57:10.990747+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.969484+00:00",
+    "completed_at": "2026-11-22T03:42:19.970720+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "fc719fce4c4f4f9d863cb3e363a71e36",
-    "timestamp": "2026-11-21T19:57:10.992115+00:00",
+    "decision_id": "ee6f353124214202a371ca142e1554e8",
+    "timestamp": "2026-11-22T03:42:19.972345+00:00",
     "ticket_id": "VAL-0046",
     "channel": "email",
     "stage": "validation",
@@ -6284,9 +6284,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -6338,7 +6338,7 @@
       "sources": [
         "DOC-API-002#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -6366,14 +6366,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.991048+00:00",
-    "completed_at": "2026-11-21T19:57:10.992181+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.971141+00:00",
+    "completed_at": "2026-11-22T03:42:19.972425+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "a865ff1cecfb4a71a3e6845db8cdc97f",
-    "timestamp": "2026-11-21T19:57:10.993584+00:00",
+    "decision_id": "63da6a696adc4f56afbe6ba9fcfff43e",
+    "timestamp": "2026-11-22T03:42:19.974719+00:00",
     "ticket_id": "VAL-0047",
     "channel": "chat",
     "stage": "validation",
@@ -6437,9 +6437,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -6492,7 +6492,7 @@
         "DOC-API-001#article",
         "DOC-AUTH-004#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -6520,14 +6520,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.992498+00:00",
-    "completed_at": "2026-11-21T19:57:10.993651+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.973072+00:00",
+    "completed_at": "2026-11-22T03:42:19.974804+00:00",
+    "latency_seconds": 0.0017,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "9e7da657333144658aaebf54527ec736",
-    "timestamp": "2026-11-21T19:57:10.994755+00:00",
+    "decision_id": "ae7e7bb1f1484eb0bfa7b5e0e873058d",
+    "timestamp": "2026-11-22T03:42:19.976247+00:00",
     "ticket_id": "VAL-0048",
     "channel": "chat",
     "stage": "routing",
@@ -6655,14 +6655,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.993960+00:00",
-    "completed_at": "2026-11-21T19:57:10.994825+00:00",
+    "started_at": "2026-11-22T03:42:19.975393+00:00",
+    "completed_at": "2026-11-22T03:42:19.976320+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "647dc631349a4b13ad910a5b3a4f0469",
-    "timestamp": "2026-11-21T19:57:10.995920+00:00",
+    "decision_id": "2dd1358e9c0541f9bf1d037e0c161238",
+    "timestamp": "2026-11-22T03:42:19.977681+00:00",
     "ticket_id": "VAL-0049",
     "channel": "email",
     "stage": "routing",
@@ -6790,14 +6790,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.995120+00:00",
-    "completed_at": "2026-11-21T19:57:10.995989+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.976804+00:00",
+    "completed_at": "2026-11-22T03:42:19.977754+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "79b89673b59d45dbb914cafa30bea80c",
-    "timestamp": "2026-11-21T19:57:10.997039+00:00",
+    "decision_id": "984d2f478c6648e39894bb3613808b72",
+    "timestamp": "2026-11-22T03:42:19.979101+00:00",
     "ticket_id": "VAL-0050",
     "channel": "email",
     "stage": "routing",
@@ -6942,14 +6942,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.996263+00:00",
-    "completed_at": "2026-11-21T19:57:10.997105+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.978241+00:00",
+    "completed_at": "2026-11-22T03:42:19.979173+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "3d971285da8949d09dbee7670f86cbe3",
-    "timestamp": "2026-11-21T19:57:10.998535+00:00",
+    "decision_id": "71836791e86f4d94bf62512b968e72f4",
+    "timestamp": "2026-11-22T03:42:19.980819+00:00",
     "ticket_id": "VAL-0051",
     "channel": "forum",
     "stage": "validation",
@@ -7004,9 +7004,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -7058,7 +7058,7 @@
       "sources": [
         "DOC-INT-002#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -7086,14 +7086,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.997438+00:00",
-    "completed_at": "2026-11-21T19:57:10.998601+00:00",
+    "started_at": "2026-11-22T03:42:19.979646+00:00",
+    "completed_at": "2026-11-22T03:42:19.980888+00:00",
     "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "c523b09bb5f74b89ad04de7f8f428fb4",
-    "timestamp": "2026-11-21T19:57:10.999786+00:00",
+    "decision_id": "c0e269b67971433bb60c493408e8a36f",
+    "timestamp": "2026-11-22T03:42:19.982266+00:00",
     "ticket_id": "VAL-0052",
     "channel": "chat",
     "stage": "routing",
@@ -7238,14 +7238,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:10.998907+00:00",
-    "completed_at": "2026-11-21T19:57:10.999856+00:00",
+    "started_at": "2026-11-22T03:42:19.981315+00:00",
+    "completed_at": "2026-11-22T03:42:19.982341+00:00",
     "latency_seconds": 0.001,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "e1e2957f5d3c433b82fddca310de529d",
-    "timestamp": "2026-11-21T19:57:11.001165+00:00",
+    "decision_id": "76e9179039994988acdd038f42280319",
+    "timestamp": "2026-11-22T03:42:19.984049+00:00",
     "ticket_id": "VAL-0053",
     "channel": "chat",
     "stage": "validation",
@@ -7300,9 +7300,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -7354,7 +7354,7 @@
       "sources": [
         "DOC-BILL-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -7382,14 +7382,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.000147+00:00",
-    "completed_at": "2026-11-21T19:57:11.001230+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.982793+00:00",
+    "completed_at": "2026-11-22T03:42:19.984125+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "5d61389d00034938a128dd81a4729791",
-    "timestamp": "2026-11-21T19:57:11.002274+00:00",
+    "decision_id": "9f8b56099f1141b8bdd724e2dc5a4b0d",
+    "timestamp": "2026-11-22T03:42:19.985456+00:00",
     "ticket_id": "VAL-0054",
     "channel": "email",
     "stage": "routing",
@@ -7502,14 +7502,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.001507+00:00",
-    "completed_at": "2026-11-21T19:57:11.002340+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.984608+00:00",
+    "completed_at": "2026-11-22T03:42:19.985528+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "f562b30ad75e408191beb01d70e0de03",
-    "timestamp": "2026-11-21T19:57:11.003432+00:00",
+    "decision_id": "f984a106ab8d4259902e50ba28b73e4f",
+    "timestamp": "2026-11-22T03:42:19.986828+00:00",
     "ticket_id": "VAL-0055",
     "channel": "chat",
     "stage": "routing",
@@ -7634,14 +7634,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.002644+00:00",
-    "completed_at": "2026-11-21T19:57:11.003499+00:00",
+    "started_at": "2026-11-22T03:42:19.985985+00:00",
+    "completed_at": "2026-11-22T03:42:19.986897+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "51aa762b09bc43fa824ad22c52c6adb8",
-    "timestamp": "2026-11-21T19:57:11.004574+00:00",
+    "decision_id": "6e1efb3c160b444ba90f3755a434d6dd",
+    "timestamp": "2026-11-22T03:42:19.988185+00:00",
     "ticket_id": "VAL-0056",
     "channel": "email",
     "stage": "routing",
@@ -7776,14 +7776,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.003771+00:00",
-    "completed_at": "2026-11-21T19:57:11.004644+00:00",
+    "started_at": "2026-11-22T03:42:19.987343+00:00",
+    "completed_at": "2026-11-22T03:42:19.988259+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "3db3a1fe2bb44c5d8b4b54bdf20c9a11",
-    "timestamp": "2026-11-21T19:57:11.006041+00:00",
+    "decision_id": "c19fa39bfcf948d5bafca7559f2b0624",
+    "timestamp": "2026-11-22T03:42:19.989994+00:00",
     "ticket_id": "VAL-0057",
     "channel": "email",
     "stage": "validation",
@@ -7838,9 +7838,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -7892,7 +7892,7 @@
       "sources": [
         "DOC-DEPLOY-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -7920,14 +7920,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.004937+00:00",
-    "completed_at": "2026-11-21T19:57:11.006107+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.988746+00:00",
+    "completed_at": "2026-11-22T03:42:19.990066+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "8a3b389600344f23a25f8c17b472442a",
-    "timestamp": "2026-11-21T19:57:11.007240+00:00",
+    "decision_id": "51a7d5de36a2438584a5d67e5bc8fb6f",
+    "timestamp": "2026-11-22T03:42:19.991476+00:00",
     "ticket_id": "VAL-0058",
     "channel": "docs_comment",
     "stage": "routing",
@@ -8054,14 +8054,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.006421+00:00",
-    "completed_at": "2026-11-21T19:57:11.007306+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.990556+00:00",
+    "completed_at": "2026-11-22T03:42:19.991550+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "8e1e4fe1aa7f4a30abe12ed8037e95b4",
-    "timestamp": "2026-11-21T19:57:11.008689+00:00",
+    "decision_id": "914ddd964dfc40b78e8849aec107831f",
+    "timestamp": "2026-11-22T03:42:19.993151+00:00",
     "ticket_id": "VAL-0059",
     "channel": "docs_comment",
     "stage": "validation",
@@ -8116,9 +8116,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8170,7 +8170,7 @@
       "sources": [
         "DOC-DEPLOY-004#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -8198,14 +8198,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.007580+00:00",
-    "completed_at": "2026-11-21T19:57:11.008754+00:00",
+    "started_at": "2026-11-22T03:42:19.991982+00:00",
+    "completed_at": "2026-11-22T03:42:19.993223+00:00",
     "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "2005e6b6079140abb536603bf4b5eb9c",
-    "timestamp": "2026-11-21T19:57:11.010185+00:00",
+    "decision_id": "6254d0a5cdc84bdc911370bb685a6422",
+    "timestamp": "2026-11-22T03:42:19.994816+00:00",
     "ticket_id": "VAL-0060",
     "channel": "email",
     "stage": "validation",
@@ -8260,9 +8260,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8314,7 +8314,7 @@
       "sources": [
         "DOC-API-003#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -8342,14 +8342,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.009088+00:00",
-    "completed_at": "2026-11-21T19:57:11.010250+00:00",
+    "started_at": "2026-11-22T03:42:19.993658+00:00",
+    "completed_at": "2026-11-22T03:42:19.994887+00:00",
     "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "d6abb0ef58a04d5faa76b5e394b6ef31",
-    "timestamp": "2026-11-21T19:57:11.011580+00:00",
+    "decision_id": "f3ff6877eefb417499da2934b70f18d0",
+    "timestamp": "2026-11-22T03:42:19.996465+00:00",
     "ticket_id": "VAL-0061",
     "channel": "email",
     "stage": "validation",
@@ -8404,9 +8404,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8458,7 +8458,7 @@
       "sources": [
         "DOC-API-003#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -8486,14 +8486,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.010528+00:00",
-    "completed_at": "2026-11-21T19:57:11.011652+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.995312+00:00",
+    "completed_at": "2026-11-22T03:42:19.996535+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "2cff1a449a7843fcb345029a4ba6d64e",
-    "timestamp": "2026-11-21T19:57:11.013032+00:00",
+    "decision_id": "e1fe97588a38424c954766d233ac3108",
+    "timestamp": "2026-11-22T03:42:19.998155+00:00",
     "ticket_id": "VAL-0062",
     "channel": "docs_comment",
     "stage": "validation",
@@ -8548,9 +8548,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8602,7 +8602,7 @@
       "sources": [
         "DOC-INT-002#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -8630,14 +8630,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.011933+00:00",
-    "completed_at": "2026-11-21T19:57:11.013099+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.996958+00:00",
+    "completed_at": "2026-11-22T03:42:19.998226+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "3cb5955991be4dfa941a43fa926d5c6b",
-    "timestamp": "2026-11-21T19:57:11.014191+00:00",
+    "decision_id": "2dddb2b8421b4bc99ce80f6aa60c6e1b",
+    "timestamp": "2026-11-22T03:42:19.999581+00:00",
     "ticket_id": "VAL-0063",
     "channel": "email",
     "stage": "routing",
@@ -8792,14 +8792,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.013399+00:00",
-    "completed_at": "2026-11-21T19:57:11.014257+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:19.998702+00:00",
+    "completed_at": "2026-11-22T03:42:19.999653+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "2c5a11715c274f4194ab8f0dfc99c56f",
-    "timestamp": "2026-11-21T19:57:11.015639+00:00",
+    "decision_id": "654c13de79ce4b5e8ed3c03984f52530",
+    "timestamp": "2026-11-22T03:42:20.001276+00:00",
     "ticket_id": "VAL-0064",
     "channel": "chat",
     "stage": "validation",
@@ -8863,9 +8863,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -8918,7 +8918,7 @@
         "DOC-API-002#article",
         "DOC-DATA-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -8946,14 +8946,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.014559+00:00",
-    "completed_at": "2026-11-21T19:57:11.015706+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.000115+00:00",
+    "completed_at": "2026-11-22T03:42:20.001349+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "9f2e3b5114bc4711b925adfed4eaaa74",
-    "timestamp": "2026-11-21T19:57:11.017434+00:00",
+    "decision_id": "0aebe09ff08e4235a0e0a8eef2b96f91",
+    "timestamp": "2026-11-22T03:42:20.002974+00:00",
     "ticket_id": "VAL-0065",
     "channel": "email",
     "stage": "validation",
@@ -9017,9 +9017,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -9072,7 +9072,7 @@
         "DOC-BILL-001#article",
         "DOC-BILL-003#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -9100,14 +9100,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.016352+00:00",
-    "completed_at": "2026-11-21T19:57:11.017499+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.001824+00:00",
+    "completed_at": "2026-11-22T03:42:20.003044+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "e13a24576d1c44daaeae3caf77f8c674",
-    "timestamp": "2026-11-21T19:57:11.018737+00:00",
+    "decision_id": "7772ae6da4604e4d80041975d7e16088",
+    "timestamp": "2026-11-22T03:42:20.004306+00:00",
     "ticket_id": "VAL-0066",
     "channel": "forum",
     "stage": "routing",
@@ -9232,14 +9232,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.017944+00:00",
-    "completed_at": "2026-11-21T19:57:11.018803+00:00",
+    "started_at": "2026-11-22T03:42:20.003454+00:00",
+    "completed_at": "2026-11-22T03:42:20.004377+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "6fb3ce2c1e9f402b9972d95fa238d538",
-    "timestamp": "2026-11-21T19:57:11.019893+00:00",
+    "decision_id": "9f6f1bf55a32476da5326fcffd4b19d3",
+    "timestamp": "2026-11-22T03:42:20.005939+00:00",
     "ticket_id": "VAL-0067",
     "channel": "docs_comment",
     "stage": "routing",
@@ -9374,14 +9374,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.019075+00:00",
-    "completed_at": "2026-11-21T19:57:11.019961+00:00",
-    "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.005019+00:00",
+    "completed_at": "2026-11-22T03:42:20.006010+00:00",
+    "latency_seconds": 0.001,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "73d2f772cc054582b3cb42739e3cc0ee",
-    "timestamp": "2026-11-21T19:57:11.021258+00:00",
+    "decision_id": "c6a55e473e5d4ae192a08a46ef70bb15",
+    "timestamp": "2026-11-22T03:42:20.007350+00:00",
     "ticket_id": "VAL-0068",
     "channel": "email",
     "stage": "routing",
@@ -9516,14 +9516,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.020392+00:00",
-    "completed_at": "2026-11-21T19:57:11.021326+00:00",
+    "started_at": "2026-11-22T03:42:20.006475+00:00",
+    "completed_at": "2026-11-22T03:42:20.007422+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "53954982c61f4d18bc86932c54636232",
-    "timestamp": "2026-11-21T19:57:11.022573+00:00",
+    "decision_id": "c2b5ec36260c465480e64070ac390f30",
+    "timestamp": "2026-11-22T03:42:20.009028+00:00",
     "ticket_id": "VAL-0069",
     "channel": "chat",
     "stage": "validation",
@@ -9614,9 +9614,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -9672,7 +9672,7 @@
         "DOC-DEPLOY-003#article",
         "DOC-INT-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -9700,14 +9700,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.021610+00:00",
-    "completed_at": "2026-11-21T19:57:11.022634+00:00",
-    "latency_seconds": 0.001,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.007888+00:00",
+    "completed_at": "2026-11-22T03:42:20.009100+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "51005a704e9b4dafae130effde77da6e",
-    "timestamp": "2026-11-21T19:57:11.023752+00:00",
+    "decision_id": "e436fec1829d4700bbf770df360df088",
+    "timestamp": "2026-11-22T03:42:20.010454+00:00",
     "ticket_id": "VAL-0070",
     "channel": "docs_comment",
     "stage": "routing",
@@ -9832,14 +9832,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.022956+00:00",
-    "completed_at": "2026-11-21T19:57:11.023813+00:00",
+    "started_at": "2026-11-22T03:42:20.009577+00:00",
+    "completed_at": "2026-11-22T03:42:20.010525+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "fbdfbe2ef09346fda98ab34ac890066c",
-    "timestamp": "2026-11-21T19:57:11.025199+00:00",
+    "decision_id": "04a597134cf54960943d5b1eba2c0230",
+    "timestamp": "2026-11-22T03:42:20.012122+00:00",
     "ticket_id": "VAL-0071",
     "channel": "docs_comment",
     "stage": "validation",
@@ -9894,9 +9894,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -9948,7 +9948,7 @@
       "sources": [
         "DOC-BILL-003#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -9976,14 +9976,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.024087+00:00",
-    "completed_at": "2026-11-21T19:57:11.025264+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.010928+00:00",
+    "completed_at": "2026-11-22T03:42:20.012194+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "2ef17e64ce804db888e98381d1e96049",
-    "timestamp": "2026-11-21T19:57:11.026666+00:00",
+    "decision_id": "f934d9642f9a4585af4e988bb0f97efd",
+    "timestamp": "2026-11-22T03:42:20.013779+00:00",
     "ticket_id": "VAL-0072",
     "channel": "docs_comment",
     "stage": "validation",
@@ -10038,9 +10038,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -10092,7 +10092,7 @@
       "sources": [
         "DOC-BILL-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -10120,14 +10120,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.025603+00:00",
-    "completed_at": "2026-11-21T19:57:11.026732+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.012642+00:00",
+    "completed_at": "2026-11-22T03:42:20.013848+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "b2f532133f0b4330ae3ee34fca420498",
-    "timestamp": "2026-11-21T19:57:11.028065+00:00",
+    "decision_id": "3a7b8621fc3d4187862bfbd5e1e5c77a",
+    "timestamp": "2026-11-22T03:42:20.015437+00:00",
     "ticket_id": "VAL-0073",
     "channel": "forum",
     "stage": "validation",
@@ -10191,9 +10191,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -10246,7 +10246,7 @@
         "DOC-BILL-001#article",
         "DOC-BILL-002#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -10274,14 +10274,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.027016+00:00",
-    "completed_at": "2026-11-21T19:57:11.028135+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.014311+00:00",
+    "completed_at": "2026-11-22T03:42:20.015508+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "117db045184e4cc4a80ecc1192b76463",
-    "timestamp": "2026-11-21T19:57:11.029486+00:00",
+    "decision_id": "fd5bbb47db6f459cb38b65da241bedd1",
+    "timestamp": "2026-11-22T03:42:20.017086+00:00",
     "ticket_id": "VAL-0074",
     "channel": "docs_comment",
     "stage": "validation",
@@ -10336,9 +10336,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -10390,7 +10390,7 @@
       "sources": [
         "DOC-ACCT-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -10418,14 +10418,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.028427+00:00",
-    "completed_at": "2026-11-21T19:57:11.029552+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.015941+00:00",
+    "completed_at": "2026-11-22T03:42:20.017161+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "5826fd1c513d4f928888b2754cb60ac3",
-    "timestamp": "2026-11-21T19:57:11.030626+00:00",
+    "decision_id": "30fceb91cbf149a58ad21a9f2b571523",
+    "timestamp": "2026-11-22T03:42:20.018436+00:00",
     "ticket_id": "VAL-0075",
     "channel": "docs_comment",
     "stage": "routing",
@@ -10550,14 +10550,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.029828+00:00",
-    "completed_at": "2026-11-21T19:57:11.030692+00:00",
+    "started_at": "2026-11-22T03:42:20.017595+00:00",
+    "completed_at": "2026-11-22T03:42:20.018509+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "e4c236aef27f45e69e872493c828c506",
-    "timestamp": "2026-11-21T19:57:11.032354+00:00",
+    "decision_id": "62d3305d07a24508b7c48828874ed62f",
+    "timestamp": "2026-11-22T03:42:20.020087+00:00",
     "ticket_id": "VAL-0076",
     "channel": "email",
     "stage": "validation",
@@ -10621,9 +10621,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -10676,7 +10676,7 @@
         "DOC-DATA-003#article",
         "DOC-AUTH-003#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -10704,14 +10704,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.031242+00:00",
-    "completed_at": "2026-11-21T19:57:11.032422+00:00",
-    "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.018907+00:00",
+    "completed_at": "2026-11-22T03:42:20.020157+00:00",
+    "latency_seconds": 0.0013,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "8f1a68a76e104d50a882442acda0cf31",
-    "timestamp": "2026-11-21T19:57:11.033784+00:00",
+    "decision_id": "d420cb4639ba447498394ded80183756",
+    "timestamp": "2026-11-22T03:42:20.021721+00:00",
     "ticket_id": "VAL-0077",
     "channel": "chat",
     "stage": "validation",
@@ -10775,9 +10775,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -10830,7 +10830,7 @@
         "DOC-BILL-001#article",
         "DOC-BILL-002#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -10858,14 +10858,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.032748+00:00",
-    "completed_at": "2026-11-21T19:57:11.033849+00:00",
-    "latency_seconds": 0.0011,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.020611+00:00",
+    "completed_at": "2026-11-22T03:42:20.021791+00:00",
+    "latency_seconds": 0.0012,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "3563557777d84678aade88e3feaa4f01",
-    "timestamp": "2026-11-21T19:57:11.034880+00:00",
+    "decision_id": "cb0de9f91ad744038a7680191bb61f6f",
+    "timestamp": "2026-11-22T03:42:20.023015+00:00",
     "ticket_id": "VAL-0078",
     "channel": "docs_comment",
     "stage": "routing",
@@ -11000,14 +11000,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.034135+00:00",
-    "completed_at": "2026-11-21T19:57:11.034945+00:00",
-    "latency_seconds": 0.0008,
-    "run_id": "run-20261121T195710-dd5d68"
+    "started_at": "2026-11-22T03:42:20.022212+00:00",
+    "completed_at": "2026-11-22T03:42:20.023087+00:00",
+    "latency_seconds": 0.0009,
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "85f404906f4b492f91e2f252b305dc75",
-    "timestamp": "2026-11-21T19:57:11.036007+00:00",
+    "decision_id": "5a42e278e8b741d194c2265e76883699",
+    "timestamp": "2026-11-22T03:42:20.024362+00:00",
     "ticket_id": "VAL-0079",
     "channel": "email",
     "stage": "routing",
@@ -11132,14 +11132,14 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.035214+00:00",
-    "completed_at": "2026-11-21T19:57:11.036072+00:00",
+    "started_at": "2026-11-22T03:42:20.023493+00:00",
+    "completed_at": "2026-11-22T03:42:20.024433+00:00",
     "latency_seconds": 0.0009,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   },
   {
-    "decision_id": "2e5445c5351d4df4a56f0217fefef618",
-    "timestamp": "2026-11-21T19:57:11.037713+00:00",
+    "decision_id": "7250b7d523e04510b188d0577307bf20",
+    "timestamp": "2026-11-22T03:42:20.026030+00:00",
     "ticket_id": "VAL-0080",
     "channel": "chat",
     "stage": "validation",
@@ -11221,9 +11221,9 @@
     },
     "action_taken": "auto_respond",
     "status": "held_for_review",
-    "delivery": "held_kill_switch",
+    "delivery": "held_auto_send_off",
     "answer_sent": false,
-    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent.",
+    "reason": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent.",
     "reason_codes": [
       "eligible_for_automatic_answer"
     ],
@@ -11278,7 +11278,7 @@
         "DOC-DEPLOY-002#article",
         "DOC-PERF-001#article"
       ],
-      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (kill switch), so the answer is held for an agent."
+      "why_escalated": "Known low-risk request type, confident classification and an approved matching article. All pre-release checks passed. Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
     },
     "prompt_version": [
       "none (no model prompt used: offline classifier and deterministic selector)"
@@ -11306,9 +11306,9 @@
     },
     "llm_cache": "not_used",
     "pii_masked_for_provider": null,
-    "started_at": "2026-11-21T19:57:11.036552+00:00",
-    "completed_at": "2026-11-21T19:57:11.037779+00:00",
+    "started_at": "2026-11-22T03:42:20.024859+00:00",
+    "completed_at": "2026-11-22T03:42:20.026100+00:00",
     "latency_seconds": 0.0012,
-    "run_id": "run-20261121T195710-dd5d68"
+    "run_id": "run-20261122T034219-639864"
   }
 ]

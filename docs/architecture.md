@@ -44,7 +44,7 @@ All modules are in `src/cloudserve/` (named after the Setup Guide §08 component
 | Component | Module | Technology |
 |---|---|---|
 | Channel normalisation (email, chat, docs_comment, forum) | `ingest.py` | Python dataclass. `labels` and `history` are dropped, because they are evaluation-only. |
-| Intent and urgency classification | `classify.py` (offline naive Bayes and the LLM `LangChainClassifier`) | Multinomial naive Bayes trained on development tickets, or PR-01 through LangChain with a Pydantic schema |
+| Intent and urgency classification | `classify.py` (offline naive Bayes and the LLM `LangChainClassifier`) | Naive Bayes over word presence (present-word likelihoods only, not calibrated; thresholds were derived on this exact score) trained on development tickets, or PR-01 through LangChain with a Pydantic schema |
 | Retrieval | `retrieve.py` `KnowledgeBase` | Ranked passages with stable ids and character offsets. Policy RP-1.0 uses lexical term overlap over whole articles (29 passages). all-MiniLM-L6-v2 embeddings (ONNX Runtime, in-memory index) were measured and are supported, with a lexical fallback. See §11. |
 | Routing policy | `route.py`, `config/routing_policy.json` | Deterministic rules, policy RP-1.0 |
 | Evidence selection and answer rendering | `generate.py` | A verbatim resolution section (deterministic), or PR-04 through LangChain |
@@ -223,7 +223,7 @@ Full figures are in `evaluation/results/*/metrics_summary.md`.
 
 | Run (`evaluation/results/…`) | Intent accuracy | Auto answers (held) | Blocked | Auto precision | Must-not violations | p95 latency | Cost |
 |---|---|---|---|---|---|---|---|
-| Validation (80), offline, extractive (`final_offline_default`) | 0.975 (inflated by overlap) | 33 | 0 | 0.788 | 0 of 14 | 1.2 ms | $0 |
+| Validation (80), offline, extractive (`final_offline_default`) | 0.975 (inflated by overlap) | 33 | 0 | 0.788 | 0 of 14 | 1.5 ms | $0 |
 | Validation (80), Ollama gemma4:e2b, LLM classifier + generated (`final_llm_ollama_gemma4_generated`) | 0.775 | 21 | 2 | 0.762 | 0 of 14 | 5.7 s | $0 |
 | Validation (80), Claude Haiku 4.5, LLM classifier + generated (`final_llm_anthropic_haiku45_generated`) | 0.9125 | 19 | 10 | 0.895 | 0 of 14 | 5.1 s | $0.265 |
 | Validation (80), generated answers, Ollama, offline classifier (`generation_comparison`, §12) | 0.975 (inflated by overlap) | 31 | 2 | 0.774 | 0 of 14 | 4.9 s | $0 |
@@ -241,7 +241,7 @@ threshold was not retuned on validation, which is the gate set. Report tables:
 - **Answers are extractive by default.** The default answer is a verbatim documentation section with fixed wording. Generated answers (PR-02, §12) are optional. They need an LLM, and their support check is a deterministic proxy with the limits listed in §12.
 - **Retrieval is lexical** in RP-1.0, and 70% of unanswerable validation tickets still retrieve a passage. The intent→document map is what prevents those tickets from being answered. Embeddings retrieve far better (§11), but no embedding configuration met the routing objective with useful coverage.
 - **Confidence calibration misses the 5-point target.** On development data, out of fold, the 0.6–0.8 band states 0.705 but observes 0.44. LLM confidence is not calibrated at all.
-- **Injection detection is pattern-based,** so a paraphrased injection can pass. In extractive mode the released answer is still a verified documentation excerpt; in generated mode the model's sentences must pass the citation, verbatim-quote and support checks, which limit but do not eliminate the effect of a successful injection.
+- **Injection detection is pattern-based,** so a paraphrased injection can pass. After the independent review, patterns for paraphrased redirection ("follow these new procedures", "from now on you…", "reveal your internal guidelines") were added; none of the 580 labelled tickets is flagged by them, and ordinary requests such as "show me the policy for refunds" are not flagged (`tests/test_review_fixes.py`). A novel phrasing can still pass. In extractive mode the released answer is still a verified documentation excerpt; in generated mode the model's sentences must pass the citation, verbatim-quote and support checks, which limit but do not eliminate the effect of a successful injection.
 - **PII masking is pattern-based.** A name, an address or an unusual identifier can still reach a hosted provider.
 - **llama.cpp has not been run live.** Only its 429 path has been tested, against a local fake server.
 - **The LLM cache replays exact repeats only.** Any change to the prompt, model, schema, passages or ticket text is a miss. Cost estimates use the tokens the provider reports for the final attempt, so retried attempts are not counted.
@@ -511,8 +511,21 @@ exposes the same series with `--metrics-port`.
 
 - **Restarts.** The API keeps metrics in memory, so counters reset on restart and Prometheus
   `increase()` handles that.
-- **No authentication.** There is no authentication on the API, so it must stay on localhost or
+- **No authentication.** There is no authentication on the API. `python -m cloudserve.api` refuses to bind any non-loopback address unless `CLOUDSERVE_API_ALLOW_REMOTE=true` is set, which should only be done behind an authenticating gateway (`tests/test_review_fixes.py`).
   behind a gateway.
 - **Single process.** There is one process with one engine. Several uvicorn workers would each
   have their own breaker and metrics.
+
+## 14. Independent review (GPT) and disposition
+
+A read-only review by a second model (OpenAI Codex CLI, GPT) was run on a fresh clone without
+credentials after Slice 10. Each finding was checked against the code before acting on it.
+
+| # | Finding | Verdict | Action |
+|---|---|---|---|
+| 1 | `ticket_id` and `channel` reached hosted providers unmasked | Valid | Masked with `for_provider` for hosted providers (`classify.py`, `generate.py`); test |
+| 2 | Offline classifier is described as multinomial naive Bayes, but uses present-word document-frequency likelihoods | Partly valid: the description was wrong; the score is a relative posterior and is not calibrated (already a documented limitation, §10) | Description corrected. The model is unchanged: routing thresholds were derived out of fold on development data for this exact score and approved by the owner; changing it would require re-deriving the policy |
+| 3 | Paraphrased injection can pass the regex screen | Valid (known limitation) | Paraphrase patterns added with false-positive checks on all 580 labelled tickets; residual risk stays in the risk register |
+| 4 | API has no authentication | Valid | Non-loopback bind refused unless `CLOUDSERVE_API_ALLOW_REMOTE=true`; test |
+| 5 | Held answers counted as "held by kill switch" when only auto-send was off | Valid | Distinct `delivery` values `held_auto_send_off` and `held_kill_switch`, counted separately in metrics; offline final runs regenerated (decisions unchanged) |
 

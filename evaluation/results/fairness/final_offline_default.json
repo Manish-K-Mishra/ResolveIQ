@@ -1,8 +1,8 @@
 {
   "run": "evaluation/results/final_offline_default",
   "tickets_file": "data/validation_tickets.json",
-  "run_id": "run-20261121T195710-dd5d68",
-  "run_date": "2026-11-21T19:57:11+00:00",
+  "run_id": "run-20261122T034219-639864",
+  "run_date": "2026-11-22T03:42:20+00:00",
   "tickets": 80,
   "length_split_median_body_words": 24.0,
   "target_variation_points": 5.0,

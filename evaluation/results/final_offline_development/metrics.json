@@ -1,7 +1,7 @@
 {
   "run": {
-    "run_id": "run-20261121T195711-b7ec5a",
-    "date": "2026-11-21T19:57:12+00:00",
+    "run_id": "run-20261122T034221-8d8fec",
+    "date": "2026-11-22T03:42:21+00:00",
     "input": "data/development_tickets.json",
     "engine": "langgraph",
     "classifier": "naive_bayes_intent (nb-a8a09fec6990)",
@@ -36,13 +36,15 @@
       "training_file": "data/development_tickets.json"
     },
     "tickets_in_file": 500,
-    "wall_clock_seconds": 0.71
+    "wall_clock_seconds": 0.83
   },
   "volume": {
     "processed": 500,
     "decisions_logged": 500,
     "auto_responded_sent": 0,
     "auto_respond_decisions_held_by_kill_switch": 210,
+    "held_auto_send_off": 210,
+    "held_runtime_kill_switch": 0,
     "escalated": 290,
     "blocked_by_guardrails": 0
   },
@@ -62,15 +64,15 @@
   },
   "technical": {
     "latency_seconds": {
-      "mean": 0.001,
-      "median": 0.0009,
-      "p95": 0.0012,
+      "mean": 0.0011,
+      "median": 0.001,
+      "p95": 0.0014,
       "n": 500,
       "excludes": "decisions replayed from the LLM cache"
     },
     "latency_seconds_including_cache_hits": {
-      "median": 0.0009,
-      "p95": 0.0012,
+      "median": 0.001,
+      "p95": 0.0014,
       "n": 500
     },
     "intent_accuracy": 0.998,
@@ -323,7 +325,7 @@
     "estimated_cost_per_ticket_if_live_usd": 0.0,
     "projected_monthly_cost_usd": {
       "tickets_per_month": 2167,
-      "volume_source": "Stakeholder_Interviews (Marcus, support lead): 'north of five hundred tickets a week'; 500/week x 52/12 = 2,167/month, a lower bound because volume is growing (Project Brief)",
+      "volume_source": "Stakeholder_Interviews (support lead): 'north of five hundred tickets a week'; 500/week x 52/12 = 2,167/month, a lower bound because volume is growing (Project Brief)",
       "cost_usd": 0.0,
       "basis": "per-ticket cost of this input file (same mix of escalations, which make fewer model calls) x monthly volume; prices from config/model_prices.json as of 2026-11-22"
     }

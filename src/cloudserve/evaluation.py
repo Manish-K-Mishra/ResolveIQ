@@ -214,7 +214,10 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
         "run": {**run_info, "tickets_in_file": n, "wall_clock_seconds": round(wall_clock, 2)},
         "volume": {"processed": len(results), "decisions_logged": logged,
                    "auto_responded_sent": st.get("auto_responded", 0),
+                   # Total held for review; split below by why (auto-send off vs runtime kill switch).
                    "auto_respond_decisions_held_by_kill_switch": st.get("held_for_review", 0),
+                   "held_auto_send_off": sum(r.get("delivery") == "held_auto_send_off" for r in results),
+                   "held_runtime_kill_switch": sum(r.get("delivery") == "held_kill_switch" for r in results),
                    "escalated": st.get("escalated", 0), "blocked_by_guardrails": st.get("blocked", 0)},
         "business": {
             "first_contact_resolution_pct": round(100 * len(sent) / n, 1) if n else None,
@@ -373,7 +376,7 @@ def summary_markdown(m: dict) -> str:
              f"automatic sending {'ON' if m['run']['auto_send'] else 'OFF (kill switch)'}, {m['run']['date']}.", "",
              "| Measure | Value |", "|---|---|",
              f"| Processed / logged | {v['processed']} / {v['decisions_logged']} (reconciles: {g['decision_log_reconciles']}) |",
-             f"| Auto-responded (sent) / held by kill switch | {v['auto_responded_sent']} / {v['auto_respond_decisions_held_by_kill_switch']} |",
+             f"| Auto-responded (sent) / held for review (auto-send off; runtime kill switch) | {v['auto_responded_sent']} / {v['auto_respond_decisions_held_by_kill_switch']} ({v.get('held_auto_send_off', 0)}; {v.get('held_runtime_kill_switch', 0)}) |",
              f"| Escalated / blocked | {v['escalated']} / {v['blocked_by_guardrails']} |",
              f"| FCR (actual / if released) | {b['first_contact_resolution_pct']}% / {b['first_contact_resolution_if_kill_switch_released_pct']}% |",
              f"| Escalation rate (actual / if released) | {b['escalation_rate_pct']}% / {b['escalation_rate_if_kill_switch_released_pct']}% |",

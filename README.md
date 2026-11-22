@@ -132,7 +132,8 @@ also be watched: `python -m evaluation.harness ... --metrics-port 8001` serves t
 `127.0.0.1:8001` while the run lasts.
 
 **Linux.** The API must listen on an address the containers can reach, for example
-`--host 0.0.0.0` behind a firewall. On Docker Desktop (macOS) `127.0.0.1` works.
+`--host 0.0.0.0` behind a firewall. The API has no authentication, so it refuses any non-loopback
+address unless `CLOUDSERVE_API_ALLOW_REMOTE=true` is set. On Docker Desktop (macOS) `127.0.0.1` works.
 
 **Dashboard panels** (Setup Guide §06):
 
