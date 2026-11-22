@@ -1,7 +1,7 @@
 # Local monitoring stack: Prometheus + Grafana, pointed at the CloudServe API on the host.
 #   docker compose -f monitoring/docker-compose.yml up -d     then open http://127.0.0.1:3000
-# Ports are bound to 127.0.0.1 only. The Grafana admin password comes from GRAFANA_ADMIN_PASSWORD;
-# the fallback "admin" is a LOCAL-ONLY default for a stack that is not reachable from the network.
+# Ports are bound to 127.0.0.1 only. The Grafana admin password comes from GRAFANA_ADMIN_PASSWORD,
+# which must be set before `up`; there is deliberately no default password in the repository.
 services:
   prometheus:
     image: prom/prometheus:v3.5.0
@@ -16,7 +16,7 @@ services:
     depends_on: [prometheus]
     environment:
       GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
-      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?set GRAFANA_ADMIN_PASSWORD to a local password first}
       GF_USERS_ALLOW_SIGN_UP: "false"
       GF_ANALYTICS_REPORTING_ENABLED: "false"
       GF_ANALYTICS_CHECK_FOR_UPDATES: "false"

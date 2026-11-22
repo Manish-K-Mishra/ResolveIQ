@@ -123,9 +123,9 @@ open http://127.0.0.1:3000                                   # dashboard "CloudS
 docker compose -f monitoring/docker-compose.yml down
 ```
 
-**Grafana login.** `admin` / `$GRAFANA_ADMIN_PASSWORD`. If the variable is unset the password is
-`admin`, which is a **local-only default** for a stack bound to 127.0.0.1. Set your own before
-binding the stack to anything else. Never commit a real password.
+**Grafana login.** User `admin`, password from `GRAFANA_ADMIN_PASSWORD`, which you choose and set
+before starting the stack (`export GRAFANA_ADMIN_PASSWORD=<a local password>`). There is no
+default: `docker compose` refuses to start without it. Never commit a real password.
 
 **What Prometheus scrapes.** The API at `host.docker.internal:8000`. A long unattended run can
 also be watched: `python -m evaluation.harness ... --metrics-port 8001` serves the same series on

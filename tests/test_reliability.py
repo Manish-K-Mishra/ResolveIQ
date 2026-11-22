@@ -122,10 +122,10 @@ def test_read_only_never_writes_and_off_never_reads(engine_with, tmp_path):
 
 
 def test_cache_holds_no_secrets_and_no_ticket_text(engine_with, tmp_path, monkeypatch):
-    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-test-secret-value")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "placeholder-test-value")
     engine_with(FakeModel(ANSWER)).process(LOGIN)
     stored = "".join(p.read_text() for p in (tmp_path / "cache").rglob("*.json"))
-    assert stored and "sk-ant-test-secret-value" not in stored and LOGIN["body"] not in stored
+    assert stored and "placeholder-test-value" not in stored and LOGIN["body"] not in stored
 
 
 def test_cache_key_changes_with_prompt_version_model_and_messages():
