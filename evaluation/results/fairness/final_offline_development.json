@@ -1,8 +1,8 @@
 {
   "run": "evaluation/results/final_offline_development",
   "tickets_file": "data/development_tickets.json",
-  "run_id": "run-20261121T195711-b7ec5a",
-  "run_date": "2026-11-21T19:57:12+00:00",
+  "run_id": "run-20261122T034221-8d8fec",
+  "run_date": "2026-11-22T03:42:21+00:00",
   "tickets": 500,
   "length_split_median_body_words": 25.0,
   "target_variation_points": 5.0,

@@ -25,6 +25,15 @@ INJECTION_PATTERN = re.compile(
     r"|\b(?:unrestricted|unfiltered|jailbroken)\s+(?:ai|assistant|mode|model)\b"
     r"|\bact\s+as\s+(?:an?\s+|the\s+)?(?:admin|administrator|developer|system|root|superuser|dan)\b"
     r"|\bnew\s+(?:system\s+)?instructions?\s*:"
+    # Paraphrased redirection: replacing the system's procedures or asking for its internals.
+    r"|\b(?:follow|obey|use|adopt|apply)\s+(?:these|this|my|the\s+following)\s+(?:new\s+|updated\s+|revised\s+)?"
+    r"(?:operating\s+)?(?:procedures?|protocols?|policies|policy|orders|commands)\b"
+    # The qualifier is required ("your", "internal", "hidden", "system"), so "show me the
+    # configuration of my SSO connection" or "the policy for refunds" is not flagged.
+    r"|\b(?:reveal|print|show|display|repeat|output|leak|disclose|dump)\s+(?:me\s+)?(?:the\s+)?"
+    r"(?:your\s+(?:full\s+|internal\s+|hidden\s+|support\s+|own\s+)?|(?:full\s+)?(?:internal|hidden|system)\s+(?:support\s+)?)"
+    r"(?:prompt|policy|policies|configuration|guidelines|rules)\b"
+    r"|\bfrom\s+now\s+on\s+(?:you|your)\b"
     r"|<\s*/?\s*system\s*>"
     r"|\bignora\s+(?:todas\s+)?(?:las\s+)?instrucciones)")
 _ZERO_WIDTH = dict.fromkeys(map(ord, "\u200b\u200c\u200d\u2060\ufeff"))

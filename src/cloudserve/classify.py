@@ -1,6 +1,6 @@
 """Intent and urgency classification with confidence (FR-02).
 
-Two classifiers share one output contract: an offline multinomial naive Bayes over ticket words
+Two classifiers share one output contract: an offline naive Bayes over word presence (document-frequency likelihoods, present words only; the score is a relative posterior, not a calibrated probability)
 (the default, no network) and PR-01 through any LLM provider (LangChainClassifier).
 
 The offline classifier is trained ONLY on development tickets (data/development_tickets.json,
@@ -131,7 +131,8 @@ class LangChainClassifier:
     def messages(self, ticket) -> list:
         from langchain_core.messages import HumanMessage, SystemMessage
         system = self.prompt["system"].replace("{allowed_intents}", ", ".join(INTENTS + (UNKNOWN,)))
-        values = {"ticket_id": ticket.ticket_id, "channel": ticket.channel,
+        values = {"ticket_id": for_provider(self.provider, str(ticket.ticket_id)[:64]),
+                  "channel": for_provider(self.provider, str(ticket.channel)[:32]),
                   "subject": for_provider(self.provider, ticket.subject[:300]),
                   "body": for_provider(self.provider, ticket.body[:4000])}
         # Single pass, so placeholder-like text inside the ticket is never substituted.

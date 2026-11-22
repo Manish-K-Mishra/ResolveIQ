@@ -109,10 +109,23 @@ def parse_args(argv=None) -> argparse.Namespace:
     return p.parse_args(argv)
 
 
+LOOPBACK_HOSTS = ("127.0.0.1", "localhost", "::1")
+
+
+def check_bind(host: str) -> None:
+    """The API has no authentication, so it serves this machine only unless an operator
+    explicitly accepts the risk (CLOUDSERVE_API_ALLOW_REMOTE=true, e.g. behind an authenticating
+    gateway). Refusing a public bind by default stops an accidental 0.0.0.0 exposure."""
+    if host not in LOOPBACK_HOSTS and os.getenv("CLOUDSERVE_API_ALLOW_REMOTE", "").strip().lower() != "true":
+        raise SystemExit(f"refusing to bind {host}: the API has no authentication. Bind 127.0.0.1, or set "
+                         "CLOUDSERVE_API_ALLOW_REMOTE=true only behind an authenticating gateway.")
+
+
 def main(argv=None):
     import uvicorn
     from .runtime import build_engine
     a = parse_args(argv)
+    check_bind(a.host)
     engine = build_engine(a)
     app = create_app(engine, a.db, cache_mode=a.llm_cache)
     uvicorn.run(app, host=a.host, port=a.port, log_level="info")

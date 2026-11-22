@@ -161,7 +161,8 @@ class LangChainAnswerGenerator:
         payload = json.dumps([{"passage_id": p["passage_id"], "title": p.get("title", ""), "text": p["passage"][:2500]}
                               for p in passages], ensure_ascii=False, indent=1)
         from .providers import for_provider
-        values = {"passages_json": payload, "ticket_id": ticket.ticket_id, "channel": ticket.channel,
+        values = {"passages_json": payload, "ticket_id": for_provider(self.provider, str(ticket.ticket_id)[:64]),
+                  "channel": for_provider(self.provider, str(ticket.channel)[:32]),
                   "subject": for_provider(self.provider, ticket.subject[:300]),
                   "body": for_provider(self.provider, ticket.body[:4000])}
         # Single pass, so placeholder-like text inside the ticket or passages is never substituted.

@@ -1,15 +1,15 @@
-# Evaluation summary — run-20261121T195711-d12b9e
+# Evaluation summary — run-20261122T034220-0c9e90
 
-Input `data/validation_tickets.json` (80 tickets), engine `langgraph`, classifier `naive_bayes_intent (nb-a8a09fec6990)`, answer mode `extractive`, policy `RP-1.0`, automatic sending ON, 2026-11-21T19:57:11+00:00.
+Input `data/validation_tickets.json` (80 tickets), engine `langgraph`, classifier `naive_bayes_intent (nb-a8a09fec6990)`, answer mode `extractive`, policy `RP-1.0`, automatic sending ON, 2026-11-22T03:42:20+00:00.
 
 | Measure | Value |
 |---|---|
 | Processed / logged | 80 / 80 (reconciles: True) |
-| Auto-responded (sent) / held by kill switch | 33 / 0 |
+| Auto-responded (sent) / held for review (auto-send off; runtime kill switch) | 33 / 0 (0; 0) |
 | Escalated / blocked | 47 / 0 |
 | FCR (actual / if released) | 41.2% / 41.2% |
 | Escalation rate (actual / if released) | 58.8% / 58.8% |
-| Latency median / p95 (s), live decisions only | 0.0009 / 0.0012 |
+| Latency median / p95 (s), live decisions only | 0.001 / 0.0013 |
 | Private data in outbound responses | 0 |
 | Model calls (live / cache hits) | 0 / 0 (cache mode: not_used (no model in this run)) |
 | Tokens in / out; estimated cost this run / if all live (USD) | 0 / 0; 0 / 0 |

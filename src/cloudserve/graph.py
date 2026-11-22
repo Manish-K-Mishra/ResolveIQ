@@ -250,14 +250,15 @@ class DecisionEngine:
         ks = self._kill_switch()          # read now, at finalize, for every ticket
         if action == "auto_respond":
             release = self.auto_send and not ks["file_flag_engaged"]
-            delivery = "sent" if release else "held_kill_switch"
+            delivery = ("sent" if release else "held_kill_switch" if ks["file_flag_engaged"]
+                        else "held_auto_send_off")
             status = "auto_responded" if release else "held_for_review"
             if ks["file_flag_engaged"]:
                 reason += (" The kill switch was engaged (" + ks["flag_file"] +
                            (f", since {ks['engaged_at']}" if ks.get("engaged_at") else "") +
                            "), so no answer is released; the answer is held for an agent.")
             elif not self.auto_send:
-                reason += " Automatic sending is switched off (kill switch), so the answer is held for an agent."
+                reason += " Automatic sending is switched off (the default kill switch setting; CLOUDSERVE_AUTO_SEND or --auto-send enables it), so the answer is held for an agent."
         else:
             delivery, status = "not_applicable", {"escalate": "escalated", "block": "blocked"}[action]
         sources = [{"passage_id": m.get("passage_id"), "doc_id": m["doc_id"], "title": m.get("title", ""),
