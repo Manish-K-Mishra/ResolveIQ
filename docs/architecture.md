@@ -493,7 +493,7 @@ exposes the same series with `--metrics-port`.
   auto against escalated proportion, latency p50/p95, guardrail activations by guardrail, and the
   confidence distribution.
 - **Access.** Ports are bound to 127.0.0.1. The Grafana admin password comes from
-  `GRAFANA_ADMIN_PASSWORD`; the fallback is `admin`, a local-only default.
+  `GRAFANA_ADMIN_PASSWORD`, which must be set; there is no default password in the repository.
 - **CI.** CI does not need Docker. A test checks that the dashboard queries name only series the
   application exposes.
 

@@ -63,14 +63,14 @@ def test_auto_send_releases_and_kill_switch_overrides_via_api(api, tmp_path):
 
 
 def test_health_reports_state_without_secrets_env_values_or_absolute_paths(api, monkeypatch):
-    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-health-secret")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "placeholder-health-value")
     client, _, _ = api()
     client.post("/tickets", json=LOGIN)
     h = client.get("/health")
     body = h.text + client.get("/metrics").text
     assert h.json()["kill_switch"] == {"engaged": False, "flag_file": "KILL_SWITCH", "engaged_at": None}
     assert h.json()["policy_version"] == "RP-1.0" and h.json()["breaker"] is None
-    assert "sk-ant-health-secret" not in body and str(ROOT) not in body and "/Users/" not in body
+    assert "placeholder-health-value" not in body and str(ROOT) not in body and "/Users/" not in body
     assert os.path.expanduser("~") not in body
 
 
@@ -212,5 +212,5 @@ def test_dashboard_has_the_setup_guide_panels_and_uses_only_exposed_metrics(make
             for name in re.findall(r"\b([a-z_]+(?:_total|_bucket))\b", t["expr"]):
                 assert f"# TYPE {re.sub(r'_(total|bucket)$', '', name)}" in exposed, name
     compose = (ROOT / "monitoring/docker-compose.yml").read_text()
-    assert "${GRAFANA_ADMIN_PASSWORD:-admin}" in compose and '"127.0.0.1:3000:3000"' in compose
+    assert "${GRAFANA_ADMIN_PASSWORD:?" in compose and "GRAFANA_ADMIN_PASSWORD:-" not in compose and '"127.0.0.1:3000:3000"' in compose
     assert "host.docker.internal:8000" in (ROOT / "monitoring/prometheus.yml").read_text()
