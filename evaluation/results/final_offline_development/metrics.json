@@ -1,7 +1,7 @@
 {
   "run": {
-    "run_id": "run-20261122T034221-8d8fec",
-    "date": "2026-11-22T03:42:21+00:00",
+    "run_id": "run-20261122T040344-a30285",
+    "date": "2026-11-22T04:03:45+00:00",
     "input": "data/development_tickets.json",
     "engine": "langgraph",
     "classifier": "naive_bayes_intent (nb-a8a09fec6990)",
@@ -36,7 +36,7 @@
       "training_file": "data/development_tickets.json"
     },
     "tickets_in_file": 500,
-    "wall_clock_seconds": 0.83
+    "wall_clock_seconds": 0.82
   },
   "volume": {
     "processed": 500,
@@ -58,20 +58,25 @@
       "mean": null,
       "median": null
     },
+    "response_time_to_decision_seconds": {
+      "n": 500,
+      "mean": 0.0012,
+      "median": 0.0011
+    },
     "time_to_first_reply_escalated": "not measurable offline: depends on the human queue",
     "customer_satisfaction": "not measurable offline: requires a human-scored sample",
     "repeat_contacts": "not measurable offline: requires a 7-day follow-up window"
   },
   "technical": {
     "latency_seconds": {
-      "mean": 0.0011,
-      "median": 0.001,
+      "mean": 0.0012,
+      "median": 0.0011,
       "p95": 0.0014,
       "n": 500,
       "excludes": "decisions replayed from the LLM cache"
     },
     "latency_seconds_including_cache_hits": {
-      "median": 0.001,
+      "median": 0.0011,
       "p95": 0.0014,
       "n": 500
     },
@@ -502,7 +507,7 @@
     "Urgency and expected_route labels vary for identical ticket text in the supplied data, which caps achievable urgency and routing accuracy.",
     "Citation accuracy here is a label-based proxy (cited document among expected_doc_ids); it is not the human claim-by-claim review the Evaluation Framework requires, and hallucination rate is not measured.",
     "Responses are extractive (a verbatim documentation section), not generated text.",
-    "Response time is processing latency for automatic answers only; human queue time, CSAT and repeat contacts cannot be measured offline.",
+    "Response time is system processing time (time to decision; for automatic answers also time to first reply); human queue time, CSAT and repeat contacts cannot be measured offline.",
     "Segments with few tickets (e.g. 8 enterprise tickets in validation) make variation figures unstable."
   ]
 }

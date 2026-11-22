@@ -1,7 +1,7 @@
 {
   "run": {
-    "run_id": "run-20261122T034220-0c9e90",
-    "date": "2026-11-22T03:42:20+00:00",
+    "run_id": "run-20261122T040343-257c72",
+    "date": "2026-11-22T04:03:43+00:00",
     "input": "data/validation_tickets.json",
     "engine": "langgraph",
     "classifier": "naive_bayes_intent (nb-a8a09fec6990)",
@@ -56,6 +56,11 @@
     "time_to_first_reply_automatic_seconds": {
       "n": 33,
       "mean": 0.001,
+      "median": 0.001
+    },
+    "response_time_to_decision_seconds": {
+      "n": 80,
+      "mean": 0.0011,
       "median": 0.001
     },
     "time_to_first_reply_escalated": "not measurable offline: depends on the human queue",
@@ -509,7 +514,7 @@
     "Urgency and expected_route labels vary for identical ticket text in the supplied data, which caps achievable urgency and routing accuracy.",
     "Citation accuracy here is a label-based proxy (cited document among expected_doc_ids); it is not the human claim-by-claim review the Evaluation Framework requires, and hallucination rate is not measured.",
     "Responses are extractive (a verbatim documentation section), not generated text.",
-    "Response time is processing latency for automatic answers only; human queue time, CSAT and repeat contacts cannot be measured offline.",
+    "Response time is system processing time (time to decision; for automatic answers also time to first reply); human queue time, CSAT and repeat contacts cannot be measured offline.",
     "Segments with few tickets (e.g. 8 enterprise tickets in validation) make variation figures unstable."
   ]
 }

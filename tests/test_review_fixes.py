@@ -73,3 +73,14 @@ def test_api_refuses_public_bind_without_explicit_opt_in(host, allowed, monkeypa
             check_bind(host)
         monkeypatch.setenv("CLOUDSERVE_API_ALLOW_REMOTE", "true")
         check_bind(host)
+
+
+def test_business_response_time_is_reported_with_auto_send_off(tmp_path):
+    import json, subprocess, sys
+    from conftest import ROOT
+    out = tmp_path / "run"
+    subprocess.run([sys.executable, "-m", "evaluation.harness", "--input", str(ROOT / "examples/four_channels.json"),
+                    "--output", str(out)], check=True, cwd=ROOT, capture_output=True)
+    b = json.loads((out / "metrics.json").read_text())["business"]["response_time_to_decision_seconds"]
+    assert b["n"] == 4 and b["mean"] is not None and b["median"] is not None
+    assert "Response time to decision" in (out / "metrics_summary.md").read_text()

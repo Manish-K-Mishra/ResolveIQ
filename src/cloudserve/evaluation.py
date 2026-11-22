@@ -227,6 +227,12 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
             "time_to_first_reply_automatic_seconds": {
                 "n": len(sent_lat), "mean": round(statistics.mean(sent_lat), 3) if sent_lat else None,
                 "median": round(statistics.median(sent_lat), 3) if sent_lat else None},
+            # Build Spec: mean and median response time. Time from receipt to a decision (answer
+            # released or held, escalation logged) for every ticket, so the figure exists even
+            # when automatic sending is off; cache replays excluded.
+            "response_time_to_decision_seconds": {
+                "n": len(lat), "mean": round(statistics.mean(lat), 4) if lat else None,
+                "median": round(statistics.median(lat), 4) if lat else None},
             "time_to_first_reply_escalated": "not measurable offline: depends on the human queue",
             "customer_satisfaction": "not measurable offline: requires a human-scored sample",
             "repeat_contacts": "not measurable offline: requires a 7-day follow-up window",
@@ -333,7 +339,7 @@ def evaluate(items: list, results: list[dict], logged: int, wall_clock: float, r
          "deterministic string checks, so hallucination still needs the two-assessor human review "
          "(human_review_sample.csv)." if gen is not None else
          "Responses are extractive (a verbatim documentation section), not generated text."),
-        "Response time is processing latency for automatic answers only; human queue time, CSAT and repeat contacts cannot be measured offline.",
+        "Response time is system processing time (time to decision; for automatic answers also time to first reply); human queue time, CSAT and repeat contacts cannot be measured offline.",
         "Segments with few tickets (e.g. 8 enterprise tickets in validation) make variation figures unstable.",
     ]
     return report
@@ -378,6 +384,7 @@ def summary_markdown(m: dict) -> str:
              f"| Processed / logged | {v['processed']} / {v['decisions_logged']} (reconciles: {g['decision_log_reconciles']}) |",
              f"| Auto-responded (sent) / held for review (auto-send off; runtime kill switch) | {v['auto_responded_sent']} / {v['auto_respond_decisions_held_by_kill_switch']} ({v.get('held_auto_send_off', 0)}; {v.get('held_runtime_kill_switch', 0)}) |",
              f"| Escalated / blocked | {v['escalated']} / {v['blocked_by_guardrails']} |",
+             f"| Response time to decision, mean / median (s), all tickets | {b['response_time_to_decision_seconds']['mean']} / {b['response_time_to_decision_seconds']['median']} |",
              f"| FCR (actual / if released) | {b['first_contact_resolution_pct']}% / {b['first_contact_resolution_if_kill_switch_released_pct']}% |",
              f"| Escalation rate (actual / if released) | {b['escalation_rate_pct']}% / {b['escalation_rate_if_kill_switch_released_pct']}% |",
              f"| Latency median / p95 (s), live decisions only | {m['technical']['latency_seconds']['median']} / {m['technical']['latency_seconds']['p95']} |",
